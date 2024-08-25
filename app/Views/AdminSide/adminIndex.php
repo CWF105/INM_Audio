@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>INM Admin</title>
-  <link rel="shortcut icon" type="image/png" href=" <?= base_url('AdminSideAssets/images/logos/logo.png') ?>" />
-  <link rel="stylesheet" href="<?= base_url('AdminSideAssets/css/styles.min.css') ?>"/>
+  <link rel="shortcut icon" type="image/png" href=" <?= base_url('Admin_Side_Assets/images/logos/logo.png') ?>" />
+  <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
@@ -15,127 +15,14 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
 
-    <!-- Sidebar Start -->
-    <aside class="left-sidebar">
-      <!-- Sidebar scroll-->
-      <div>
-
-      <!-- logo -->
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="index.php <?= base_url('/admin') ?>" class="text-nowrap logo-img">
-            <img src="<?= base_url('assets/images/logo.png') ?>" width="150" alt="" />
-          </a>
-        </div>
-
-
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-
-            <!-- HEADER - HOME -->
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Home</span>
-            </li>
-
-            <!-- DASHBOARD -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("/admin") ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-
-                    <!-- space between dashboard and the bottom menus -->
-                    <li class="nav-small-cap">
-                      <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    </li>
-
-
-
-            <!-- TRANSACTIONS  -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("/admin/transactions") ?>" aria-expanded="false">
-                <span>
-                  <i class="fa-solid fa-store"></i>
-                </span>
-                <span class="hide-menu">Transactions</span>
-              </a>
-            </li>
-
-
-
-            <!-- PRODUCT  -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("/admin/products") ?>" aria-expanded="false">
-                <span>
-                  <i class="fa-solid fa-store"></i>
-                </span>
-                <span class="hide-menu">Product</span>
-              </a>
-            </li>
-
-
-            <!-- MANAGE USERS -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("/admin/manageUsers") ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-cards"></i>
-                </span>
-                <span class="hide-menu">Users</span>
-              </a>
-            </li>
-
-            
-            <!-- HEADING - dash line -->
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">---------------------------</span>
-            </li>
-
-            <!-- Log out button -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("Signup_Login/logout") ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Logout</span>
-              </a>
-            </li>
-
-            <!-- Register new admin button -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= base_url("/admin/adminRegister") ?>" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Create new admin</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
-    <!--  Sidebar End -->
-
-
+<!-- side menu panel -->
+    <?php 
+      echo view('AdminSide/sideMenu');
+    ?>
 
 
     <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
-    
-      <!--  Header End -->
-
-
-
-
-
-      
+    <div class="body-wrapper">  
       <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
@@ -402,105 +289,18 @@
             </div>
           </div>
         </div>
-
-
-
-
-        <!-- <div class="row">
-          <div class="col-sm-6 col-xl-3">
-            <div class="card overflow-hidden rounded-2">
-              <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s4.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
-              <div class="card-body pt-3 p-4">
-                <h6 class="fw-semibold fs-4">Boat Headphone</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$50 <span class="ms-2 fw-normal text-muted fs-3"><del>$65</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="card overflow-hidden rounded-2">
-              <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s5.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
-              <div class="card-body pt-3 p-4">
-                <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3"><del>$900</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="card overflow-hidden rounded-2">
-              <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s7.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
-              <div class="card-body pt-3 p-4">
-                <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del>$200</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <div class="card overflow-hidden rounded-2">
-              <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s11.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
-              <div class="card-body pt-3 p-4">
-                <h6 class="fw-semibold fs-4">Cute Soft Teddybear</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$285 <span class="ms-2 fw-normal text-muted fs-3"><del>$345</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-          <!-- <div class="py-6 px-6 text-center">
-            <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a></p>
-          </div> -->
       </div>
     </div>
   </div>
-  <script src="<?= base_url('AdminSideAssets/libs/jquery/dist/jquery.min.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/js/sidebarmenu.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/js/app.min.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/libs/apexcharts/dist/apexcharts.min.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/libs/simplebar/dist/simplebar.js ') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/js/dashboard.js') ?>"></script>
+
+  
+  <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/js/sidebarmenu.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/js/app.min.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/libs/apexcharts/dist/apexcharts.min.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/libs/simplebar/dist/simplebar.js ') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/js/dashboard.js') ?>"></script>
 </body>
 
 </html>

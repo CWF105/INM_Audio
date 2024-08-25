@@ -36,6 +36,24 @@ $routes->group('', function($routes){
 
 
 // account routing [admins/users]
-$routes->group('', function($routes){
-    // $routes->get();
+$routes->group('/account/', function($routes){
+    $routes->post('login', 'Account_Login_Signup::login_admin_or_user');
+    $routes->post('signup', 'Account_Login_Signup::signup_user');
+});
+
+//admin and user account routes
+$routes->group('/admin/', function($routes){
+    //admins
+    $routes->get('dashboard', 'AdminControl::dashboard');
+    $routes->get('transactions', 'AdminControl::transactions');
+    $routes->get('manageusers', 'AdminControl::manageusers');
+    $routes->get('products', 'AdminControl::products');
+
+    $routes->get('registerAd', 'AdminControl::register');
+    $routes->post('registerAdminController', 'AdminControl::create_new_admin');
+
+    $routes->get('logoutAd', 'AdminControl::logout');
+
+
+    //users
 });

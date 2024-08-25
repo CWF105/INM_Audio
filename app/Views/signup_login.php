@@ -45,26 +45,27 @@
         <php class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
 
-<!-- this is sign up form -->
+            <!-- This is the signup form for users only -->
             <div class="signup">
-                <form action="<?= base_url("/account/user") ?>" method="post">
+                <form action="<?= base_url("/account/signup") ?>" method="post">
+                    <?= csrf_field() ?> <!-- CSRF protection field -->
                     <label for="chk" aria-hidden="true">Sign up</label>
                     <h5><a href="<?= base_url('/') ?>">Home</a></h5>
                     <div class="input-block">
-                        <input type="text" name="fname" placeholder="Enter your First name">
-                        <input type="text" name="lname" id="lname" placeholder="Enter your Last Name">
+                        <input type="text" name="fname" placeholder="First name" title="Enter your First name" required>
+                        <input type="text" name="lname" id="lname" placeholder="Last Name" title="Enter your Last Name" required>
                     </div>
                     <div class="input-block">
-                        <input type="email" name="email" id="email" placeholder="Enter your Email Address">
-                        <input type="number" name="pnum" id="pnum" placeholder="Enter your Phone Number">
+                        <input type="email" name="email" id="email" placeholder="Email Address" title="Enter your Address" required>
+                        <input type="number" name="pnum" id="pnum" placeholder="Phone Number" title="Enter your Phone Number" required>
                     </div>
                     <div class="input-block" id="input-block">
-                        <input type="text" name="user" id="user" placeholder="Enter your Username">
-                        <input type="password" name="pass" id="pass" placeholder="Enter your Password">
+                        <input type="text" name="user" id="user" placeholder="Username" title="Enter your Username" required>
+                        <input type="password" name="pass" id="pass" placeholder="Password" title="Enter your Password" required>
                     </div>
                     <button type="submit" value="register" name="submit">Sign up</button>
                 </form>             
-               
+
                 <div style="display: none;">
                     <div class="modal-content">
                         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -72,21 +73,25 @@
                     </div>  
                 </div>
             </div>
-            
 
-<!-- this is login form for admin? -->
+                        
+
+            <!-- Login form for user and admin -->
             <div class="login">
-                <form action="<?= base_url("/account/accountLogin") ?>" method="post">
-                    <label for="chk" aria-hidden="true" class="logins">Login</label><label for="chk" aria-hidden="true" class="xbutton"><i class="fa-solid fa-xmark"></i></label>
-                    <input type="text" name="username" id="email" placeholder="Enter your Email" required>
-                    <input type="text" name="pass" id="pass" placeholder="Enter your Password" required>
+                <form action="<?= base_url("/account/login") ?>" method="post">
+                    <?= csrf_field() ?> <!-- CSRF protection field -->
+                    <label for="chk" aria-hidden="true" class="logins">Login</label>
+                    
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <p class="error"><?= session()->getFlashdata('error') ?></p>
+                        <?php endif; ?>
 
+                    <label for="chk" aria-hidden="true" class="xbutton"><i class="fa-solid fa-xmark"></i></label>
+                    <input type="text" name="username" id="username" title="Enter your Username or Email" placeholder="Username" required>
+                    <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required>
                     <button type="submit">Login</button>
                 </form>
             </div>
-        </div>
-
-
 
         
         <script>

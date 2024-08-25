@@ -6,40 +6,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Registration</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
-  <link rel="stylesheet" href="<?= base_url('AdminSideAssets/css/styles.min.css') ?>" />
+  <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
   <style>
-    #notificationModal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .success-message {
+      color: green;
     }
-
-    .modal-content {
-      padding: 20px;
-      border-radius: 5px;
-      position: relative;
-      text-align: center;
-      width: 300px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      font-size: 18px;
+    .error-message {
+      color: red;
     }
   </style>
 </head>
 
 <body>
+<!-- MODAL FOR SUCCESS AND FAILED FOR CREATION OF ADMIN -->
+    <!-- Display Success Modal -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Success</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body success-message">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $('#successModal').modal('show');
+            });
+        </script>
+    <?php endif; ?>
+
+    <!-- Display Errors -->
+    <?php if (isset($errors) && !empty($errors)): ?>
+        <div class="alert alert-danger">
+            <?php foreach ($errors as $error): ?>
+                <p class="error-message"><?= $error ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
@@ -51,7 +68,7 @@
 
                 <p class="text-center">Register new Administrator account</p>
 
-                <form action="<?= base_url('/admin/addNewAdmin') ?>" method="post">
+                <form action="<?= base_url('/admin/registerAdminController') ?>" method="post">
                   <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" class="form-control" id="username" required>
@@ -89,36 +106,11 @@
     </div>
   </div>
 
-  <script src="<?= base_url('AdminSideAssets/libs/jquery/dist/jquery.min.js') ?>"></script>
-  <script src="<?= base_url('AdminSideAssets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
-  <script>
-    function showModal(message, type) {
-      const modal = document.getElementById('notificationModal');
-      const modalContent = document.querySelector('.modal-content');
 
-      document.getElementById('modalMessage').innerText = message;
-
-      if (type === 'success') {
-        modalContent.style.backgroundColor = '#d4edda';
-        modalContent.style.color = '#155724';
-      } else if (type === 'error') {
-        modalContent.style.backgroundColor = '#f8d7da';
-        modalContent.style.color = '#721c24';
-      }
-
-      modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('notificationModal').style.display = 'none';
-    }
-
-    <?php if (session()->getFlashdata('success')): ?>
-      showModal('<?= session()->getFlashdata('success'); ?>', 'success');
-    <?php elseif (session()->getFlashdata('error')): ?>
-      showModal('<?= session()->getFlashdata('error'); ?>', 'error');
-    <?php endif; ?>
-  </script>
-
+  <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
+  <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

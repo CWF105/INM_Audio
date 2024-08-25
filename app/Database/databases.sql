@@ -11,12 +11,16 @@ create table admin_accounts (
     admin_account_id int auto_increment primary key,
     username varchar(255) not null,
     email varchar(255) not null,
-    password varchar(255) not null
+    password varchar(255) not null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- inserts default admin account
-insert into admin_accounts (username, email, password) values ('admin', 'admin@gmail.com', 'admin');
-
+-- inserts default admin account NOTE: it hashes the +
+-- + password into random set of numbers and letters
+insert into admin_accounts (username, email, password)
+values ('admin', 'admin@gmail.com',SHA2('admin', 256));
+insert into admin_accounts (username, email, password)
+values ('admin', 'admin@gmail.com', 'admin');
 
 -- user accounts info
 create table user_accounts(
@@ -32,7 +36,8 @@ create table user_accounts(
   address varchar(255),
 
   username varchar(255) not null,
-  password varchar(255) not null
+  password varchar(255) not null,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
