@@ -21,4 +21,13 @@ class user_account_model extends Model
         'password'
     ];
     protected $useTimeStamps = true;
+
+
+    public function checkUsername($username) {
+        return $this->where('username', $username)->first();
+    }
+
+    public function checkEmail($email) {
+        return $this->where('email', $email)->first();
+    }
 }

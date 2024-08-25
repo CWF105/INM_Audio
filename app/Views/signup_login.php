@@ -39,6 +39,12 @@
                 text-decoration: none;
                 color: white;
             }
+            .error {color:red;}
+            p {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                text-align: center;
+            }
         </style>
         
     </head>
@@ -77,7 +83,7 @@
                         
 
             <!-- Login form for user and admin -->
-            <div class="login">
+            <div class="login" id="login">
                 <form action="<?= base_url("/account/login") ?>" method="post">
                     <?= csrf_field() ?> <!-- CSRF protection field -->
                     <label for="chk" aria-hidden="true" class="logins">Login</label>
@@ -88,7 +94,7 @@
 
                     <label for="chk" aria-hidden="true" class="xbutton"><i class="fa-solid fa-xmark"></i></label>
                     <input type="text" name="username" id="username" title="Enter your Username or Email" placeholder="Username" required>
-                    <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required>
+                    <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required >
                     <button type="submit">Login</button>
                 </form>
             </div>

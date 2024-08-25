@@ -22,7 +22,6 @@ $routes->group('', function($routes)
     $routes->get('/customize', 'Home::customize');
 
     $routes->get('/login', 'Home::login');
-    
 });
 
 

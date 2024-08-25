@@ -50,6 +50,17 @@
         .text-danger {
             color: red;
         }
+        .btn {
+          background-color: transparent;
+          padding: 7px;
+          border: 1px solid black;
+          border-radius: 6px;
+          color:black;
+        }
+        .btn:hover {
+          background-color: #444;
+          color:white;
+        }
   </style>
 </head>
 
@@ -66,7 +77,7 @@
 
     <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
       <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
-      <button onclick="closePopup()">Close</button>
+      <button class="btn" onclick="closePopup()">Close</button>
   </div>
 
 <?php elseif(!session()->getFlashdata('success') && !session()->getFlashdata('error')) :?>
