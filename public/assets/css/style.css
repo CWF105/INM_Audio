@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Montserrat;
+    font-weight: 300;
+}
+
+/* about */
+
+.about{
+    
+
+    .about-title{
+       
+        h2{
+            margin-top: 200px;
+            margin-left: 90px;
+            font-family: Montserrat;
+            font-size: 1.70rem;
+            font-weight: 300;
+        }
+    }
+    .about-body{
+        margin-left: 90px;
+        margin-right: 90px;
+        gap: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .about-question{
+            
+            h2{
+                font-family: Montserrat;
+                font-size: 1.70rem;
+                font-weight: 300;
+            }
+        }
+        .about-img{
+    
+            img{
+                width: 450px;
+            }
+        }
+    }
+}
+
+/* product */
+
+.product{
+    padding-bottom: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+    position: relative;
+    
+    .product-title{
+
+        h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+    }
+}
+
+.card{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    margin-bottom: 0;
+    overflow-x: auto;
+
+    #image-track {
+        gap: 4vmin;
+        display: flex;
+        position: absolute;
+        left: 40%;
+        top: 50%;
+        transform: translate(0%, -50%); 
+        user-select: none; /* -- Prevent image highlighting -- */
+      }
+      
+      #image-track > .image {
+        width: 40vmin;
+        height: 56vmin;
+        object-fit: cover;
+        object-position: 100% center;
+    }
+}
+.fav-gear{
+
+
+    .fav-title{
+        
+        h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+    }
+    .card-container{
+        padding-top: 40px;
+        padding-left: 90px;
+        padding-right: 90px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap; 
+
+        .card{
+            display: flex;
+            width: 500px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #000;
+
+            img{
+                width: 50%;
+                object-fit: cover;
+            }
+
+            .card-content{
+                padding: 30px;
+                flex: 1;
+
+                h1{
+                    margin: 0;
+                    font-size: 24px;
+                    font-family: Montserrat;
+                    font-weight: 600;
+                }
+                p{
+                    margin: 10px 0;
+                    color: #555;
+                    padding-bottom: 20px;
+                    font-family: Montserrat;
+                }
+                .meta{
+                    font-size: 14px;
+                    color: #999;
+                    padding-bottom: 20px;
+                    font-family: Montserrat;
+                }
+            }
+        }
+    }
+}

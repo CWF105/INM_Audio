@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.shop{
+
+
+    .shop-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 70px;
+        padding-left: 90px;
+        padding-right: 90px;
+        h2{
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+        a{
+            color: #000;
+        }
+    }
+    .card-container{
+        margin-top: 20px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1px;
+
+        .library-card{
+            width: 400px;
+            height: 340px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; 
+            /* border: 1px solid #000; */
+            padding-top: 60px;
+
+
+            
+            img{
+                width: 100px;
+                transition: all 300ms;
+            }
+            h3{
+                margin-top: 40px;
+                font-size: 1.20em;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+            }
+            h4{
+                margin: 20px;
+                font-size: .90em;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+            }
+            .btn{
+                width: 150px;
+                padding: 10px 20px;
+                font-size: 1rem;
+                font-family: Montserrat;
+                font-weight: 300;
+                /* letter-spacing: .30em; */
+                background-color: #fff;
+                border: 1px solid #000;
+                opacity: 0;
+                transition: all 500ms;
+            }
+            .btn:hover{
+                background-color: #000;
+                color: #fff;
+            }
+            .modal-body{
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+            }
+            .modal{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: 200ms ease-in-out;
+                border: 1px solid black;
+                /* border-radius: 10px; */
+                z-index: 10;
+                background-color: white;
+                width: 70%;
+                height: 550px;
+                overflow: hidden;
+                padding-top: 50px;
+                /* position: relative; */
+    
+                
+            }
+            .modal-header{
+                padding: 20px;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                /* border-bottom: 1px solid black; */
+
+            }
+            .modal-header .product-img{
+                /* font-size: 1.25rem;
+                font-family: Raleway; */
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            
+                img{
+                    width: 300px;
+                }
+            }
+
+            .product-details{
+                width: 50%;
+                height: 100%;
+                padding-top: 20px;
+                padding-left: 70px;
+            
+                p{
+                    font-family: Montserrat;
+                    font-size: 1.70rem;
+                    letter-spacing: .30em;
+                    /* padding-left: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start; */
+                }
+
+                .dropdown-container {
+                    width: 200px;
+                    margin-top: 40px;
+                }
+                label{
+                    margin-top: 40px;
+                    font-size: .90em;
+                    font-family: Montserrat;
+                    font-weight: 300;
+                    letter-spacing: .30em;
+
+                }
+        
+                select {
+                    width: 100%;
+                    padding: 8px;
+                    margin-top: 8px;
+                    border: 1px solid #000;
+                    /* border-radius: 4px; */
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    outline: none;
+                    appearance: none;  /* Removes default styling by the browser */
+                    background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='12px' height='12px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='icon-111-triangle-down' fill='%23666'%3E%3Cpath d='M0,0 L12,0 L6,6 L0,0 Z' id='Triangle'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat 95% 50%;
+                    background-color: white;
+                    cursor: pointer;
+                }
+        
+                /* Hover state */
+                select:hover {
+                    border-color: #888;
+                }
+        
+                /* Focus state */
+                select:focus {
+                    border-color: #aaa;
+                }
+                
+                .quantity{
+                    
+                    h3{
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                        font-family: Montserrat;
+                        font-size: .90em;
+                        font-weight: 300;
+                        
+
+                    }
+                    .number-input{
+                        width: 100px;
+                        border: 1px solid #000;
+                        margin: 10px;
+                        height: 30px;
+                        margin: 0;
+                        padding-left: 10px;
+                        /* padding-top: 30px; */
+                    }
+                }
+                .cart-button{
+                    
+                    .cart{
+                        padding-top: 40px;
+                        
+                        button{
+                            width: 80%;
+                            height: 40px;
+                            background-color: #fff;
+                            color: #000;
+                            border: 1px solid #000;
+                        }
+                    }
+                    .buy{
+                        padding-top: 10px;
+                        
+                        button{
+                            width: 80%;
+                            height: 40px;
+                            background-color: #000;
+                            color: #fff;
+                            border: 1px solid #000;
+                        }
+                    }
+                }
+            }
+
+            .modal-header .close-button{
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background: none;
+                font-size: 1.50rem;
+                font-weight: bold;
+                position: absolute;
+                top: 10px;
+                right: 13px;
+            }
+            
+            #overlay{
+                position: fixed;
+                opacity: 0;
+                transition: 200ms ease-in-out;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                pointer-events: none;
+            }
+            #overlay.active{
+                opacity: 1;
+                pointer-events: all;
+            }
+
+
+
+
+            .modal.active{
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        .library-card:hover img{
+            transform: scale(1.3);
+        }
+        .library-card:hover .btn{
+            opacity: 1;
+        }
+        
+    }
+}

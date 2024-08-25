@@ -1,0 +1,164 @@
+-- creates the database and uses it
+create database INM_Audio;
+use INM_Audio;
+
+
+-- ------------------------------------------------------------------------------
+
+
+-- create admin table
+create table admin_accounts (
+    admin_account_id int auto_increment primary key,
+    username varchar(255) not null,
+    email varchar(255) not null,
+    password varchar(255) not null
+);
+
+-- inserts default admin account
+insert into admin_accounts (username, email, password) values ('admin', 'admin@gmail.com', 'admin');
+
+
+-- user accounts info
+create table user_accounts(
+  user_id int auto_increment primary key,
+  firstname varchar(255) not null,
+  lastname varchar(255) not null,
+  email varchar(255) not null,
+  phone_number int not null,
+
+  country varchar(255),
+  city_municipality varchar(255), 
+  zipcode int,
+  address varchar(255),
+
+  username varchar(255) not null,
+  password varchar(255) not null
+);
+
+
+
+-- ------------------------------------------------------------------------------
+
+
+-- category for a product
+CREATE TABLE category(
+  category_id INT AUTO_INCREMENT PRIMARY KEY,
+  category VARCHAR(255),
+  added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Stores information about the products.
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    product_name VARCHAR(150) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_quantity INT NOT NULL,
+    image_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES category(category_id)
+);
+
+
+
+
+-- Stores comments related to products.
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    user_id INT,
+    comment_text TEXT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+
+-- ------------------------------------------------------------------------------
+
+
+
+-- Stores cart information for each user.
+CREATE TABLE carts (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Stores items added to the cart.
+CREATE TABLE cart_items (
+    cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    cart_id INT,
+    product_id INT,
+    quantity INT NOT NULL,
+    FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+
+-- ------------------------------------------------------------------------------
+
+-- Stores user orders.
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    order_status VARCHAR(50) DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Stores items included in an order.
+CREATE TABLE order_items (
+    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    product_id INT,
+    quantity INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+-- Stores shipping information related to an order.
+CREATE TABLE shippings (
+    shipping_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    shipping_status VARCHAR(50) DEFAULT 'Not Shipped',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

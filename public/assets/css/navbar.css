@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Montserrat;
+    font-weight: 300;
+}
+header {
+    
+    nav{
+        width: 100%;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+
+        .logo{
+
+            a{
+
+                img{
+                    width: 70px;
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                }
+            }
+        }
+        .links{
+            padding: 0 30px;
+            margin: 0;
+            font-style: Montserrat;
+            font-size: .98rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            li{
+                padding: 20px 55px;
+                border-left: 1px solid #000;
+                list-style-type: none;
+            
+                a{
+                    color:#000;
+                    font-family: Montserrat;
+                    font-weight: 300;
+                    font-size: 1rem;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .header-text{
+        margin-top: 100px;
+       
+        img{
+            width: 450px;
+            position: absolute;
+            top: 50px;
+        }
+        h2{
+            font-family: Montserrat;
+            font-size: 3.50rem;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+        }
+        h1{
+            font-family: Montserrat;
+            font-size: 3.50rem;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+        }
+        a{
+         
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #000;
+            font-family: Montserrat;
+            font-size: 1.50rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+
+        }
+    }
+}
+
+/* about */
+
+.about{
+    
+
+
+    
+    
+    .about-title{
+       
+        h2{
+            margin-top: 200px;
+            margin-left: 90px;
+            font-family: Montserrat;
+            font-size: 1.70rem;
+            font-weight: 300;
+        }
+    }
+    .about-body{
+        margin-left: 90px;
+        margin-right: 90px;
+        gap: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .about-question{
+            
+            h2{
+                font-family: Montserrat;
+                font-size: 1.70rem;
+                font-weight: 300;
+            }
+        }
+        .about-img{
+    
+            img{
+                width: 450px;
+            }
+        }
+    }
+}

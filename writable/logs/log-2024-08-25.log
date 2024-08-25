@@ -1,0 +1,431 @@
+CRITICAL - 2024-08-25 10:54:10 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "welcome_message.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('welcome_message.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('welcome_message', [], true)
+ 3 APPPATH\Controllers\Home.php(9): view('welcome_message')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:05:30 --> ErrorException: Cannot redeclare App\Controllers\Home::homepage()
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 12.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-25 11:05:48 --> ErrorException: Cannot redeclare App\Controllers\Home::homepage()
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 22.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-25 11:05:59 --> ErrorException: Cannot redeclare App\Controllers\Home::homepage()
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 27.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-25 11:10:29 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:30 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:30 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:30 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:30 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:31 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:32 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:33 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:33 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:33 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:33 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:10:33 --> ErrorException: include(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+[Method: GET, Route: /]
+in APPPATH\Views\homepage.php on line 18.
+ 1 APPPATH\Views\homepage.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php', 18)
+ 2 APPPATH\Views\homepage.php(18): include()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\homepage.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('homepage', [], true)
+ 6 APPPATH\Controllers\Home.php(11): view('homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:52:55 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "shop.php"
+[Method: GET, Route: shop]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('shop.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('shop', [], true)
+ 3 APPPATH\Controllers\Home.php(39): view('shop')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->shop()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:53:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "shop.php"
+[Method: GET, Route: shop]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('shop.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('shop', [], true)
+ 3 APPPATH\Controllers\Home.php(39): view('shop')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->shop()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:54:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "shop.php"
+[Method: GET, Route: shop]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('shop.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('shop', [], true)
+ 3 APPPATH\Controllers\Home.php(39): view('shop')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->shop()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 11:54:24 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "shop.php"
+[Method: GET, Route: shop]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('shop.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('shop', [], true)
+ 3 APPPATH\Controllers\Home.php(39): view('shop')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->shop()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-25 12:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-25 13:31:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-25 13:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-25 14:25:14 --> ArgumentCountError: Too few arguments to function CodeIgniter\Router\RouteCollection::get(), 0 passed in C:\xampp\htdocs\INM_Audio\app\Config\Routes.php on line 30 and at least 2 expected
+[Method: GET, Route: login]
+in SYSTEMPATH\Router\RouteCollection.php on line 1051.
+ 1 APPPATH\Config\Routes.php(30): CodeIgniter\Router\RouteCollection->get()
+ 2 SYSTEMPATH\Router\RouteCollection.php(800): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 3 APPPATH\Config\Routes.php(29): CodeIgniter\Router\RouteCollection->group('', Object(Closure))
+ 4 SYSTEMPATH\Router\RouteCollection.php(340): require('C:\\xampp\\htdocs\\INM_Audio\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(823): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-25 14:25:42 --> ArgumentCountError: Too few arguments to function CodeIgniter\Router\RouteCollection::get(), 0 passed in C:\xampp\htdocs\INM_Audio\app\Config\Routes.php on line 40 and at least 2 expected
+[Method: GET, Route: login]
+in SYSTEMPATH\Router\RouteCollection.php on line 1051.
+ 1 APPPATH\Config\Routes.php(40): CodeIgniter\Router\RouteCollection->get()
+ 2 SYSTEMPATH\Router\RouteCollection.php(800): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 3 APPPATH\Config\Routes.php(39): CodeIgniter\Router\RouteCollection->group('', Object(Closure))
+ 4 SYSTEMPATH\Router\RouteCollection.php(340): require('C:\\xampp\\htdocs\\INM_Audio\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(823): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Play;
+    font: 1rem;
+}
+
+header{
+    height: 95vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url(/IMG/gearlogo.png);
+    background-size: cover;
+    background: path("CSS/gearlogo.png");
+}
+.gear-library{
+    padding: 15px 0 0;
+    background-color: white;
+    background-size: 100%;
+    background-position: center;
+
+    .gear-title{
+        padding: 5px;
+        /* background-color: #2B2A2A; */
+        width: 80%;
+        margin: auto;
+        border-radius: 20px;
+
+        h1{
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+    }
+    .gear-card{
+        margin-top: 20px;
+        padding: 25px;
+        background-color: black;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        a{
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            text-decoration: none;
+
+            
+
+            img{
+                width: 100%;
+                height: 90%;
+                object-fit: cover;
+            }
+
+            h3{
+                width: 100%;
+                text-align: center;
+                color: white;
+                background-color: black;
+                border-radius: 10px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.library-highlights {
+    width: 100%;
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#D9D9D9;
+    
+    .img-block {
+        width: 45%;
+        height: 100%;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+    .gear-details {
+        width: 45%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .gear-text {
+            height: 40%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        .gear-b {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .bar {
+                height: 30px;
+                
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .gear-button {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                
+                .view {
+                    width: 30%;
+                    text-decoration: none;
+                    background: black;
+                    color: white;
+                    text-align: center;
+                    padding: 10px 30px;
+                }
+
+                .gear-btn {
+                    display: flex;
+                    gap: 10px;
+
+                    a {
+                        width: 30%;
+                        text-decoration: none;
+                        background: black;
+                        color: white;
+                        padding: 10px 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+.audio-prof{
+    padding: 10px 0;
+    background-color: white;
+
+    h1{
+        padding: 20px;
+    }
+
+    .question{
+        width: 100%;
+        padding: 20px;
+        background-color: black;
+
+        h3{
+            padding: 20px;
+            color: white;
+        }
+        .q-box{
+            width: 100%;
+            height: 200px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+
+
+            a{
+                width: 40%;
+                height: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color:#D9D9D9;                
+                text-decoration: none;
+                color: black;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
