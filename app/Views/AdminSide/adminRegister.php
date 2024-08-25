@@ -16,46 +16,64 @@
     .error-message {
       color: red;
     }
+    .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Success and error text colors */
+        .text-success {
+            color: green;
+        }
+
+        .text-danger {
+            color: red;
+        }
   </style>
 </head>
 
 <body>
-<!-- MODAL FOR SUCCESS AND FAILED FOR CREATION OF ADMIN -->
-    <!-- Display Success Modal -->
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="successModalLabel">Success</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body success-message">
-                        <?= session()->getFlashdata('success') ?>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            $(document).ready(function() {
-                $('#successModal').modal('show');
-            });
-        </script>
-    <?php endif; ?>
 
-    <!-- Display Errors -->
-    <?php if (isset($errors) && !empty($errors)): ?>
-        <div class="alert alert-danger">
-            <?php foreach ($errors as $error): ?>
-                <p class="error-message"><?= $error ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+<?php if (session()->getFlashdata('success')) :?>
+
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
+      <button onclick="closePopup()">Close</button>
+    </div>
+    
+<?php elseif(session()->getFlashdata('error')) : ?>
+
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
+      <button onclick="closePopup()">Close</button>
+  </div>
+
+<?php elseif(!session()->getFlashdata('success') && !session()->getFlashdata('error')) :?>
+    <span>...</span>
+<?php endif ;?>
+
+
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -87,16 +105,10 @@
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign up</button>
 
                   <div class="d-flex align-items-center justify-content-center">
-                    <a class="text-primary fw-bold ms-2" href="<?= base_url('/admin') ?>">Cancel</a>
+                    <a class="text-primary fw-bold ms-2" href="<?= base_url('/admin/dashboard') ?>">Cancel</a>
                   </div>
                 </form>
 
-                <div id="notificationModal" style="display: none;">
-                  <div class="modal-content">
-                    <span class="close-btn" onclick="closeModal()">&times;</span>
-                    <p id="modalMessage"></p>
-                  </div>
-                </div>
 
               </div>
             </div>
@@ -106,6 +118,48 @@
     </div>
   </div>
 
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div id="popupMessage"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+
+    <script>
+        function showPopup(message, type) {
+            const popup = document.getElementById('popup');
+            const overlay = document.getElementById('overlay');
+            const popupMessage = document.getElementById('popupMessage');
+
+            // Set message and styles based on type
+            popupMessage.innerHTML = `<p class="${type === 'success' ? 'text-success' : 'text-danger'}">${message}</p>`;
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            const overlay = document.getElementById('overlay');
+
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Show the popup if flash data exists
+        document.addEventListener('DOMContentLoaded', function() {
+            const successMessage = '<?= session()->getFlashdata('success') ?>';
+            const errorMessage = '<?= session()->getFlashdata('error') ?>';
+            
+            if (successMessage) {
+                showPopup(successMessage, 'success');
+            } else if (errorMessage) {
+                showPopup(errorMessage, 'error');
+            }
+        });
+    </script>
 
   <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
   <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>

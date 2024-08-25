@@ -30,6 +30,7 @@ class AdminControl extends BaseController
         return view('AdminSide\adminRegister');
     }
 
+    
 // remove/unset and destroy the current session and redirect to homepage
     public function logout() 
     {
@@ -50,6 +51,38 @@ class AdminControl extends BaseController
 // creating new admin account
     public function create_new_admin() 
     {
-        
+        $adminAccountModel = new admin_account_model();
+
+        $username = $this->request->getPost('username');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $prepareData = [
+            'username' => $username,
+            'email' => $email,
+            'password' => $hashedPassword
+        ];
+
+        // Check if the username or email already exists
+        $usernameExists = $adminAccountModel->checkUsername($username);
+        $emailExists = $adminAccountModel->checkEmail($email);
+
+        if ($usernameExists && $emailExists) {
+            session()->setFlashdata('error', 'Both username and email are already in use.');
+            return redirect()->to('/admin/registerAd');
+        } elseif ($usernameExists) {
+            session()->setFlashdata('error', 'Username is already in use.');
+            return redirect()->to('/admin/registerAd');
+        } elseif ($emailExists) {
+            session()->setFlashdata('error', 'Email is already in use.');
+            return redirect()->to('/admin/registerAd');
+        } else {
+            $adminAccountModel->save($prepareData);
+            session()->setFlashdata('success', 'Administrator account created successfully.');
+            return redirect()->to('/admin/registerAd');
+        }
+
     }
 }
