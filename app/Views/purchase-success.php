@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="body">
-            <img src="  <?= base_url('assets/img/purchase-success/check-mark.png') ?>" alt="">
+            <img src="  <?= base_url('assets/img/purchase-success/success.png') ?>" alt="">
             <p class="sentence1">Your order has been received!</p>
             <p class="sentence2">We appreciate your business and look forward to serving you again in the future.</p>
         </div>

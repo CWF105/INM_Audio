@@ -79,7 +79,7 @@
                 transition: all 500ms;
             }
             .btn:hover{
-                background-color: #000;
+                background-color: black;
                 color: #fff;
             }
             .modal-body{
