@@ -1,3 +1,5 @@
+
+
 <!-- Sidebar Start -->
 <aside class="left-sidebar">
       <!-- Sidebar scroll-->
@@ -100,4 +102,19 @@
           </ul>
         </nav>
       </div>
+
+      <!-- Modal for login success -->
+            <div class="bg">
+              <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <p><?php $message = session()->getFlashdata('success');
+                        if (isset($message)) {
+                            echo $message;
+                        }?>
+                    </p>
+                  <span class="close">&times;</span>
+                </div>
+              </div>
+            </div>
+            
     </aside>

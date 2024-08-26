@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -7,6 +11,8 @@
   <title>INM Admin</title>
   <link rel="shortcut icon" type="image/png" href=" <?= base_url('Admin_Side_Assets/images/logos/logo.png') ?>" />
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>"/>
+  <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/modal1.css') ?>"/>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
@@ -15,11 +21,13 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
 
-<!-- side menu panel -->
+    
+    
+    
+    <!-- side menu panel and the modal when logged in is successful -->
     <?php 
       echo view('AdminSide/sideMenu');
-    ?>
-
+      ?>  
 
     <!--  Main wrapper -->
     <div class="body-wrapper">  
@@ -293,7 +301,30 @@
     </div>
   </div>
 
-  
+
+
+
+<!-- SCRIPTS -->
+  <script>
+    // for displaying logged in success modal
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    var showModal =  true;
+    if (showModal) {
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
+  <!-- other scripts -->
+  <script src=""><?php base_url('assets/js/modalScript1.js') ?></script>
   <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
   <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
   <script src="<?= base_url('Admin_Side_Assets/js/sidebarmenu.js') ?>"></script>

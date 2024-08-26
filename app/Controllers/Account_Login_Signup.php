@@ -6,12 +6,10 @@ use App\Models\user_account_model;
 
 class Account_Login_Signup extends BaseController
 {
+
     // signup user controller
     public function signup_user()
     {
-        $error = [];
-        $fnameErr = $lnameErr = $emailErr = $phoneNumErr = $usernameErr = $passErr = "";
-
         $userAccount = new user_account_model();
 
         $firstname = $this->request->getPost('fname');
@@ -23,64 +21,6 @@ class Account_Login_Signup extends BaseController
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        if(empty($firstname)) {
-            $fnameErr = "firstname field is empty";
-            $error[] = $fnameErr;
-        }
-        if(empty($lastname)) {
-            $lnameErr = "firstname field is empty";
-            $error[] = $lnameErr;
-        }
-        if(empty($email)) {
-            $emailErr = "firstname field is empty";
-            $error[] = $emailErr;
-        }
-        if(empty($phoneNum)) {
-            $phoneNumErr = "firstname field is empty";
-            $error[] = $phoneNumErr;
-        }
-        if(empty($username)) {
-            $usernameErr = "firstname field is empty";
-            $error[] = $usernameErr;
-        }
-        if(empty($password)) {
-            $passErr = "firstname field is empty";
-            $error[] = $passErr;
-        }
-        
-        if(!empty($error)) {
-            session()->setFlashdata('error', $error);
-            return redirect()->to('/login');
-        }else {
-            $username = $userAccount->checkUsername($username);
-            $email = $userAccount->checkEmail($email);
-            if($username) {
-                session()->setFlashdata('error', 'Username is already in used');
-            }
-            else if($email) {
-                session()->setFlashdata('error', 'Email is already in used');
-            }
-            else if($username && $email) {
-                session()->setFlashdata('error', 'both Email and Username is already in used');
-            }
-            else {
-                $prepareData = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'email' => $email,
-                    'phoneNum' => $phoneNum,
-                    'username' => $username,
-                    'password' => $password
-                ];
-
-                $userAccount->save($prepareData);
-                session()->setFlashdata('success', 'Signup Successful');
-                return redirect()->to('/login');
-            }
-        }  
-
-        session()->setFlashdata('error', $error);
-        return redirect()->to('/login');
     }
 
 
@@ -103,16 +43,41 @@ class Account_Login_Signup extends BaseController
         // for administrator account
         $username = $adminAccount->checkUsername($usernameOrEmail);
         $email = $adminAccount->checkEmail($usernameOrEmail);
+
         if($username || $email) {
-            if(password_verify($password, $username['password'])) {
-                session()->setFlashdata('success', 'Welcome Administrator!');
-                return redirect()->to('/admin/dashboard');
+            $session = session();
+            if(is_array($username) && password_verify($password, $username['password'])) {
+                $session->set([
+                    'account_id' => $username['admin_account_id'],
+                    'username' => $username['username'],
+                    'password' => $username['email'],
+                    'isLoggedIn' => true
+                ]);    
+                $session->setFlashdata('success', 'Welcome Administrator!');
+                $message['success'] = $session->getFlashdata('success');  
+                return view('AdminSide/adminIndex', $message);
+                // session()->setFlashdata('success', 'Welcome Administrator!');
+                // return redirect()->to('/admin/dashboard');
+            }
+            else if(is_array($email) && password_verify($password, $email['password'])) {
+                $session->set([
+                    'account_id' => $email['admin_account_id'],
+                    'username' => $email['username'],
+                    'password' => $email['email'],
+                    'isLoggedIn' => true
+                ]); 
+                $session->setFlashdata('success', 'Welcome Administrator!');
+                $message['success'] = $session->getFlashdata('success');  
+                return view('AdminSide/adminIndex', $message);
+                // session()->setFlashdata('success', 'Welcome Administrator!');
+                // return redirect()->to('/admin/dashboard');
             }
             else {
                 session()->setFlashdata('error', $error);
-                return redirect()->to('/login');
+                return redirect()->to('/login');            
             }
         }
+
 
 
         // for user account

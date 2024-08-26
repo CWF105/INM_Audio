@@ -40,6 +40,7 @@
                 color: white;
             }
             .error {color:red;}
+            .success {color:green; font-size: 19px;}
             p {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bold;
@@ -57,20 +58,31 @@
                     <?= csrf_field() ?> <!-- CSRF protection field -->
                     <label for="chk" aria-hidden="true">Sign up</label>
                     <h5><a href="<?= base_url('/') ?>">Home</a></h5>
-                    <div class="input-block">
-                        <input type="text" name="fname" placeholder="First name" title="Enter your First name" required>
-                        <input type="text" name="lname" id="lname" placeholder="Last Name" title="Enter your Last Name" required>
-                    </div>
-                    <div class="input-block">
-                        <input type="email" name="email" id="email" placeholder="Email Address" title="Enter your Address" required>
-                        <input type="number" name="pnum" id="pnum" placeholder="Phone Number" title="Enter your Phone Number" required>
-                    </div>
-                    <div class="input-block" id="input-block">
-                        <input type="text" name="user" id="user" placeholder="Username" title="Enter your Username" required>
-                        <input type="password" name="pass" id="pass" placeholder="Password" title="Enter your Password" required>
-                    </div>
+
+
+                            <div class="input-block">
+                                <input type="text" name="fname" placeholder="First name" title="Enter your First name" required>
+
+                                <input type="text" name="lname" id="lname" placeholder="Last Name" title="Enter your Last Name" required>
+
+                            </div>
+                            <div class="input-block">
+                                <input type="email" name="email" id="email" placeholder="Email Address" title="Enter your Address" required>
+
+                                <input type="number" name="pnum" id="pnum" placeholder="Phone Number" title="Enter your Phone Number" required>
+
+                            </div>
+                            <div class="input-block" id="input-block">
+                                <input type="text" name="user" id="user" placeholder="Username" title="Enter your Username" required>
+
+                                <input type="password" name="pass" id="pass" placeholder="Password" title="Enter your Password" required>
+
+                            </div>
+
+
                     <button type="submit" value="register" name="submit">Sign up</button>
                 </form>             
+
 
                 <div style="display: none;">
                     <div class="modal-content">
