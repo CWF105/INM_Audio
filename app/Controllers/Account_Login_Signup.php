@@ -80,30 +80,29 @@ class Account_Login_Signup extends BaseController
                 $session->set([
                     'admin_account_id' => $usernameA['admin_account_id'],
                     'username' => $usernameA['username'],
-                    'password' => $usernameA['email'],
+                    'email' => $usernameA['email'],
                     'account_type' => 'admin',
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);    
 
-                if($rememberMe) {
+                if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
                     $adminAccount->update($usernameA['admin_account_id'], ['remember_token' => $token]);
     
-                    // set to expires in 5 mins
-                    set_cookie('remember_token', $token, 300);
-                    $session->setFlashdata('success', 'Welcome Administrator!');
-                    return redirect()->to('/admin/dashboard');
+                    // set 300 to expires in 5 mins, set 7200 to expires in 2hrs
+                    set_cookie('remember_token', $token, 7200);
                 }
 
                 $session->setFlashdata('success', 'Welcome Administrator!');                
                 return redirect()->to('/admin/dashboard');
             }
             else if(is_array($emailA) && password_verify($password, $emailA['password'])) {
+                
                 $session->set([
                     'admin_account_id' => $emailA['admin_account_id'],
                     'username' => $emailA['username'],
-                    'password' => $emailA['email'],
+                    'email' => $emailA['email'],
                     'account_type' => 'admin',
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
@@ -111,14 +110,12 @@ class Account_Login_Signup extends BaseController
 
                 if($rememberMe) {
                     $token = bin2hex(random_bytes(16));
-                    $adminAccount->update($usernameA['admin_account_id'], ['remember_token' => $token]);
+                    $adminAccount->update($emailA['admin_account_id'], ['remember_token' => $token]);
     
-                    // set to expires in 5 mins
-                    set_cookie('remember_token', $token, 300);
-                    $session->setFlashdata('success', 'Welcome Administrator!');                    
-                    return redirect()->to('/admin/dashboard');
+                    // set 300 to expires in 5 mins, set 7200 to expires in 2hrs
+                    set_cookie('remember_token', $token, 7200);
                 }
-
+                
                 $session->setFlashdata('success', 'Welcome Administrator!');
                 return redirect()->to('/admin/dashboard');
             }
@@ -137,7 +134,7 @@ class Account_Login_Signup extends BaseController
                 $session->set([
                     'user_account_id' => $usernameU['user_id'],
                     'username' => $usernameU['username'],
-                    'password' => $usernameU['email'],
+                    'email' => $usernameU['email'],
                     'account_type' => 'user',
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
@@ -159,7 +156,7 @@ class Account_Login_Signup extends BaseController
                 $session->set([
                     'user_account_id' => $emailU['user_id'],
                     'username' => $emailU['username'],
-                    'password' => $emailU['email'],
+                    'email' => $emailU['email'],
                     'account_type' => 'user',
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true

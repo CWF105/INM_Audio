@@ -4,12 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>INM Admin - gear management</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>" />
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/table.css') ?>" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
+  <style>
+    .actions {
+      background-color: azure;
+      border: 1px solid gray;
+      color: black;
+    }
+    .actions:hover {
+      background-color: dimgrey;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,38 +31,57 @@
     <?php 
       echo view('AdminSide/sideMenu');
     ?>
-   
 
-
-
-
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-    <div class="container-fluid">
+  <!--  Main wrapper -->
+<div class="body-wrapper">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
-        <button class="btn btn-primary w-30 py-8 fs-4 mb-4 rounded-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
-          Add New Product
-        </button>
-        <h5 class="card-title fw-semibold mb-4">Products </h5>          
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          
+        <!-- product actions -->
+          <div class="actions_container">
+            <!-- add gear -->
+            <button class="btn btn-primary w-30 py-8 fs-4 mb-4 rounded-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
+              Add New Gear
+            </button>
 
-        <div class="card">
-          <div class="card-body p-4">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Category</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- rows here  -->
-              </tbody>
-            </table>
+            <!-- add category -->
+            <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
+              Add New Category
+            </button>
+
+            <!-- update gear -->
+            <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
+              Update Gear
+            </button>
+
+            <!-- remove gear -->
+            <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
+              Remove Gear
+            </button>
+          </div>
+          <h5 class="card-title fw-semibold mb-4">Products </h5>          
+
+          <!-- table for gears -->
+          <div class="card">
+            <div class="card-body p-4">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Gear</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- rows here  -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -62,47 +91,47 @@
 
 
 
-<!-- Modal for Adding Product -->
-<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+  <!-- Modal for Adding Product -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
-        <form action="<?= base_url('/admin/newProduct') ?>" method="post" enctype="multipart/form-data">
-          <div class="mb-3">
-            <label for="product" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="product" name="product" required>
-          </div>
-          <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" name="price" required>
-          </div>
-          <div class="mb-3">
-            <label for="quantity" class="form-label">Quantity</label>
-            <input type="number" class="form-control" id="quantity" name="quantity" required>
-          </div>
-          <div class="mb-3">
-            <label for="cat_id" class="form-label">Category</label>
-            <select class="form-select" id="cat_id" name="cat_id" >
-            <!-- Populate options dynamically from categories table -->
-  
+          <form action="<?= base_url('/admin/newProduct') ?>" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="product" class="form-label">Gear Name</label>
+              <input type="text" class="form-control" id="product" name="product" required>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+              <label for="cat_id" class="form-label">Category</label>
+              <select class="form-select" id="cat_id" name="cat_id" >
+              <!-- Populate options dynamically from categories table -->
+    
 
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Product Image</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/*">
-          </div>
-          <button type="submit" class="btn btn-primary">Add Product</button>
-        </form>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="image" class="form-label">Gear Image</label>
+              <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Gear</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
   <script src=" <?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>

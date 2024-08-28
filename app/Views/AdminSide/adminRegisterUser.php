@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>INM Admin - admin registration(admin)</title>
+  <title>INM Admin - admin registration(user)</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -66,21 +66,21 @@
 
 <body>
 
-<?php if (session()->getFlashdata('successAdmin')) :?>
+<?php if (session()->getFlashdata('successUser')) :?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('successAdmin'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('successAdmin') ?>"><?php session()->getFlashdata('succsuccessAdminess') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('successUser'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('successUser') ?>"><?php session()->getFlashdata('successUser') ?></div>
       <button onclick="closePopup()">Close</button>
     </div>
     
-<?php elseif(session()->getFlashdata('errorAdmin')) : ?>
+<?php elseif(session()->getFlashdata('errorUser')) : ?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('errorAdmin'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('errorAdmin') ?>"><?php session()->getFlashdata('errorAdmin') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('errorUser'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('errorUser') ?>"><?php session()->getFlashdata('errorUser') ?></div>
       <button class="btn" onclick="closePopup()">Close</button>
   </div>
 
-<?php elseif(!session()->getFlashdata('errorAdmin') && !session()->getFlashdata('errorAdmin')) :?>
+<?php elseif(!session()->getFlashdata('errorUser') && !session()->getFlashdata('errorUser')) :?>
     <span>...</span>
 <?php endif ;?>
 
@@ -95,24 +95,26 @@
             <div class="card mb-0">
               <div class="card-body">
 
-                <p class="text-center">Register new Administrator account or <a href="<?= base_url('/admin/registerUs') ?>">user account</a></p>
+                <p class="text-center">Register new User account or <a href="<?= base_url('/admin/registerAd') ?>">Administrator account</a></p>
 
-                <form action="<?= base_url('/admin/registerAdminController') ?>" method="post">
-                  <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" class="form-control" id="username" required>
+                <form action="<?= base_url('/admin/registerUserController') ?>" method="post">
+                  <div class="mb-3">                   
+                    <input type="text" name="fname" class="form-control" id="fname" placeholder="First Name" required>                 
+                    <p></p>
+                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" required>
                   </div>
 
                   <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" id="email" required>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email" required>
+                    <p></p>
+                    <input type="text" name="pnum" class="form-control" id="pnum" placeholder="Phone Number" required>
                   </div>
-
-                  <div class="mb-4">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" required>
+                  
+                  <div class="mb-3">
+                    <input type="text" name="user" class="form-control" id="user" placeholder="Username" required>
+                    <p></p>
+                    <input type="password" name="pass" class="form-control" id="pass" placeholder="Password" required>
                   </div>
-
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign up</button>
 
                   <div class="d-flex align-items-center justify-content-center">
@@ -145,7 +147,7 @@
             const popupMessage = document.getElementById('popupMessage');
 
             // Set message and styles based on type
-            popupMessage.innerHTML = `<p class="${type === 'successAdmin' ? 'text-success' : 'text-danger'}">${message}</p>`;
+            popupMessage.innerHTML = `<p class="${type === 'successUser' ? 'text-success' : 'text-danger'}">${message}</p>`;
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -160,13 +162,13 @@
 
         // Show the popup if flash data exists
         document.addEventListener('DOMContentLoaded', function() {
-            const successMessage = '<?= session()->getFlashdata('successAdmin') ?>';
-            const errorMessage = '<?= session()->getFlashdata('errorAdmin') ?>';
+            const successMessage = '<?= session()->getFlashdata('successUser') ?>';
+            const errorMessage = '<?= session()->getFlashdata('errorUser') ?>';
             
             if (successMessage) {
-                showPopup(successMessage, 'successAdmin');
+                showPopup(successMessage, 'successUser');
             } else if (errorMessage) {
-                showPopup(errorMessage, 'errorAdmin');
+                showPopup(errorMessage, 'errorUser');
             }
         });
     </script>

@@ -1,40 +1,25 @@
 <?php
 
 namespace App\Controllers;
-use Config\Session as SessionConfig;
 
 class Home extends BaseController
 {
 // check session Sessions
     public function checkIfSessionIsSet($admin, $user, $ifNotSet) 
     {
-        $control = new Home();
+        // helper('cookie');
+
         if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
-            $this->lastLoggedIn();
             return redirect()->to($admin);
         }
         else if(session()->get('isLoggedIn') && session()->get('account_type') === 'user') {
-            $this->lastLoggedIn();
             return redirect()->to($user);
         }
         return view($ifNotSet);
     }
 
-    // check if user time of logged in passes the set time in session
-    public function lastLoggedIn() 
-    {
-        $session = session();
-        $sessionConfig = new SessionConfig();
-        $expirationTime = $sessionConfig->expiration;
-
-        if ($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
-            $session->destroy();
-            return redirect()->to('/');
-        }
-    }
 
 
-    
 // ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 // redirect to homepage
     public function homepage()

@@ -7,16 +7,19 @@ class Shop extends BaseController
 // check session Sessions
     public function checkIfSessionIsSet($admin, $user, $ifNotSet) 
     {
-        if(session()->get('isLoggedIn') === true && session()->get('account_type') === 'admin') {
+        // helper('cookie');
+
+        if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
             return redirect()->to($admin);
         }
-        else if(session()->get('isLoggedIn') === true && session()->get('account_type') === 'user') {
+        else if(session()->get('isLoggedIn') && session()->get('account_type') === 'user') {
             return redirect()->to($user);
         }
         return view($ifNotSet);
     }
 
 
+    
 // ----------------------------------------------------------------------------------------------------------------------------------------------------- //
     // redirect to shop
     public function shop()

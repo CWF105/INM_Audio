@@ -49,8 +49,12 @@ $routes->group('/admin/', function($routes){
     $routes->get('manageusers', 'AdminControl::manageusers');
     $routes->get('products', 'AdminControl::products');
 
+    // register view and controller for admin
     $routes->get('registerAd', 'AdminControl::register');
     $routes->post('registerAdminController', 'AdminControl::create_new_admin');
+    // register view and controller for user in admin
+    $routes->get('registerUs', 'AdminControl::registerUser');
+    $routes->post('registerUserController', 'AdminControl::create_new_user');
 
     $routes->get('logoutAd', 'AdminControl::logout');
 

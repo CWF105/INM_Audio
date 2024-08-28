@@ -118,10 +118,7 @@
                     <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required >
                     
                     <!-- syle-lan mo to juls bading bayot bisaya bisakol -->
-                    <div class="remember">
-                        <input type="checkbox" name="remember" id="remember"> 
-                        Remember Me
-                    </div>
+                    <input type="checkbox" name="remember" id="remember"> Remember Me
                     <button type="submit">Login</button>
                 </form>
             </div>

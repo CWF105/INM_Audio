@@ -58,7 +58,7 @@
                 <span>
                   <i class="fa-solid fa-store"></i>
                 </span>
-                <span class="hide-menu">Product</span>
+                <span class="hide-menu">Gears </span>
               </a>
             </li>
 
