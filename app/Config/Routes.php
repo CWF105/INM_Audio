@@ -12,6 +12,7 @@ use CodeIgniter\Router\RouteCollection;
           The 'Home::homepage', the 'Home' is the name of the controller, and the 'homepage'
           is the name of the method inside the Home controller where it returns the view folder and the php file. 
 */
+$routes->get('/index.php/homepage', 'Home::homepage');
 
 // Home page Routing
 $routes->group('', function($routes) 

@@ -116,6 +116,12 @@
                     <label for="chk" aria-hidden="true" class="xbutton"><i class="fa-solid fa-xmark"></i></label>
                     <input type="text" name="username" id="username" title="Enter your Username or Email" placeholder="Username" required>
                     <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required >
+                    
+                    <!-- syle-lan mo to juls bading bayot bisaya bisakol -->
+                    <div class="remember">
+                        <input type="checkbox" name="remember" id="remember"> 
+                        Remember Me
+                    </div>
                     <button type="submit">Login</button>
                 </form>
             </div>

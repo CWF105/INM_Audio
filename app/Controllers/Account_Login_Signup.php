@@ -62,39 +62,65 @@ class Account_Login_Signup extends BaseController
     {
         $adminAccount = new admin_account_model();
         $userAccount = new user_account_model();
+        helper('cookie');
 
         $usernameOrEmail = $this->request->getPost('username');
         $password = $this->request->getPost('pass');
+        $rememberMe = $this->request->getPost('remember');
 
         $error = 'Wrong login credentials!.';
 
         // for administrator account
-        $username = $adminAccount->checkUsername($usernameOrEmail);
-        $email = $adminAccount->checkEmail($usernameOrEmail);
+        $usernameA = $adminAccount->checkUsername($usernameOrEmail);
+        $emailA = $adminAccount->checkEmail($usernameOrEmail);
 
-        if($username || $email) {
+        if($usernameA || $emailA) {
             $session = session();
-            if(is_array($username) && password_verify($password, $username['password'])) {
+            if(is_array($usernameA) && password_verify($password, $usernameA['password'])) {
                 $session->set([
-                    'account_id' => $username['admin_account_id'],
-                    'username' => $username['username'],
-                    'password' => $username['email'],
+                    'admin_account_id' => $usernameA['admin_account_id'],
+                    'username' => $usernameA['username'],
+                    'password' => $usernameA['email'],
+                    'account_type' => 'admin',
+                    'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);    
-                $session->setFlashdata('success', 'Welcome Administrator!');
-                $message['success'] = $session->getFlashdata('success');  
-                return view('AdminSide/adminIndex', $message);
+
+                if($rememberMe) {
+                    $token = bin2hex(random_bytes(16));
+                    $adminAccount->update($usernameA['admin_account_id'], ['remember_token' => $token]);
+    
+                    // set to expires in 5 mins
+                    set_cookie('remember_token', $token, 300);
+                    $session->setFlashdata('success', 'Welcome Administrator!');
+                    return redirect()->to('/admin/dashboard');
+                }
+
+                $session->setFlashdata('success', 'Welcome Administrator!');                
+                return redirect()->to('/admin/dashboard');
             }
-            else if(is_array($email) && password_verify($password, $email['password'])) {
+            else if(is_array($emailA) && password_verify($password, $emailA['password'])) {
                 $session->set([
-                    'account_id' => $email['admin_account_id'],
-                    'username' => $email['username'],
-                    'password' => $email['email'],
+                    'admin_account_id' => $emailA['admin_account_id'],
+                    'username' => $emailA['username'],
+                    'password' => $emailA['email'],
+                    'account_type' => 'admin',
+                    'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]); 
+
+                if($rememberMe) {
+                    $token = bin2hex(random_bytes(16));
+                    $adminAccount->update($usernameA['admin_account_id'], ['remember_token' => $token]);
+    
+                    // set to expires in 5 mins
+                    set_cookie('remember_token', $token, 300);
+                    $session->setFlashdata('success', 'Welcome Administrator!');                    
+                    return redirect()->to('/admin/dashboard');
+                }
+
                 $session->setFlashdata('success', 'Welcome Administrator!');
-                $message['success'] = $session->getFlashdata('success');  
-                return view('AdminSide/adminIndex', $message);
+                return redirect()->to('/admin/dashboard');
             }
             else {
                 session()->setFlashdata('error', $error);
@@ -102,33 +128,54 @@ class Account_Login_Signup extends BaseController
             }
         }
 
-
-        $username = $userAccount->checkUsername($usernameOrEmail);
-        $email = $userAccount->checkEmail($usernameOrEmail);
+        $usernameU = $userAccount->checkUsername($usernameOrEmail);
+        $emailU = $userAccount->checkEmail($usernameOrEmail);
         // for user account
-        if($username || $email) {
+        if($usernameU || $emailU) {
             $session = session();
-            if(is_array($username) && password_verify($password, $username['password'])) {
+            if(is_array($usernameU) && password_verify($password, $usernameU['password'])) {
                 $session->set([
-                    'account_id' => $username['user_id'],
-                    'username' => $username['username'],
-                    'password' => $username['email'],
+                    'user_account_id' => $usernameU['user_id'],
+                    'username' => $usernameU['username'],
+                    'password' => $usernameU['email'],
+                    'account_type' => 'user',
+                    'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);  
-                $session->setFlashdata('success', 'Welcome' . $username["username"] . '!');
-                $message['success'] = $session->getFlashdata('success');  
-                return view('', $message);
+                $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
+
+                // remember me check box
+                if($rememberMe) {
+                    $token = bin2hex(random_bytes(16));
+                    $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
+    
+                    // set to expires in 30 days
+                    set_cookie('remember_token', $token, 3600*24*30);
+                    return redirect()->to('');
+                }
+                return redirect()->to('');
             }
-            else if(is_array($email) && password_verify($password, $email['password'])) {
+            else if(is_array($emailU) && password_verify($password, $emailU['password'])) {
                 $session->set([
-                    'account_id' => $email['user_id'],
-                    'username' => $email['username'],
-                    'password' => $email['email'],
+                    'user_account_id' => $emailU['user_id'],
+                    'username' => $emailU['username'],
+                    'password' => $emailU['email'],
+                    'account_type' => 'user',
+                    'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]); 
-                $session->setFlashdata('success', 'Welcome' . $username["username"] . '!');
-                $message['success'] = $session->getFlashdata('success'); 
-                return view('', $message);
+                $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
+
+                // remember me check box
+                if($rememberMe) {
+                    $token = bin2hex(random_bytes(16));
+                    $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
+    
+                    // set to expires in 30 days
+                    set_cookie('remember_token', $token, 3600*24*30);
+                    return redirect()->to('');
+                }
+                return redirect()->to('');
             }
         }
 

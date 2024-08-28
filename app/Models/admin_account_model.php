@@ -12,7 +12,8 @@ class admin_account_model extends Model
     protected $allowedFields = [
         'username',
         'email',
-        'password'
+        'password',
+        'remember_token'
     ];
     
     protected $useTimestamps = true; 

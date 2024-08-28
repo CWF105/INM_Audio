@@ -12,6 +12,7 @@ create table admin_accounts (
     username varchar(255) not null,
     email varchar(255) not null,
     password varchar(255) not null,
+    remember_token VARCHAR(64) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -38,6 +39,7 @@ create table user_accounts(
 
   username varchar(255) not null,
   password varchar(255) not null,
+  remember_token VARCHAR(64) NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

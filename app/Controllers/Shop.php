@@ -4,29 +4,46 @@ namespace App\Controllers;
 
 class Shop extends BaseController
 {
+// check session Sessions
+    public function checkIfSessionIsSet($admin, $user, $ifNotSet) 
+    {
+        if(session()->get('isLoggedIn') === true && session()->get('account_type') === 'admin') {
+            return redirect()->to($admin);
+        }
+        else if(session()->get('isLoggedIn') === true && session()->get('account_type') === 'user') {
+            return redirect()->to($user);
+        }
+        return view($ifNotSet);
+    }
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
     // redirect to shop
     public function shop()
     {
-        return view("shop");
+        $checkSession = new Home();
+        return $checkSession->checkIfSessionIsSet('/admin/dashboard', '/', "shop");
     }
-
 
 // redirect to cart
      public function cart()
      {
-         return view("cart");
+        $checkSession = new Home();
+        return $checkSession->checkIfSessionIsSet('/admin/dashboard', '/', "cart");
      }
 
 // --------------------------------------------------------------------------------------------------------------------------//
 // purchasing page
     public function buynow()
     {
-        return view("buynow");
+        $checkSession = new Home();
+        return $checkSession->checkIfSessionIsSet('/admin/dashboard', '/', "buynow");
     }
 
 // done purchasing / paying
     public function donePurchase() 
     {   
-        return view('purchase-success');
+        $checkSession = new Home();
+        return $checkSession->checkIfSessionIsSet('/admin/dashboard', '/', "purchase-success");
     }
 }

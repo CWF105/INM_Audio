@@ -2,32 +2,84 @@
 
 namespace App\Controllers;
 use App\Models\admin_account_model;
+use Config\Session as SessionConfig;
 
 class AdminControl extends BaseController
 {
+
+// check session Sessions
+    public function checkIfSessionIsSet($admin, $ifNotSet) 
+    {
+        $control = new AdminControl();
+        if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
+            $this->lastLoggedIn();
+            return view($admin);
+        }
+        session()->destroy();
+        return redirect()->to($ifNotSet);
+    }
+
+    // check if user time of logged in passes the set time in session
+    public function lastLoggedIn() 
+    {
+        $session = session();
+        $sessionConfig = new SessionConfig();
+        $expirationTime = $sessionConfig->expiration;
+        $adminAccount = new admin_account_model();
+        helper('cookie');
+        
+        $userAdmin_id = $session->get('admin_account_id');
+        if($userAdmin_id) {
+            $adminAccount->update($userAdmin_id, ['remember_token' => null]);
+        }
+        delete_cookie('remember_token');
+
+        if ($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
+            $session->destroy();
+            return redirect()->to('/');
+        }
+    }
+
+
+    
+// -------------------------------------------------------------------------------------------------------------------------
+// direct to dashboard
     public function dashboard()
     {
-        return view('AdminSide\adminIndex');
+        $checkSession = new AdminControl();
+        return $checkSession->checkIfSessionIsSet('AdminSide/adminIndex', '/');
     }
 
+
+// direct to transactions
     public function transactions()
     {
-        return view('AdminSide\adminTransactions');
+        $checkSession = new AdminControl();
+        return $checkSession->checkIfSessionIsSet('AdminSide/adminTransactions', '/');
     }
 
+
+// direct to manageusers
     public function manageusers()
     {
-        return view('AdminSide\adminManageUsers');
+        $checkSession = new AdminControl();
+        return $checkSession->checkIfSessionIsSet('AdminSide/adminMangeUsers', '/');
     }
 
+
+// direct to products
     public function products()
     {
-        return view('AdminSide\adminProducts');
+        $checkSession = new AdminControl();
+        return $checkSession->checkIfSessionIsSet('AdminSide/adminProducts', '/');
     }
 
+
+// direct to register
     public function register()
     {
-        return view('AdminSide\adminRegister');
+        $checkSession = new AdminControl();
+        return $checkSession->checkIfSessionIsSet('AdminSide/adminRegister', '/');
     }
 
     
@@ -35,12 +87,16 @@ class AdminControl extends BaseController
     public function logout() 
     {
         $session = session();
-        $session->remove('account_id');
-        $session->remove('username');
-        $session->remove('email');
-        $session->remove('isLoggedIn');
+        $adminAccount = new admin_account_model();
+        helper('cookie');
+        
+        $userAdmin_id = $session->get('admin_account_id');
+        if($userAdmin_id) {
+            $adminAccount->update($userAdmin_id, ['remember_token' => null]);
+        }
 
-        $session->destroy();
+        delete_cookie('remember_token');
+        $session->destroy();    
         return redirect()->to('/');
     }
 
@@ -84,6 +140,5 @@ class AdminControl extends BaseController
             session()->setFlashdata('successAdmin', 'Administrator account created successfully.');
             return redirect()->to('/admin/registerAd');
         }
-
     }
 }

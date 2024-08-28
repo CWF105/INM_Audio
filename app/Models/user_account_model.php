@@ -19,7 +19,8 @@ class user_account_model extends Model
         'zipcode',
         'address',
         'username',
-        'password'
+        'password',
+        'remember_token'
     ];
 
     protected $useTimeStamps = true;
