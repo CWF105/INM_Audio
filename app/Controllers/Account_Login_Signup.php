@@ -11,16 +11,44 @@ class Account_Login_Signup extends BaseController
     public function signup_user()
     {
         $userAccount = new user_account_model();
-
-        $firstname = $this->request->getPost('fname');
-        $lastname = $this->request->getPost('lname');
+        
+        $firstName = $this->request->getPost('fname');
+        $lastName = $this->request->getPost('lname');
         $email = $this->request->getPost('email');
-        $phoneNum = $this->request->getPost('pnum');
+        $phonenumber = $this->request->getPost('pnum');
         $username = $this->request->getPost('user');
         $password = $this->request->getPost('pass');
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $prepareData = [
+            'firstname' => $firstName,
+            'lastname' => $lastName,
+            'email' => $email,
+            'phone_number' => $phonenumber,
+            'username' => $username,
+            'password' => $hashedPassword
+        ];
+
+        
+        // Check if the username or email already exists
+        $usernameExist = $userAccount->checkUsername($username);
+        $emailExist = $userAccount->checkEmail($email);
+
+        if ($usernameExist && $emailExist) {
+            session()->setFlashdata('userError1', 'Both username and email are already in use.');
+            return redirect()->to('/login');
+        } elseif ($usernameExist) {
+            session()->setFlashdata('userError2', 'Username is already in use.');
+            return redirect()->to('/login');
+        } elseif ($emailExist) {
+            session()->setFlashdata('userError3', 'Email is already in use.');
+            return redirect()->to('/login');
+        } else {
+            $userAccount->save($prepareData);
+            session()->setFlashdata('successRegister', 'Account created successfully.');
+            return redirect()->to('/login');
+        }
     }
 
 
@@ -29,7 +57,7 @@ class Account_Login_Signup extends BaseController
 
 
 
-// login admin and user account
+// login admin and user account and set session
     public function login_admin_or_user() 
     {
         $adminAccount = new admin_account_model();
@@ -56,8 +84,6 @@ class Account_Login_Signup extends BaseController
                 $session->setFlashdata('success', 'Welcome Administrator!');
                 $message['success'] = $session->getFlashdata('success');  
                 return view('AdminSide/adminIndex', $message);
-                // session()->setFlashdata('success', 'Welcome Administrator!');
-                // return redirect()->to('/admin/dashboard');
             }
             else if(is_array($email) && password_verify($password, $email['password'])) {
                 $session->set([
@@ -69,8 +95,6 @@ class Account_Login_Signup extends BaseController
                 $session->setFlashdata('success', 'Welcome Administrator!');
                 $message['success'] = $session->getFlashdata('success');  
                 return view('AdminSide/adminIndex', $message);
-                // session()->setFlashdata('success', 'Welcome Administrator!');
-                // return redirect()->to('/admin/dashboard');
             }
             else {
                 session()->setFlashdata('error', $error);
@@ -79,10 +103,33 @@ class Account_Login_Signup extends BaseController
         }
 
 
-
+        $username = $userAccount->checkUsername($usernameOrEmail);
+        $email = $userAccount->checkEmail($usernameOrEmail);
         // for user account
-        if(false) {
-
+        if($username || $email) {
+            $session = session();
+            if(is_array($username) && password_verify($password, $username['password'])) {
+                $session->set([
+                    'account_id' => $username['user_id'],
+                    'username' => $username['username'],
+                    'password' => $username['email'],
+                    'isLoggedIn' => true
+                ]);  
+                $session->setFlashdata('success', 'Welcome' . $username["username"] . '!');
+                $message['success'] = $session->getFlashdata('success');  
+                return view('', $message);
+            }
+            else if(is_array($email) && password_verify($password, $email['password'])) {
+                $session->set([
+                    'account_id' => $email['user_id'],
+                    'username' => $email['username'],
+                    'password' => $email['email'],
+                    'isLoggedIn' => true
+                ]); 
+                $session->setFlashdata('success', 'Welcome' . $username["username"] . '!');
+                $message['success'] = $session->getFlashdata('success'); 
+                return view('', $message);
+            }
         }
 
         session()->setFlashdata('error', $error);

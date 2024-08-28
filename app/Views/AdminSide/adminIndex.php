@@ -310,7 +310,15 @@
     var modal = document.getElementById("myModal");
     var span = document.getElementsByClassName("close")[0];
 
-    var showModal =  true;
+    var showModal = <?php
+       $message = session()->getFlashdata('success');
+       if (isset($message)) {
+        echo true;
+      }else {
+        echo false;
+      }
+    ?>;
+    
     if (showModal) {
         modal.style.display = "block";
     }

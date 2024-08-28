@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 body{
     margin: 0;   
     padding: 0;
@@ -9,7 +10,7 @@ body{
     align-items: center;
     min-height: 100vh;
     font-family: raleway;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #2f2f4d);
 }
 .main{
     width: 550px;
@@ -120,6 +121,14 @@ button:hover{
 #chk:checked ~ .signup label{
     transform: scale(.6);
 }
+
+
+
+
+
+
+
+
 @media (max-height: 550px) {
     #chk:checked ~ .login{
         transform: translateY(-440px);

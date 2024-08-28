@@ -39,8 +39,8 @@
                 text-decoration: none;
                 color: white;
             }
-            .error {color:red;}
-            .success {color:green; font-size: 19px;}
+            .error {color:red; font-size: 16px;}
+            .success {color:green; font-size: 16px;}
             p {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bold;
@@ -49,6 +49,8 @@
         </style>
         
     </head>
+
+<!-- forms -->
         <php class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
 
@@ -58,7 +60,8 @@
                     <?= csrf_field() ?> <!-- CSRF protection field -->
                     <label for="chk" aria-hidden="true">Sign up</label>
                     <h5><a href="<?= base_url('/') ?>">Home</a></h5>
-
+                        <!-- success register message -->
+                        <?php $success =  session()->getFlashdata('successRegister'); if(isset($success)) {echo "<span class='success'>" . $success . "</span>" ;} ?>
 
                             <div class="input-block">
                                 <input type="text" name="fname" placeholder="First name" title="Enter your First name" required>
@@ -72,29 +75,35 @@
                                 <input type="number" name="pnum" id="pnum" placeholder="Phone Number" title="Enter your Phone Number" required>
 
                             </div>
-                            <div class="input-block" id="input-block">
+                            <div class="input-block" id="input-block"> 
                                 <input type="text" name="user" id="user" placeholder="Username" title="Enter your Username" required>
-
                                 <input type="password" name="pass" id="pass" placeholder="Password" title="Enter your Password" required>
-
                             </div>
+                                <!-- error messages -->
+                                <?php 
+                                    $error1 = session()->getFlashdata('userError1');
+                                    $error2 = session()->getFlashdata('userError2');
+                                    $error3 = session()->getFlashdata('userError3') 
+                                ?>
+                                <?php if($error1) { echo "<span class='error'>" . $error1 . "</span>"; }?>
+                                <?php if($error2) { echo "<span class='error'>" . $error2 . "</span>"; }?>
+                                <?php if($error3) { echo "<p class='error'>" .$error3 . "</p>"; }?>
 
 
                     <button type="submit" value="register" name="submit">Sign up</button>
                 </form>             
-
-
-                <div style="display: none;">
-                    <div class="modal-content">
-                        <span class="close-btn" onclick="closeModal()">&times;</span>
-                        <p id="modalMessage"></p>
-                    </div>  
-                </div>
             </div>
 
                         
+<!-- ===================================================================================================================================================== -->
+            <div style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <p id="modalMessage"></p>
+                </div>  
+            </div>
 
-            <!-- Login form for user and admin -->
+        <!-- Login form for user and admin -->
             <div class="login" id="login">
                 <form action="<?= base_url("/account/login") ?>" method="post">
                     <?= csrf_field() ?> <!-- CSRF protection field -->
@@ -112,10 +121,46 @@
             </div>
 
         
+
+
+
+
+<!-- scripts  -->
         <script>
             function closeModal() {
                 document.getElementById('notificationModal').style.display = 'none';
             }
+
+            function showPopup(message, type) {
+                const popup = document.getElementById('popup');
+                const overlay = document.getElementById('overlay');
+                const popupMessage = document.getElementById('popupMessage');
+
+                // Set message and styles based on type
+                popupMessage.innerHTML = `<p class="${type === 'success' ? 'text-success' : 'text-danger'}">${message}</p>`;
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+
+            function closePopup() {
+                const popup = document.getElementById('popup');
+                const overlay = document.getElementById('overlay');
+
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+            }
+
+            // Show the popup if flash data exists
+            document.addEventListener('DOMContentLoaded', function() {
+                const successMessage = '<?= session()->getFlashdata('success') ?>';
+                const errorMessage = '<?= session()->getFlashdata('error') ?>';
+                
+                if (successMessage) {
+                    showPopup(successMessage, 'success');
+                } else if (errorMessage) {
+                    showPopup(errorMessage, 'error');
+                }
+            });
         </script>
 
     </body>

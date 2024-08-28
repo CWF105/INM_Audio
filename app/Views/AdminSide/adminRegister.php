@@ -66,21 +66,21 @@
 
 <body>
 
-<?php if (session()->getFlashdata('success')) :?>
+<?php if (session()->getFlashdata('successAdmin')) :?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('successAdmin'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('successAdmin') ?>"><?php session()->getFlashdata('succsuccessAdminess') ?></div>
       <button onclick="closePopup()">Close</button>
     </div>
     
-<?php elseif(session()->getFlashdata('error')) : ?>
+<?php elseif(session()->getFlashdata('errorAdmin')) : ?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('errorAdmin'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('errorAdmin') ?>"><?php session()->getFlashdata('errorAdmin') ?></div>
       <button class="btn" onclick="closePopup()">Close</button>
   </div>
 
-<?php elseif(!session()->getFlashdata('success') && !session()->getFlashdata('error')) :?>
+<?php elseif(!session()->getFlashdata('errorAdmin') && !session()->getFlashdata('errorAdmin')) :?>
     <span>...</span>
 <?php endif ;?>
 
@@ -132,7 +132,6 @@
 
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
-    <!-- Popup -->
     <div class="popup" id="popup">
         <div id="popupMessage"></div>
         <button onclick="closePopup()">Close</button>
@@ -146,7 +145,7 @@
             const popupMessage = document.getElementById('popupMessage');
 
             // Set message and styles based on type
-            popupMessage.innerHTML = `<p class="${type === 'success' ? 'text-success' : 'text-danger'}">${message}</p>`;
+            popupMessage.innerHTML = `<p class="${type === 'successAdmin' ? 'text-success' : 'text-danger'}">${message}</p>`;
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -161,13 +160,13 @@
 
         // Show the popup if flash data exists
         document.addEventListener('DOMContentLoaded', function() {
-            const successMessage = '<?= session()->getFlashdata('success') ?>';
-            const errorMessage = '<?= session()->getFlashdata('error') ?>';
+            const successMessage = '<?= session()->getFlashdata('successAdmin') ?>';
+            const errorMessage = '<?= session()->getFlashdata('errorAdmin') ?>';
             
             if (successMessage) {
-                showPopup(successMessage, 'success');
+                showPopup(successMessage, 'successAdmin');
             } else if (errorMessage) {
-                showPopup(errorMessage, 'error');
+                showPopup(errorMessage, 'errorAdmin');
             }
         });
     </script>

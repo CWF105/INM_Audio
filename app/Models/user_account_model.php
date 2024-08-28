@@ -8,7 +8,8 @@ class user_account_model extends Model
 {
     protected $table = 'user_accounts';
     protected $primaryKey = 'user_id';
-    protected $allowed_fields = [
+
+    protected $allowedFields = [
         'firstname',
         'lastname',
         'email',
@@ -20,6 +21,7 @@ class user_account_model extends Model
         'username',
         'password'
     ];
+
     protected $useTimeStamps = true;
 
 

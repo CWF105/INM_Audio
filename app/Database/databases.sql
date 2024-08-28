@@ -12,17 +12,16 @@ create table admin_accounts (
     username varchar(255) not null,
     email varchar(255) not null,
     password varchar(255) not null,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
-ALTER TABLE admin_accounts
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-
 -- inserts default admin account NOTE: it hashes the +
--- + password into random set of numbers and letters
+-- + password into random set of numbers, letters and symbols
+ -- note the combination of random numbers, letters and symbols is a hashed passwrod, For this the password is 'admin'
 insert into admin_accounts (username, email, password)
-values ('admin', 'admin@gmail.com', '$2y$10$DSYbCy57TSb5vmBNQIWceO4IkOoLpNKUAnrCc7HpxgbXPkBP.72CO');
+values ('admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6');
 
 -- user accounts info
 create table user_accounts(
@@ -39,10 +38,10 @@ create table user_accounts(
 
   username varchar(255) not null,
   password varchar(255) not null,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-ALTER TABLE user_accounts
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
 
 
 -- ------------------------------------------------------------------------------

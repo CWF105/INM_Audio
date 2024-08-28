@@ -38,6 +38,7 @@ class AdminControl extends BaseController
         $session->remove('account_id');
         $session->remove('username');
         $session->remove('email');
+        $session->remove('isLoggedIn');
 
         $session->destroy();
         return redirect()->to('/');
@@ -70,17 +71,17 @@ class AdminControl extends BaseController
         $emailExists = $adminAccountModel->checkEmail($email);
 
         if ($usernameExists && $emailExists) {
-            session()->setFlashdata('error', 'Both username and email are already in use.');
+            session()->setFlashdata('errorAdmin', 'Both username and email are already in use.');
             return redirect()->to('/admin/registerAd');
         } elseif ($usernameExists) {
-            session()->setFlashdata('error', 'Username is already in use.');
+            session()->setFlashdata('errorAdmin', 'Username is already in use.');
             return redirect()->to('/admin/registerAd');
         } elseif ($emailExists) {
-            session()->setFlashdata('error', 'Email is already in use.');
+            session()->setFlashdata('errorAdmin', 'Email is already in use.');
             return redirect()->to('/admin/registerAd');
         } else {
             $adminAccountModel->save($prepareData);
-            session()->setFlashdata('success', 'Administrator account created successfully.');
+            session()->setFlashdata('successAdmin', 'Administrator account created successfully.');
             return redirect()->to('/admin/registerAd');
         }
 
