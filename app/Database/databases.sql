@@ -52,8 +52,7 @@ create table user_accounts(
 -- category for a product
 CREATE TABLE category(
   category_id INT AUTO_INCREMENT PRIMARY KEY,
-  category VARCHAR(255),
-  added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  category VARCHAR(255)
 );
 
 

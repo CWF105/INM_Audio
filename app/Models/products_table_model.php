@@ -10,29 +10,41 @@ class products_table_model extends Model
 
     protected $allowedFields = [
         'category_id',
-        'product_name',
         'description',
+        'product_name',
         'price',
-        'stock_quality',
+        'stock_quantity',
         'image_url' 
-    ];
+    ];  
     
     protected $useTimestamps = true; 
 
-    // check and retrieve grears if the table is not empty
-    // public function checkIfEmpty($gear, $category)
-    // {
-    //     if($gear != null) {
 
-    //     }
-    //     else if($category != null) {
+    public function checkProductExistent($gear)
+    {
+        return $this->where('product_name', $gear)->first();
+    }
 
-    //     }
-    //     return null;
-    // }
+    public function getProductsAlongWIthCategory()
+    {
+       $sql = "SELECT * FROM products as prod JOIN category as cat ON cat.category_id = prod.category_id";
+       $query = $this->db->query($sql);
+       return $query->getResultArray();
+    }
 
-    // public function checkEmail($email)
-    // {
-    //     return $this->where('email', $email)->first();
-    // }
+    // NOT WORKING
+    public function getProductsWithCategory()
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('products.product_id,
+                         category.category as category,
+                         products.description,
+                         products.product_name,
+                         products.price,
+                         products.stock_quantity,
+                         products.image_url');
+        $builder->join('category', 'category.category_id = products.category_id');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

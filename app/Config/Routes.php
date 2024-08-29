@@ -47,10 +47,16 @@ $routes->group('/admin/', function($routes){
     $routes->get('dashboard', 'AdminControl::dashboard');
     $routes->get('transactions', 'AdminControl::transactions');
     $routes->get('manageusers', 'AdminControl::manageusers');
+
+    //products
     $routes->get('products', 'AdminControl::products');
-    // products table to access using iframe and error page if access through URL
-    $routes->get('products/T', 'AdminControl::productsTable'); // url that can be only accessed in iframe in products page file
-    
+    //add products
+    $routes->post('products/add', 'AdminControl::addGears');
+    //display products
+
+    //category
+    $routes->post('category', 'AdminControl::addNewCategory');
+
     // register view and controller for admin
     $routes->get('registerAd', 'AdminControl::register');
     $routes->post('registerAdminController', 'AdminControl::create_new_admin');

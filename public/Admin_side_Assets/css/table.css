@@ -8,6 +8,7 @@ table thead tr th {
     border: 3px solid;
     padding: 10px;
     border-collapse: collapse;
+    text-align: center;
 }
 
 table tbody tr td{
