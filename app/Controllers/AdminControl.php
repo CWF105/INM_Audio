@@ -19,14 +19,16 @@ class AdminControl extends BaseController
         $expirationTime = $sessionConfig->expiration;
         $adminAccount = new admin_account_model();
         $userAdmin_id = $session->get('admin_account_id');
+        $userAdmin_username = $session->get('username');
         helper('cookie');
 
         if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
             // check if user time of logged in passes the set time in session
             if($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
                 $adminAccount->update($userAdmin_id, ['remember_token' => null]);
-                delete_cookie('remember_token');
+                $adminAccount->update($userAdmin_username, ['remember_token' => null]);
                 $session->destroy();
+                delete_cookie('remember_token');
                 return redirect()->to('/');
             }
             else {    
@@ -68,6 +70,9 @@ class AdminControl extends BaseController
         $checkSession = new AdminControl();
         return $checkSession->checkIfSessionIsSet('AdminSide/adminProducts', '/');
     }
+    public function productsTable(){        
+        return view("AdminSide/others/productsTable");
+    }
 
 
     // direct to register (page dedicated to the creation of administrator account)
@@ -96,9 +101,9 @@ class AdminControl extends BaseController
         if($userAdmin_id) {
             $adminAccount->update($userAdmin_id, ['remember_token' => null]);
         }
-
-        delete_cookie('remember_token');
+        
         $session->destroy();    
+        delete_cookie('remember_token');
         return redirect()->to('/');
     }
 

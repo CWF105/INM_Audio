@@ -11,6 +11,7 @@ table thead tr th {
 }
 
 table tbody tr td{
+    margin: 200px;
     border: 1px solid;
     border-collapse: collapse;
     padding-block: 10px;

@@ -81,7 +81,7 @@
   </div>
 
 <?php elseif(!session()->getFlashdata('errorUser') && !session()->getFlashdata('errorUser')) :?>
-    <span>...</span>
+    <span></span>
 <?php endif ;?>
 
 

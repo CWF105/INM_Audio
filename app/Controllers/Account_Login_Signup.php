@@ -108,7 +108,7 @@ class Account_Login_Signup extends BaseController
                     'isLoggedIn' => true
                 ]); 
 
-                if($rememberMe) {
+                if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
                     $adminAccount->update($emailA['admin_account_id'], ['remember_token' => $token]);
     
@@ -142,7 +142,7 @@ class Account_Login_Signup extends BaseController
                 $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
 
                 // remember me check box
-                if($rememberMe) {
+                if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
                     $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
     
@@ -164,7 +164,7 @@ class Account_Login_Signup extends BaseController
                 $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
 
                 // remember me check box
-                if($rememberMe) {
+                if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
                     $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
     

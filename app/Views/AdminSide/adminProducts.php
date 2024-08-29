@@ -7,8 +7,9 @@
   <title>INM Admin - gear management</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/table.css') ?>" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  
   <style>
     .actions {
       background-color: azure;
@@ -52,38 +53,25 @@
             </button>
 
             <!-- update gear -->
-            <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
+            <!-- <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
               Update Gear
-            </button>
+            </button> -->
 
             <!-- remove gear -->
-            <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
+            <!-- <button class="btn w-15 py-8 fs-4 mb-4 rounded-2 actions" data-bs-toggle="#" data-bs-target="#">
               Remove Gear
-            </button>
+            </button> -->
           </div>
           <h5 class="card-title fw-semibold mb-4">Products </h5>          
 
           <!-- table for gears -->
           <div class="card">
-            <div class="card-body p-4">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Gear</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- rows here  -->
-                </tbody>
-              </table>
-            </div>
+            <!-- embed table from another file, the file embeded here is the productsTable.php file -->
+            <iframe src="<?= base_url('/admin/products/T') ?>" width="950px" frameborder="0"></iframe>
+            
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -133,6 +121,7 @@
     </div>
   </div>
 
+  <!-- Modal for Adding New Category -->
 
   <script src=" <?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
   <script src=" <?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
