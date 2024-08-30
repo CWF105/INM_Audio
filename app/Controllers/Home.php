@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\admin_account_model;
+use App\Models\user_account_model;
+
+use Config\Session as SessionConfig;
 
 class Home extends BaseController
 {
@@ -8,6 +12,16 @@ class Home extends BaseController
     public function checkIfSessionIsSet($admin, $user, $ifNotSet) 
     {
         // helper('cookie');
+        // $session = session();
+        // $sessionConfig = new SessionConfig();
+        // $expirationTime = $sessionConfig->expiration;
+        // $adminAccount = new admin_account_model();
+        // $userAccount = new user_account_model();
+
+        // $userAdmin_id = $session->get('admin_account_id');
+        // $userAdmin_username = $session->get('username');
+        // $user_id = $session->get('user_account_id');
+        // $user_username = $session->get('username');
 
         if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
             return redirect()->to($admin);

@@ -92,7 +92,6 @@ class AdminControl extends BaseController
                 #category - getting categories and displaying 
                 if($data != null && $data == 'category'){
                     $val['category'] = $categoryModel->getcategories();
-                    $data = $val['category'];
                     return view($admin, $val);
                 }
                 return view($admin);

@@ -31,20 +31,4 @@ class products_table_model extends Model
        $query = $this->db->query($sql);
        return $query->getResultArray();
     }
-
-    // NOT WORKING
-    public function getProductsWithCategory()
-    {
-        $builder = $this->db->table($this->table);
-        $builder->select('products.product_id,
-                         category.category as category,
-                         products.description,
-                         products.product_name,
-                         products.price,
-                         products.stock_quantity,
-                         products.image_url');
-        $builder->join('category', 'category.category_id = products.category_id');
-        $query = $builder->get();
-        return $query->getResultArray();
-    }
 }
