@@ -125,56 +125,56 @@ class Account_Login_Signup extends BaseController
             }
         }
 
-        $usernameU = $userAccount->checkUsername($usernameOrEmail);
-        $emailU = $userAccount->checkEmail($usernameOrEmail);
-        // for user account
-        if($usernameU || $emailU) {
-            $session = session();
-            if(is_array($usernameU) && password_verify($password, $usernameU['password'])) {
-                $session->set([
-                    'user_account_id' => $usernameU['user_id'],
-                    'username' => $usernameU['username'],
-                    'email' => $usernameU['email'],
-                    'account_type' => 'user',
-                    'timeLoggedIn' => time(),
-                    'isLoggedIn' => true
-                ]);  
-                $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
+        // $usernameU = $userAccount->checkUsername($usernameOrEmail);
+        // $emailU = $userAccount->checkEmail($usernameOrEmail);
+        // // for user account
+        // if($usernameU || $emailU) {
+        //     $session = session();
+        //     if(is_array($usernameU) && password_verify($password, $usernameU['password'])) {
+        //         $session->set([
+        //             'user_account_id' => $usernameU['user_id'],
+        //             'username' => $usernameU['username'],
+        //             'email' => $usernameU['email'],
+        //             'account_type' => 'user',
+        //             'timeLoggedIn' => time(),
+        //             'isLoggedIn' => true
+        //         ]);  
+        //         $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
 
-                // remember me check box
-                if(isset($rememberMe)) {
-                    $token = bin2hex(random_bytes(16));
-                    $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
+        //         // remember me check box
+        //         if(isset($rememberMe)) {
+        //             $token = bin2hex(random_bytes(16));
+        //             $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
     
-                    // set to expires in 30 days
-                    set_cookie('remember_token', $token, 3600*24*30);
-                    return redirect()->to('');
-                }
-                return redirect()->to('');
-            }
-            else if(is_array($emailU) && password_verify($password, $emailU['password'])) {
-                $session->set([
-                    'user_account_id' => $emailU['user_id'],
-                    'username' => $emailU['username'],
-                    'email' => $emailU['email'],
-                    'account_type' => 'user',
-                    'timeLoggedIn' => time(),
-                    'isLoggedIn' => true
-                ]); 
-                $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
+        //             // set to expires in 30 days
+        //             set_cookie('remember_token', $token, 3600*24*30);
+        //             return redirect()->to('/');
+        //         }
+        //         return redirect()->to('/');
+        //     }
+        //     else if(is_array($emailU) && password_verify($password, $emailU['password'])) {
+        //         $session->set([
+        //             'user_account_id' => $emailU['user_id'],
+        //             'username' => $emailU['username'],
+        //             'email' => $emailU['email'],
+        //             'account_type' => 'user',
+        //             'timeLoggedIn' => time(),
+        //             'isLoggedIn' => true
+        //         ]); 
+        //         $session->setFlashdata('success', 'Welcome' . $usernameU["username"] . '!');
 
-                // remember me check box
-                if(isset($rememberMe)) {
-                    $token = bin2hex(random_bytes(16));
-                    $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
+        //         // remember me check box
+        //         if(isset($rememberMe)) {
+        //             $token = bin2hex(random_bytes(16));
+        //             $userAccount->update($usernameU['user_id'], ['remember_token' => $token]);
     
-                    // set to expires in 30 days
-                    set_cookie('remember_token', $token, 3600*24*30);
-                    return redirect()->to('');
-                }
-                return redirect()->to('');
-            }
-        }
+        //             // set to expires in 30 days
+        //             set_cookie('remember_token', $token, 3600*24*30);
+        //             return redirect()->to('/');
+        //         }
+        //         return redirect()->to('/');
+        //     }
+        // }
 
         session()->setFlashdata('error', $error);
         return redirect()->to('/login');

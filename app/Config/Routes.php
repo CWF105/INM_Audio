@@ -69,3 +69,10 @@ $routes->group('/admin/', function($routes){
 
     //users
 });
+
+
+
+$routes->group('/config/', function($routes) {
+    $routes->get('dc', 'OtherControl::deleteCookie');
+    $routes->get('ds', 'OtherControl::deleteSession');
+});

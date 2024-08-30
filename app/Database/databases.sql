@@ -30,11 +30,11 @@ create table user_accounts(
   firstname varchar(255) not null,
   lastname varchar(255) not null,
   email varchar(255) not null,
-  phone_number int not null,
+  phone_number varchar(20) not null,
 
   country varchar(255),
   city_municipality varchar(255), 
-  zipcode int,
+  zipcode varchar(20),
   address varchar(255),
 
   username varchar(255) not null,
@@ -67,7 +67,7 @@ CREATE TABLE products (
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (category_id) REFERENCES category(category_id)
+    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE SET NULL
 );
 
 
@@ -81,12 +81,14 @@ CREATE TABLE comments (
     comment_text TEXT,
     rating INT CHECK (rating BETWEEN 1 AND 5),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
 );
 
 
 
 -- ------------------------------------------------------------------------------
+
 
 
 
@@ -103,8 +105,8 @@ CREATE TABLE cart_items (
     cart_id INT,
     product_id INT,
     quantity INT NOT NULL,
-    FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    FOREIGN KEY (cart_id) REFERENCES carts(cart_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
 
 
@@ -128,8 +130,8 @@ CREATE TABLE order_items (
     product_id INT,
     quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
 
 
@@ -144,7 +146,7 @@ CREATE TABLE shippings (
     country VARCHAR(100) NOT NULL,
     shipping_status VARCHAR(50) DEFAULT 'Not Shipped',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );
 
 
@@ -166,7 +168,8 @@ CREATE TABLE user_tokens (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     token VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
 );
 
 

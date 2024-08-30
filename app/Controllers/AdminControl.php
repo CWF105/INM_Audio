@@ -44,6 +44,26 @@ use Config\Session as SessionConfig;
 class AdminControl extends BaseController
 {
 
+// >>>>>  functions to LOGOUT of admin page and redirect back to homepage(no account)
+    // remove/unset and destroy the current session and redirect to homepage
+    #logout
+    public function logout() 
+    {
+        $session = session();
+        $adminAccount = new admin_account_model();
+        helper('cookie');
+        
+        $userAdmin_id = $session->get('admin_account_id');
+        if($userAdmin_id) {
+            $adminAccount->update($userAdmin_id, ['remember_token' => null]);
+        }
+        
+        $session->destroy();    
+        delete_cookie('remember_token');
+        return redirect()->to('/');
+    }
+    
+    
 // >>>>>   NAVIGATIONS AND VALIDATIONS OF PAGES    <<<<< //
 // CHECK SESSIONS AND REDIRECT
     #session
@@ -80,6 +100,12 @@ class AdminControl extends BaseController
         }
         return redirect()->to($ifNotSet);
     }
+
+
+
+
+
+
 
 // >>>>> .......... <<<<< //
 // DIRECT TO ADMINISTRATOR PAGES
@@ -138,26 +164,6 @@ class AdminControl extends BaseController
     }
 
 
-
-
-// >>>>>  functions to LOGOUT of admin page and redirect back to homepage(no account)
-    // remove/unset and destroy the current session and redirect to homepage
-    #logout
-    public function logout() 
-    {
-        $session = session();
-        $adminAccount = new admin_account_model();
-        helper('cookie');
-        
-        $userAdmin_id = $session->get('admin_account_id');
-        if($userAdmin_id) {
-            $adminAccount->update($userAdmin_id, ['remember_token' => null]);
-        }
-        
-        $session->destroy();    
-        delete_cookie('remember_token');
-        return redirect()->to('/');
-    }
 
 
 
@@ -252,6 +258,10 @@ class AdminControl extends BaseController
 
     }
 
+
+
+
+    
 
 // >>>>>    OTHER CONTROLS  <<<<< //
     #addGears
