@@ -11,12 +11,13 @@ class category_table_model extends Model
     protected $allowedFields = ['category'];
     
 
-    // retrieve all categories
+    // retrieve and return all categories
     public function getcategories() 
     {
         return $this->findAll();
     }
 
+    // get category if retrieve category from the database table, match with parameter $category
     public function getCategory($category)
     {
         return $this->where('category', $category)->first();

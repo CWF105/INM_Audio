@@ -1,78 +1,102 @@
 <?php
 
 namespace App\Controllers;
+/*
+## for a group of methods
+# for a method
+
+
+## Redirect to pages
+    #homepage
+    #library
+    #community
+    #login-and-signup
+    #customize
+    
+OTHER METHODS
+    #session
+
+*/
+
 use App\Models\admin_account_model;
+use App\Models\category_table_model;
+use App\Models\products_table_model;
 use App\Models\user_account_model;
 
 use Config\Session as SessionConfig;
 
 class Home extends BaseController
 {
-// check session Sessions
-    public function checkIfSessionIsSet($admin, $user, $ifNotSet) 
+
+    #session
+    public function isSessionSetThenRedirect($page, $isDisplaying = false)
     {
-        // helper('cookie');
-        // $session = session();
-        // $sessionConfig = new SessionConfig();
-        // $expirationTime = $sessionConfig->expiration;
-        // $adminAccount = new admin_account_model();
-        // $userAccount = new user_account_model();
+        helper('cookie');
+        $session = session();
+        $sessionConfig = new SessionConfig();
+        $expirationTime = $sessionConfig->expiration;
+        $userAccount = new user_account_model();
+        $categoryModel = new category_table_model();
+        $productsModel = new products_table_model();
 
-        // $userAdmin_id = $session->get('admin_account_id');
-        // $userAdmin_username = $session->get('username');
-        // $user_id = $session->get('user_account_id');
-        // $user_username = $session->get('username');
+        $user_id = $session->get('user_account_id');
+        $user_username = $session->get('username');
 
-        if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
-            return redirect()->to($admin);
+        if($session->get('isLoggedIn') && $session->get('account_type') == 'admin') {
+            return redirect()->to('/admin/dashboard');
         }
-        else if(session()->get('isLoggedIn') && session()->get('account_type') === 'user') {
-            return redirect()->to($user);
+
+        if($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
+            $userAccount->update($user_id, ['remember_token' => null]);
+            $userAccount->update($user_username, ['remember_token' => null]);
+            $session->destroy();
+            delete_cookie('remember_token');
+            return redirect()->to('/');
         }
-        return view($ifNotSet);
+
+        if($isDisplaying == true) {
+            $container = [];
+            $container['categories'] = $categoryModel->getcategories();
+            $container['showProducts'] = $productsModel->getGearAlongWIthCategory();
+            
+            return view($page, $container);
+        }
+        return view($page);
     }
 
 
-
-// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
-// redirect to homepage
+## Redirect to Pages ##
+    #homepage
     public function homepage()
     {
-        $checkSession = new Home();
-        return $checkSession->checkIfSessionIsSet('/admin/dashboard', '/', "homepage");
+        return $this->isSessionSetThenRedirect('homepage');
     }
 
 
-// redirect to library
+    #library
     public function library()
     {
-        $checkSession = new Home();
-        return $checkSession->checkIfSessionIsSet('/admin/dashboard','/','library');
+        return $this->isSessionSetThenRedirect('library', true);
     }
 
 
-// redirect to community
+    #community
     public function community()
     {
-        $checkSession = new Home();
-        return $checkSession->checkIfSessionIsSet('/admin/dashboard','/','community');
+        return $this->isSessionSetThenRedirect('community', true);
     }
 
 
-// redirect to customize
+    #customize
     public function customize()
     {
-        $checkSession = new Home();
-        return $checkSession->checkIfSessionIsSet('/admin/dashboard','/','customize');
+        return $this->isSessionSetThenRedirect('customize');
     }
 
 
-
-
-// redirect to login and signup page
+    #login-and-signup
     public function login()
     {
-        $checkSession = new Home();
-        return $checkSession->checkIfSessionIsSet('/admin/dashboard','/','signup_login');
+        return $this->isSessionSetThenRedirect('signup_login');
     }
 }

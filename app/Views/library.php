@@ -27,76 +27,55 @@
             <h2>Gear Libary</h2>
         </div>
 
-        <!-- products - gears and modals when click -->
+        <!-- showcase category and show gears modal if click -->
         <div class="card-container">
-            <div class="library-card">
-                <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <button data-modal-target="#modal">Others</button>
 
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <div class="title">Musical</div>
-                        <button data-close-button class="close-button">&times;</button>
+            <?php if(!empty($categories)) :?>
+                <?php foreach($categories as $category) :?>
+
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/p1.png'); ?>"alt="no gear background is set">
+                        <h3><?= esc($category['category']) ?></h3>
+                        <button data-modal-target="#modal">View</button>
+        
+                        <div class="modal" id="modal">
+
+                            <?php if(!empty($gears)) :?>
+                                <?php foreach($gears as $gear) :?>
+
+                                    <div class="modal-header">   
+                                        <div class="title"></div>
+                                        <button data-close-button class="close-button">&times;</button>
+                                    </div>
+                
+                                    <div class="modal-body">
+                                        <img src="" alt="">
+                                        <h3></h3>
+                                    </div>
+
+                                <?php endforeach;?>
+                            <?php else :?>
+
+                                <div class="modal-header">   
+                                    <h3 style="color: red;"> No gears under this category.</h3>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+
+                            <?php endif;?>  
+
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <img src="<?= base_url('assets/img/p1.png') ?>" alt="">
-                        <h3>Lorem</h3>
-                    </div>  
+                    <div id="overlay"></div>
+
+                <?php endforeach;?>
+            <?php else :?>
+
+                <div class="library-card">
+                    <h3 style="color: red;">No Categories</h3>
                 </div>
-            </div>
 
-            <div class="library-card">
-                <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <button data-modal-target="#modal">Others</button>
-
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <div class="title">Musical</div>
-                        <button data-close-button class="close-button">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                        <h3>Lorem</h3>
-                    </div>  
-                </div>
-            </div>
-
-            <div class="library-card">
-                <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <button data-modal-target="#modal">Others</button>
-
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <div class="title">Musical</div>
-                        <button data-close-button class="close-button">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                        <h3>Lorem</h3>
-                    </div>  
-                </div>
-            </div>
-
-            <div class="library-card">
-                <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <button data-modal-target="#modal">Others</button>
-
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <div class="title">Musical</div>
-                        <button data-close-button class="close-button">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                        <h3>Lorem</h3>
-                    </div>  
-                </div>
-            </div>
-            <div id="overlay"></div>
+            <?php endif; ?>
+            
         </div>
     </div>
 

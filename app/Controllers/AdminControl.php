@@ -2,36 +2,25 @@
 
 namespace App\Controllers;
 /*
-press 'CTRL + F' to open search bar and type the methods starting with '#'
-enter '##' for a group of methods
-enter '#' for a method
 
-##redirectToPages
-    #dashboard
-    #transactions
-    #manageUsers
-    #products
-    #productsTable
-    #registerAdmin
-    #registerUser
+#logout - logout method controller to log out accounts
+#session - check the session if there is an account logged in
 
-##registerControls
-    #createAdmin
-    #createUser
+#dashboard - redirect to dashboard page in admin panel
+#transactions - redirect to transaction page in admin panel
+#manageUsers - redirect to manage_users page in admin panel
+#products - redirect to products page in admin panel
 
-##categoryControls
-    #category
-    #addCategory
+#registerAdmin - redirect to registerAdmin page in admin panel
+#registerUser - redirect to registerUser page in admin panel
 
-##gearControls
-    #products
-    #addGears
+#createAdmin - a controller for creating new admin account
+#createUser - a controller for creating new admin account
 
-other Controllers
-    #displaying
-    #logout
-    #manageAccountsController
-    #session
+#addGears - a controller for adding new gear
+#addCategory - a controller for adding new category for gears
+
+
 */
 
 use App\Models\admin_account_model;
@@ -43,15 +32,51 @@ use Config\Session as SessionConfig;
 
 class AdminControl extends BaseController
 {
+    #session
+    public function isSessionSetThenRedirect($page, $isDisplaying = false)
+    {
+        helper('cookie');
+        $session = session();
+        $sessionConfig = new SessionConfig();
+        $expirationTime = $sessionConfig->expiration;
+        $adminAccount = new admin_account_model();
+        $categoryModel = new category_table_model();
+        $productsModel = new products_table_model();
 
-// >>>>>  functions to LOGOUT of admin page and redirect back to homepage(no account)
-    // remove/unset and destroy the current session and redirect to homepage
+        $userAdmin_id = $session->get('admin_account_id');
+        $userAdmin_username = $session->get('username');
+
+        if(!$session->get('isLoggedIn') && !$session->get('account_type') ||
+            $session->get('isLoggedIn') && $session->get('account_type') == 'user') {
+            return redirect()->to('/');
+        }
+
+        if($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
+            $adminAccount->update($userAdmin_id, ['remember_token' => null]);
+            $adminAccount->update($userAdmin_username, ['remember_token' => null]);
+            $session->destroy();
+            delete_cookie('remember_token');
+            return redirect()->to('/');
+        }
+
+        if($isDisplaying == true) {
+            $container = [];
+            $container['categories'] = $categoryModel->getcategories();
+            $container['showProducts'] = $productsModel->getGearAlongWIthCategory();
+
+            return view($page, $container);
+        }
+        return view($page);
+    }
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
+
     #logout
     public function logout() 
     {
+        helper('cookie');
         $session = session();
         $adminAccount = new admin_account_model();
-        helper('cookie');
         
         $userAdmin_id = $session->get('admin_account_id');
         if($userAdmin_id) {
@@ -62,115 +87,59 @@ class AdminControl extends BaseController
         delete_cookie('remember_token');
         return redirect()->to('/');
     }
-    
-    
-// >>>>>   NAVIGATIONS AND VALIDATIONS OF PAGES    <<<<< //
-// CHECK SESSIONS AND REDIRECT
-    #session
-    #displaying
-    public function checkIfSessionIsSet($admin = null, $ifNotSet = null, $data = null)
-    {
-        $session = session();
-        $sessionConfig = new SessionConfig();
-        $expirationTime = $sessionConfig->expiration;
-        $adminAccount = new admin_account_model();
-        $categoryModel = new category_table_model();
-
-        $userAdmin_id = $session->get('admin_account_id');
-        $userAdmin_username = $session->get('username');
-        helper('cookie');
-
-        if(session()->get('isLoggedIn') && session()->get('account_type') === 'admin') {
-            if($session->get('timeLoggedIn') && (time() - $session->get('timeLoggedIn')) > $expirationTime) {
-                $adminAccount->update($userAdmin_id, ['remember_token' => null]);
-                $adminAccount->update($userAdmin_username, ['remember_token' => null]);
-                $session->destroy();
-                delete_cookie('remember_token');
-                return redirect()->to('/');
-            }
-            else {
-                #category - getting categories and displaying 
-                if($data != null && $data == 'category'){
-                    $val['category'] = $categoryModel->getcategories();
-                    return view($admin, $val);
-                }
-                return view($admin);
-            }
-        }
-        return redirect()->to($ifNotSet);
-    }
 
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
 
 
-
-
-
-// >>>>> .......... <<<<< //
-// DIRECT TO ADMINISTRATOR PAGES
-    // redirect to dashboard (main page after login)
-    ##redirectToPages
     #dashboard
     public function dashboard() 
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminIndex', '/');
+        return $this->isSessionSetThenRedirect('AdminSide/adminIndex');
     }
 
 
-    // direct to transactions (management of tracsactions made)
     #transactions
     public function transactions()
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminTransactions', '/');
+        return $this->isSessionSetThenRedirect('AdminSide/adminTransactions');
     }
 
 
-    // direct to manageusers (management of user accounts included the admin accounts)
     #manageUsers
     public function manageusers()
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminManageUsers', '/');
+        return $this->isSessionSetThenRedirect('AdminSide/adminManageUsers');
     }
 
 
-    // direct to products (management of products)
     #products
     public function products()
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminProducts', '/', 'category');
+        return $this->isSessionSetThenRedirect('AdminSide/adminProducts', true);
     }
 
 
 
-    // direct to register (page dedicated to the creation of administrator account)
     #registerAdmin
     public function register()
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminRegister', '/');
+        return $this->isSessionSetThenRedirect('AdminSide/adminRegister');
     }
 
-    // direct to register (page dedicated to the creation of User accounts)
+
     #registerUser
     public function registerUser()
     {
-        $checkSession = new AdminControl();
-        return $checkSession->checkIfSessionIsSet('AdminSide/adminRegisterUser', '/');
+        return $this->isSessionSetThenRedirect('AdminSide/adminRegisterUser');
     }
 
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
 
 
 
-
-// >>>>>    FUNCTION FOR ADMIN PAGES     <<<<< //
-    ##registerControls
     #createAdmin
-    // creating new admin account
     public function create_new_admin() 
     {
         $adminAccountModel = new admin_account_model();
@@ -187,8 +156,8 @@ class AdminControl extends BaseController
             'password' => $hashedPassword
         ];
 
-        $usernameExists = $adminAccountModel->checkUsername($username);
-        $emailExists = $adminAccountModel->checkEmail($email);
+        $usernameExists = $adminAccountModel->getUsername($username);
+        $emailExists = $adminAccountModel->getEmail($email);
 
         if ($usernameExists && $emailExists) {
             session()->setFlashdata('errorAdmin', 'Both username and email are already in use.');
@@ -208,7 +177,6 @@ class AdminControl extends BaseController
 
 
     #createUser
-    // creating new user account through admin panel though
     public function create_new_user()
         {
             $userAccount = new user_account_model();
@@ -231,8 +199,8 @@ class AdminControl extends BaseController
                 'password' => $hashedPassword
             ];
     
-            $usernameExist = $userAccount->checkUsername($username);
-            $emailExist = $userAccount->checkEmail($email);
+            $usernameExist = $userAccount->getUsername($username);
+            $emailExist = $userAccount->getEmail($email);
     
             if ($usernameExist && $emailExist) {
                 session()->setFlashdata('errorUser', 'Both username and email are already in use.');
@@ -250,41 +218,33 @@ class AdminControl extends BaseController
             }
         }
 
-    // user account management ( managing accounts for users of this website : i will also include later the management of admin accounts)
-    #manageAccountsController
-    public function manageAccounts() 
-    {
 
-    }
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #
 
 
-
-
-    
-
-// >>>>>    OTHER CONTROLS  <<<<< //
     #addGears
     public function addGears() 
     {
         $productGear = new products_table_model();
     
-        $category = $this->request->getPost('categorySelected');
         $gearName = $this->request->getPost('gear');
         $description = $this->request->getPost('description');
         $price = $this->request->getPost('price');
         $quantity = $this->request->getPost('quantity');
+        $category = $this->request->getPost('categorySelected');
         $gearImageUrl = $this->request->getFile('image');
     
-        $gearIsExist = $productGear->checkProductExistent($gearName);
+        $gearIsExist = $productGear->getGear($gearName);
         
         if ($gearIsExist) {
             return redirect()->back()->with('gearError', '\'' . $gearName . '\' gear already exists');
         }
-    
+        if($category == "") { $category = null; }
+
         if ($gearImageUrl->isValid() && !$gearImageUrl->hasMoved()) {
             $generatedRandomName = $gearImageUrl->getRandomName();
-            $gearImageUrl->move('/assets/uploads/', $generatedRandomName);
-            $imageUrlPath = base_url('assets/uploads/' . $generatedRandomName);
+            $gearImageUrl->move('Admin_side_Assets/uploads/', $generatedRandomName);
+            $imageUrlPath = base_url('Admin_side_Assets/uploads/' . $generatedRandomName);
     
             $productGear->save([
                 'category_id' => $category,
@@ -294,13 +254,16 @@ class AdminControl extends BaseController
                 'stock_quantity' => $quantity,
                 'image_url' => $imageUrlPath
             ]);
+
+            if($category == "") {
+                return redirect()->back()->with('gearAdded', '\'' . $gearName . '\' Gear Added, but category is not set');
+            }
             return redirect()->back()->with('gearAdded', '\'' . $gearName . '\' Gear Added');
         }
-        return redirect()->back()->with('gearError', 'Something went wrong!');
+        return redirect()->back()->with('gearError', 'Image is not set or not valid!');
     }
     
 
-    ##categoryControls
     #addCategory
     public function addNewCategory()
     {

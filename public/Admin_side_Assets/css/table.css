@@ -3,16 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 table thead tr th {
     border: 3px solid;
-    padding: 10px;
     border-collapse: collapse;
     text-align: center;
 }
 
 table tbody tr td{
-    margin: 200px;
     border: 1px solid;
     border-collapse: collapse;
     padding-block: 10px;

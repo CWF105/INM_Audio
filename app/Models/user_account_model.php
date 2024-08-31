@@ -26,11 +26,11 @@ class user_account_model extends Model
     protected $useTimeStamps = true;
 
 
-    public function checkUsername($username) {
+    public function getUsername($username) {
         return $this->where('username', $username)->first();
     }
 
-    public function checkEmail($email) {
+    public function getEmail($email) {
         return $this->where('email', $email)->first();
     }
 }

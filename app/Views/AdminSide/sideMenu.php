@@ -6,7 +6,7 @@
       <div>
 
       <!-- logo -->
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+        <div class="brand-logo d-flex align-items-center justify-content-between" style="margin-top: 30px;">
           <a href="<?= base_url('/dashboard') ?>" class="text-nowrap logo-img">
             <img src="<?= base_url('assets/img/logo.png') ?>" width="150" alt="logo" />
           </a>

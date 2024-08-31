@@ -20,15 +20,25 @@ class products_table_model extends Model
     protected $useTimestamps = true; 
 
 
-    public function checkProductExistent($gear)
+    // get gear, if match by $gear parameter
+    public function getGear($gear)
     {
         return $this->where('product_name', $gear)->first();
     }
 
-    public function getProductsAlongWIthCategory()
+    // get all gears in the database table and return as an array
+    public function getGears()
     {
-       $sql = "SELECT * FROM products as prod JOIN category as cat ON cat.category_id = prod.category_id";
-       $query = $this->db->query($sql);
-       return $query->getResultArray();
+        return $this->findAll();
+    }
+
+    // get all gear with category by using left joins
+    public function getGearAlongWIthCategory()
+    {    
+       $sql = "SELECT * FROM products AS prod 
+               LEFT JOIN category AS cat 
+               ON cat.category_id = prod.category_id";
+        $query = $this->db->query($sql);
+        return $query->getResultArray();
     }
 }

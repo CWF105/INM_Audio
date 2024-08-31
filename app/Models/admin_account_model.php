@@ -18,13 +18,14 @@ class admin_account_model extends Model
     
     protected $useTimestamps = true; 
 
-    // validate - check if username or email is already in used
-    public function checkUsername($username)
+    // get username if retrieve data from the database table, match with parameter $username
+    public function getUsername($username)
     {
         return $this->where('username', $username)->first();
     }
 
-    public function checkEmail($email)
+    // get email if retrieve data from the database table, match with parameter $email
+    public function getEmail($email)
     {
         return $this->where('email', $email)->first();
     }
