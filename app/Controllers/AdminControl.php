@@ -116,7 +116,7 @@ class AdminControl extends BaseController
     #products
     public function products()
     {
-        return $this->isSessionSetThenRedirect('AdminSide/adminProducts', true);
+        return $this->isSessionSetThenRedirect('AdminSide/productsPage/adminProducts', true);
     }
 
 
