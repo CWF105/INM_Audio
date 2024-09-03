@@ -27,7 +27,7 @@ class Cookie extends BaseConfig
      *
      * @var DateTimeInterface|int|string
      */
-    public $expires = 7200;
+    public $expires = 604800; // set to 7 days before deleting the cookie
 
     /**
      * --------------------------------------------------------------------------

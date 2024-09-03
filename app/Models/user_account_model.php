@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Models;
-
 use CodeIgniter\Model;
 
-class user_account_model extends Model
+class User_Account_Model extends Model
 {
     protected $table = 'user_accounts';
     protected $primaryKey = 'user_id';
-
     protected $allowedFields = [
         'firstname',
         'lastname',
@@ -22,15 +20,11 @@ class user_account_model extends Model
         'password',
         'remember_token'
     ];
-
     protected $useTimeStamps = true;
 
-
-    public function getUsername($username) {
-        return $this->where('username', $username)->first();
+    public function getUser($field, $toGet) 
+    {
+        return $this->where($field, $toGet)->first();
     }
 
-    public function getEmail($email) {
-        return $this->where('email', $email)->first();
-    }
 }

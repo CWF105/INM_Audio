@@ -15,20 +15,19 @@ use CodeIgniter\Router\RouteCollection;
 
 
 
-
+## ---------------------------------------------------------------------
 // Home page Routing
 $routes->group('', function($routes) 
 {
-    $routes->get('/', 'Home::homepage');
-    $routes->get('/library', 'Home::library');
-    $routes->get('/community', 'Home::community');
-    $routes->get('/customize', 'Home::customize');
+    $routes->get('/', 'Main::homepage');
+    $routes->get('/library', 'Main::library');
+    $routes->get('/community', 'Main::community');
+    $routes->get('/customize', 'Main::customize');
 
-    $routes->get('/login', 'Home::login');
+    $routes->get('/login', 'Main::login');
 });
 
-
-
+## ---------------------------------------------------------------------
 // shop routing
 $routes->group('', function($routes){
     $routes->get('/shop', 'Shop::shop');
@@ -37,12 +36,31 @@ $routes->group('', function($routes){
     $routes->get('/donePurchase', 'Shop::donePurchase');
 });
 
-
+## ---------------------------------------------------------------------
 // account routing [admins/users]
 $routes->group('/account/', function($routes){
-    $routes->post('login', 'Account_Login_Signup::login_admin_or_user');
-    $routes->post('signup', 'Account_Login_Signup::signup_user');
+    $routes->post('signup', 'Login_SignupController::signup_user');
+    $routes->post('login', 'Login_SignupController::loginAdminAndUser');
 });
+
+## ---------------------------------------------------------------------
+// admin routers
+$routes->group('/admin/', function($routes) {
+    $routes->get('accountSetting', 'AdminController::accountSetting');
+    $routes->get('dashboard', 'AdminController::dashboard');
+    $routes->get('transactions', 'AdminController::transactions');
+    $routes->get('gears', 'AdminController::gearManagement');
+    
+    // logging out admin account
+    $routes->get('loggingOut', 'AdminController::logout');
+
+    // register new admin or user account
+    $routes->get('registerA', 'AdminController::register');
+    $routes->get('registerU', 'AdminController::registerUser');
+
+});
+
+
 
 //admin and user account routes
 $routes->group('/admin/', function($routes){
