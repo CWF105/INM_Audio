@@ -49,8 +49,15 @@ $routes->group('/admin/', function($routes) {
     $routes->get('accountSetting', 'AdminController::accountSetting');
     $routes->get('dashboard', 'AdminController::dashboard');
     $routes->get('transactions', 'AdminController::transactions');
+
+// gear management
     $routes->get('gears', 'AdminController::gearManagement');
-    
+    $routes->get('gears/addGears', 'AdminController::addGears');// redirect to gear view
+    $routes->post('gears/addGear', 'AdminController::addGear'); // gear controller for adding {POST}
+    $routes->get('gears/removeGears/(:num)', 'AdminController::removeGear/$1'); // gear controller for removing a gear
+
+    $routes->get('gears/addCategory', 'AdminController::addCategories'); //  redirect to category view
+
     // logging out admin account
     $routes->get('loggingOut', 'AdminController::logout');
 
@@ -59,6 +66,20 @@ $routes->group('/admin/', function($routes) {
     $routes->get('registerU', 'AdminController::registerUser');
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

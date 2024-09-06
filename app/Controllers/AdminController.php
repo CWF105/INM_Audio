@@ -17,7 +17,9 @@ class AdminController extends BaseController
         $sessionConfig = new SessionConfig();
         $expirationTime = $sessionConfig->expiration;
         $adminAccount = new adminAccount();
-
+        $categories = new categories();
+        $gears = new gears();
+        
         $admin_id = $session->get('admin_id');
         $username = $session->get('username');
 
@@ -40,7 +42,9 @@ class AdminController extends BaseController
         }
 
         if($isDisplaying == true) {
-            $container = [];
+            $container = []; 
+            $container['gears'] = $gears->getGearLeftJoinCategory();
+            $container['categories'] = $categories->getAll();
             return view($path, $container);
         }
         return view($path);
@@ -88,10 +92,18 @@ class AdminController extends BaseController
     }
 
 
-// redirect to gearManagement
+// redirect to gearManagement / addGear / addCategory
     public function gearManagement() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/gearManagement'); 
+        return $this->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true); 
+    }
+    public function addGears() 
+    {
+        return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addGear', true);;
+    }
+    public function addCategories()
+    {
+        return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true);;
     }
 
 
@@ -135,5 +147,66 @@ class AdminController extends BaseController
     public function createNewUser()
     {
 
+    }
+
+
+
+
+
+
+
+
+
+
+## ---------------------------------------------------------------------
+// add new gear
+    public function addGear() 
+    {
+        $productGear = new gears();
+
+        $gearName = $this->request->getPost('gear');
+        $description = $this->request->getPost('description');
+        $price = $this->request->getPost('price');
+        $quantity = $this->request->getPost('quantity');
+        $category = $this->request->getPost('categorySelected');
+        $gearImageUrl = $this->request->getFile('image');
+
+        $gearIsExist = $productGear->getGear('product_name', $gearName);
+        
+        if ($gearIsExist) {
+            return redirect()->back()->with('gearError', '\'' . $gearName . '\' gear already exists');
+        }
+        if($category == "") { $category = null; }
+
+        if ($gearImageUrl->isValid() && !$gearImageUrl->hasMoved()) {
+            $generatedRandomName = $gearImageUrl->getRandomName();
+            $gearImageUrl->move('admin/uploads/', $generatedRandomName);
+            $imageUrlPath = base_url('admin/uploads/' . $generatedRandomName);
+
+            $productGear->save([
+                'category_id' => $category,
+                'product_name' => $gearName,
+                'description' => $description,
+                'price' => $price,
+                'stock_quantity' => $quantity,
+                'image_url' => $imageUrlPath
+            ]);
+
+            if($category == "") {
+                return redirect()->back()->with('gearAdded', '\'' . $gearName . '\' Gear Added, but category is not set');
+            }
+            return redirect()->back()->with('gearAdded', '\'' . $gearName . '\' Gear Added');
+        }
+        return redirect()->back()->with('gearError', 'Image is not set or not valid!');
+    }
+
+// remove gear
+    public function removeGear($id) 
+    {
+        $gears = new Gears();
+        
+        if ($gears->delete($id)) {
+            return redirect()->to('/admin/gears')->with('removeSuccess', 'Product deleted successfully.');
+        }
     }
 }

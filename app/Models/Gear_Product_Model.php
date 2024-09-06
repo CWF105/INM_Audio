@@ -31,6 +31,15 @@ class Gear_Product_Model extends Model
         return $this->where($field, $toGet)->first();
     }
 
+
+    public function removeGear($field = null, $toRemove)
+    {
+        if(empty($field)) {
+            return $this->delete($toRemove);
+        }
+        return $this->delete($field, $toRemove);
+    }
+
     public function getGearLeftJoinCategory()
     {    
        $sql = "SELECT * FROM products AS prod 

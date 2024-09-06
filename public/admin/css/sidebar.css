@@ -45,6 +45,7 @@
     padding-left: 10px;
     color: white;
     text-decoration: none;
+    margin-block: 2px;
 }
 .sidenav ul a:hover {
     background-color: #333;
