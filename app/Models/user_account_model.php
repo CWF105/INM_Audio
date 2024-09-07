@@ -8,6 +8,7 @@ class User_Account_Model extends Model
     protected $table = 'user_accounts';
     protected $primaryKey = 'user_id';
     protected $allowedFields = [
+        'profile_pic',
         'firstname',
         'lastname',
         'email',

@@ -9,6 +9,7 @@ use INM_Audio;
 -- create admin table
 create table admin_accounts (
     admin_account_id int auto_increment primary key,
+    profile_pic LONGBLOB,
     username varchar(255) not null,
     email varchar(255) not null,
     password varchar(255) not null,
@@ -27,6 +28,7 @@ values ('admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbU
 -- user accounts info
 create table user_accounts(
   user_id int auto_increment primary key,
+  profile_pic LONGBLOB, 
   firstname varchar(255) not null,
   lastname varchar(255) not null,
   email varchar(255) not null,

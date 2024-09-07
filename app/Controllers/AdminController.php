@@ -43,8 +43,13 @@ class AdminController extends BaseController
 
         if($isDisplaying == true) {
             $container = []; 
+            $container['adminAccount'] = $adminAccount->getUser('admin_account_id', session()->get('admin_id'));
             $container['gears'] = $gears->getGearLeftJoinCategory();
             $container['categories'] = $categories->getAll();
+
+            if(!$container['adminAccount']) {
+                return redirect()->to('/admin/loggingOut');
+            }
             return view($path, $container);
         }
         return view($path);
@@ -81,14 +86,14 @@ class AdminController extends BaseController
 // redirect to dashboard
     public function dashboard() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/dashboard'); 
+        return $this->isSessionSetThenRedirect('AdminSide/dashboard', true); 
     }
 
 
 // redirect to transactions
     public function transactions() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/transactions'); 
+        return $this->isSessionSetThenRedirect('AdminSide/transactions', true); 
     }
 
 
@@ -97,10 +102,12 @@ class AdminController extends BaseController
     { 
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true); 
     }
+    // redirect to add gears page
     public function addGears() 
     {
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addGear', true);;
     }
+    // redirect to add categories page
     public function addCategories()
     {
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true);;
@@ -110,21 +117,21 @@ class AdminController extends BaseController
 // redirect to register
     public function register() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/registerA'); 
+        return $this->isSessionSetThenRedirect('AdminSide/register/registerA'); 
     }
 
 
 // redirect to registerUser
     public function registerUser() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/registerU'); 
+        return $this->isSessionSetThenRedirect('AdminSide/register/registerU'); 
     }
 
 
 // redirect to accountSetting
     public function accountSetting() 
     { 
-        return $this->isSessionSetThenRedirect('AdminSide/accountSetting'); 
+        return $this->isSessionSetThenRedirect('AdminSide/accountSetting', true); 
     }
 
 
@@ -139,14 +146,80 @@ class AdminController extends BaseController
 // create admin account
     public function createNewAdmin()
     {
-        
+        $adminAccountModel = new adminAccount();
+
+        $username = $this->request->getPost('username');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $prepareData = [
+            'username' => $username,
+            'email' => $email,
+            'password' => $hashedPassword
+        ];
+
+        $usernameExists = $adminAccountModel->getUser('username', $username);
+        $emailExists = $adminAccountModel->getUser('email', $email);
+
+        if ($usernameExists && $emailExists) {
+            session()->setFlashdata('errorAdmin', 'Both username and email are already in use.');
+            return redirect()->to('/admin/registerA');
+        } elseif ($usernameExists) {
+            session()->setFlashdata('errorAdmin', 'Username is already in use.');
+            return redirect()->to('/admin/registerA');
+        } elseif ($emailExists) {
+            session()->setFlashdata('errorAdmin', 'Email is already in use.');
+            return redirect()->to('/admin/registerA');
+        } else {
+            $adminAccountModel->save($prepareData);
+            session()->setFlashdata('successAdmin', 'Administrator account created successfully.');
+            return redirect()->to('/admin/registerA');
+        }
     }
 
 
 // create user account
     public function createNewUser()
     {
+        $userAccount = new userAccount();
+            
+        $firstName = $this->request->getPost('fname');
+        $lastName = $this->request->getPost('lname');
+        $email = $this->request->getPost('email');
+        $phonenumber = $this->request->getPost('pnum');
+        $username = $this->request->getPost('user');
+        $password = $this->request->getPost('pass');
 
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $prepareData = [
+            'firstname' => $firstName,
+            'lastname' => $lastName,
+            'email' => $email,
+            'phone_number' => $phonenumber,
+            'username' => $username,
+            'password' => $hashedPassword
+        ];
+
+        $usernameExist = $userAccount->getUser('username', $username);
+        $emailExist = $userAccount->getUser('email', $email);
+
+        if ($usernameExist && $emailExist) {
+            session()->setFlashdata('errorUser', 'Both username and email are already in use.');
+            return redirect()->to('/admin/registerU');
+        } elseif ($usernameExist) {
+            session()->setFlashdata('errorUser', 'Username is already in use.');
+            return redirect()->to('/admin/registerU');
+        } elseif ($emailExist) {
+            session()->setFlashdata('errorUser', 'Email is already in use.');
+            return redirect()->to('/admin/registerU');
+        } else {
+            $userAccount->save($prepareData);
+            session()->setFlashdata('successUser', 'Account created successfully.');
+            return redirect()->to('/admin/registerU');
+        }
     }
 
 
@@ -200,6 +273,9 @@ class AdminController extends BaseController
         return redirect()->back()->with('gearError', 'Image is not set or not valid!');
     }
 
+
+
+
 // remove gear
     public function removeGear($id) 
     {
@@ -208,5 +284,114 @@ class AdminController extends BaseController
         if ($gears->delete($id)) {
             return redirect()->to('/admin/gears')->with('removeSuccess', 'Product deleted successfully.');
         }
+    }
+
+
+
+// add new category
+    public function addNewCategory()
+    {
+        $categories = new categories();
+        $category = $this->request->getPost('category');
+        $retrieveCategory = $categories->getCategory('category', $category);
+
+        if($retrieveCategory) {
+            return redirect()->back()->with('catError', '\'' . $category . '\' category already exist');
+        }
+        $categories->save(['category' => $category]);
+        return redirect()->back()->with('catAdded', '\''. $category .'\' category Added');          
+    }
+
+// remove category by id
+    public function removeCategory($id)
+    {
+        $categories = new categories();
+        if ($categories->delete($id)) {
+            return redirect()->to('/admin/gears/addCategory')->with('catDeleted', 'Category deleted successfully.');
+        }
+    }
+
+
+
+// update admin account - admin settings panel
+    public function updateAdmin() 
+    {
+        $session = session();
+        $adminAccount = new adminAccount();
+
+        $username = $this->request->getPost('username');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $admin = $adminAccount->getUser('admin_account_id', $session->get('admin_id'));
+        $adminUsername = $adminAccount->getUser('username', $username);
+        $adminEmail = $adminAccount->getUser('email', $email);
+
+        // check if the image file is empty - if not empty proceed with this if statement
+        if(!empty($this->request->getFile('profile_pic')) && $this->request->getFile('profile_pic')->isValid()) {
+            $pfp = $this->request->getFile('profile_pic');
+            $data['profile_pic'] = file_get_contents($pfp->getTempName());
+
+            $adminAccount->update($admin, $data);
+            return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+        }
+
+        // check if username, email or both are existing and already in use by another or currently in used
+        if($adminUsername) {
+            $session->setFlashdata('existingUsername', 'Username is already in use');
+            return redirect()->back();
+        }
+        if($adminEmail) {
+            $session->setFlashdata('existingEmail', 'Email is already in use');
+            return redirect()->back();
+        }
+        if($adminUsername && $adminEmail) {
+            $session->setFlashdata('existingBoth', 'Username and Email is already in use');
+            return redirect()->back();
+        }
+
+        // check if the password field is empty if empty proceed and update without the password
+        if(!empty($password)) {
+            $data = [
+                'username' => $username,
+                'email' => $email
+            ];
+            if($this->request->getFile('profile_pic')->isValid()) {
+                $pfp = $this->request->getFile('profile_pic');
+                $data['profile_pic'] = file_get_contents($pfp->getTempName());
+            }
+            $adminAccount->update($admin, $data);
+            return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+        }
+
+        // if the conditions above didnt turn true, proceed with this one below
+        $data = [
+            'username' => $username,
+            'email' => $email,
+            'password' => $password
+        ];
+
+        if($this->request->getFile('profile_pic')->isValid()) {
+            $pfp = $this->request->getFile('profile_pic');
+            $data['profile_pic'] = file_get_contents($pfp->getTempName());
+        }
+
+        $adminAccount->update($admin, $data);
+        return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+    }
+
+
+
+// delete admin account - admin settings panel
+    public function deleteAdmin($id)
+    {
+        helper('cookie');
+        $session = session();
+        $adminAccount = new adminAccount();
+
+        $session->destroy();    
+        delete_cookie('remember_token');
+        $adminAccount->delete($id);
+        return redirect()->to('/');
     }
 }

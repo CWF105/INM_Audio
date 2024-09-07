@@ -10,7 +10,7 @@ use App\Models\Gear_Product_Model as gearProduct;
 class Main extends BaseController
 {
 // check if session is set to admin account, user account or is not set to any account
-    public function isSessionSetThenRedirect($path, $returnVal = null)
+    public function isSessionSetThenRedirect($path, $isDisplaying = null)
     {
         helper('cookie');
         $session = session();

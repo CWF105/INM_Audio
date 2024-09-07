@@ -72,7 +72,7 @@
                                 <td id="eight">
                                     <a href="<?= base_url('') ?>"><button class="btn btn-primary">Edit</button></a>
                                     <a href="<?= base_url('/admin/gears/removeGears/'. $gear['product_id']) ?>">
-                                        <button onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-danger">Remove</button>
+                                        <button onclick="return confirm('Are you sure you want to delete this Gear?')" class="btn btn-danger">Remove</button>
                                     </a>
                                 </td>
                             </tr>
@@ -110,6 +110,8 @@
         </div>
     </div>
 
+
+<!-- scripts -->
 <script>
      <?php if(session()->getFlashdata('removeSuccess')): ?>
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));

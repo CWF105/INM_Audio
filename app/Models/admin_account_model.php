@@ -10,6 +10,7 @@ class Admin_Account_Model extends Model
     protected $primaryKey = 'admin_account_id';
 
     protected $allowedFields = [
+        'profile_pic',
         'username',
         'email',
         'password',

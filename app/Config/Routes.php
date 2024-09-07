@@ -30,10 +30,10 @@ $routes->group('', function($routes)
 ## ---------------------------------------------------------------------
 // shop routing
 $routes->group('', function($routes){
-    $routes->get('/shop', 'Shop::shop');
-    $routes->get('/cart', 'Shop::cart');
-    $routes->get('/buy', 'Shop::buynow');
-    $routes->get('/donePurchase', 'Shop::donePurchase');
+    $routes->get('/shop', 'ShopController::shop');
+    $routes->get('/cart', 'ShopController::cart');
+    $routes->get('/buy', 'ShopController::buynow');
+    $routes->get('/donePurchase', 'ShopController::donePurchase');
 });
 
 ## ---------------------------------------------------------------------
@@ -53,17 +53,26 @@ $routes->group('/admin/', function($routes) {
 // gear management
     $routes->get('gears', 'AdminController::gearManagement');
     $routes->get('gears/addGears', 'AdminController::addGears');// redirect to gear view
-    $routes->post('gears/addGear', 'AdminController::addGear'); // gear controller for adding {POST}
+    $routes->post('gears/addGear', 'AdminController::addGear'); // gear controller for adding new gear{POST}
     $routes->get('gears/removeGears/(:num)', 'AdminController::removeGear/$1'); // gear controller for removing a gear
 
     $routes->get('gears/addCategory', 'AdminController::addCategories'); //  redirect to category view
+    $routes->post('gears/addCat', 'AdminController::addNewCategory'); // category controller for adding new category{POST}
+    $routes->get('gears/removeCats/(:num)', 'AdminController::removeCategory/$1'); // category controller for removing a category
 
-    // logging out admin account
+// logging out admin account
     $routes->get('loggingOut', 'AdminController::logout');
 
-    // register new admin or user account
+// register new admin or user account
     $routes->get('registerA', 'AdminController::register');
+    $routes->post('registerAdmin', 'AdminController::createNewAdmin');
+
     $routes->get('registerU', 'AdminController::registerUser');
+    $routes->post('registerUser', 'AdminController::createNewUser');
+
+// admin account setting management
+    $routes->post('updateAccount', 'AdminController::updateAdmin');
+    $routes->get('deleteAccount/(:num)', 'AdminController::deleteAdmin/$1');
 
 });
 

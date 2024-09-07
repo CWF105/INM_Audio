@@ -39,11 +39,6 @@
         <!-- Main -->
         <div class="container-content">
             <div class="form">
-                <!-- success and error message after adding new category -->
-                <?php 
-                    if(session()->getFlashdata('gearError')) { echo "<h5 class='error'>". session()->get('gearError') ."</h5>"; }
-                    if(session()->getFlashdata('gearAdded')) { echo "<h5 class='success'>". session()->get('gearAdded') ."</h5>"; }
-                ?>
                 <form action="<?= base_url('/admin/gears/addGear') ?>" method="post" enctype="multipart/form-data">
                     <div class="mb-3 mt-3">
                         <label for="gear" class="form-label">Gear Name</label>
@@ -83,7 +78,7 @@
                         <label for="image" class="form-label">Gear Image</label>
                         <input type="file" class="form-control" id="image" name="image" accept="image/*">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
@@ -91,6 +86,40 @@
     </section>
 </main>
 
+
+<!-- successful creating gear - modal show -->
+<!-- success and error message after adding new category -->
+   <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <center>
+                    <span style="color: green; font-size: 24px; padding: 15px;">
+                        <?php if(session()->getFlashdata('gearAdded')) :?>
+                            <?= esc(session()->get('gearAdded')) ?>
+                        <?php endif;?>
+                    </span>
+                    <span style="color: red; font-size: 24px; padding: 15px;">
+                        <?php if(session()->getFlashdata('gearError')) :?>
+                            <?= esc(session()->get('gearError')) ?>
+                        <?php endif;?>
+                    </span>
+                </center>
+                <center>
+                    <button type="button" style="font-size: 10px; width: 100px; padding: 10px;" class="btn btn-danger" data-bs-dismiss="modal">
+                        Close
+                    </button> 
+                </center>
+            </div>
+        </div>
+    </div>
+
+<!-- scripts -->
+<script>
+    <?php if(session()->getFlashdata('gearAdded') || session()->getFlashdata('gearError')): ?>
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        myModal.show();
+    <?php endif; ?>
+</script>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
