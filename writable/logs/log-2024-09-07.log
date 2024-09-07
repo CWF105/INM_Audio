@@ -6286,3 +6286,1109 @@ WARNING - 2024-09-07 18:45:56 --> [DEPRECATED] Optional parameter $field declare
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:52:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:52:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:52:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:52:08 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:52:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:52:54 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:52:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:52:56 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:52:57 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(96): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/transactions', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->transactions()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:52:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:52:58 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:01 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(120): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/register/registerA')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->register()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:03 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:05 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:07 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:09 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:11 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:53:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:17 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 18:53:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 18:53:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 18:53:22 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:01:06 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:01:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:01:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:01:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:01:16 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:01:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:01:56 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:02:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:02:25 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:02:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:02:28 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:02:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:02:35 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:02:42 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:04:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:04:30 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:05:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:05:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:05:03 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:05:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:05:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:05:21 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:05:53 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:08:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:08:46 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(108): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addGear', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addGears()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:08:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:08:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:08:50 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(113): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addCategories()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:08:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:08:55 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(96): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/transactions', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->transactions()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:08:58 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(103): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:16:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:16:02 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:36:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:36:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:36:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:11 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:14 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(120): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/register/registerA')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->register()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:30 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(120): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/register/registerA')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->register()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:32 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:45 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:46 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:37:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:37:52 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:38:04 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:38:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:38:14 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:38:19 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:38:34 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:38:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:17 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:21 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(120): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/register/registerA')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->register()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:34 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(120): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/register/registerA')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->register()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:36 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:44 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(89): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/dashboard', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:46 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:52 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:41:58 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:42:19 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:42:33 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:44:52 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:47:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:47:34 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:47:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:47:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:47:57 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:48:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:48:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:48:14 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:48:33 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:48:43 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:49:30 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:49:50 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:49:52 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:49:58 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:02 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:09 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:15 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:20 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:27 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:50:37 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:51:05 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:51:11 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:51:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:51:32 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:52:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:52:56 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:53:00 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:54:21 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:54:33 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:54:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:55:04 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:55:27 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:55:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 22:55:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 22:55:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-07 22:55:59 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->isSessionSetThenRedirect('AdminSide/accountSetting', true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->accountSetting()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-07 23:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:01:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:03:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:03:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-07 23:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

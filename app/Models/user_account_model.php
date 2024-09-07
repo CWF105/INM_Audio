@@ -23,9 +23,21 @@ class User_Account_Model extends Model
     ];
     protected $useTimeStamps = true;
 
+    public function getAll() 
+    {
+        return $this->findAll();
+    }
+
+
     public function getUser($field, $toGet) 
     {
         return $this->where($field, $toGet)->first();
+    }
+
+    
+    public function checkIfDataIsUsedByAnotherUser($field, $toGet, $condition)
+    {
+        return $this->where($field, $toGet)->where($field . $condition, $toGet)->countAllResults();
     }
 
 }

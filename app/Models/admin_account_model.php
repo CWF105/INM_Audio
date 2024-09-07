@@ -24,8 +24,15 @@ class Admin_Account_Model extends Model
         return $this->findAll();
     }
 
+
     public function getUser($field, $toGet) 
     {
         return $this->where($field, $toGet)->first();
+    }
+
+
+    public function checkIfDataIsUsedByAnotherUser($field, $toGet, $condition)
+    {
+        return $this->where($field, $toGet)->where($field . $condition, $toGet)->countAllResults();
     }
 }

@@ -81,7 +81,7 @@ class AdminController extends BaseController
 
 
 
-
+    
 ## ---------------------------------------------------------------------
 // redirect to dashboard
     public function dashboard() 
@@ -102,12 +102,14 @@ class AdminController extends BaseController
     { 
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/gearManagement', true); 
     }
-    // redirect to add gears page
+
+// redirect to add gears page
     public function addGears() 
     {
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addGear', true);;
     }
-    // redirect to add categories page
+
+// redirect to add categories page
     public function addCategories()
     {
         return $this->isSessionSetThenRedirect('AdminSide/gearManagement/addCategory', true);;
@@ -136,6 +138,7 @@ class AdminController extends BaseController
 
 
 
+    
 
 
 
@@ -227,10 +230,6 @@ class AdminController extends BaseController
 
 
 
-
-
-
-
 ## ---------------------------------------------------------------------
 // add new gear
     public function addGear() 
@@ -273,9 +272,6 @@ class AdminController extends BaseController
         return redirect()->back()->with('gearError', 'Image is not set or not valid!');
     }
 
-
-
-
 // remove gear
     public function removeGear($id) 
     {
@@ -288,6 +284,9 @@ class AdminController extends BaseController
 
 
 
+
+
+## ---------------------------------------------------------------------
 // add new category
     public function addNewCategory()
     {
@@ -313,19 +312,22 @@ class AdminController extends BaseController
 
 
 
+
+## ---------------------------------------------------------------------
 // update admin account - admin settings panel
     public function updateAdmin() 
     {
         $session = session();
         $adminAccount = new adminAccount();
+        $userAccount = new userAccount();
 
         $username = $this->request->getPost('username');
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
         $admin = $adminAccount->getUser('admin_account_id', $session->get('admin_id'));
-        $adminUsername = $adminAccount->getUser('username', $username);
-        $adminEmail = $adminAccount->getUser('email', $email);
+        $userUsername = $userAccount->getUser('username', $username);
+        $userEmail = $userAccount->getUser('email', $email);
 
         // check if the image file is empty - if not empty proceed with this if statement
         if(!empty($this->request->getFile('profile_pic')) && $this->request->getFile('profile_pic')->isValid()) {
@@ -336,22 +338,26 @@ class AdminController extends BaseController
             return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
         }
 
+
         // check if username, email or both are existing and already in use by another or currently in used
-        if($adminUsername) {
+        $admin_Username = $adminAccount->checkIfDataIsUsedByAnotherUser('username', $username, '!=');
+        $admin_email = $adminAccount->checkIfDataIsUsedByAnotherUser('email', $email, '!=');
+
+        if($admin_Username > 0 || $userUsername) {
             $session->setFlashdata('existingUsername', 'Username is already in use');
             return redirect()->back();
         }
-        if($adminEmail) {
+        if($admin_email > 0 || $userEmail) {
             $session->setFlashdata('existingEmail', 'Email is already in use');
             return redirect()->back();
         }
-        if($adminUsername && $adminEmail) {
+        if($admin_Username > 0 && $admin_email > 0 || $userUsername && $userEmail) {
             $session->setFlashdata('existingBoth', 'Username and Email is already in use');
             return redirect()->back();
         }
 
         // check if the password field is empty if empty proceed and update without the password
-        if(!empty($password)) {
+        if(empty($password)) {
             $data = [
                 'username' => $username,
                 'email' => $email
@@ -365,10 +371,11 @@ class AdminController extends BaseController
         }
 
         // if the conditions above didnt turn true, proceed with this one below
+        $hashedPass = password_hash($password, PASSWORD_DEFAULT);
         $data = [
             'username' => $username,
             'email' => $email,
-            'password' => $password
+            'password' => $hashedPass
         ];
 
         if($this->request->getFile('profile_pic')->isValid()) {
@@ -379,8 +386,6 @@ class AdminController extends BaseController
         $adminAccount->update($admin, $data);
         return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
     }
-
-
 
 // delete admin account - admin settings panel
     public function deleteAdmin($id)
@@ -394,4 +399,10 @@ class AdminController extends BaseController
         $adminAccount->delete($id);
         return redirect()->to('/');
     }
+
+
+
+
+## ---------------------------------------------------------------------
+
 }
