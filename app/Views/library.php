@@ -44,7 +44,7 @@
                     <div class="modal" id="modal-<?= $index; ?>">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <div class="title"><?= esc($category['category']) ?></div>
+                                <div class="title"><h2><?= esc($category['category']) ?></h2></div>
                                 <button data-close-button class="close-button">&times;</button>
                             </div>
                             <div class="modal-body">
@@ -60,7 +60,13 @@
                                 <?php foreach ($gearsForCategory as $gear) : ?>
 
                                     <div class="gears">
-                                        <h3><?= esc($gear['product_name']) ?></h3>
+                                        <div class="con">
+                                            <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
+                                                <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
+                                            </a>
+                                            <h4><?= esc($gear['product_name']) ?></h4>
+                                            <a class="shopBtn" href="<?= base_url('/shop') ?>">View in Shop</a>
+                                        </div>
                                         <p><?= esc($gear['description']) ?></p><br>
                                     </div>  
 

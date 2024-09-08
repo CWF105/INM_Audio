@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .library{
     
@@ -90,22 +91,29 @@
             background-color: #000;
             border-radius: 5px;
         }
-
+        h4{ 
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
         .modal{
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
             transition: 200ms ease-in-out;
-            border: 1px solid #d1d1d1;
+            border: 1px solid  rgba(104, 104, 104, 0.678);
             border-radius: 3px;
             z-index: 10;
-            background-color: #d1d1d1;
+            background-color: rgba(104, 104, 104, 0.678);
             width: 100%;
             height: 500px;
             max-width: 80%;
             overflow: hidden;
             overflow-y: scroll;
+            padding: 5px;
         }
         .modal.active{
             transform: translate(-50%, -50%) scale(1);
@@ -115,10 +123,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid black;
+            background-color: #2c2c2cf3;
+            border-radius: 5px;
+            color: white;
+            border-bottom: 1px solid  rgba(230, 230, 230, 0.678);
         }
         .modal-header .title{
-            font-size: 1.25rem;
+            font-size: 2rem;
             font-family: Raleway;
         }
         .modal .modal-content .modal-header .close-button{
@@ -138,7 +149,63 @@
                 border-radius: 10px;
             }
         }
+        
     }
+}
+
+.modal-body{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.modal-body .gears{
+    width: 470px;
+    height: 250px;
+    border: 1px solid rgb(146, 146, 146);
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #66666696;
+    transition: all 300ms;
+    color: white;
+    display: flex;
+    font-size: 13px;
+}
+.modal-body .gears .con .shopBtn {
+    display: none;
+    transition: 400ms ease-in-out;
+}
+
+.modal-body .gears:hover .con .shopBtn{ 
+    position: relative;
+    bottom: 130px;
+    left: 120px;
+    text-decoration: none;
+    border: 1px solid black;
+    background-color: #d1d1d14d;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    padding-inline: 20px;
+    display: block;
+}
+
+.modal-body .gears:hover .con .shopBtn:hover{ 
+    background-color: black;
+    
+}
+.modal-body .gears .con {
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-body .gears .con p { margin-top: 10px;}
+
+.modal-body .gears:hover {
+    background-color: #2c2c2cf3;
 }
 
 #overlay{
