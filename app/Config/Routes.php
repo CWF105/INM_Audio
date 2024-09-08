@@ -77,52 +77,9 @@ $routes->group('/admin/', function($routes) {
 });
 
 
+$routes->group('/user/', function($routes) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//admin and user account routes
-$routes->group('/admin/', function($routes){
-    //admins
-    $routes->get('dashboard', 'AdminControl::dashboard');
-    $routes->get('transactions', 'AdminControl::transactions');
-    $routes->get('manageusers', 'AdminControl::manageusers');
-
-    //products
-    $routes->get('products', 'AdminControl::products');
-    //add products
-    $routes->post('products/add', 'AdminControl::addGears');
-
-    //category
-    $routes->post('category', 'AdminControl::addNewCategory');
-
-    // register view and controller for admin
-    $routes->get('registerAd', 'AdminControl::register');
-    $routes->post('registerAdminController', 'AdminControl::create_new_admin');
-    // register view and controller for user in admin
-    $routes->get('registerUs', 'AdminControl::registerUser');
-    $routes->post('registerUserController', 'AdminControl::create_new_user');
-
-    $routes->get('logoutAd', 'AdminControl::logout');
-
-
-    //users
 });
-
-
-
-
 
 $routes->group('/config/', function($routes) {
     $routes->get('dc', 'defaultConfig::deleteCookie');

@@ -26,6 +26,11 @@ class Gear_Product_Model extends Model
         return $this->findAll();
     }
 
+    public function getPerCategory($categoryId)
+    {
+        return $this->where('category_id', $categoryId)->findAll();
+    }
+
     public function getGear($field, $toGet) 
     {
         return $this->where($field, $toGet)->first();

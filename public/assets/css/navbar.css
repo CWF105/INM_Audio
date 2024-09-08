@@ -41,17 +41,22 @@ header {
             justify-content: center;
             align-items: center;
         
-            li{
-                padding: 20px 55px;
-                border-left: 1px solid #000;
-                list-style-type: none;
-            
-                a{
-                    color:#000;
-                    font-family: Montserrat;
-                    font-weight: 300;
-                    font-size: 1rem;
-                    text-decoration: none;
+            a{
+                color:#000;
+                font-family: Montserrat;
+                font-weight: 300;
+                font-size: 1rem;
+                text-decoration: none;
+                li{
+                    padding: 20px 55px;
+                    border-left: 1px solid #000;
+                    list-style-type: none;
+                }
+            }
+            a:hover {
+                background: #333;
+                li {
+                    color: white;
                 }
             }
         }

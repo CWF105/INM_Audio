@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>Gear Library</title>
-    <script defer src="<?= base_url('assets/js/script1.js') ?>"></script>
+    <script defer src="<?= base_url('assets/js/category.js') ?>"></script>
 </head>
 
 <body>
@@ -31,43 +31,51 @@
         <div class="card-container">
 
             <?php if(!empty($categories)) :?>
-                <?php foreach($categories as $category) :?>
+                <?php foreach($categories as $index => $category) :?>
 
-                    <div class="library-card">
-                        <img src="<?= base_url('assets/img/p1.png'); ?>"alt="no gear background is set">
-                        <h3><?= esc($category['category']) ?></h3>
-                        <button data-modal-target="#modal">View</button>
-        
-                        <div class="modal" id="modal">
-
-                            <?php if(!empty($gears)) :?>
-                                <?php foreach($gears as $gear) :?>
-
-                                    <div class="modal-header">   
-                                        <div class="title"></div>
-                                        <button data-close-button class="close-button">&times;</button>
-                                    </div>
-                
-                                    <div class="modal-body">
-                                        <img src="" alt="">
-                                        <h3></h3>
-                                    </div>
-
-                                <?php endforeach;?>
-                            <?php else :?>
-
-                                <div class="modal-header">   
-                                    <h3 style="color: red;"> No gears under this category.</h3>
-                                    <button data-close-button class="close-button">&times;</button>
-                                </div>
-
-                            <?php endif;?>  
-
-                        </div>
+                    <div class="library-card" title="A category for gears, click view to see the gears under this category">
+                        <img src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="no gear background is set" title="A category for gears, click view to see the gears under this category">
+                        <h3 title="A category for gears, click view to see the gears under this category"><?= esc($category['category']) ?></h3>
+                        
+                        <button data-modal-target="#modal-<?= $index; ?>">View</button>        
                     </div>
-                    <div id="overlay"></div>
 
-                <?php endforeach;?>
+                    <!-- Modal with unique ID -->
+                    <div class="modal" id="modal-<?= $index; ?>">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="title"><?= esc($category['category']) ?></div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+
+                            <!-- Filter gears for the current category -->
+                            <?php 
+                                $gearsForCategory = array_filter($gearsPerCategory, function($gear) use ($category) {
+                                    return $gear['category_id'] == $category['category_id'];
+                                });
+                            ?>
+                            <!-- displaying gears per category -->
+                            <?php if (!empty($gearsForCategory)) : ?>
+                                <?php foreach ($gearsForCategory as $gear) : ?>
+
+                                    <div class="gears">
+                                        <h3><?= esc($gear['product_name']) ?></h3>
+                                        <p><?= esc($gear['description']) ?></p><br>
+                                    </div>  
+
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <p>No gears available for this category.</p>
+                            <?php endif; ?>
+                                
+                            </div>
+                        </div>
+                    </div> 
+
+                <?php endforeach; ?>
+                <div id="overlay"></div>
+
             <?php else :?>
 
                 <div class="library-card">

@@ -81,7 +81,7 @@ class AdminController extends BaseController
 
 
 
-    
+
 ## ---------------------------------------------------------------------
 // redirect to dashboard
     public function dashboard() 
@@ -367,6 +367,10 @@ class AdminController extends BaseController
                 $data['profile_pic'] = file_get_contents($pfp->getTempName());
             }
             $adminAccount->update($admin, $data);
+            $session->set([
+                'username' => $username,
+                'email' => $email
+            ]);
             return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
         }
 
@@ -383,6 +387,10 @@ class AdminController extends BaseController
             $data['profile_pic'] = file_get_contents($pfp->getTempName());
         }
 
+        $session->set([
+            'username' => $username,
+            'email' => $email
+        ]);
         $adminAccount->update($admin, $data);
         return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
     }

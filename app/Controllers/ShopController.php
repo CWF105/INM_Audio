@@ -10,7 +10,7 @@ use App\Models\Gear_Product_Model as gearProduct;
 class ShopController extends BaseController
 {
 // check if session is set to admin account, user account or is not set to any account
-public function isSessionSetThenRedirect($path, $isDisplaying = null)
+public function isSessionSetThenRedirect($path, $isDisplaying = false)
 {
     helper('cookie');
     $session = session();
@@ -44,17 +44,17 @@ public function isSessionSetThenRedirect($path, $isDisplaying = null)
 ## ---------------------------------------------------------------------
     public function shop()
     {
-        return $this->isSessionSetThenRedirect('shop/shop');
+        return $this->isSessionSetThenRedirect('shop/shop', true);
     }
 
     public function cart()
     {
-        return $this->isSessionSetThenRedirect('shop/cart');
+        return $this->isSessionSetThenRedirect('shop/cart', true);
     }
 
     public function buynow()
     {
-        return $this->isSessionSetThenRedirect('shop/buynow');
+        return $this->isSessionSetThenRedirect('shop/buynow', true);
     }
 
     public function donePurchase()

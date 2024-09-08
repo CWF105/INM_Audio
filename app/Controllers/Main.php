@@ -10,14 +10,17 @@ use App\Models\Gear_Product_Model as gearProduct;
 class Main extends BaseController
 {
 // check if session is set to admin account, user account or is not set to any account
-    public function isSessionSetThenRedirect($path, $isDisplaying = null)
+    public function isSessionSetThenRedirect($path, $isDisplaying = false)
     {
         helper('cookie');
         $session = session();
         $sessionConfig = new SessionConfig();
         $expirationTime = $sessionConfig->expiration;
         $userAccount = new userAccount();
-        
+        $categories = new categories();
+        $gearProduct = new gearProduct();
+
+
         $user_id = $session->get('user_id');
         $username = $session->get('username');
 
@@ -30,6 +33,14 @@ class Main extends BaseController
             $userAccount->update($username, ['remember_token' => null]);
             delete_cookie('remember_token');
             return redirect()->to('/');
+        }   
+
+        if($isDisplaying == true) {
+            $container = []; 
+            $container['categories'] = $categories->getAll();
+            $container['gearsPerCategory'] = $gearProduct->getAll();
+
+            return view($path, $container);
         }
         return view($path);
     }
@@ -59,6 +70,8 @@ class Main extends BaseController
 
 
 
+
+
 ## ---------------------------------------------------------------------
 // redirect to homepage 
     public function homepage()
@@ -69,20 +82,20 @@ class Main extends BaseController
 // redirect to gear library 
     public function library()
     {
-        return $this->isSessionSetThenRedirect('library');
+        return $this->isSessionSetThenRedirect('library', true);
     }
 
 
 // redirect to  community
     public function community()
     {
-        return $this->isSessionSetThenRedirect('community');
+        return $this->isSessionSetThenRedirect('community', true);
     }
 
 // redirect to customize 
     public function customize()
     {
-        return $this->isSessionSetThenRedirect('customize');
+        return $this->isSessionSetThenRedirect('customize', true);
     }
 
 
@@ -96,7 +109,9 @@ class Main extends BaseController
 
 
 
-    
+
+
+
 
 
 ## ---------------------------------------------------------------------
