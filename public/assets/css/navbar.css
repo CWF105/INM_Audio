@@ -9,8 +9,15 @@ body{
     font-family: Montserrat;
     font-weight: 300;
 }
-header {
-    
+.header {
+    position: sticky;
+    top: 0;
+    margin-top: 5px;
+    backdrop-filter: blur(3px) saturate(147%);
+    -webkit-backdrop-filter: blur(3px) saturate(147%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    z-index: 1;
     nav{
         width: 100%;
         border-top: 1px solid #000;
@@ -20,15 +27,13 @@ header {
         align-items: center;
         position: relative;
 
-        .logo{
-
+        .logo{     
             a{
-
                 img{
                     width: 70px;
                     position: absolute;
                     top: 15px;
-                    left: 15px;
+                    left: 50px;
                 }
             }
         }
@@ -61,8 +66,10 @@ header {
             }
         }
     }
+}
+header {
     .header-text{
-        margin-top: 100px;
+        margin-top: 50px;
        
         img{
             width: 450px;

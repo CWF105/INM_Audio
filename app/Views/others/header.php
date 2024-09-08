@@ -1,4 +1,4 @@
-<header>
+<header class="header">
         <nav>
             <div class="logo">
                 <a href="<?= base_url('/') ?>">
