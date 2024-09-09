@@ -34,7 +34,7 @@
                 <?php foreach($categories as $index => $category) :?>
 
                     <div class="library-card" title="A category for gears, click view to see the gears under this category">
-                        <img src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="no gear background is set" title="A category for gears, click view to see the gears under this category">
+                        <img class="bgimg" src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="no gear background is set" title="A category for gears, click view to see the gears under this category">
                         <h3 title="A category for gears, click view to see the gears under this category"><?= esc($category['category']) ?></h3>
                         
                         <button data-modal-target="#modal-<?= $index; ?>">View</button>        
@@ -58,25 +58,19 @@
                             <!-- displaying gears per category -->
                             <?php if (!empty($gearsForCategory)) : ?>
                                 <?php foreach ($gearsForCategory as $gear) : ?>
-
-
-                                    <div class="card">
-                                        <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
-                                            <img src="<?= esc($gear['image_url'])?>" class="image"></img>
-                                        </a>
-                                        <span class="price"><?= esc($gear['product_name']) ?></span>
-                                    </div>
-
-
-                                    <!-- <div class="gears">
+                                    <div class="gears">
                                         <div class="con">
                                             <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
                                                 <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
                                             </a>
                                             <a class="shopBtn" href="<?= base_url('/shop') ?>">View in Shop</a>
                                         </div>
-                                        <p><?= esc($gear['description']) ?></p><br>
-                                    </div>   -->
+                                        
+                                        <div class="onHover">
+                                            <h3><?= esc($gear['product_name']) ?></h3>
+                                            <p><?= esc($gear['description']) ?></p><br>
+                                        </div>
+                                    </div>  
 
                                 <?php endforeach; ?>
                             <?php else : ?>

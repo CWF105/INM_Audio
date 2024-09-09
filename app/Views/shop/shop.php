@@ -75,42 +75,6 @@
                     <button data-close-button class="close-button">&times;</button>
                 </div>
             </div>
-
-            <!-- <div class="library-card">
-                <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">View</button>
-            </div>
-
-            <div class="library-card">
-                <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">View</button>
-            </div>
-
-            <div class="library-card">
-                <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">View</button>
-            </div>
-
-            <div class="library-card">
-                <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">View</button>
-            </div>
-
-            <div class="library-card">
-                <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">View </button>
-            </div>   -->
-
         </div>
         
         

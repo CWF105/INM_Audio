@@ -17,7 +17,9 @@ public function isSessionSetThenRedirect($path, $isDisplaying = false)
     $sessionConfig = new SessionConfig();
     $expirationTime = $sessionConfig->expiration;
     $userAccount = new userAccount();
-    
+    $categories = new categories();
+    $gearProduct = new gearProduct();
+
     $user_id = $session->get('user_id');
     $username = $session->get('username');
 
@@ -34,6 +36,10 @@ public function isSessionSetThenRedirect($path, $isDisplaying = false)
 
     if($isDisplaying == true) {
         $container = []; 
+        $container['categories'] = $categories->getAll();
+        $container['gearsPerCategory'] = $gearProduct->getAll();
+        $container['userAccount'] = $userAccount->getUser('user_id', $session->get('user_id'));
+        
         return view($path, $container);
     }
     return view($path);

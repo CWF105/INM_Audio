@@ -280,11 +280,10 @@ html, body {
                 position: absolute;
                 top: 10px;
                 right: 13px;
-                transition: 2000ms;
+                transition: 500ms;
             }
             .modal-header .close-button:hover {
                 color: darkred;
-                transform: rotate(360deg);
             }
 
             #overlay{

@@ -69,7 +69,7 @@ html, body {
             opacity: 1;
             border-radius: 3px;
         }
-        img{
+        .bgimg{
             width: 290px;
             opacity: .9;
             margin-top: 30px;
@@ -128,7 +128,7 @@ html, body {
             border: 1px solid  rgba(104, 104, 104, 0.678);
             border-radius: 3px;
             z-index: 10;
-            background-color: rgba(104, 104, 104, 0.678);
+            background-color: #d2d2d2;
             width: 700px;
             height: 600px;
             max-width: 90%;
@@ -149,7 +149,8 @@ html, body {
             z-index: 1;
             justify-content: space-between;
             align-items: center;
-            scrollbar-gutter: 0;            
+            scrollbar-gutter: 0;      
+
             .title {
                 padding-left: 30px;
                 color: white;
@@ -173,83 +174,85 @@ html, body {
             gap: 20px;
             padding-right: 40px;
 
-            /* From Uiverse.io by G4b413l */ 
-            .card {
-                position: relative;
-                width: 19.875em;
-                height: 16.5em;
-                box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
-                cursor: pointer;
-                transition: all 120ms;
+            .gears:hover {
+                transform: scale(1.1); 
+                background-color:#202020;
+                border-radius: 5px;
+            }           
+        
+
+
+            .gears:hover .onHover{
+                display: block;
+                transform: translate(0, 100px);             
+            }
+
+            .gears:hover .con .shopBtn {
+                display: block;
+            }
+
+            .gears {
+                background-color: transparent;
+                border: 1px solid #3f3f3f69;
+                height: 320px;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #fff;
-                padding: 0.5em;
-                padding-bottom: 3.4em;
-            }
-            
-            .card::after {
-                content: "";
-                padding-top: 1.25em;
-                padding-left: 1.25em;
-                position: absolute;
-                left: 0;
-                bottom: -60px;
-                background: #00AC7C;
-                color: #fff;
-                height: 2.5em;
-                width: 90%;
-                transition: all 80ms;
-                font-weight: 600;
-                text-transform: uppercase;
-                opacity: 0;
-            }
-            
-            .card .title {
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 0.9em;
-                position: absolute;
-                left: 0.625em;
-                bottom: 1.875em;
-                font-weight: 400;
-                color: #000;
-            }
-            
-            .card .price {
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                font-size: 0.9em;
-                position: absolute;
-                left: 0.625em;
-                bottom: 0.625em;
-                color: #000;
-            }
-            
-            .card:hover::after {
-                bottom: 0;
-                height: 240px;
-                width: 18.595em;
-                opacity: 1;
-            }
-            
-            .card:active {
-                transform: scale(0.98);
-            }
-            
-            .card:active::after {
-                content: "Added !";
-                height: 3.125em;
-            }
-            
-            .image {
-                background: rgb(241, 241, 241);
-                width: 315px;
-                height: 230px;
-                position: relative;
-                top: -8px;
-                border-radius: 0;
-                display: grid;
-                place-items: center;
+                flex-direction: column;
+                transition: 200ms;
+                
+                .con {
+                    padding: 3px;
+
+                    a {
+                        img {
+                            width: 310px;
+                            height: 310px;
+                        }
+                    }
+                    
+                    .shopBtn {
+                        border: 1px solid white;
+                        padding: 10px;
+                        padding-inline: 25px;
+                        border-radius: 3px;
+                        color: white;
+                        width: 200px;
+                        text-align: center;
+                        text-decoration: none;
+                        position: relative;
+                        bottom: 20%;
+                        left: 50px;
+                        display: none;
+                        transition: 1000ms;
+                    }
+                    .shopBtn:hover {
+                        background: black;
+                        border-radius: 5px;
+                    }
+                }
+
+
+                .onHover {
+                    background: #000000bb;
+                    display: none;
+                    padding: 10px;
+                    position: relative;
+                    top: -450px;
+
+                }
+                h3{
+                    font-size: 23px;
+                    font-weight: 600;
+                    color: white;
+                    position: relative;
+                    top: 0px;
+                }
+                p{
+                    color: rgb(207, 207, 207);
+                    font-weight: 100;
+                    font-size: 13px;
+                    position: relative;
+                    top: 10px;
+                }
             }
         }
     }
