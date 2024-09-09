@@ -32,147 +32,95 @@
                 <img src="<?= base_url('assets/img/p1.png') ?>" alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
-
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <div class="product-img" title>
-                            <img src="<?= base_url('assets/img/order6.png') ?>"alt="">
-                        </div>
-                        <div class="product-details">
-                            <p>Liberty 1965</p>
-                            <h3>₱10,000</h3>  
-                            <div class="dropdown-container">
-                                <label for="size">Size</label>
-                                <select id="size" name="size">
-                                    <option>Select</option>
-                                    <option>Small</option>
-                                </select>
-                            </div>  
-                            <div class="quantity">
-                                <h3>Quantity</h3>
-                                <input class="number-input" type="number">
-                            </div>
-                            <div class="cart-button">
-                                <div class="cart">
-                                    <a href="<?= base_url('/cart') ?>">
-                                        <button>Add to Cart</button>
-                                    </a>
-                                </div>
-                                <div class="buy">
-                                    <a href="<?= base_url('/buy') ?>">
-                                        <button>Buy Now</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button data-close-button class="close-button">&times;</button>
-                    </div>
-                </div>
+                <button data-modal-target="#modal-<?= $index=1; ?>" class="btn">View</button>
             </div>
-
-
             
-            <div class="library-card">
+            <div class="modal" id="modal-<?= $index=1; ?>">
+                <div class="modal-header">
+                    <div class="product-img" title>
+                        <img src="<?= base_url('assets/img/order6.png') ?>"alt="">
+                    </div>
+
+                    <div class="product-details">
+                        <p>Liberty 1965</p>
+                        <h3>₱10,000</h3>  
+
+                        <div class="dropdown-container">
+                            <label for="size">Size</label>
+                            <select id="size" name="size">
+                                <option>Select</option>
+                                <option>Small</option>
+                            </select>
+                         </div>
+
+                        <div class="quantity">
+                            <h3>Quantity</h3>
+                            <input class="number-input" type="number">
+                        </div>
+
+                        <div class="cart-button">
+                            <div class="cart">
+                                <a href="<?= base_url('/cart') ?>">
+                                    <button>Add to Cart</button>
+                                </a>
+                            </div>
+
+                            <div class="buy">
+                                <a href="<?= base_url('/buy') ?>">
+                                    <button>Buy Now</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+            </div>
+
+            <!-- <div class="library-card">
                 <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
-
-                <div class="modal-body">
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Musical</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                            <h3>Lorem</h3>
-                        </div>  
-                    </div>
-                </div>
+                <button data-modal-target="#modal" class="btn">View</button>
             </div>
 
             <div class="library-card">
                 <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
-                <div class="modal-body">
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Musical</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                            <h3>Lorem</h3>
-                        </div>  
-                    </div>
-                </div>
+                <button data-modal-target="#modal" class="btn">View</button>
             </div>
 
             <div class="library-card">
                 <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
-                <div class="modal-body">                
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Musical</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
-                            <h3>Lorem</h3>
-                        </div>  
-                    </div>
-                </div>
+                <button data-modal-target="#modal" class="btn">View</button>
             </div>
 
             <div class="library-card">
                 <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
-                <div class="modal-body">        
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Musical</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                            <h3>Lorem</h3>
-                        </div>  
-                    </div>
-                </div>
+                <button data-modal-target="#modal" class="btn">View</button>
             </div>
 
             <div class="library-card">
                 <img src=" <?= base_url('assets/img/p1.png') ?>"alt="">
                 <h3>Musical Gear</h3>
                 <h4>₱10,000</h4>
-                <button data-modal-target="#modal" class="btn">Add To Card</button>
+                <button data-modal-target="#modal" class="btn">View </button>
+            </div>   -->
 
-                <div class="modal-body">      
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Musical</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="<?= base_url('assets/img/p1.png') ?>"alt="">
-                            <h3>Lorem</h3>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div id="overlay"></div>
-        </div>  
+        </div>
+        
+        
+    <div id="overlay"></div>
+    <div class="modal" id="modal">
+        
     </div>
+
+    
+</div>
 
 <!-- this includes header.php file on every website that has this code -->
     <?php 

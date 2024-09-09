@@ -28,7 +28,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1px;
-        background-image: url('../img/1.jpg');
+        background-image: url('../img/landing.webp');
         
         .library-card{
             background-color: rgba(104, 104, 104, 0.678);
