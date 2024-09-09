@@ -31,6 +31,8 @@ $routes->group('', function($routes)
 // shop routing
 $routes->group('', function($routes){
     $routes->get('/shop', 'ShopController::shop');
+    $routes->get('/shop/(:num)', 'ShopController::viewItem/$1');
+
     $routes->get('/cart', 'ShopController::cart');
     $routes->get('/buy', 'ShopController::buynow');
     $routes->get('/donePurchase', 'ShopController::donePurchase');

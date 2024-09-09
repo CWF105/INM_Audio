@@ -38,8 +38,9 @@ public function isSessionSetThenRedirect($path, $isDisplaying = false)
         $container = []; 
         $container['categories'] = $categories->getAll();
         $container['gearsPerCategory'] = $gearProduct->getAll();
+        $container['gears'] = $gearProduct->getGearLeftJoinCategory();
         $container['userAccount'] = $userAccount->getUser('user_id', $session->get('user_id'));
-        
+
         return view($path, $container);
     }
     return view($path);
@@ -51,6 +52,11 @@ public function isSessionSetThenRedirect($path, $isDisplaying = false)
     public function shop()
     {
         return $this->isSessionSetThenRedirect('shop/shop', true);
+    }
+
+    public function viewItem($id)
+    {
+        return $this->isSessionSetThenRedirect('shop/shop#'. $id, true);
     }
 
     public function cart()

@@ -23,27 +23,35 @@
     <div class="shop">
         <div class="shop-title">
             <h2>Shop</h2>
-            <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="ss">
+                <form action="" action="post">
+                    <input type="search" name="search">
+                    <button type="submit">Search</button>
+                </form>
+                <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
         </div>
 
+        <div class="card-container">          
+            <?php if(isset($gears) && !empty($gears)) :?>
+            <?php foreach($gears as $index => $gear) :?>
+                <div class="library-card" id="<?= esc($gear['product_id']) ?>">
+                    <img src="<?= esc($gear['image_url']) ?>" alt="">
+                    <h3><?= esc($gear['product_name']) ?></h3>
+                    <h4>₱<?= esc($gear['price']) ?></h4>
+                    <button data-modal-target="#modal-<?= $index; ?>" class="btn">View</button>
+                </div>
 
-        <div class="card-container">
-            <div class="library-card">
-                <img src="<?= base_url('assets/img/p1.png') ?>" alt="">
-                <h3>Musical Gear</h3>
-                <h4>₱10,000</h4>
-                <button data-modal-target="#modal-<?= $index=1; ?>" class="btn">View</button>
-            </div>
-            
-            <div class="modal" id="modal-<?= $index=1; ?>">
+            <!-- MODAL -->
+            <div class="modal" id="modal-<?= $index; ?>">
                 <div class="modal-header">
                     <div class="product-img" title>
-                        <img src="<?= base_url('assets/img/order6.png') ?>"alt="">
+                        <img src="<?= esc($gear['image_url']) ?>"alt="<?= esc($gear['product_name']) ?>">
                     </div>
 
                     <div class="product-details">
-                        <p>Liberty 1965</p>
-                        <h3>₱10,000</h3>  
+                        <p><?= esc($gear['product_name']) ?></p>
+                        <h3>₱<?= esc($gear['price']) ?></h3>  
 
                         <div class="dropdown-container">
                             <label for="size">Size</label>
@@ -75,6 +83,13 @@
                     <button data-close-button class="close-button">&times;</button>
                 </div>
             </div>
+
+            <?php endforeach;?>
+        <?php else: ?>
+            <div class="library-card">
+                <h3 style="color: red;">Gears are not available at the mean time</h3>
+            </div>
+        <?php endif;?>
         </div>
         
         

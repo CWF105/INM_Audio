@@ -25,14 +25,36 @@ html, body {
         padding-top: 70px;
         padding-left: 90px;
         padding-right: 90px;
-        h2{
-            font-size: 2em;
-            font-family: Montserrat;
-            font-weight: 300;
-            letter-spacing: .30em;
-        }
-        a{
-            color: #000;
+
+        .ss {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+
+            form {
+                input {
+                    padding: 5px;
+                    padding-inline: 10px;
+                }
+                button {
+                    position: relative;
+                    right: 40px;
+                    padding: 5px;
+                    padding-inline: 10px;
+                }
+            }
+
+            h2{
+                font-size: 2em;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+            }
+            a{
+                color: #000;
+                font-size: 1.25rem;
+            }
         }
     }
     .card-container{
