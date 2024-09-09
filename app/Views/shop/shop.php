@@ -55,7 +55,7 @@
 
                         <div class="quantity">
                             <h3>Quantity</h3>
-                            <input class="number-input" type="number">
+                            <input class="number-input" type="number" >
                         </div>
 
                         <div class="cart-button">

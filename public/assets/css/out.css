@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .second-section {
     width: 100%;
     padding: 30px;

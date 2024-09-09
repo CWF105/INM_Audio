@@ -47,8 +47,8 @@
                                 <div class="title"><h2><?= esc($category['category']) ?></h2></div>
                                 <button data-close-button class="close-button">&times;</button>
                             </div>
+                            
                             <div class="modal-body">
-
                             <!-- Filter gears for the current category -->
                             <?php 
                                 $gearsForCategory = array_filter($gearsPerCategory, function($gear) use ($category) {
@@ -59,16 +59,24 @@
                             <?php if (!empty($gearsForCategory)) : ?>
                                 <?php foreach ($gearsForCategory as $gear) : ?>
 
-                                    <div class="gears">
+
+                                    <div class="card">
+                                        <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
+                                            <img src="<?= esc($gear['image_url'])?>" class="image"></img>
+                                        </a>
+                                        <span class="price"><?= esc($gear['product_name']) ?></span>
+                                    </div>
+
+
+                                    <!-- <div class="gears">
                                         <div class="con">
                                             <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
                                                 <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
                                             </a>
-                                            <h4><?= esc($gear['product_name']) ?></h4>
                                             <a class="shopBtn" href="<?= base_url('/shop') ?>">View in Shop</a>
                                         </div>
                                         <p><?= esc($gear['description']) ?></p><br>
-                                    </div>  
+                                    </div>   -->
 
                                 <?php endforeach; ?>
                             <?php else : ?>
