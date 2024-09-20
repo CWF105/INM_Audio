@@ -24,23 +24,19 @@
         <div class="shop-title">
             <h2>Shop</h2>
             <div class="ss">
-                <form action="" action="post">
-                    <input type="search" name="search">
-                    <button type="submit">Search</button>
-                </form>
                 <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
 
-        <div class="card-container">          
-            <?php if(isset($gears) && !empty($gears)) :?>
+        <div class="card-container">      
+        <?php if(isset($gears) && !empty($gears)) :?>
             <?php foreach($gears as $index => $gear) :?>
                 <div class="library-card" id="<?= esc($gear['product_id']) ?>">
                     <img src="<?= esc($gear['image_url']) ?>" alt="">
                     <h3><?= esc($gear['product_name']) ?></h3>
                     <h4>₱<?= esc($gear['price']) ?></h4>
                     <button data-modal-target="#modal-<?= $index; ?>" class="btn">Buy</button>
-                </div>
+                </div>  
 
             <!-- MODAL -->
             <div class="modal" id="modal-<?= $index; ?>">
