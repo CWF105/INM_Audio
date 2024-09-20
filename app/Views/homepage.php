@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php if(session()->get('user_id')): ?>
+    <?php if(session()->get('welcome-user')): ?>
         <span style="color: green; font-family: 'Courier New'; padding-inline: 45%; padding-block: 3px;  background-color: #d9ffd2 ">Welcome <?= esc(session()->get('username')) ?></span>
     <?php endif;?>
 <!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
