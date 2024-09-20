@@ -67,17 +67,18 @@ html, body {
         }
         .table-body{
             width: 100%;
-            padding: 10px;
             display: flex;
             border: 1px solid #000;
             flex-direction: column;
             hr{ margin-bottom: 20px; margin-top: 20px;}
+            background-color: #e0e0e0;
             
             .wawa {
                 display: flex;
-                gap: 30px;
-                width: 50%;
-
+                gap: 10px;
+                width: 100%;
+                padding: 10px;
+                background: #9999;
                 .body-one{
                     /* align-items: center; */
                     margin-right: 200px;
@@ -89,7 +90,7 @@ html, body {
                 }
                 .body-two{
                     width: 50%;
-                    gap: 0;
+                    gap: 50px;
                     display: flex;
                     justify-content: space-evenly;
                     align-items: center;
@@ -98,7 +99,7 @@ html, body {
                     p, a{
                         width: 25%;
                         display: flex;
-                        text-align: center;
+                        text-align: center; 
                     } 
                     a{
                         color: red;

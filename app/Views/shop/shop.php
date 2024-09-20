@@ -50,6 +50,7 @@
                     </div>
 
                     <form action="<?= base_url('/cart/add/'. $gear['product_id']) ?>" method="post">
+                        <input type="hidden" name="price" id="price" value="<?= $gear['price'] ?>">
                         <div class="product-details">
                             <p><?= esc($gear['product_name']) ?></p>
                             <h3>₱<?= esc($gear['price']) ?></h3>

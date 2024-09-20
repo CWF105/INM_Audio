@@ -64,6 +64,15 @@ class ShopController extends BaseController
             $cart = $this->carts->getUserCartById($user_id);
             if($cart) {
                 $container['cart_items'] = $this->cartItems->get_cart_items($cart['cart_id']);
+                $totalQuantity = 0;
+                $totalPrice = 0;
+
+                foreach ($container['cart_items'] as $item) {
+                    $totalQuantity += $item['quantity'];
+                    $totalPrice += $item['price'] * $item['quantity']; 
+                }
+                $container['totalQuantity'] = $totalQuantity;
+                $container['totalPrice'] = $totalPrice;
             }
             $container['name'] = session()->get('user_id');
             return view($path, $container);
@@ -135,6 +144,8 @@ class ShopController extends BaseController
         }
 
         $quantity = $this->request->getPost('quantity');
+        $price = $this->request->getPost('price');
+        
         $defQuantity = 1;
 
         $ifItemExist = $this->cartItems->checkIfProductIsExisting($cart_id, $product_id);

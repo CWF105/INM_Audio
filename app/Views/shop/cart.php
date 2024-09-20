@@ -27,18 +27,17 @@
         </div>
 
         <div class="cart-table">
-        <?php if(isset($cart_items) && !empty($cart_items)) : ?>
-            <form action="<?= base_url('/cart/delete') ?>" method="post">
-
+        <form action="<?= base_url('/cart/delete') ?>" method="post">
+            <?php if(isset($cart_items) && !empty($cart_items)) : ?>
                 <div class="card-checkout">
                     <div class="select">
                         <button type="submit" class="card-check">Delete All</button>
                     </div>
 
                     <div class="total">
-                        <p>Total (0 item):</p>
-                        <p>₱10,000</p>
-                        <button class="total-checkout">Check Out</button>
+                        <p>Total (<?= esc($totalQuantity) ?> item<?= ($totalQuantity !== 1) ? 's' : '' ?>):</p>
+                        <p>₱<?= esc(number_format($totalPrice, 2)) ?></p>
+                        <button type="button" class="total-checkout">Check Out</button>
                     </div>
                 </div>
 
@@ -56,7 +55,7 @@
                     </div>
                 </div>
                 
-                    <div class="table-body">
+                <div class="table-body">
                     <?php foreach($cart_items as $item) :?>
                         <div class="wawa">
                             <div class="body-one">
@@ -64,20 +63,48 @@
                                 <p><?= $item['product_name'] ?></p>
                             </div>
                             <div class="body-two">
-                                <p><?= $item['price'] ?></p>
-                                <p><?= $item['quantity'] ?></p>
-                                <p><?= $item['price'] ?></p>
+                                <p>₱<?= esc(number_format($item['price'], 2)) ?></p>
+                                <p><?= esc($item['quantity']) ?></p>
+                                <p>₱<?= esc(number_format($item['price'] * $item['quantity'], 2)) ?></p>
                                 <a href="<?= base_url('/cart/delete/'. $item['cart_item_id']) ?>">Delete</a>
                             </div>
                         </div>
-                        <?php endforeach;?>
                         <hr>
+                        <?php endforeach;?>
+                    </div>
+                <?php else: ?>
+                    <div class="card-checkout">
+                        <div class="select">
+                            <button type="submit" class="card-check">Delete All</button>
+                        </div>
+
+                        <div class="total">
+                            <p>Total ( 0 items ):</p>
+                            <p>₱ 0.00</p>
+                            <button type="button" class="total-checkout">Check Out</button>
+                        </div>
                     </div>
 
+                    <div class="thead">
+                        <div class="head-one">
+                            <p></p>
+                            <p>Product</p>
+                        </div>
+
+                        <div class="head-two">
+                            <p>Unit Price</p>
+                            <p>Quantity</p>
+                            <p>Total Price</p>
+                            <p>Actions</p>
+                        </div>
+                    </div>
+                        
+                    <div class="table-body">
+                        <p style="color: #777; text-align: center; font-size: 24px; background-color: #9999; padding: 150px;">Your cart is empty.</p>
+                    </div>
+                <?php endif;?>    
+
             </form>
-        <?php else: ?>
-            <p>Your cart is empty.</p>
-        <?php endif;?>    
         </div>
     </div>
 
