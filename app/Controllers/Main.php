@@ -115,4 +115,9 @@ class Main extends BaseController
 
 
 ## ---------------------------------------------------------------------
+// User Setting
+    public function userSettings() 
+    {
+        return $this->isSessionSetThenRedirect('UserSide/userSettings', true);
+    }
 }

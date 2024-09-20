@@ -138,8 +138,8 @@ class Login_SignupController extends BaseController
     
                     // set to expires in 30 days
                     set_cookie('remember_token', $token, 3600*24*30);
-                    return redirect()->to('/');
                 }
+                $session->setFlashdata('welcome-user', $welcome);
                 return redirect()->to('/');
             }
             else if(is_array($userEmail) && password_verify($password, $userEmail['password'])) {
@@ -159,8 +159,8 @@ class Login_SignupController extends BaseController
     
                     // set to expires in 30 days
                     set_cookie('remember_token', $token, 3600*24*30);
-                    return redirect()->to('/');
                 }
+                $session->setFlashdata('welcome-user', $welcome);
                 return redirect()->to('/');
             }
         }

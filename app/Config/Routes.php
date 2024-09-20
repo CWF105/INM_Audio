@@ -25,6 +25,12 @@ $routes->group('', function($routes)
     $routes->get('/customize', 'Main::customize');
 
     $routes->get('/login', 'Main::login');
+
+
+## ---------------------------------------------------------------------
+// Users Routers
+    $routes->get('/user/setting', 'Main::userSettings');
+    $routes->get('/user/logout', 'Main::logout');
 });
 
 ## ---------------------------------------------------------------------
@@ -84,11 +90,7 @@ $routes->group('/admin/', function($routes) {
 
 });
 
-## ---------------------------------------------------------------------
-// Users Routers
-$routes->group('/user/', function($routes) {
 
-});
 
 
 ## ---------------------------------------------------------------------
