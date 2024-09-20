@@ -23,18 +23,26 @@ class User_Account_Model extends Model
     ];
     protected $useTimeStamps = true;
 
+// -------------------------------------------------------------------
+    public function createUserCart()
+    {
+
+    }
+
+// -------------------------------------------------------------------
+// get all list of users
     public function getAll() 
     {
         return $this->findAll();
     }
 
-
+// get a user by field name
     public function getUser($field, $toGet) 
     {
         return $this->where($field, $toGet)->first();
     }
 
-    
+// check if the data is already in used by another user or not
     public function checkIfDataIsUsedByAnotherUser($field, $toGet, $condition)
     {
         return $this->where($field, $toGet)->where($field . $condition, $toGet)->countAllResults();

@@ -7,11 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 /*
-    NOTE: The firts parameter '/' is used to route to the pages declared in the second
-          parameter whic is 'Home::homepage'. and, 
-          The 'Home::homepage', the 'Home' is the name of the controller, and the 'homepage'
-          is the name of the method inside the Home controller where it returns the view folder and the php file. 
-*/
+ *   NOTE: The firts parameter '/' is used to route to the pages declared in the second
+ *         parameter whic is 'Home::homepage'. and, 
+ *         The 'Home::homepage', the 'Home' is the name of the controller, and the 'homepage'
+ *         is the name of the method inside the Home controller where it returns the view folder and the php file. 
+ */
 
 
 
@@ -33,7 +33,13 @@ $routes->group('', function($routes){
     $routes->get('/shop', 'ShopController::shop');
     $routes->get('/shop/(:num)', 'ShopController::viewItem/$1');
 
+// cart - routes for add item, viewing the cart items, delete items from the cart
     $routes->get('/cart', 'ShopController::cart');
+    $routes->post('/cart/add/(:num)', 'ShopController::addToCart/$1');
+    $routes->get('/cart/delete/(:num)', 'ShopController::removeItem/$1');
+    $routes->post('/cart/delete', 'ShopController::removeAllItems');
+
+
     $routes->get('/buy', 'ShopController::buynow');
     $routes->get('/donePurchase', 'ShopController::donePurchase');
 });
@@ -78,11 +84,15 @@ $routes->group('/admin/', function($routes) {
 
 });
 
-
+## ---------------------------------------------------------------------
+// Users Routers
 $routes->group('/user/', function($routes) {
 
 });
 
+
+## ---------------------------------------------------------------------
+// trash --------------------------------------------------------
 $routes->group('/config/', function($routes) {
     $routes->get('dc', 'defaultConfig::deleteCookie');
     $routes->get('ds', 'defaultConfig::deleteSession');

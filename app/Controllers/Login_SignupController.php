@@ -123,7 +123,7 @@ class Login_SignupController extends BaseController
             $session = session();
             if(is_array($userUsername) && password_verify($password, $userUsername['password'])) {
                 $session->set([
-                    'user_account_id' => $userUsername['user_id'],
+                    'user_id' => $userUsername['user_id'],
                     'username' => $userUsername['username'],
                     'email' => $userUsername['email'],
                     'type' => 'user',

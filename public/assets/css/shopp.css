@@ -103,6 +103,7 @@ html, body {
                 margin-top: 30px;
                 border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
             }
+            
             h3{
                 padding-top: 5px;
                 font-size: 1.1em;
@@ -168,22 +169,100 @@ html, body {
                 justify-content: space-between;
                 align-items: center;
 
-            }
-            .modal-header .product-img{
+                .product-img{
 
-                width: 50%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
             
-                img{
-                    width: 450px;
-                    height: 380px;
-                    border-radius: 10px;
+                    img{
+                        width: 450px;
+                        height: 380px;
+                        border-radius: 10px;
+                    }
+                }
+
+                form {
+                    .product-details{
+                        background-color: #d1d1d1;
+                        height: 90vh;
+                        width: 500px;
+                        padding: 15px;
+                        padding-top: 20px;
+                        padding-left: 30px;
+                        p {
+                            font-family: Montserrat;
+                            font-size: 1.70rem;
+                            font-weight: 600;
+                        }
+                        h3{
+                            font-family: Montserrat;
+                            font-size: 1.20rem;
+                            font-weight: 500;
+                        }
+
+                        .inputs {
+                            display: flex;
+                            flex-direction: column;
+                            margin-top: 30px;
+                            gap: 30px;
+
+                            .dropdown{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                select {
+                                    width: 300px;
+                                    text-align: center;
+                                }
+                            }
+
+                            .quantity {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                input {
+                                    width: 300px;
+                                    text-align: center  ;
+                                    
+                                }
+                                input[type="number"]::-webkit-inner-spin-button,
+                                input[type="number"]::-webkit-outer-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                .control {
+                                    position: relative;
+                                    left: 310px;
+                                    bottom: 25px;
+                                    button { width: 20px;}
+                                }
+                            }
+                        }
+                        .cart-button {
+                            display: flex;
+                            gap: 10px;
+                            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+                            .cart button {color: white; font-size: 14px; font-weight: 600; background-color: rgb(190, 75, 30); border-radius: 3px; cursor: pointer; width: 120px; padding: 10px;}
+                            .buy button {color: white; font-size: 14px; font-weight: 600; background-color: rgb(34, 135, 194); border-radius: 3px; cursor: pointer; width: 120px; padding: 10px;}
+                            
+                            .buy button:hover { 
+                                background-color: #1d1d1d;
+                                color: white;
+                            }
+                            .cart button:hover { 
+                                background-color: #1d1d1d;
+                                color: white;
+                            }
+                        }
+                    }
                 }
             }
-
+            /*
             .product-details{
                 width: 50%;
                 height: 100%;
@@ -214,21 +293,21 @@ html, body {
                     padding: 8px;
                     margin-top: 8px;
                     border: 1px solid #000;
-                    /* border-radius: 4px; */
+                     border-radius: 4px;
                     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
                     outline: none;
-                    appearance: none;  /* Removes default styling by the browser */
+                    appearance: none; 
                     background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='12px' height='12px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='icon-111-triangle-down' fill='%23666'%3E%3Cpath d='M0,0 L12,0 L6,6 L0,0 Z' id='Triangle'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat 95% 50%;
                     background-color: white;
                     cursor: pointer;
                 }
         
-                /* Hover state */
+                
                 select:hover {
                     border-color: #888;
                 }
         
-                /* Focus state */
+              
                 select:focus {
                     border-color: #aaa;
                 }
@@ -251,9 +330,9 @@ html, body {
                         height: 30px;
                         margin: 0;
                         padding-left: 10px;
-                        /* padding-top: 30px; */
                     }
                 }
+                
                 .cart-button{
                     
                     .cart{
@@ -291,6 +370,7 @@ html, body {
                     }
                 }
             }
+                */
 
             .modal-header .close-button{
                 cursor: pointer;

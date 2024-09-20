@@ -19,7 +19,7 @@
         echo view("others/header.php");
     ?>
 
-
+    
 <!-- Main Content here -->
     <div class="cart">
         <div class="cart-title">
@@ -27,49 +27,57 @@
         </div>
 
         <div class="cart-table">
-            <div class="card-checkout">
-                <div class="select">
-                    <input type="checkbox">
-                    <button class="card-check">Select All (4)</button>
-                    <button class="card-check">Delete</button>
+        <?php if(isset($cart_items) && !empty($cart_items)) : ?>
+            <form action="<?= base_url('/cart/delete') ?>" method="post">
+
+                <div class="card-checkout">
+                    <div class="select">
+                        <button type="submit" class="card-check">Delete All</button>
+                    </div>
+
+                    <div class="total">
+                        <p>Total (0 item):</p>
+                        <p>₱10,000</p>
+                        <button class="total-checkout">Check Out</button>
+                    </div>
                 </div>
 
-                <div class="total">
-                    <p>Total (0 item):</p>
-                    <p>₱10,000</p>
-                    <button class="total-checkout">Check Out</button>
-                </div>
-            </div>
+                <div class="thead">
+                    <div class="head-one">
+                        <p></p>
+                        <p>Product</p>
+                    </div>
 
-            <div class="thead">
-                <div class="head-one">
-                    <p></p>
-                    <p>Product</p>
+                    <div class="head-two">
+                        <p>Unit Price</p>
+                        <p>Quantity</p>
+                        <p>Total Price</p>
+                        <p>Actions</p>
+                    </div>
                 </div>
+                
+                    <div class="table-body">
+                    <?php foreach($cart_items as $item) :?>
+                        <div class="wawa">
+                            <div class="body-one">
+                                <img src="<?= esc($item['image_url']) ?>" alt="product image">
+                                <p><?= $item['product_name'] ?></p>
+                            </div>
+                            <div class="body-two">
+                                <p><?= $item['price'] ?></p>
+                                <p><?= $item['quantity'] ?></p>
+                                <p><?= $item['price'] ?></p>
+                                <a href="<?= base_url('/cart/delete/'. $item['cart_item_id']) ?>">Delete</a>
+                            </div>
+                        </div>
+                        <?php endforeach;?>
+                        <hr>
+                    </div>
 
-                <div class="head-two">
-                    <p>Unit Price</p>
-                    <p>Quantity</p>
-                    <p>Total Price</p>
-                    <p>Actions</p>
-                </div>
-            </div>
-            
-            <div class="table-body">
-                <div class="body-one">
-                    <input type="checkbox">
-                    <img src="" alt="product image">
-                    <p>Title ang ilalagay dito</p>
-                </div>
-                <div class="body-two">
-                    <p>₱10,000</p>
-                    <p><input type="number"></p>
-                    <p>₱10,000</p>
-                    <a href="">Delete</a>
-                </div>
-            </div>
-
-           
+            </form>
+        <?php else: ?>
+            <p>Your cart is empty.</p>
+        <?php endif;?>    
         </div>
     </div>
 
