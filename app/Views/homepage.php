@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- @ICON -->
+    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
+    <!-- @CSS FILES LINKS -->
     <link rel="stylesheet" href=" <?= base_url('assets/css/style.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
-    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    
     <title>INM Audio</title>
-    <script defer src="<?= base_url('assets/js/script.js') ?>"></script>
 </head>
 
 <body>
+<!-- @SESSION MESSAGES - set session messages if user is successfully logged in -->
     <?php if(session()->get('welcome-user')): ?>
         <span style="color: green; font-family: 'Courier New'; padding-inline: 45%; padding-block: 3px;  background-color: #d9ffd2 ">Welcome <?= esc(session()->get('username')) ?></span>
     <?php endif;?>
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- this includes header.php file on every website that has this code -->
+<!-- @END SESSION MESSAGES -->
+
+
+<!-- @PHP CODE - this includes header.php file on every website that has this code -->
     <?php 
-        echo view("others/header.php");
-        echo view('others/header_text');
+        # includes the header file that contains navbar
+        echo view("includes/header.php");
+        # includes the header.introduction file that contains introduction about the website
+        echo view('includes/header_introduction');
     ?>
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-    <!-- about section -->
+<!-- @END PHP CODE -->
+
+
+<!-- @SECTION 2 - about -->
     <div class="about">
-        
         <div class="about-title">
             <h2>About</h2>
         </div>
@@ -42,9 +48,10 @@
             </div>
         </div>
     </div>
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- product slider section -->
+<!-- @END SECTION ABOUT -->
+
+
+<!-- @PRODUCT SECTION - product slider section -->
     <div class="product">
         <div class="product-title">
             <h2>Our Product</h2>
@@ -61,9 +68,10 @@
             </div>
         </div>
     </div>
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- favorite gears in display -->
+<!-- @END SECTION 2 - product slider section -->
+
+
+<!-- @SECTION 3 - favorite gears in display -->
     <div class="fav-gear">
         <div class="fav-title">
             <h2>INM Favorite Gear Created</h2>
@@ -106,14 +114,17 @@
             </div>
         </div>
     </div>
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- this includes footer.php file on every website that has this code -->
-    <?php 
-        echo view("others/footer.php");
-    ?> 
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
-<!-- ## -------------------------------------------------------------------------------------------------------------------------------------------------------------- ## -->
+<!-- @END SECTION 3 -->
+
+
+<!-- @PHP CODE FOOTER - this includes footer.php file on every website that has this code -->
+    <?php echo view("includes/footer.php"); ?> 
+<!-- @PHP CODE END FOOTER  -->
+
+
+<!-- @SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="<?= base_url('assets/js/script.js') ?>"></script>
+
 </body>
 </html>

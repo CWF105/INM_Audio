@@ -16,7 +16,7 @@
 <body>
 <!-- this includes header.php file on every website that has this code -->
    <?php 
-        echo view("others/header.php");
+        echo view("includes/header.php");
     ?>
 
 <!-- main shop -->
@@ -102,7 +102,7 @@
 
 <!-- this includes header.php file on every website that has this code -->
     <?php 
-        echo view("others/footer.php");
+        echo view("includes/footer.php");
     ?>
     
 

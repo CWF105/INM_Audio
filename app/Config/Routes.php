@@ -19,18 +19,18 @@ use CodeIgniter\Router\RouteCollection;
 // Home page Routing
 $routes->group('', function($routes) 
 {
-    $routes->get('/', 'Main::homepage');
-    $routes->get('/library', 'Main::library');
-    $routes->get('/community', 'Main::community');
-    $routes->get('/customize', 'Main::customize');
+    $routes->get('/', 'MainController::homepage');
+    $routes->get('/library', 'MainController::library');
+    $routes->get('/community', 'MainController::community');
+    $routes->get('/customize', 'MainController::customize');
 
-    $routes->get('/login', 'Main::login');
+    $routes->get('/login', 'MainController::login');
 
 
 ## ---------------------------------------------------------------------
 // Users Routers
-    $routes->get('/user/setting', 'Main::userSettings');
-    $routes->get('/user/logout', 'Main::logout');
+    $routes->get('/user/setting', 'MainController::userSettings');
+    $routes->get('/user/logout', 'MainController::logout');
 });
 
 ## ---------------------------------------------------------------------

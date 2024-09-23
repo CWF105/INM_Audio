@@ -1,56 +1,19 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+< lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- @CSS FILE LINKS -->
         <link rel="stylesheet" href="<?= base_url('assets/css/signup.css')?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <title>Sign Up</title>
-        <style>
-            /* Simple styling for modal */
-            #notificationModal {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .modal-content {
-                padding: 20px;
-                border-radius: 5px;
-                position: relative;
-                text-align: center;
-                width: 300px;
-            }
-            .close-btn {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                cursor: pointer;
-                font-size: 18px;
-            }
-            h5 a{
-                text-decoration: none;
-                color: white;
-            }
-            .error {color:red; font-size: 16px;}
-            .success {color:green; font-size: 16px;}
-            p {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-weight: bold;
-                text-align: center;
-            }
-        </style>
         
+        <title>Sign Up</title>
     </head>
+<body>
 
-<!-- forms -->
+<!-- @FORMS -->
         <php class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
 
@@ -128,7 +91,7 @@
 
 
 
-<!-- scripts  -->
+<!-- @scripts  -->
         <script>
             function closeModal() {
                 document.getElementById('notificationModal').style.display = 'none';
