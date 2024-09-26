@@ -57,9 +57,16 @@ class Login_SignupController extends BaseController
             'phonenumber' => $this->request->getPost('pnum'),
             'username' => $this->request->getPost('user'),
             'password' => $this->request->getPost('pass'),
+            'cpassword' => $this->request->getPost('cpass'),
             'signupAccountType' => 'user'
         ]); 
-        return $this->checkIfExist();
+        if($this->session->get('pass') == $this->session->get('cpass')) {
+            return $this->checkIfExist();
+        }
+        else {
+            $this->session->setFlashdata('userError', 'password did not match');
+            return redirect()->to('/login');
+        }
     }
         // check is data is existing in the database
         // then redirect back to login page, or else redirect to EmailVerificationController::sendEmailVerification() method

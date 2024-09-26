@@ -110,9 +110,7 @@ class AdminController extends BaseController
             $this->loadSession();
             $this->loadAdminAccount();
             $user_id = $this->session->get('admin_id');
-            $username = $this->session->get('username');
             $this->adminAccount->update($user_id , ['remember_token' => null]);
-            $this->adminAccount->update($username, ['remember_token' => null]);
             delete_cookie('remember_token');
         }
 

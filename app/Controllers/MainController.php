@@ -155,9 +155,13 @@ class MainController extends BaseController
     public function customize(){
         return $this->checkSessionThenRedirect('customize', true);
     }
-    ## redirect to customize 
+    ## redirect to login 
     public function login(){
-        return $this->checkSessionThenRedirect('signup_login');
+        return $this->checkSessionThenRedirect('login');
+    }
+    ## redirect to signup
+    public function signup() {
+        return $this->checkSessionThenRedirect('signup');
     }
 
 ## ----- END ROUTES ----- ##

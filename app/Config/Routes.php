@@ -16,6 +16,7 @@ $routes->group('', function($routes) {
     $routes->get('/community', 'MainController::community');
     $routes->get('/customize', 'MainController::customize');
     $routes->get('/login', 'MainController::login');
+    $routes->get('/signup', 'MainController::signup');
 });
 
 
