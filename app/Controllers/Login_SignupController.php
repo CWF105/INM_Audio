@@ -67,18 +67,20 @@ class Login_SignupController extends BaseController
             $this->loadSession();
             $this->loadEmailVerification();
             $this->loadUserAccount();
-            $usernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
-            $emailExist = $this->userAccount->getUser('email', $this->session->get('email'));
-
-            if ($usernameExist && $emailExist) {
+            $this->loadAdminAccount();
+            $adminUsernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
+            $adminEmailExist = $this->userAccount->getUser('email', $this->session->get('email'));
+            $userUsernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
+            $userEmailExist = $this->userAccount->getUser('email', $this->session->get('email'));
+            if(($adminUsernameExist && $adminEmailExist) || ($userUsernameExist && $userEmailExist)) {
                 $this->session->setFlashdata('userError', 'Both username and email are already in use.');
                 return redirect()->to('/login'); 
             }
-            else if ($usernameExist) {
+            else if ($adminUsernameExist || $userUsernameExist) {
                 $this->session->setFlashdata('userError', 'Username is already in use.');
                 return redirect()->to('/login');
             }
-            else if ($emailExist) {
+            else if ($adminEmailExist || $userEmailExist) {
                 $this->session->setFlashdata('userError', 'Email is already in use.');
                 return redirect()->to('/login');
             }

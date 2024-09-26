@@ -217,7 +217,7 @@ class AdminController extends BaseController
                 'username' => $username,
                 'email' => $email,
                 'password' => $password,
-                'signupAccountType' => 'admin'
+                'signupAccountType' => 'admin_admin'
             ]);
             return $this->checkIfExist();
         }
@@ -233,12 +233,13 @@ class AdminController extends BaseController
         $cpassword = $this->request->getPost('cpass');
         if($password == $cpassword) {
             $this->session->set([
-                'firstname' => $this->request->getPost('fname'),
-                'lastname' => $this->request->getPost('lname'),
+                'fname' => $this->request->getPost('fname'),
+                'lname' => $this->request->getPost('lname'),
                 'email' => $this->request->getPost('email'),
                 'phonenumber' => $this->request->getPost('pnum'),
-                'username' => $this->request->getPost('username'),
-                'signupAccountType' => 'user'
+                'username' => $this->request->getPost('user'),
+                'password' => $password,
+                'signupAccountType' => 'admin_user'
             ]);
             return $this->checkIfExist();
         }
@@ -251,51 +252,49 @@ class AdminController extends BaseController
         ## check if user or admin account existing
         private function checkIfExist() {
             $this->loadSession();            
-            if($this->session->get('signupAccountType') == "admin") {
-                $this->loadAdminAccount();
-                $isUsernameExist = $this->adminAccount->getUser('username', $this->session->get('username'));
-                $isEmailExist = $this->adminAccount->getUser('username', $this->session->get('email'));
-                if($isUsernameExist && $isEmailExist) {
-                    $this->session->setFlashdata('error', 'Both username and email are already in use.');
+            $this->loadEmailVerification();
+            $this->loadAdminAccount();
+            $this->loadUserAccount();
+            $isAdminUsernameExist = $this->adminAccount->getUser('username', $this->session->get('username'));
+            $isAdminEmailExist = $this->adminAccount->getUser('email', $this->session->get('email'));
+            $isUserUsernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
+            $isUserEmailExist = $this->userAccount->getUser('email', $this->session->get('email'));
+            if(($isAdminUsernameExist && $isAdminEmailExist) || ($isUserUsernameExist && $isUserEmailExist)) {
+                $this->session->setFlashdata('error', 'Both username and email are already in use.');
+                if($this->session->get('signupAccountType') == "admin_admin") {
                     return redirect()->to('/admin/registerA');
                 }
-                else if($isUsernameExist) {
-                    $this->session->setFlashdata('error', 'Username is already in use.');
-                    return redirect()->to('/admin/registerA');
-                }
-                else if($isEmailExist) {
-                    $this->session->setFlashdata('error', 'Email is already in use.');
-                    return redirect()->to('/admin/registerA');
-                }
-                else {
-                    return $this->EVerify->sendEmailVerification($this->session->get('email'));
+                else if($this->session->get('signupAccountType') == "admin_user") {
+                    return redirect()->to('/admin/registerU');
                 }
             }
-            else if($this->session->get('signupAccountType') == "user") {
-                $this->loadUserAccount();
-                $isUsernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
-                $isEmailExist = $this->userAccount->getUser('username', $this->session->get('email'));
-                if($isUsernameExist && $isEmailExist) {
-                    $this->session->setFlashdata('error', 'Both username and email are already in use.');
+            else if($isAdminUsernameExist || $isUserUsernameExist) {
+                $this->session->setFlashdata('error', 'Username is already in use.');
+                if($this->session->get('signupAccountType') == "admin_admin") {
+                    return redirect()->to('/admin/registerA');
+                }
+                else if($this->session->get('signupAccountType') == "admin_user") {
                     return redirect()->to('/admin/registerU');
                 }
-                else if($isUsernameExist) {
-                    $this->session->setFlashdata('error', 'Username is already in use.');
+            }
+            else if($isAdminEmailExist || $isUserEmailExist) {
+                $this->session->setFlashdata('error', value: 'Email is already in use.');
+                if($this->session->get('signupAccountType') == "admin_admin") {
+                    return redirect()->to('/admin/registerA');
+                }
+                else if($this->session->get('signupAccountType') == "admin_user") {
                     return redirect()->to('/admin/registerU');
                 }
-                else if($isEmailExist) {
-                    $this->session->setFlashdata('error', 'Email is already in use.');
-                    return redirect()->to('/admin/registerU');
-                }
-                else {
-                    return $this->EVerify->sendEmailVerification($this->session->get('email'));
-                }
+            }
+            else {
+                return $this->EVerify->sendEmailVerification($this->session->get('email'));
             }
         }
 
         ## check if verification code is valid or not
         public function checkIfVerificationCodeIsValid($verificationCode){
             $this->loadSession();
+            $this->loadExpirationTime();
             $expiryTime = $this->session->get('verification_expiry');
         
             if ($this->session->get('verification') == $verificationCode) {
@@ -310,12 +309,11 @@ class AdminController extends BaseController
             $this->session->setFlashdata('userError', 'Invalid verification code.');
             return redirect()->to('/account/verify-email');
         }
-
+            ## saves data 
             private function saveData() {
                 $this->loadSession();
-                $this->loadUserAccount();
-                $this->loadAdminAccount();
-                if($this->session->get('signupAccountType') == "admin") {
+                if($this->session->get('signupAccountType') == "admin_admin") {
+                    $this->loadAdminAccount();
                     $this->adminAccount->save([
                         'username' => $this->session->get('username'),
                         'email' => $this->session->get('email'),
@@ -328,17 +326,18 @@ class AdminController extends BaseController
                     $this->session->setFlashdata('success', 'account created');
                     return redirect()->to('/admin/registerA');
                 }
-                else if($this->session->get('signupAccountType') == "user") {
+                else if($this->session->get('signupAccountType') == "admin_user") {
+                    $this->loadUserAccount();
                     $this->userAccount->save([
-                        'firstname' => $this->session->get('firstName'), 
-                        'lastname' => $this->session->get('lastName'), 
+                        'firstname' => $this->session->get('fname'), 
+                        'lastname' => $this->session->get('lname'), 
                         'email' => $this->session->get('email'),
                         'phone_number' => $this->session->get('phonenumber'),
                         'username' => $this->session->get('username'),
                         'password' => password_hash($this->session->get('password'), PASSWORD_DEFAULT)
                     ]);
-                    $this->session->remove('firstname');
-                    $this->session->remove('lastname');
+                    $this->session->remove('fname');
+                    $this->session->remove('lname');
                     $this->session->remove('email');
                     $this->session->remove('phonenumber');
                     $this->session->remove('username');

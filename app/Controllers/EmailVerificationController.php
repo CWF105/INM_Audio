@@ -98,7 +98,7 @@ class EmailVerificationController extends BaseController
         $this->loadAdminController();
         $this->loadMainController();
         $verificationCode = $this->request->getPost('code');
-        if($this->session->get('signupAccountType') == "admin") {
+        if($this->session->get('signupAccountType') == "admin_admin" || $this->session->get('signupAccountType') == "admin_user") {
             return $this->adminCon->checkIfVerificationCodeIsValid($verificationCode);
         }
         else if($this->session->get('signupAccountType') == "user") {
