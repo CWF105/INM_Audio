@@ -23,11 +23,6 @@ class User_Account_Model extends Model
     ];
     protected $useTimeStamps = true;
 
-// -------------------------------------------------------------------
-    public function createUserCart()
-    {
-
-    }
 
 // -------------------------------------------------------------------
 // get all list of users

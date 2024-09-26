@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1727331583;_ci_previous_url|s:59:"http://localhost/INM_Audio/public/index.php/admin/registerA";admin_id|s:1:"1";username|s:5:"admin";email|s:15:"admin@gmail.com";type|s:5:"admin";timeLoggedIn|i:1727329809;isLoggedIn|b:1;error|s:43:"Both username and email are already in use.";__ci_vars|a:1:{s:5:"error";s:3:"old";}

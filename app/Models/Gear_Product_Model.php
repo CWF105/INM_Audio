@@ -20,6 +20,11 @@ class Gear_Product_Model extends Model
     protected $useTimestamps = true; 
 
 
+    ## show only
+    public function getAllPaginated($perPage) {
+        return $this->orderBy('product_id', 'DESC')->paginate($perPage, 'gears');
+    }
+
 
     public function getAll() 
     {

@@ -61,7 +61,7 @@
 
 <!-- scripts  -->
 <script>
-     <?php if(session()->getFlashdata('welcome')): ?>
+     <?php if(session()->getFlashdata('welcome_admin')): ?>
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));
         myModal.show();
     <?php endif; ?>

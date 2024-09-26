@@ -66,21 +66,21 @@
 
 <body>
 
-<?php if (session()->getFlashdata('successUser')) :?>
+<?php if (session()->getFlashdata('success')) :?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('successUser'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('successUser') ?>"><?php session()->getFlashdata('successUser') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
       <button onclick="closePopup()">Close</button>
     </div>
     
-<?php elseif(session()->getFlashdata('errorUser')) : ?>
+<?php elseif(session()->getFlashdata('error')) : ?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('errorUser'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('errorUser') ?>"><?php session()->getFlashdata('errorUser') ?></div>
+    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
+      <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
       <button class="btn" onclick="closePopup()">Close</button>
   </div>
 
-<?php elseif(!session()->getFlashdata('errorUser') && !session()->getFlashdata('errorUser')) :?>
+<?php elseif(!session()->getFlashdata('error') && !session()->getFlashdata('success')) :?>
     <span></span>
 <?php endif ;?>
 
@@ -114,6 +114,8 @@
                     <input type="text" name="user" class="form-control" id="user" placeholder="Username" required>
                     <p></p>
                     <input type="password" name="pass" class="form-control" id="pass" placeholder="Password" required>
+                    <p></p>
+                    <input type="password" name="cpass" class="form-control" id="cpass" placeholder="Confirm Password" required>
                   </div>
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign up</button>
 
@@ -147,7 +149,7 @@
             const popupMessage = document.getElementById('popupMessage');
 
             // Set message and styles based on type
-            popupMessage.innerHTML = `<p class="${type === 'successUser' ? 'text-success' : 'text-danger'}">${message}</p>`;
+            popupMessage.innerHTML = `<p class="${type === 'success' ? 'text-success' : 'text-danger'}">${message}</p>`;
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -162,13 +164,13 @@
 
         // Show the popup if flash data exists
         document.addEventListener('DOMContentLoaded', function() {
-            const successMessage = '<?= session()->getFlashdata('successUser') ?>';
-            const errorMessage = '<?= session()->getFlashdata('errorUser') ?>';
+            const successMessage = '<?= session()->getFlashdata('success') ?>';
+            const errorMessage = '<?= session()->getFlashdata('error') ?>';
             
             if (successMessage) {
-                showPopup(successMessage, 'successUser');
+                showPopup(successMessage, 'success');
             } else if (errorMessage) {
-                showPopup(errorMessage, 'errorUser');
+                showPopup(errorMessage, 'error');
             }
         });
     </script>

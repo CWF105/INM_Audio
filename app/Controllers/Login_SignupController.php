@@ -1,81 +1,173 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\Admin_Account_Model as adminAccount;
-use App\Models\User_Account_Model as userAccount;
+require FCPATH . '../vendor/autoload.php';
+use App\Models\Admin_Account_Model as adminAccountModel;
+use App\Models\User_Account_Model as userAccountModel;
+use App\Controllers\EmailVerificationController as EVerify;
 
 class Login_SignupController extends BaseController
 {
-## ---------------------------------------------------------------------
-//signup user controller
-    public function signup_user()
-    {
-        $userAccount = new userAccount();
-        $session = session();
-        $firstName = $this->request->getPost('fname');
-        $lastName = $this->request->getPost('lname');
-        $email = $this->request->getPost('email');
-        $phonenumber = $this->request->getPost('pnum');
-        $username = $this->request->getPost('user');
-        $password = $this->request->getPost('pass');
+    protected $session;
+    protected $adminAccount;
+    protected $userAccount;
+    protected $EVerify;
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $prepareData = [
-            'firstname' => $firstName,
-            'lastname' => $lastName,
-            'email' => $email,
-            'phone_number' => $phonenumber,
-            'username' => $username,
-            'password' => $hashedPassword
-        ];
-
-        $usernameExist = $userAccount->getUser('username', $username);
-        $emailExist = $userAccount->getUser('email', $email);
-
-        if ($usernameExist && $emailExist) {
-            $session->setFlashdata('userError1', 'Both username and email are already in use.');
-            return redirect()->to('/login');
+## ----- THIS PREVENTS LOADING MODELS AND MEMORY ISSUES ----- ##
+## call this methods to load models
+    // load session method
+    private function loadSession() {
+        if(!$this->session) {
+            $this->session = session();
         }
-        elseif ($usernameExist) {
-            $session->setFlashdata('userError2', 'Username is already in use.');
-            return redirect()->to('/login');
-        } 
-        elseif ($emailExist) {
-            $session->setFlashdata('userError3', 'Email is already in use.');
-            return redirect()->to('/login');
-        } 
-        else {
-            $userAccount->save($prepareData);
-            $session->setFlashdata('successRegister', 'Account created successfully.');
-            return redirect()->to('/login');
+    }
+    // load user account model 
+    private function loadUserAccount(){
+        if(!$this->userAccount) {
+            $this->userAccount = new userAccountModel();
         }
+    }
+    // load admin account model 
+    private function loadAdminAccount(){
+        if(!$this->adminAccount) {
+            $this->adminAccount = new adminAccountModel();
+        }
+    }
+    // load email verification controller
+    private function loadEmailVerification() {
+        if(!$this->EVerify) {
+            $this->EVerify = new EVerify();
+        }
+    }
+## ----- END ----- ##
+
+
+
+
+
+## ----- SIGN UP CONTROLLER FOR USER ----- ##
+    // getting the post request for input fields then setting it temporarily in session for future access and use
+    // after this method it redirects to checkIfExist() method
+    public function signup_user() {
+        $this->loadSession();
+        $this->session->set([
+            'firstName' => $this->request->getPost('fname'),
+            'lastName' => $this->request->getPost('lname'),
+            'email' => $this->request->getPost('email'),
+            'phonenumber' => $this->request->getPost('pnum'),
+            'username' => $this->request->getPost('user'),
+            'password' => $this->request->getPost('pass'),
+            'signupAccountType' => 'user'
+        ]); 
+        return $this->checkIfExist();
+    }
+        // check is data is existing in the database
+        // then redirect back to login page, or else redirect to EmailVerificationController::sendEmailVerification() method
+        private function checkIfExist(){
+            $this->loadSession();
+            $this->loadEmailVerification();
+            $this->loadUserAccount();
+            $usernameExist = $this->userAccount->getUser('username', $this->session->get('username'));
+            $emailExist = $this->userAccount->getUser('email', $this->session->get('email'));
+
+            if ($usernameExist && $emailExist) {
+                $this->session->setFlashdata('userError', 'Both username and email are already in use.');
+                return redirect()->to('/login'); 
+            }
+            else if ($usernameExist) {
+                $this->session->setFlashdata('userError', 'Username is already in use.');
+                return redirect()->to('/login');
+            }
+            else if ($emailExist) {
+                $this->session->setFlashdata('userError', 'Email is already in use.');
+                return redirect()->to('/login');
+            }
+            else {
+                return $this->EVerify->sendEmailVerification($this->session->get('email'));
+            }
+        }
+
+
+
+
+
+    ## verify if verification code is valid
+    //after this method, redirects to saveData() method or redirect back to EmailVerificationController::verificationPage() method
+    public function checkIfVerificationCodeIsValid($verificationCode){
+        $this->loadSession();
+        $expiryTime = $this->session->get('verification_expiry');
+    
+        if ($this->session->get('verification') == $verificationCode) {
+            if (time() < $expiryTime) {
+                return $this->saveData();
+            } else {
+                $this->session->setFlashdata('userError', 'The verification code has expired.');
+                return redirect()->to('/account/verify-email');
+            }
+        }
+    
+        $this->session->setFlashdata('userError', 'Invalid verification code.');
+        return redirect()->to('/account/verify-email');
     }
 
 
-## ---------------------------------------------------------------------
-// login controller - for admin and user
-    public function loginAdminAndUser()
-    {
-        $adminAccount = new adminAccount();
-        $userAccount = new userAccount();
+
+
+
+        // save account and proceed to logged in
+        // save to database table 'user_accounts' then set success message, and unset session data, then redirect to login page
+        private function saveData() {
+            $this->loadSession();
+            $this->loadUserAccount();
+            $this->userAccount->save([
+                'firstname' => $this->session->get('firstName'), 
+                'lastname' => $this->session->get('lastName'), 
+                'email' => $this->session->get('email'),
+                'phone_number' => $this->session->get('phonenumber'),
+                'username' => $this->session->get('username'),
+                'password' => password_hash($this->session->get('password'), PASSWORD_DEFAULT)
+            ]);
+        
+            $this->session->setFlashdata('successRegister', 'Account created successfully.');
+            $this->session->remove('firstname');
+            $this->session->remove('lastname');
+            $this->session->remove('email');
+            $this->session->remove('phonenumber');
+            $this->session->remove('username');
+            $this->session->remove('password');
+            $this->session->remove('signupAccountType');
+            $this->session->setFlashdata('successRegister', 'account created');
+            return redirect()->to('/login');
+        }
+## ----- END ----- ##
+
+
+
+
+
+## -----  LOGIN CONTROLLER FOR USER ----- ##
+    ## checks if logging in to user or admin
+     public function loginAdminAndUser(){
         helper('cookie');
-        $session = session();
+        $this->loadSession();
+        $this->loadAdminAccount();
+        $this->loadUserAccount();
 
         $usernameOrEmail = $this->request->getPost('username');
         $password = $this->request->getPost('pass');
         $rememberMe = $this->request->getPost('remember');
 
-        $error = 'Wrong login credentials!.';
-        $welcome = "Welcome Administrator";
+        #adminAccount
+        $adminUsername = $this->adminAccount->getUser('username', $usernameOrEmail);
+        $adminEmail = $this->adminAccount->getUser('email', $usernameOrEmail);
+        #userAccount
+        $userUsername = $this->userAccount->getUser('username', $usernameOrEmail);
+        $userEmail = $this->userAccount->getuser('email', $usernameOrEmail);
 
         #adminAccount
-        $adminUsername = $adminAccount->getUser('username', $usernameOrEmail);
-        $adminEmail = $adminAccount->getUser('email', $usernameOrEmail);
-
         if($adminUsername || $adminEmail) {
             if(is_array($adminUsername) && password_verify($password, $adminUsername['password'])) {
-                $session->set([
+                $this->session->set([
                     'admin_id' => $adminUsername['admin_account_id'],
                     'username' => $adminUsername['username'],
                     'email' => $adminUsername['email'],
@@ -83,17 +175,16 @@ class Login_SignupController extends BaseController
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);    
-
                 if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
-                    $adminAccount->update($adminUsername['admin_account_id'], ['remember_token' => $token]);
+                    $this->adminAccount->update($adminUsername['admin_account_id'], ['remember_token' => $token]);
                     set_cookie('remember_token', $token, 7200);  // set 300 to expires in 5 mins, set 7200 to expires in 2hrs
                 }
-                $session->setFlashdata('welcome', $welcome);                
+                $this->session->setFlashdata('welcome_admin', 'Welcome Administrator');                
                 return redirect()->to('/admin/dashboard');
             }
             else if(is_array($adminEmail) && password_verify($password, $adminEmail['password'])) {
-                $session->set([
+                $this->session->set([
                     'admin_id' => $adminEmail['admin_account_id'],
                     'username' => $adminEmail['username'],
                     'email' => $adminEmail['email'],
@@ -101,28 +192,25 @@ class Login_SignupController extends BaseController
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);    
-
                 if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
-                    $adminAccount->update($adminEmail['admin_account_id'], ['remember_token' => $token]);
+                    $this->adminAccount->update($adminEmail['admin_account_id'], ['remember_token' => $token]);
                     set_cookie('remember_token', $token, 7200);  // set 300 to expires in 5 mins, set 7200 to expires in 2hrs
                 }
-                $session->setFlashdata('welcome', $welcome);
+                $this->session->setFlashdata('welcome_admin', 'Welcome Administrator');
                 return redirect()->to('/admin/dashboard');
             }
             else {
-                session()->setFlashdata('error', $error);
+                $this->session->setFlashdata('error', 'Wrong login credentials!.');
                 return redirect()->to('/login');            
             }
         }
 
+
         #userLogin
-        $userUsername = $userAccount->getUser('username', $usernameOrEmail);
-        $userEmail = $userAccount->getuser('email', $usernameOrEmail);
         if($userUsername || $userEmail) {
-            $session = session();
             if(is_array($userUsername) && password_verify($password, $userUsername['password'])) {
-                $session->set([
+                $this->session->set([
                     'user_id' => $userUsername['user_id'],
                     'username' => $userUsername['username'],
                     'email' => $userUsername['email'],
@@ -130,20 +218,19 @@ class Login_SignupController extends BaseController
                     'timeLoggedIn' => time(),
                     'isLoggedIn' => true
                 ]);  
-
                 // remember me check box
                 if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
-                    $userAccount->update($userUsername['user_id'], ['remember_token' => $token]);
+                    $this->userAccount->update($userUsername['user_id'], ['remember_token' => $token]);
     
                     // set to expires in 30 days
                     set_cookie('remember_token', $token, 3600*24*30);
                 }
-                $session->setFlashdata('welcome-user', $welcome);
+                $this->session->setFlashdata('welcome_user', 'Welcome' . $userUsername['username']);
                 return redirect()->to('/');
             }
             else if(is_array($userEmail) && password_verify($password, $userEmail['password'])) {
-                $session->set([
+                $this->session->set([
                     'user_account_id' => $userEmail['user_id'],
                     'username' => $userEmail['username'],
                     'email' => $userEmail['email'],
@@ -155,16 +242,17 @@ class Login_SignupController extends BaseController
                 // remember me check box
                 if(isset($rememberMe)) {
                     $token = bin2hex(random_bytes(16));
-                    $userAccount->update($userEmail['user_id'], ['remember_token' => $token]);
+                    $this->userAccount->update($userEmail['user_id'], ['remember_token' => $token]);
     
                     // set to expires in 30 days
                     set_cookie('remember_token', $token, 3600*24*30);
                 }
-                $session->setFlashdata('welcome-user', $welcome);
+                $this->session->setFlashdata('welcome_user', 'Welcome' . $userUsername['username']);
                 return redirect()->to('/');
             }
         }
-        $session->setFlashdata('error', $error);
+        $this->session->setFlashdata('error', 'Wrong login credentials!.');
         return redirect()->to('/login');
         }
-    }
+## ----- END ----- ##
+}

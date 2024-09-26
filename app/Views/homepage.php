@@ -17,10 +17,11 @@
 
 <body>
 <!-- @SESSION MESSAGES - set session messages if user is successfully logged in -->
-    <?php if(session()->get('welcome-user')): ?>
+    <?php if(session()->get('welcome_user')): ?>
         <span style="color: green; font-family: 'Courier New'; padding-inline: 45%; padding-block: 3px;  background-color: #d9ffd2 ">Welcome <?= esc(session()->get('username')) ?></span>
     <?php endif;?>
 <!-- @END SESSION MESSAGES -->
+
 
 
 <!-- @PHP CODE - this includes header.php file on every website that has this code -->

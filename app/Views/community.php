@@ -14,14 +14,17 @@
 </head>
 <body>
 
-<!-- this includes header.php file on every website that has this code -->
-    <?php 
+<!-- @PHP CODE - this includes header.php file on every website that has this code -->
+<?php 
+        # includes the header file that contains navbar
         echo view("includes/header.php");
-        echo view('includes/header_text');
+        # includes the header.introduction file that contains introduction about the website
+        echo view('includes/header_introduction');
     ?>
+<!-- @END PHP CODE -->
 
-<!-- products -->
-    <div class="comm-container">
+<!-- @SECTION 2 - products -->
+<div class="comm-container">
         <div class="comm-title">
             <h2>INM Community</h2>
         </div>
@@ -210,11 +213,16 @@
             </div>
         </div>
     </div>
+<!-- @END SECTION products -->
 
 
-<!-- this includes header.php file on every website that has this code -->
-    <?php 
-        echo view("includes/footer.php");
-    ?>
+
+<!-- @PHP CODE FOOTER - this includes footer.php file on every website that has this code -->
+<?php echo view("includes/footer.php"); ?> 
+<!-- @PHP CODE END FOOTER  -->
+
+
+<!-- @SCRIPTS -->
+
 </body>
 </html>

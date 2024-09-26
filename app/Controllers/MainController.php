@@ -1,100 +1,164 @@
 <?php
-
 namespace App\Controllers;
 use Config\Session as SessionConfig;
-use App\Models\User_Account_Model as userAccount;
+use App\Models\User_Account_Model as userAccountModel;
 use App\Models\Category_Model as categories;
 use App\Models\Gear_Product_Model as gears;
 
 class MainController extends BaseController
 {
+    // global variables
     protected $session;
     protected $sessionConfig;
     protected $expirationTime;
     protected $userAccount;
     protected $categories;
-    protected $gearProduct;
+    protected $gears;
 
-    public function __construct()
-    {
-        $this->session = session();
-        $this->sessionConfig = new SessionConfig();
-        $this->expirationTime = $this->sessionConfig->expiration;
-        $this->userAccount = new userAccount();
-        $this->categories = new categories();
-        $this->gearProduct = new gears();
+## ----- THIS PREVENTS LOADING MODELS AND MEMORY ISSUES ----- ##
+## call this methods to load models
+    // load session method
+    private function loadSession() {
+        if(!$this->session) {
+            $this->session = session();
+        }
     }
+    // load session expiration time 
+    private function loadExpirationTime() {
+        if(!$this->expirationTime){
+            $this->sessionConfig = new SessionConfig();
+            $this->expirationTime = $this->sessionConfig->expiration;
+        }
+    }
+    // load user account model 
+    private function loadUserAccount(){
+        if(!$this->userAccount) {
+            $this->userAccount = new userAccountModel();
+        }
+    }
+    // load categories model
+    private function loadCategories() {
+        if(!$this->categories) {
+            $this->categories = new categories();
+        }
+    }
+    // load gears model
+    private function loadGears() {
+        if(!$this->gears) {
+            $this->gears = new gears();
+        }
+    }
+## ----- END ----- ## 
 
-    // Check if session is set, redirect based on role, or render the view
-    public function handleSession($path, $isDisplaying = false)
-    {
-        if ($this->isAdmin()) {
+
+
+
+
+## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
+    ## check sessions and redirect to views
+    public function checkSessionThenRedirect($path, $isDisplaying = false){
+        if($this->isAdmin()) {
             return redirect()->to('/admin/dashboard');
         }
-
-        if ($this->isSessionExpired()) {
-            $this->logoutSession();
+        if($this->isSessionExpired()) {
+            $this->deleteCookiesAndSession();
             return redirect()->to('/');
         }
-
         return $this->renderView($path, $isDisplaying);
     }
-
-    // Check if admin session is set
-    private function isAdmin()
-    {
-        return $this->session->get('type') == "admin" && $this->session->get('isLoggedIn') && $this->session->get('admin_id');
-    }
-
-    // Check if session is expired
-    private function isSessionExpired()
-    {
-        return $this->session->get('timeLoggedIn') && (time() - $this->session->get('timeLoggedIn')) > $this->expirationTime;
-    }
-
-    // Logout session and clear tokens
-    private function logoutSession()
-    {
-        $user_id = $this->session->get('user_id');
-        $username = $this->session->get('username');
-        $this->userAccount->update($user_id, ['remember_token' => null]);
-        $this->userAccount->update($username, ['remember_token' => null]);
-        delete_cookie('remember_token');
-    }
-
-    // Render view with optional data
-    private function renderView($path, $isDisplaying)
-    {
-        if ($isDisplaying) {
-            $data = [
-                'categories' => $this->categories->getAll(),
-                'gearsPerCategory' => $this->gearProduct->getAll(),
-            ];
-            return view($path, $data);
+        ## check if session is set to admin
+        private function isAdmin(){
+            $this->loadSession();
+            return  $this->session->get('type') == "admin" && 
+                    $this->session->get('isLoggedIn') && 
+                    $this->session->get('admin_id');
         }
+        ## check if session is expired
+        private function isSessionExpired() {
+            $this->loadSession();
+            $this->loadExpirationTime();
+            return  $this->session->get('timeLoggedIn') && 
+                    (time() - $this->session->get('timeLoggedIn')) > $this->expirationTime;
+        }
+        ## delete both cookies and session
+        private function deleteCookiesAndSession(){
+            $this->loadSession();
+            $this->loadUserAccount();
+            $user_id = $this->session->get('user_id');
+            $username = $this->session->get('username');
+            $this->userAccount->update($user_id , ['remember_token' => null]);
+            $this->userAccount->update($username, ['remember_token' => null]);
+            delete_cookie('remember_token');
+        }
+        ## render view 
+        private function renderView($path, $isDisplaying){
+            $this->loadGears();
+            $this->loadCategories();
+            if($isDisplaying) {
+                $pager = \Config\Services::pager(); 
+        
+                $perPage = 10; 
+                $gears = $this->gears->getAllPaginated($perPage);
+        
+                $data = [
+                    'categories' => $this->categories->getAll(),
+                    'gearsPerCategory' => $gears, 
+                    'pager' => $this->gears->pager 
+                ];
+                return view($path, $data);
+            }
+            return view($path); 
+        }
+## ----- END ----- ##
 
-        return view($path);
-    }
 
-    // Logout controller
+
+
+
+## ----- LOGOUT ----- ##
+    ## logout method
     public function logout()
     {
+        $this->loadUserAccount();
+        $this->loadSession();
         helper('cookie');
+        
         $user_id = $this->session->get('admin_account_id');
-        if ($user_id) {
-            $this->userAccount->update($user_id, ['remember_token' => null]);
+        if($user_id) {
+            $$this->userAccount->update($user_id, ['remember_token' => null]);
         }
-
-        $this->session->destroy();
+        
+        $this->session->destroy();    
         delete_cookie('remember_token');
         return redirect()->to('/');
     }
+## ----- END ----- ##
 
-    // Routes
-    public function homepage() { return $this->handleSession('homepage'); }
-    public function library() { return $this->handleSession('library', true); }
-    public function community() { return $this->handleSession('community', true); }
-    public function customize() { return $this->handleSession('customize', true); }
-    public function login() { return $this->handleSession('signup_login'); }
-    public function userSettings() { return $this->handleSession('UserSide/userSettings', true); }
+
+
+
+
+## ----- ROUTES ----- ##
+    ## redirect to homepage 
+    public function home() {
+        return $this->checkSessionThenRedirect('homepage');
+    }
+    ## redirect to gear library 
+    public function library(){
+        return $this->checkSessionThenRedirect('library', true);
+    }
+    ## redirect to  community
+    public function community(){
+        return $this->checkSessionThenRedirect('community', true);
+    }
+    ## redirect to customize 
+    public function customize(){
+        return $this->checkSessionThenRedirect('customize', true);
+    }
+    ## redirect to customize 
+    public function login(){
+        return $this->checkSessionThenRedirect('signup_login');
+    }
+
+## ----- END ROUTES ----- ##
 }

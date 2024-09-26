@@ -13,20 +13,24 @@ class Cart_Model extends Model
     protected $useTimeStamps = true;
 
 
-    //gets the cart for user by id
+    
+
+//gets the cart for user by id
     public function getUserCartById($user_id)
     {
         return $this->where('user_id', $user_id)->first();
     }
 
 
-    // check if the user cart is actives
+
+// check if the user cart is actives
     public function checkIfCartisActive($user_id, $session_id)
     {
         return $this->where($user_id, $session_id)->first();
     }
 
-    // insert new user cart using cart id
+    
+// insert new user cart using cart id
     public function createNewCartForuser($user_id)
     {
         return $this->insert([

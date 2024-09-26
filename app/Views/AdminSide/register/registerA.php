@@ -65,27 +65,21 @@
 </head>
 
 <body>
+    <?php if (session()->getFlashdata('success')) :?>
+        <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
+          <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
+          <button onclick="closePopup()">Close</button>
+        </div>
+    <?php endif ;?>
 
-<?php if (session()->getFlashdata('successAdmin')) :?>
+    <?php if(session()->getFlashdata('error')) : ?>
+        <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
+          <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
+          <button class="btn" onclick="closePopup()">Close</button>
+      </div>
+    <?php endif ;?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('successAdmin'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('successAdmin') ?>"><?php session()->getFlashdata('succsuccessAdminess') ?></div>
-      <button onclick="closePopup()">Close</button>
-    </div>
     
-<?php elseif(session()->getFlashdata('errorAdmin')) : ?>
-
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('errorAdmin'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('errorAdmin') ?>"><?php session()->getFlashdata('errorAdmin') ?></div>
-      <button class="btn" onclick="closePopup()">Close</button>
-  </div>
-
-<?php elseif(!session()->getFlashdata('errorAdmin') && !session()->getFlashdata('errorAdmin')) :?>
-    <span></span>
-<?php endif ;?>
-
-
-
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
@@ -98,6 +92,8 @@
                 <p class="text-center">Register new Administrator account or <a href="<?= base_url('/admin/registerU') ?>">user account</a></p>
 
                 <form action="<?= base_url('/admin/registerAdmin') ?>" method="post">
+
+
                   <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" class="form-control" id="username" required>
@@ -111,6 +107,11 @@
                   <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="password" required>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="password" class="form-label">Confirm Password</label>
+                    <input type="password" name="cpassword" class="form-control" id="cpassword" required>
                   </div>
 
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign up</button>
@@ -145,7 +146,7 @@
             const popupMessage = document.getElementById('popupMessage');
 
             // Set message and styles based on type
-            popupMessage.innerHTML = `<p class="${type === 'successAdmin' ? 'text-success' : 'text-danger'}">${message}</p>`;
+            popupMessage.innerHTML = `<p class="${type === 'success' ? 'text-success' : 'text-danger'}">${message}</p>`;
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -160,13 +161,13 @@
 
         // Show the popup if flash data exists
         document.addEventListener('DOMContentLoaded', function() {
-            const successMessage = '<?= session()->getFlashdata('successAdmin') ?>';
-            const errorMessage = '<?= session()->getFlashdata('errorAdmin') ?>';
+            const successMessage = '<?= session()->getFlashdata('success') ?>';
+            const errorMessage = '<?= session()->getFlashdata('error') ?>';
             
             if (successMessage) {
-                showPopup(successMessage, 'successAdmin');
+                showPopup(successMessage, 'success');
             } else if (errorMessage) {
-                showPopup(errorMessage, 'errorAdmin');
+                showPopup(errorMessage, 'error');
             }
         });
     </script>

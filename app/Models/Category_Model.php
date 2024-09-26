@@ -10,12 +10,16 @@ class Category_Model extends Model
 
     protected $allowedFields = ['category'];
     
-    // retrieve and return all categories
+
+
+// retrieve and return all categories
     public function getAll() 
     {
         return $this->findAll();
     }
 
+
+// get category by field/column
     public function getCategory($field, $toGet) 
     {
         return $this->where($field, $toGet)->first();

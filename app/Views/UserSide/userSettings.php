@@ -20,9 +20,9 @@
     </style>
 </head>
 <body>
-<!-- @PHP CODE HEADEAR - this includes header.php file on every website that has this code -->
-    <?php  echo view("others/header.php"); ?>
-<!-- @END PHP CODE HEADEAR  -->
+<!-- @PHP CODE HEADER - this includes header.php file on every website that has this code -->
+    <?php  echo view("includes/header.php"); ?>
+<!-- @END PHP CODE HEADER  -->
 
 
 <!-- @MAIN CONTENT - all contents goes here -->
@@ -33,9 +33,9 @@
 <!-- @END MAIN CONTENT -->
 
 
-<!-- @PHP CODEFOOTER - includes footer  -->
-    <?php  echo view("others/footer.php"); ?> 
-<!-- @END PHP CODEEND FOOTER  -->
+<!-- @PHP CODE FOOTER - includes footer  -->
+    <?php  echo view("includes/footer.php"); ?> 
+<!-- @END PHP CODE FOOTER  -->
 
 
 <!-- @SCRIPTS -->

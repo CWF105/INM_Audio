@@ -18,7 +18,8 @@ class Cart_Item_Model extends Model
     protected $useTimeStamps = true;
 
 
-    // return all cart items for user
+
+// return all cart items for user
     public function get_cart_items($cart)
     {
         return $this->select('cart_items.*, products.product_name, products.price, products.image_url') // Explicitly select the columns you need
@@ -27,14 +28,16 @@ class Cart_Item_Model extends Model
     }
 
 
-    // check if product is existing by produdct id in cart
+
+// check if product is existing by produdct id in cart
     public function checkIfProductIsExisting($cart_id, $product_id)
     {
         return $this->where('cart_id', $cart_id)->where('product_id', $product_id)->first();
     }
 
 
-    //add new product
+
+//add new product
     public function addProduct($cart_id, $product_id, $quantity)
     {
         return $this->insert([
@@ -44,23 +47,26 @@ class Cart_Item_Model extends Model
         ]);
     }
 
-    // remove product by id
+
+
+// remove product by id
     public function deleteItem($item_id)
     {
         return $this->delete($item_id);
     }
 
 
-    // remove product - all
+
+// remove product - all
     public function removeAllProduct($item_id)
     {
         return $this->where('cart_id', $item_id)->delete();
     }
 
-    //updates quantity 
+
+//updates quantity 
     public function updateQuantity($cart_item_id, $quantity)
     {
-        // $new_quantity = $quantity + 1;
         return $this->update($cart_item_id, ['quantity' => $quantity]);
     }
 

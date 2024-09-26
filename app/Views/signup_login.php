@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-< lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,15 +42,13 @@
                                 <input type="text" name="user" id="user" placeholder="Username" title="Enter your Username" required>
                                 <input type="password" name="pass" id="pass" placeholder="Password" title="Enter your Password" required>
                             </div>
+
+
                                 <!-- error messages -->
                                 <?php 
-                                    $error1 = session()->getFlashdata('userError1');
-                                    $error2 = session()->getFlashdata('userError2');
-                                    $error3 = session()->getFlashdata('userError3') 
+                                    $error = session()->getFlashdata('userError');
                                 ?>
-                                <?php if($error1) { echo "<span class='error'>" . $error1 . "</span>"; }?>
-                                <?php if($error2) { echo "<span class='error'>" . $error2 . "</span>"; }?>
-                                <?php if($error3) { echo "<p class='error'>" .$error3 . "</p>"; }?>
+                                <?php if($error) { echo "<span class='error'>" . $error . "</span>"; }?>
 
 
                     <button type="submit" value="register" name="submit">Sign up</button>
@@ -81,7 +79,7 @@
                     <input type="password" name="pass" id="pass" title="Enter your Password" placeholder="Password" required >
                     
                     <!-- syle-lan mo to juls bading bayot bisaya bisakol -->
-                    <input type="checkbox" name="remember" id="remember"> Remember Me
+                    <input type="checkbox" name="remember" id="remember" value="1"> Remember Me
                     <button type="submit">Login</button>
                 </form>
             </div>
