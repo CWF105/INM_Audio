@@ -21,7 +21,7 @@
                 <input type="text" id="username" name="username" placeholder="Enter Your Username or Email">
 
                 <label for="pass">Password</label>
-                <input type="pass" id="pass" name="pass" placeholder="Enter your Password">
+                <input type="password" id="pass" name="pass" placeholder="Enter your Password">
 
                 <?php if (session()->getFlashdata('error')): ?><p class="error" style="color: red; text-align: center;"><?= session()->getFlashdata('error') ?></p><?php endif; ?>
                 &nbsp;
@@ -29,7 +29,7 @@
                 <input type="checkbox" name="remember" id="remember" value="1">
 
                 <!-- to be filled  -->
-                <a href="#" class="forgot-password">Forgot Password?</a>
+                <a href="<?= base_url('/account/forgotPass') ?>" class="forgot-password">Forgot Password?</a>
                 <a href="<?= base_url('/signup') ?>" class="forgot-password">Create account..</a>
 
                 <button type="submit">Log In</button>

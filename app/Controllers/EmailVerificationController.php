@@ -104,16 +104,24 @@ class EmailVerificationController extends BaseController
         else if($this->session->get('signupAccountType') == "user") {
             return $this->mainCon->checkIfVerificationCodeIsValid($verificationCode);
         }
+        else if($this->session->has('resetPassFor')) {
+            return $this->mainCon->verifyCode($verificationCode);
+        }
     }
 
 
     ## resend verification code
     // resends verification code if time = 5 mins is greater than the current time, then redirects to verificationPage::verificationPage() method
     public function resendVerificationCode(){
+        $this->loadSession();
         $expiryTime = $this->session->get('verification_expiry');
         if (time() >= $expiryTime) {
             $email = $this->session->get('email');
-            $this->sendEmailVerification($email);
+            if($this->session->get('resetPassFor')) {
+                $this->sendEmailVerification($this->session->get('emailToReset'));
+            }else {
+                $this->sendEmailVerification($email);
+            }
             
             $this->session->setFlashdata('success', 'A new verification email has been sent to '. $email);
         } else {
@@ -121,4 +129,34 @@ class EmailVerificationController extends BaseController
         }   
         return redirect()->to('/account/verify-email');
     }
+
+
+    ## send notif that the password is successfully reset
+    public function sendNotifPaswordReset() {
+        $this->loadSession();
+        $mail = new PHPMailer(true);
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;                      
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.gmail.com';                
+            $mail->SMTPAuth   = true;                                  
+            $mail->Username   = 'flaviano.chriswendell105@gmail.com';  //jlnbrrnts32029@gmail.com               
+            $mail->Password   = 'cagg cmdo hzvf qprr';                               
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+            $mail->Port       = 465;                                  
+        
+            //Recipients
+            $mail->setFrom('flaviano.chriswendell105@gmail.com', 'Mailer');
+            $mail->addAddress($this->session->get('emailToReset'), 'INM-AUDIO email verification');     
+        
+            //Content
+            $mail->isHTML(true);                                 
+            $mail->Subject = 'INM-AUDIO';
+            $mail->Body    = 'Password Successfully reset';
+            $mail->AltBody = 'Password Successfully reset';
+
+            $mail->send();
+            return $this->verificationpage();
+    }
+
 }

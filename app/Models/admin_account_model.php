@@ -28,6 +28,12 @@ class Admin_Account_Model extends Model
 
 
 
+// update password
+    // public function updatePass($newPass) {
+    //     return $this->where()->set()->update();
+    // }
+
+
 // get admin account by field/column
     public function getUser($field, $toGet) 
     {

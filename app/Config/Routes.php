@@ -88,11 +88,15 @@ $routes->group('/admin/', function($routes) {
 $routes->group('/account/', function($routes){
     // post
     $routes->post('login', 'Login_SignupController::loginAdminAndUser');
-    
+    $routes->post('resetPass', 'Login_SignupController::resetPass');
     $routes->post('signup', 'Login_SignupController::signup_user');
     $routes->post('verify-Email', 'EmailVerificationController::checkAccount');
-    $routes->post('resend-verification', 'EmailVerification::resendVerificationCode');
-
+    $routes->post('resend-verification', 'EmailVerificationController::resendVerificationCode');
+    $routes->post('checkEmail', 'Login_SignupController::checkEmail');
+    $routes->post('resetPassword', 'Login_SignupController::resetPass');
     // get
-    $routes->get('verify-email', 'EmailVerification::verificationPage');
+    $routes->get('verify-email', 'EmailVerificationController::verificationPage');
+    $routes->get('forgotPass', 'Login_SignupController::forgotPass');
+    $routes->get('createNewPass', 'Login_SignupController::createNewPass');
+    $routes->get('successReset', 'Login_SignupController::successReset');
 });

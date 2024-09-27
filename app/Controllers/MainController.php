@@ -125,7 +125,7 @@ class MainController extends BaseController
         
         $user_id = $this->session->get('admin_account_id');
         if($user_id) {
-            $$this->userAccount->update($user_id, ['remember_token' => null]);
+            $this->userAccount->update($user_id, ['remember_token' => null]);
         }
         
         $this->session->destroy();    

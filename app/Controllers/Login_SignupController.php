@@ -264,4 +264,91 @@ class Login_SignupController extends BaseController
         return redirect()->to('/login');
         }
 ## ----- END ----- ##
+
+
+
+
+
+## ----- FORGOT PASSWORD ----- ##
+        ## forgot password
+        public function forgotPass() {
+            return view('UserSide/forgotpassword');
+        }
+
+
+        ## check email if valid
+        public function checkEmail() {
+            $this->loadSession(); $this->loadAdminAccount(); $this->loadUserAccount(); $this->loadEmailVerification();
+            $emailToReset = $this->request->getPost('email');
+            if($this->adminAccount->getUser('email', $emailToReset)) {
+                $this->session->set(['resetPassFor' => 'admin', 'emailToReset' => $emailToReset]);
+                return $this->EVerify->sendEmailVerification($emailToReset);
+            }
+            else if($this->userAccount->getUser('email', $emailToReset)) {
+                $this->session->set(['resetPassFor' => 'admin', 'emailToReset' => $emailToReset]);
+                return $this->EVerify->sendEmailVerification($emailToReset);
+            }
+            else {
+                $this->session->setFlashdata('error', 'Invalid Email');
+                return redirect()->to('/account/forgotPass');
+            }
+        }
+
+
+        ## verify the code then redirect to creating new pass
+        public function verifyCode($verificationCode){
+            $this->loadSession();
+            $expiryTime = $this->session->get('verification_expiry');
+        
+            if ($this->session->get('verification') == $verificationCode) {
+                if (time() < $expiryTime) {
+                    return $this->createNewPass();
+                } else {
+                    $this->session->setFlashdata('userError', 'The verification code has expired.');
+                    return redirect()->to('/account/verify-email');
+                }
+            }
+            $this->session->setFlashdata('userError', 'Invalid verification code.');
+            return redirect()->to('/account/verify-email');
+        }
+
+
+        ## create new pass after email is check and is valid
+        public function createNewPass() {
+            return view('UserSide/CreateNewPassword');
+        }
+
+        ## resets password then redirect
+        public function resetPass() {
+            $this->loadSession(); $this->loadAdminAccount(); $this->loadUserAccount(); $this->loadEmailVerification();
+            $newPass = $this->request->getPost('pass');
+            $confirmPass = $this->request->getPost('cpass');
+            if($newPass == $confirmPass) {
+                $emailToReset = $this->session->get('emailToReset');
+                $data = ['password' => password_hash($newPass, PASSWORD_DEFAULT)];
+                if ($this->session->get('resetPassFor') == "admin" && $this->adminAccount->where('email', $emailToReset)->first()) {
+                    $this->adminAccount->where('email', $emailToReset)->set($data)->update();
+                    $this->EVerify->sendNotifPaswordReset();
+                    $this->session->remove('emailToReset');
+                    $this->session->remove('resetPassFor');
+                    return redirect()->to('/account/successReset');
+                }
+                else if($this->session->get('resetPassFor') == "admin" && $this->userAccount->where('email', $emailToReset)->first()) {
+                    $this->userAccount->where('email', $emailToReset)->set($data)->update();
+                    $this->EVerify->sendNotifPaswordReset();
+                    $this->session->remove('emailToReset');
+                    $this->session->remove('resetPassFor');
+                    return redirect()->to('/account/successReset');
+                }
+            }
+            $this->session->setFlashdata('error', 'Password did not match');
+            return redirect()->to('/account/createNewPass');
+        }
+
+        ## redirect to success reset page
+        public function successReset() {
+            return view('UserSide/successfulReset');
+        }
+## ----- END ----- ##
+
 }
