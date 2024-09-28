@@ -98,7 +98,8 @@ CREATE TABLE comments (
 CREATE TABLE carts (
     cart_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
 );
 
 -- Stores items added to the cart.
@@ -122,6 +123,7 @@ CREATE TABLE orders (
     user_id INT,
     total_amount DECIMAL(10, 2) NOT NULL,
     order_status VARCHAR(50) DEFAULT 'Pending',
+    payment_method varchar(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

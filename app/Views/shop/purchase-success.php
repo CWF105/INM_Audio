@@ -15,7 +15,9 @@
         </div>
     </div>
     <div class="back">
-        <a href=" <?= base_url('/shop') ?>">Go Back to Shop</a>
+        <a href=" <?= base_url('/shop') ?>">Go Back to Shop</a> &nbsp;|&nbsp;
+        <a href=" <?= base_url('/user/setting') ?>">view order</a>
     </div>
+    
 </body>
 </html>

@@ -130,9 +130,8 @@ ul {
   }
   
   header {
-    background-color: #f6f9fc;
-    min-height: 500px;
-    background-image: url("../images/pattern.png");
+    margin-bottom: 10px;
+    /* min-height: 500px; */
   
     .address{
       margin-left: 100px;

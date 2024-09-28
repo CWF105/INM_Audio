@@ -34,14 +34,18 @@ $routes->group('', function($routes) {
     // post
     $routes->post('/cart/add/(:num)', 'ShopController::addToCart/$1');
     $routes->post('/cart/delete', 'ShopController::removeAllItems');
-
+    $routes->post('/orderPlaced', 'ShopController::placeOrder');
+    
     // get
     $routes->get('/shop', 'ShopController::shop');
     $routes->get('/shop/(:num)', 'ShopController::viewItem/$1');
     $routes->get('/cart', 'ShopController::cart');
     $routes->get('/cart/delete/(:num)', 'ShopController::removeItem/$1');
     $routes->get('/buy', 'ShopController::buynow');
+    $routes->get('/buy(:any)', 'ShopController::buynow/$1');
+
     $routes->get('/donePurchase', 'ShopController::donePurchase');
+    // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });
 
 

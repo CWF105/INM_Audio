@@ -16,9 +16,9 @@
 
 <body>
 <!-- this includes header.php file on every website that has this code -->
-    <?php 
-        echo view("includes/header.php");
-    ?>
+ <!-- @PHP CODE -->
+    <?php echo view("includes/header.php");?>
+ <!-- @PHP CODE -->
 
     
 <!-- Main Content here -->
@@ -38,7 +38,15 @@
                     <div class="total">
                         <p>Total (<?= esc($totalQuantity) ?> item<?= ($totalQuantity !== 1) ? 's' : '' ?>):</p>
                         <p>₱<?= esc(number_format($totalPrice, 2)) ?></p>
-                        <button type="button" class="total-checkout">Check Out</button>
+                        <?php if(isset($cart_items)) :?>
+                            <a href="<?=base_url('/buy')?>">
+                                <button type="button" class="total-checkout">Check Out</button>
+                            </a>
+                        <?php else :?>
+                            <a href="<?=base_url('/checkOutFailed')?>">
+                                <button type="button" class="total-checkout" title="cannot checkout, cart is empty">Check Out</button>
+                            </a>
+                        <?php endif;?>
                     </div>
                 </div>
 
@@ -109,6 +117,7 @@
             </form>
         </div>
     </div>
+
 
  <!-- this includes header.php file on every website that has this code -->
     <?php 

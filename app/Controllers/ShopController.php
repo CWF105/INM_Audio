@@ -7,7 +7,9 @@ use App\Models\Category_Model as categories;
 use App\Models\Gear_Product_Model as gears;
 use App\Models\Cart_Model as cartModel;
 use App\Models\Cart_Item_Model as cartItemModel;
-
+use App\Models\Order_Model as order;
+use App\Models\Order_Items_Model as orderItems;
+use App\Controllers\EmailVerificationController as EVerify;
 class ShopController extends BaseController
 {
     // global variables
@@ -19,8 +21,9 @@ class ShopController extends BaseController
     protected $gears;
     protected $carts;
     protected $cartItems;
-
-
+    protected $orders;
+    protected $orderItems;
+    protected $EVerify;
 
 
 
@@ -30,6 +33,12 @@ class ShopController extends BaseController
     private function loadSession() {
         if(!$this->session) {
             $this->session = session();
+        }
+    }
+    // load emai verification controller
+    private function loadEmailVerification() {
+        if(!$this->EVerify) {
+            $this->EVerify = new EVerify();
         }
     }
     // load session expiration time 
@@ -69,6 +78,18 @@ class ShopController extends BaseController
             $this->cartItems = new cartItemModel();
         }
     }
+     // load order model
+    private function loadOrders() {
+        if(!$this->orders) {
+            $this->orders = new order();
+        }
+    }
+     // load order items model
+    private function loadOrderItems() {
+        if(!$this->orderItems) {
+            $this->orderItems = new orderItems();
+        }
+    }
 ## ----- END ----- ##
 
 
@@ -101,12 +122,13 @@ class ShopController extends BaseController
         }
         ## delete both cookies and session
         private function deleteCookiesAndSession(){
+            helper('cookie');
             $this->loadSession();
             $this->loadUserAccount();
             $user_id = $this->session->get('user_id');
             $username = $this->session->get('username');
             $this->userAccount->update($user_id , ['remember_token' => null]);
-            $this->userAccount->update($username, ['remember_token' => null]);
+            delete_cookie('remember_token');
         }
         ## render view 
         private function renderView($path, $isDisplaying){
@@ -161,8 +183,23 @@ class ShopController extends BaseController
         return $this->isSessionSetThenRedirect('shop/cart', true);
     }
     // redirect to buynow
-    public function buynow(){
-        return $this->isSessionSetThenRedirect('shop/buynow', true);
+    public function buynow($id = null){
+        $this->loadSession(); $this->loadCartsItems(); $this->loadCarts(); $this->loadUserAccount();
+        $userIsLoggedIn = $this->session->get('user_id');
+        if(!$userIsLoggedIn) {
+            return redirect()->to('/login');
+        }
+        
+        $user_id = $this->session->get('user_id');
+        $items = $this->cartItems->getCartItems($user_id);
+        $user = $this->userAccount->getUser('user_id', $user_id);
+        if($user['address'] != null && $user['city_municipality'] != null && $user['country'] != null) {
+            $location = $user['address'] . ", " . $user['city_municipality'] . ", " .  $user['country'];
+        }
+        else {
+            $location = "<span>No location is set</span>";
+        }
+        return view('shop/buynow', ['cartItems' => $items,  'loc' => $location]);
     }
     // redirect to donePurchase
     public function donePurchase(){
@@ -198,9 +235,10 @@ class ShopController extends BaseController
         $ifItemExist = $this->cartItems->checkIfProductIsExisting($cart_id, $product_id); 
         if ($ifItemExist) {
             if ($quantity > 1) {
-                $this->cartItems->updateQuantity($ifItemExist['cart_item_id'], $quantity);
-            } else {
-                $this->cartItems->updateQuantity($ifItemExist['cart_item_id'], $defQuantity);
+                $this->cartItems->updateQuantity($ifItemExist['cart_item_id'], $quantity, $ifItemExist['quantity']);
+            } 
+            else {
+                $this->cartItems->updateQuantity($ifItemExist['cart_item_id'], $defQuantity, $ifItemExist['quantity']);
             }
         } 
         else {
@@ -211,7 +249,7 @@ class ShopController extends BaseController
                 $this->cartItems->addProduct($cart_id, $product_id, $defQuantity);
             }
         } 
-        return redirect()->to('/cart')->with('successAddToCart', 'Item Added!');
+        return redirect()->to('/shop')->with('successAddToCart', 'Item Added!');
     }
 
 
@@ -241,5 +279,68 @@ class ShopController extends BaseController
         }
         return redirect()->to('/cart');
     }
+## ----- END ----- ##
+
+
+
+
+## ----- PLACING ORDER / CHECKOUT ORDER ----- ##
+    public function placeOrder() {
+        $this->loadSession(); $this->loadUserAccount(); $this->loadCartsItems(); $this->loadCarts(); $this->loadOrders(); $this->loadOrderItems(); $this->loadEmailVerification();
+        $payment_method = $this->request->getPost('paymentMethod');
+        $userId = $this->session->get('user_id');
+        $email = $this->session->get('email');
+        $userEmail = $this->userAccount->getUser('email', $email);
+        $cartItem = $this->cartItems->getCartItems($userId);
+        if($userEmail['address'] && $userEmail['city_municipality']  && $userEmail['country']  && $ $userEmail['zipcode']) {
+            if($payment_method) {
+                if($payment_method == "cod") {
+                    $totalAmount = 0;
+                    foreach ($cartItem as $item) {
+                        $totalAmount += $item['price'] * $item['quantity'];
+                    }
+                    $orderData = [
+                        'user_id' => $userId,
+                        'total_amount' => $totalAmount,
+                        'order_status' => 'Pending',
+                        'payment_method' => $payment_method
+                    ];
+                    $this->orders->insert($orderData);
+                    $orderId = $this->orders->insertID();
+                    foreach ($cartItem as $item) {
+                        $this->orders->db->table('order_items')->insert([
+                            'order_id' => $orderId,
+                            'product_id' => $item['product_id'],
+                            'quantity' => $item['quantity'],
+                            'price' => $item['price']
+                        ]);
+                        $this->carts->db->table('cart_items')
+                        ->where('cart_id', $item['cart_id'])
+                        ->delete();
+                    }
+                    return $this->EVerify->sendNotifOrderPlaced($userEmail['email']);
+                }
+                else if($payment_method == "gcash") {
+                    // this is temporary
+                    $this->session->setFlashdata('error','*GCash payment is not currently available');
+                    return redirect()->to('/buy#payment');
+                }
+                else if($payment_method == "paypal") {
+                    // this is temporary
+                    $this->session->setFlashdata('error','*Paypal payment is not currently available');
+                    return redirect()->to('/buy#payment');
+                }
+            }
+            else {
+                $this->session->setFlashdata('error', '*Select payment method to place order');
+                return redirect()->to('/buy#payment');
+            }
+        }
+        else {
+            $this->session->setFlashdata('error', '*please set your address in your profile setting');
+            return redirect()->to('/buy#payment');
+        }        
+    }
+
 ## ----- END ----- ##
 }

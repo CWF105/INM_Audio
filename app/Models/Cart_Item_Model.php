@@ -18,6 +18,18 @@ class Cart_Item_Model extends Model
     protected $useTimeStamps = true;
 
 
+// Method to get cart items for a specific user
+public function getCartItems($userId)
+    {
+        return $this->db->table('cart_items')
+            ->select('cart_items.*, products.product_name, products.price, products.image_url')
+            ->join('carts', 'carts.cart_id = cart_items.cart_id')
+            ->join('products', 'products.product_id = cart_items.product_id')
+            ->where('carts.user_id', $userId)
+            ->get()
+            ->getResultArray();
+    }
+
 
 // return all cart items for user
     public function get_cart_items($cart)
@@ -35,8 +47,15 @@ class Cart_Item_Model extends Model
         return $this->where('cart_id', $cart_id)->where('product_id', $product_id)->first();
     }
 
+//get cart item by id
+    public function getCartItemsById($id) {
+        return $this->find($id)->first();
+    }
 
-
+// get product by field
+    public function getProductField($field, $fieldToGet) {
+        return $this->where($field, $fieldToGet)->first();
+    }
 //add new product
     public function addProduct($cart_id, $product_id, $quantity)
     {
@@ -65,9 +84,11 @@ class Cart_Item_Model extends Model
 
 
 //updates quantity 
-    public function updateQuantity($cart_item_id, $quantity)
+    public function updateQuantity($cart_item_id, $quantity, $currentQuantity)
     {
-        return $this->update($cart_item_id, ['quantity' => $quantity]);
+        return $this->update($cart_item_id, ['quantity' => $currentQuantity + $quantity]);
     }
+
+// updates quantity for existing product
 
 }

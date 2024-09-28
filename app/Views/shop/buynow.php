@@ -12,90 +12,107 @@
     <title>INM Admin</title>
     <script defer src="<?= base_url('assets/js/script.js') ?>"></script>
 </head>
-<body>
-<!-- this includes header.php file on every website that has this code -->
-    <?php 
-        echo view("includes/header.php");
-    ?>
+<!-- @PHP CODE - this includes header.php file on every website that has this code -->
+    <?php echo view("includes/header.php"); ?>
+<!-- @PHP CODE -->
 
 <!-- Main Section  -->
     <section class="content">
+      <form action="<?= base_url('/orderPlaced') ?>" method="post">
+        
+         <div class="container">
+          <!-- container for all the items in the user cart  -->
+          <table style="border: 1px solid black; padding: 20px; width: 940px;">
+            <thead></thead>
+            <tbody>
+              <h1>Checkout</h1>
+              <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
+              <?php $grandTotal = 0; ?>
+              <!-- title -->
+              <td colspan="6"><h3>Items</h3><hr></td>
+              <!-- @PHP CODE -->
+              <?php foreach ($cartItems as $item):?>
+                <tr>
+                  <td><img src="<?= $item['image_url']; ?>" alt="gear" style="width: 120px;">&nbsp;&nbsp;&nbsp;</td>
+                  <td><?= $item['product_name']; ?>&nbsp;&nbsp;</td>
+                  <td><?= number_format($item['price'], 2); ?>&nbsp;&nbsp;</td>
+                  <td><?= $item['quantity']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</td>  
+                  <td><?= number_format($item['price'] * $item['quantity'], 2); ?>&nbsp;&nbsp;</td>
+                </tr>
+              <?php $grandTotal += $item['price'] * $item['quantity']; ?>
+              <?php endforeach; ?>
+              <!-- @PHP CODE -->
+              
+              <td colspan="6"><hr></td>
+              <tr><td><strong>From: </strong> INM Audio gears</td></tr>
+              <tr><td><strong>To:</strong> <?= $loc; ?></td></tr>
+              <tr>
+                  <td colspan="4"><br><br><strong>Total:</strong></td>
+                  <td><br><br><strong><?= number_format($grandTotal, 2); ?></strong></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
 
-        <div class="container">
-      
-        </div>
-        <div class="details shadow">
-          <div class="details__item">
-      
-            <div class="item__image">
-              <img class="earphone" src=" <?= base_url('assets/img/about.jpg') ?>" alt="">
-            </div>
-            <div class="item__details">
-              <div class="item__title">
-                Earphone
-              </div>
-              <div class="item__price">
-                ₱ 10,000
-              </div>
-              <div class="item__quantity">
-                Quantity: 1
-              </div>
-              <div class="item__description">
-      
-              </div>
-            </div>
-          </div>
-        </div>
-      
+        <!-- for discount price -->
         <div class="discount"></div>
         
+        <!-- buttons for payment method -->
         <div class="container">
           <div class="payment">
             <div class="payment__title">
               Payment Method
             </div>
             <div class="payment-types">
-              <button onclick="filterItems('cod')">Cash on Delivery</button>
-              <button onclick="filterItems('gcash')">Gcash</button>
-              <button onclick="filterItems('paypal')">Paypal</button>
-              <button onclick="filterItems('bank')">Online Banking</button>
+              <button type="button" onclick="filterItems('cod')">Cash on Delivery</button>
+              <button type="button" onclick="filterItems('gcash')">Gcash</button>
+              <button type="button" onclick="filterItems('paypal')">Paypal</button>
             </div>
           </div>
         </div>
-    
-            <div class="card-block">
-              <div class="card cod">
-                <h3>Cash on Delivery</h3>
-              </div>
-            
-                  <div class="card gcash">  
-                      <input class="checkbox" type="checkbox">
-                      <img src=" <?= base_url('assets/img/payment/gcash.png') ?>"alt="">
-                  </div>
-        
-                  <div class="card paypal">
-                    <input type="checkbox">
-                    <img src="<?= base_url('assets/img/payment/paypal.png') ?>"alt="">
-                  </div>
-        
-                  <div class="card bank">
-                    <input type="checkbox">
-                    <img src="<?= base_url('assets/img/payment/banktransfer.png') ?>" alt="">
-                  </div>
-            </div>
-      
-      
-            <div class="payment-done">
-              <a href="<?= base_url('/donePurchase') ?>" class="btn action__submit">Place your Order
-                <i class="icon icon-arrow-right-circle"></i>
-              </a>
-              <a href="<?= base_url('/shop') ?>" class="btn btnn">Go Back to Shop</a>
-            </div>
-      </section>
 
-<!-- this includes header.php file on every website that has this code -->
-    <?php 
-        echo view("includes/footer.php");
-    ?>
+        <!-- payment method -->
+        <div class="card-block" id="payment">
+          <!-- COD -->
+          <div class="card cod">
+            <input class="checkbox" name="paymentMethod" id="cod" type="checkbox" value="cod">
+            <h3>Cash on Delivery</h3>
+          </div>
+
+          <!-- GCASH -->
+          <div class="card gcash">  
+              <input class="checkbox" name="paymentMethod" id="gcash"  type="checkbox"  value="gcash">
+              <img src=" <?= base_url('assets/img/payment/gcash.png') ?>"alt="gcash">
+          </div>
+
+          <!-- PAYPAL -->
+          <div class="card paypal">
+            <input type="checkbox" name="paymentMethod" id="paypal"  value="paypal">
+            <img src="<?= base_url('assets/img/payment/paypal.png') ?>"alt="paypal">
+          </div>
+          
+        </div>
+
+
+        <!-- @ERROR SUCCESS MESSAGES -->
+        <?php if(session()->getFlashdata('error')) :?>
+        <div class="error-success-message">
+          <span style="color: red;"><?= session()->getFlashdata('error')?></span>
+        </div>
+        <?php endif; ?>
+        <!-- @ERROR SUCCESS MESSAGES -->
+
+
+        <!-- PLACE ORDER BUTTON AND RETURN BACK TO SHOP -->
+        <div class="payment-done">
+            <button type="submit" class="btn action__submit"><i class="icon icon-arrow-right-circle"></i>Place your Order</button>
+            <a href="<?= base_url('/shop') ?>">go back to shop</a>
+        </div>
+      </form>        
+    </section>
+ 
+<!-- @PHP CODE - this includes header.php file on every website that has this code -->
+    <?php echo view("includes/footer.php");?>
+<!-- @PHP CODE -->
 </body>
 </html>

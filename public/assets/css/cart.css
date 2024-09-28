@@ -140,8 +140,8 @@ html, body {
                 font-size: 1.15rem;
                 display: flex;
                 align-items: center;
-
                 .total-checkout{
+                    cursor: pointer;
                     padding: 10px 30px;
                     border: 1px solid #000;
                     border-radius: 4px;

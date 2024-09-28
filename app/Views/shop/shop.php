@@ -23,6 +23,11 @@
     <div class="shop">
         <div class="shop-title">
             <h2>Shop</h2>
+            <?php if(session()->getFlashdata('successAddToCart')) :?>
+                <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
+            <?php else :?>
+                <span style="width: 450px;"></span>
+            <?php endif;?>
             <div class="ss">
                 <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
@@ -105,32 +110,9 @@
         echo view("includes/footer.php");
     ?>
     
-
-    <!-- modal -->
-    <!-- newly logged in modal show -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <center>
-                    <span style="color: green; font-size: 24px; padding: 15px;">
-                        <?= session()->get('successAddToCart'); ?>
-                    </span>
-                </center>
-                <center>
-                    <button type="button" style="font-size: 10px; width: 100px; padding: 10px;" class="btn btn-danger" data-bs-dismiss="modal">
-                        Close
-                    </button> 
-                </center>
-            </div>
-        </div>
-    </div>
-
 <!-- scripts -->
 <script>
-     <?php if(session()->getFlashdata('successAddToCart')): ?>
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-        myModal.show();
-    <?php endif; ?>
+
 
      // Increase quantity for the specific product
      function increaseValue(index) {

@@ -12,6 +12,10 @@ class EmailVerificationController extends BaseController
     protected $session; 
     protected $adminCon;
     protected $mainCon;
+    protected $sender = "flaviano.chriswendell105@gmail.com";  //jlnbrrnts32029@gmail.com    
+    protected $passkey = "cagg cmdo hzvf qprr";
+
+
 
 ## ----- THIS PREVENTS LOADING MODELS AND MEMORY ISSUES ----- ##
 ## call this methods to load models
@@ -65,8 +69,8 @@ class EmailVerificationController extends BaseController
             $mail->isSMTP();                                            
             $mail->Host       = 'smtp.gmail.com';                
             $mail->SMTPAuth   = true;                                  
-            $mail->Username   = 'flaviano.chriswendell105@gmail.com';  //jlnbrrnts32029@gmail.com               
-            $mail->Password   = 'cagg cmdo hzvf qprr';                               
+            $mail->Username   = $this->sender;            
+            $mail->Password   = $this->passkey;                               
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
             $mail->Port       = 465;                                  
         
@@ -140,8 +144,8 @@ class EmailVerificationController extends BaseController
             $mail->isSMTP();                                            
             $mail->Host       = 'smtp.gmail.com';                
             $mail->SMTPAuth   = true;                                  
-            $mail->Username   = 'flaviano.chriswendell105@gmail.com';  //jlnbrrnts32029@gmail.com               
-            $mail->Password   = 'cagg cmdo hzvf qprr';                               
+            $mail->Username   = $this->sender;  //jlnbrrnts32029@gmail.com               
+            $mail->Password   = $this->passkey;                               
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
             $mail->Port       = 465;                                  
         
@@ -159,4 +163,33 @@ class EmailVerificationController extends BaseController
             return $this->verificationpage();
     }
 
+
+
+    ## sends an email if order is successfully placed
+    public function sendNotifOrderPlaced($email) {
+        $this->loadSession();
+        $mail = new PHPMailer(true);
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;                      
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.gmail.com';                
+            $mail->SMTPAuth   = true;                                  
+            $mail->Username   = $this->sender;  //jlnbrrnts32029@gmail.com               
+            $mail->Password   = $this->passkey;                               
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+            $mail->Port       = 465;                                  
+        
+            //Recipients
+            $mail->setFrom($this->sender, 'Mailer');
+            $mail->addAddress($email, 'INM-AUDIO email verification');     
+        
+            //Content
+            $mail->isHTML(true);                                 
+            $mail->Subject = 'INM-AUDIO';
+            $mail->Body    = 'ORDER PLACED - waiting for confirmation';
+            $mail->AltBody = 'ORDER PLACED - waiting for confirmation';
+
+            $mail->send();
+            return redirect()->to('/donePurchase');
+    }
 }

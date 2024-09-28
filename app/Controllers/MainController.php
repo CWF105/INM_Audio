@@ -82,6 +82,7 @@ class MainController extends BaseController
         }
         ## delete both cookies and session
         private function deleteCookiesAndSession(){
+            helper('cookie');
             $this->loadSession();
             $this->loadUserAccount();
             $user_id = $this->session->get('user_id');
@@ -123,7 +124,7 @@ class MainController extends BaseController
         $this->loadSession();
         helper('cookie');
         
-        $user_id = $this->session->get('admin_account_id');
+        $user_id = $this->session->get('admin_id');
         if($user_id) {
             $this->userAccount->update($user_id, ['remember_token' => null]);
         }

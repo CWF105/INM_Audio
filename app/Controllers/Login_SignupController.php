@@ -240,7 +240,7 @@ class Login_SignupController extends BaseController
             }
             else if(is_array($userEmail) && password_verify($password, $userEmail['password'])) {
                 $this->session->set([
-                    'user_account_id' => $userEmail['user_id'],
+                    'user_id' => $userEmail['user_id'],
                     'username' => $userEmail['username'],
                     'email' => $userEmail['email'],
                     'type' => 'user',

@@ -4,7 +4,7 @@ namespace App\Controllers;
 require FCPATH . '../vendor/autoload.php';
 use App\Controllers\EmailVerificationController as EVerify;
 
-
+use App\Models\Cart_Model as cartModel;
 use Config\Session as SessionConfig;
 use App\Models\Admin_Account_Model as adminAccount;
 use App\Models\User_Account_Model as userAccount;
@@ -21,7 +21,7 @@ class AdminController extends BaseController
     protected $categories;
     protected $gears;
     protected $EVerify;
-
+    protected $carts;
 
 
 
@@ -68,6 +68,11 @@ class AdminController extends BaseController
     private function loadEmailVerification() {
         if(!$this->EVerify) {
             $this->EVerify = new EVerify();
+        }
+    }
+    private function loadCarts() {
+        if(!$this->carts) {
+            $this->carts = new cartModel();
         }
     }
 ## ----- END ----- ##
@@ -528,7 +533,8 @@ class AdminController extends BaseController
         helper('cookie');
         $session = session();
         $adminAccount = new adminAccount();
-
+        $this->loadCarts();
+        $this->carts->deleteCartById($id);
         $session->destroy();    
         delete_cookie('remember_token');
         $adminAccount->delete($id);

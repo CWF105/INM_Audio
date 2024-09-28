@@ -21,6 +21,10 @@ class Cart_Model extends Model
         return $this->where('user_id', $user_id)->first();
     }
 
+// delete cart by id
+    public function deleteCartById($user_id) {
+        return $this->where('user_id', $user_id)->delete();
+    }
 
 
 // check if the user cart is actives
