@@ -13,22 +13,29 @@
     
 </head>
 <body>
-
-<!-- @PHP CODE - this includes header.php file on every website that has this code -->
-<?php 
+ <!-- @PHP CODE -->
+    <?php 
         # includes the header file that contains navbar
         echo view("includes/header.php");
-        # includes the header.introduction file that contains introduction about the website
-        echo view('includes/header_introduction');
     ?>
 <!-- @END PHP CODE -->
+<div class="bg">  
+    <div class="bg2">
+        <!-- @PHP CODE -->
+        <?php 
+            # includes the header.introduction file that contains introduction about the website
+            echo view('includes/header_introduction');
+        ?>
+        <!-- @END PHP CODE -->
+    </div>
+</div>
+
 
 <!-- @SECTION 2 - products -->
 <div class="comm-container">
         <div class="comm-title">
             <h2>INM Community</h2>
         </div>
-
         <div class="comm-block">
             <div class="picture-block">
                 <!-- product 1 -->

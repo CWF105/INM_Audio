@@ -16,41 +16,40 @@
 </head>
 
 <body>
-<!-- @SESSION MESSAGES - set session messages if user is successfully logged in -->
-    <?php if(session()->get('welcome_user')): ?>
-        <span style="color: green; font-family: 'Courier New'; padding-inline: 45%; padding-block: 3px;  background-color: #d9ffd2 ">Welcome <?= esc(session()->get('username')) ?></span>
-    <?php endif;?>
-<!-- @END SESSION MESSAGES -->
-
-
-
-<!-- @PHP CODE - this includes header.php file on every website that has this code -->
+<!-- @PHP CODE  -->
     <?php 
         # includes the header file that contains navbar
-        echo view("includes/header.php");
-        # includes the header.introduction file that contains introduction about the website
-        echo view('includes/header_introduction');
+        echo view("includes/header.php");      
     ?>
 <!-- @END PHP CODE -->
 
-
-<!-- @SECTION 2 - about -->
-    <div class="about">
-        <div class="about-title">
-            <h2>About</h2>
-        </div>
-        <div class="about-body">
-            <div class="about-question">
-                <h2>What is IEM</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consectetur modi id deserunt voluptatibus obcaecati repellat assumenda eligendi sapiente, voluptas culpa tempore enim vel explicabo, ex molestiae suscipit aliquam nam harum. Perferendis porro repellat delectus recusandae! Natus ad labore quidem molestias, pariatur nihil! Eius tenetur quisquam deleniti asperiores iusto quaerat quis deserunt itaque illo architecto maiores explicabo odit quae reprehenderit, perferendis non, incidunt unde magni quos obcaecati. Atque facere, amet error sint voluptatem, corrupti labore quis, dolorum porro adipisci illum? Totam aut atque vero quae vitae ex unde consequatur blanditiis cupiditate minus, ad cum ratione, sapiente quisquam ipsa quo molestiae?</p>
+<div class="bg">
+    <div class="bg2">
+        <!-- @PHP CODE  -->
+        <?php 
+            # includes the header.introduction file that contains introduction about the website
+            echo view('includes/header_introduction');
+        ?>
+        <!-- @END PHP CODE -->
+        
+        <!-- @SECTION 2 - about -->
+            <div class="about">
+                <div class="about-title">
+                    <h2>About</h2>
+                </div>
+                <div class="about-body">
+                    <div class="about-question">
+                        <h2>What is IEM</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consectetur modi id deserunt voluptatibus obcaecati repellat assumenda eligendi sapiente, voluptas culpa tempore enim vel explicabo, ex molestiae suscipit aliquam nam harum. Perferendis porro repellat delectus recusandae! Natus ad labore quidem molestias, pariatur nihil! Eius tenetur quisquam deleniti asperiores iusto quaerat quis deserunt itaque illo architecto maiores explicabo odit quae reprehenderit, perferendis non, incidunt unde magni quos obcaecati. Atque facere, amet error sint voluptatem, corrupti labore quis, dolorum porro adipisci illum? Totam aut atque vero quae vitae ex unde consequatur blanditiis cupiditate minus, ad cum ratione, sapiente quisquam ipsa quo molestiae?</p>
+                    </div>
+                    <div class="about-img">
+                        <img src="<?= base_url('assets/img/nav.png') ?>" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="about-img">
-                <img src="img/nav.png <?= base_url('assets/img/') ?>" alt="">
-            </div>
-        </div>
+        <!-- @END SECTION ABOUT -->
     </div>
-<!-- @END SECTION ABOUT -->
-
+</div>
 
 <!-- @PRODUCT SECTION - product slider section -->
     <div class="product">
@@ -113,7 +112,7 @@
                     <p>Your Sound, Your Style: Custom IEM Earphones for a Perfect Fit <br> and Unmatched Audio Quality.</p>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 <!-- @END SECTION 3 -->
 

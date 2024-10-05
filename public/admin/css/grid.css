@@ -12,11 +12,12 @@
 
 .item-container { 
     background-color: #3a5a66;
+    background-color: #eae1e1;
 }
 
 .container-section h1 { 
     padding: 10px 20px 10px;
-    color: white;
+    color: black;
 }
 
 .container-content {

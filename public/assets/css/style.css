@@ -20,19 +20,30 @@ body{
     font-weight: 300;
 }
 
+.bg {
+    /* padding-top: 20px; */
+    background-image: url("../img/sbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .bg2 {
+        padding-top: 30px;
+        background-color: #222;
+        opacity: .8;
+        color: white;
+    }
+}
+
 /* about */
-
 .about{
-    
-
     .about-title{
-       
         h2{
-            margin-top: 200px;
+            color: rgb(255, 193, 148);
+            margin-top: 170px;
             margin-left: 90px;
             font-family: Montserrat;
             font-size: 1.70rem;
             font-weight: 300;
+            /* font-weight: bold; */
         }
     }
     .about-body{
@@ -72,7 +83,8 @@ body{
     .product-title{
 
         h2{
-            padding-top: 70px;
+            /* color: rgb(232, 116, 33); */
+            padding-top: 50px;
             padding-left: 90px;
             font-size: 2em;
             font-family: Montserrat;
@@ -80,34 +92,41 @@ body{
             letter-spacing: .30em;
         }
     }
-}
-
-.card{
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    margin-bottom: 0;
-    overflow-x: auto;
-
-    #image-track {
-        gap: 4vmin;
-        display: flex;
-        position: absolute;
-        left: 40%;
-        top: 50%;
-        transform: translate(0%, -50%); 
-        user-select: none; /* -- Prevent image highlighting -- */
-      }
-      
-      #image-track > .image {
-        width: 40vmin;
-        height: 56vmin;
-        object-fit: cover;
-        object-position: 100% center;
+    
+    .card{
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        margin-bottom: 0;
+        overflow-x: auto;
+    
+        #image-track {
+            gap: 4vmin;
+            display: flex;
+            position: absolute;
+            left: 40%;
+            top: 50%;
+            transform: translate(0%, -50%); 
+            user-select: none; /* -- Prevent image highlighting -- */
+          }
+          
+          #image-track > .image {
+            width: 40vmin;
+            height: 56vmin;
+            object-fit: cover;
+            object-position: 100% center;
+            transition: 500ms;
+            border-radius: 3px;
+        }
+        .image:hover {
+            cursor: pointer;
+            border-radius: 5px;
+            scale: 1.1;
+        }
     }
 }
-.fav-gear{
 
+.fav-gear{
 
     .fav-title{
         
@@ -127,23 +146,25 @@ body{
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        gap: 40px;
+        gap: 50px;
         flex-wrap: wrap; 
 
         .card{
             display: flex;
-            width: 500px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             background-color: #fff;
             border: 1px solid #000;
 
             img{
-                width: 50%;
+                margin-top: 5px;
+                height: 50%;
+                width: 70%;
                 object-fit: cover;
             }
 
             .card-content{
-                padding: 30px;
+                padding: 10px;
                 flex: 1;
 
                 h1{

@@ -292,7 +292,7 @@ class ShopController extends BaseController
         $email = $this->session->get('email');
         $userEmail = $this->userAccount->getUser('email', $email);
         $cartItem = $this->cartItems->getCartItems($userId);
-        if($userEmail['address'] && $userEmail['city_municipality']  && $userEmail['country']  && $ $userEmail['zipcode']) {
+        if($userEmail['address'] && $userEmail['city_municipality']  && $userEmail['country']  &&  $userEmail['zipcode']) {
             if($payment_method) {
                 if($payment_method == "cod") {
                     $totalAmount = 0;

@@ -21,6 +21,7 @@ body{
 }
 
 footer{
+    position: relative;
     margin-top: 60px;
     border: 1px solid #000;
 

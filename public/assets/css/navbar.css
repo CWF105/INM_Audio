@@ -62,6 +62,7 @@ body{
                 font-weight: 300;
                 font-size: 1rem;
                 text-decoration: none;
+                transition: 150ms;
                 li{
                     padding: 20px 55px;
                     border-left: 1px solid #000;
@@ -71,7 +72,7 @@ body{
             a:hover {
                 background: #333;
                 li {
-                    color: white;
+                    color: rgb(255, 193, 148);
                 }
             }
         }
@@ -79,6 +80,10 @@ body{
 }
 header {
     .header-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin-top: 50px;
        
         img{
@@ -101,16 +106,27 @@ header {
             justify-content: center;
         }
         a{
-         
+            width: 150px;
             padding: 10px 20px;
-            border-radius: 8px;
-            color: #000;
             font-family: Montserrat;
-            font-size: 1.50rem;
+            font-size: 1rem;
             font-weight: 500;
             display: flex;
             justify-content: center;
-
+            transition: 500ms;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: rgb(251, 143, 67);
+        }
+        a:hover {
+            color: white;
+            text-decoration: none;
+            border: 1px solid seashell;
+            background-color: #434343;
+        }
+        a:active {
+            color: rgb(251, 143, 67);
+            border: 1px solid rgb(251, 143, 67);
         }
     }
 }

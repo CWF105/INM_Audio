@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="form-section">
-            <a href="#" class="exit">Exit</a>
+            <a href="<?= base_url('/') ?>" class="exit">Exit</a>
             <h2>Sign Up</h2>
             <form action="<?= base_url("/account/signup") ?>" method="post">
                 <?php $success =  session()->getFlashdata('successRegister'); if(isset($success)) {echo "<span class='success' style='color: green; text-align: center;'>" . $success . "</span>" ;} ?>

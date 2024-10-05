@@ -14,12 +14,24 @@ html, body {
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+.bg {
+    /* padding-top: 20px; */
+    background-image: url("../img/sbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .bg2 {
+        padding-top: 30px;
+        padding-bottom: 100px;
+        background-color: #222;
+        opacity: .8;
+        color: white;
+    }
+}
 .comm-container{
     .comm-title{
         h2{
-            padding-top: 70px;
-            padding-bottom: 40px;
+            padding-top: 30px;
+            padding-bottom: 10px;
             padding-left: 90px;
             font-size: 2em;
             font-family: Montserrat;
