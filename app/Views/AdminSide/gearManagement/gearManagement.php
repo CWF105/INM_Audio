@@ -35,6 +35,11 @@
             <div class="buttons">
                 <a href="<?= base_url('/admin/gears/addGears') ?>"><button>Add Gear</button></a>
                 <a href="<?= base_url('/admin/gears/addCategory') ?>"><button>Add Category</button></a>
+                &nbsp;
+                <form action="<?= base_url('/admin/gears/searchGears') ?>" method="get">
+                    <input type="search" name="search" placeholder="Search Product">
+                    <input class="search" type="submit" value="Search">
+                </form>
             </div>
         </div>
         

@@ -19,6 +19,18 @@ class Gear_Product_Model extends Model
     ];  
     protected $useTimestamps = true; 
 
+    public function searchGears($query) {
+        return $this->select('products.*, category.category AS category')
+                    ->join('category', 'products.category_id = category.category_id')
+                    ->groupStart()
+                        ->like('products.product_name', $query)
+                        ->orWhere('products.price', $query)
+                        ->orWhere('products.stock_quantity', $query)
+                        ->orLike('category.category', $query)
+                        ->orWhere('products.product_id', $query)
+                    ->groupEnd()
+                    ->findAll();
+    }
 
     ## show only
     public function getAllPaginated($perPage) {

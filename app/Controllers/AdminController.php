@@ -10,6 +10,8 @@ use App\Models\Admin_Account_Model as adminAccount;
 use App\Models\User_Account_Model as userAccount;
 use App\Models\Category_Model as categories;
 use App\Models\Gear_Product_Model as gears;
+use App\Models\Transaction_Model as transaction;
+use App\Models\Order_Model as order;
 
 class AdminController extends BaseController
 {
@@ -22,6 +24,8 @@ class AdminController extends BaseController
     protected $gears;
     protected $EVerify;
     protected $carts;
+    protected $transaction;
+    protected $orders;
 
 
 
@@ -38,6 +42,17 @@ class AdminController extends BaseController
         if(!$this->expirationTime){
             $this->sessionConfig = new SessionConfig();
             $this->expirationTime = $this->sessionConfig->expiration;
+        }
+    }
+        // load order model
+    private function loadOrders() {
+        if(!$this->orders) {
+            $this->orders = new order();
+        }
+    }
+    private function loadTransactions() {
+        if(!$this->transaction) {
+            $this->transaction = new transaction();
         }
     }
     // load categories model
@@ -84,23 +99,12 @@ class AdminController extends BaseController
 ## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
     ## check sessions and redirect to views
     public function checkSessionThenRedirect($path, $isDisplaying = false){
-        if(!$this->isAdminAccount()) {
-            return redirect()->to('/');
-        }
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession();
             return redirect()->to('/');
         }
         return $this->renderView($path, $isDisplaying);
     }
-        ## check if use is logged in using an admin account
-        private function isAdminAccount(){
-            $this->loadSession();
-            return  $this->session->get('type') == "admin" && 
-                    $this->session->get('isLoggedIn') && 
-                    $this->session->get('admin_id');
-        }
-
         ## check if session is expired (if expired return true, else return false)
         private function isSessionExpired(){
             $this->loadSession();
@@ -119,7 +123,7 @@ class AdminController extends BaseController
             delete_cookie('remember_token');
         }
 
-        private function renderView($path, $isDisplaying)
+        private function renderView($path, $isDisplaying, $gears = null)
         {
             if ($isDisplaying) {
                 // Load models here to avoid initializing them in the constructor
@@ -127,10 +131,12 @@ class AdminController extends BaseController
                 $this->loadCategories();
                 $this->loadSession();
                 $this->loadAdminAccount();
+                $this->loadTransactions();
                 $data = [
                     'adminAccount' => $this->adminAccount->getUser('admin_account_id', $this->session->get('admin_id')),
-                    'gears' => $this->gears->getGearLeftJoinCategory(),
+                    'gears' => $gears ? $gears : $this->gears->getGearLeftJoinCategory(),
                     'categories' => $this->categories->getAll(),
+                    'transactions' => $this->transaction->getAll() 
                 ];
 
                 if (!$data['adminAccount']) {
@@ -143,8 +149,6 @@ class AdminController extends BaseController
             return view($path);
         }
 ## ----- END ----- ##
-
-
 
 
 
@@ -354,11 +358,19 @@ class AdminController extends BaseController
 
 
 
+## ----- SEARCH GEAR ----- ##
+    public function searchGears() {
+        $this->loadGears();
+        $query = $this->request->getGet('search');
+        $gears = $this->gears->searchGears($query);
+        return $this->renderView('AdminSide/gearManagement/gearManagement', true, $gears);
+    }
+## ----- END ----- ##
+
 
 
 ## ----- add new gear ----- ##
-    public function addGear() 
-    {
+    public function addGear() {
         $productGear = new gears();
 
         $gearName = $this->request->getPost('gear');
@@ -399,13 +411,10 @@ class AdminController extends BaseController
 ## ----- END ----- ##
 
 
-
 ## ----- remove gear----- ##
-    public function removeGear($id) 
-    {
-        $gears = new Gears();
-        
-        if ($gears->delete($id)) {
+    public function removeGear($id) {
+        $this->loadGears();
+        if ($this->gears->delete($id)) {
             return redirect()->to('/admin/gears')->with('removeSuccess', 'Product deleted successfully.');
         }
     }
@@ -414,9 +423,20 @@ class AdminController extends BaseController
 
 
 
+## ----- remove transaction ----- ##
+    public function removeTransaction($id) {
+        $this->loadTransactions();
+        if($this->transaction->delete($id)) {
+            return redirect()->to('/admin/transactions')->with('removeSuccess', 'Transaction deleted successfully.');
+        }
+    }
+## ----- remove transaction ----- ##
+
+
+
+
 ## ----- add new category----- ##
-    public function addNewCategory()
-    {
+    public function addNewCategory(){
         $categories = new categories();
         $category = $this->request->getPost('category');
         $retrieveCategory = $categories->getCategory('category', $category);
@@ -431,8 +451,7 @@ class AdminController extends BaseController
 
 
 ## ----- remove category by id ----- ##
-    public function removeCategory($id)
-    {
+    public function removeCategory($id){
         $categories = new categories();
         if ($categories->delete($id)) {
             return redirect()->to('/admin/gears/addCategory')->with('catDeleted', 'Category deleted successfully.');
@@ -444,8 +463,7 @@ class AdminController extends BaseController
 
 
 ## ----- update admin account - admin settings panel ----- ##
-    public function updateAdmin() 
-    {
+    public function updateAdmin() {
         $session = session();
         $adminAccount = new adminAccount();
         $userAccount = new userAccount();
@@ -528,8 +546,7 @@ class AdminController extends BaseController
 
 
 ## ----- delete admin account - admin settings panel ----- ##
-    public function deleteAdmin($id)
-    {
+    public function deleteAdmin($id){
         helper('cookie');
         $session = session();
         $adminAccount = new adminAccount();
@@ -541,5 +558,4 @@ class AdminController extends BaseController
         return redirect()->to('/');
     }
 ## ----- END ----- ##
-
 }   

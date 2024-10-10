@@ -43,6 +43,7 @@ $routes->group('', function($routes) {
     $routes->get('/cart/delete/(:num)', 'ShopController::removeItem/$1');
     $routes->get('/buy', 'ShopController::buynow');
     $routes->get('/buy(:any)', 'ShopController::buynow/$1');
+    $routes->get('/searchGears', 'ShopController::searchGears');
 
     $routes->get('/donePurchase', 'ShopController::donePurchase');
     // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
@@ -74,6 +75,8 @@ $routes->group('/admin/', function($routes) {
         $routes->get('gears/removeGears/(:num)', 'AdminController::removeGear/$1');
         $routes->get('gears/addCategory', 'AdminController::addCategories'); 
         $routes->get('gears/removeCats/(:num)', 'AdminController::removeCategory/$1'); 
+        $routes->get('gears/searchGears', 'AdminController::searchGears');
+        $routes->get('transaction/removeTransaction/(:num)', 'AdminController::removeTransaction/$1');
         ## logging out admin account
         $routes->get('loggingOut', 'AdminController::logout');
         ## register new admin or user account

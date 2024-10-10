@@ -10,6 +10,8 @@ use App\Models\Cart_Item_Model as cartItemModel;
 use App\Models\Order_Model as order;
 use App\Models\Order_Items_Model as orderItems;
 use App\Controllers\EmailVerificationController as EVerify;
+use App\Models\Transaction_Model as transaction;
+
 class ShopController extends BaseController
 {
     // global variables
@@ -24,7 +26,7 @@ class ShopController extends BaseController
     protected $orders;
     protected $orderItems;
     protected $EVerify;
-
+    protected $transaction;
 
 
 ## ----- THIS PREVENTS LOADING MODELS AND MEMORY ISSUES ----- ##
@@ -46,6 +48,12 @@ class ShopController extends BaseController
         if(!$this->expirationTime){
             $this->sessionConfig = new SessionConfig();
             $this->expirationTime = $this->sessionConfig->expiration;
+        }
+    }
+    // load Transaction model
+    private function loadTransactions() {
+        if(!$this->transaction) {
+            $this->transaction = new transaction();
         }
     }
     // load user account model 
@@ -131,7 +139,7 @@ class ShopController extends BaseController
             delete_cookie('remember_token');
         }
         ## render view 
-        private function renderView($path, $isDisplaying){
+        private function renderView($path, $isDisplaying, $gears = null){
             $this->loadGears();
             $this->loadSession();
             $this->loadCategories();
@@ -144,7 +152,7 @@ class ShopController extends BaseController
                 $container = [
                     'categories' => $this->categories->getAll(),
                     'gearsPerCategory' => $this->gears->getAll(),
-                    'gears' => $this->gears->getGearLeftJoinCategory()
+                    'gears' => $gears ? $gears : $this->gears->getGearLeftJoinCategory()
                 ];
                 $cart = $this->carts->getUserCartById($user_id);
                 if($cart) {
@@ -208,7 +216,14 @@ class ShopController extends BaseController
 ## ----- END ----- ##
 
 
-
+## ----- search gear ----- $$
+    public function searchGears() {
+        $this->loadGears();
+        $query = $this->request->getGet('search');
+        $gears = $this->gears->searchGears($query);
+        return $this->renderView('shop/shop', true, $gears);
+    }
+## ----- END ----- ##
 
 
 ## ----- CART CONTROLLERS ----- ##
@@ -286,7 +301,7 @@ class ShopController extends BaseController
 
 ## ----- PLACING ORDER / CHECKOUT ORDER ----- ##
     public function placeOrder() {
-        $this->loadSession(); $this->loadUserAccount(); $this->loadCartsItems(); $this->loadCarts(); $this->loadOrders(); $this->loadOrderItems(); $this->loadEmailVerification();
+        $this->loadSession(); $this->loadUserAccount(); $this->loadCartsItems(); $this->loadCarts(); $this->loadOrders(); $this->loadOrderItems(); $this->loadEmailVerification(); $this->loadTransactions();
         $payment_method = $this->request->getPost('paymentMethod');
         $userId = $this->session->get('user_id');
         $email = $this->session->get('email');
@@ -317,16 +332,36 @@ class ShopController extends BaseController
                         $this->carts->db->table('cart_items')
                         ->where('cart_id', $item['cart_id'])
                         ->delete();
-                    }
+                }
+                    $this->transaction->save([
+                        'user_id' => $userId,
+                        'ammount' => $totalAmount,
+                        'payment_method' => "COD",
+                        'status' => 'Pending'
+                    ]);    
                     return $this->EVerify->sendNotifOrderPlaced($userEmail['email']);
                 }
                 else if($payment_method == "gcash") {
-                    // this is temporary
+                    //TODO this is temporary
+                    //! $this->transaction->save([
+                    //!     'user_id' => $userId,
+                    //!     'description' => '',
+                    //!     'ammount' => $totalAmount,
+                    //!     'payment_method' => "GCash",
+                    //!     'status' => 'Pending'
+                    //! ]);
                     $this->session->setFlashdata('error','*GCash payment is not currently available');
                     return redirect()->to('/buy#payment');
                 }
                 else if($payment_method == "paypal") {
-                    // this is temporary
+                    //TODO this is temporary
+                    //! $this->transaction->save([
+                    //!     'user_id' => $userId,
+                    //!     'description' => '',
+                    //!     'ammount' => $totalAmount,
+                    //!     'payment_method' => "Paypal",
+                    //!     'status' => 'Pending'
+                    //! ]);
                     $this->session->setFlashdata('error','*Paypal payment is not currently available');
                     return redirect()->to('/buy#payment');
                 }

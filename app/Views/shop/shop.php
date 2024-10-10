@@ -23,6 +23,10 @@
     <div class="shop">
         <div class="shop-title">
             <h2>Shop</h2>
+            <form action="<?= base_url('/searchGears') ?>" method="get">
+                <input type="search" name="search" placeholder="Search Gear">
+                <input class="search" type="submit" value="Search">
+            </form>
             <?php if(session()->getFlashdata('successAddToCart')) :?>
                 <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
             <?php else :?>

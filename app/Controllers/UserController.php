@@ -57,9 +57,9 @@ class UserController extends BaseController
 ## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
     ## check sessions and redirect to views
     public function checkSessionThenRedirect($path, $isDisplaying = false){
-        if($this->isAdmin()) {
-            return redirect()->to('/admin/dashboard');
-        }
+        // if($this->isAdmin()) {
+        //     return redirect()->to('/admin/dashboard');
+        // }
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession();
             return redirect()->to('/');

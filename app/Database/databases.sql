@@ -156,6 +156,15 @@ CREATE TABLE shippings (
 
 
 
+-- transaction table
+CREATE TABLE transactions (
+    transaction_id int auto_increment primary key,
+    user_id int,
+    ammount int not null,
+    payment_method varchar(255) DEFAULT 'Pending', 
+    status varchar(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 
 
