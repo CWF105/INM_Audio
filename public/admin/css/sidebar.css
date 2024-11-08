@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 9px;
+}
+
+.sidenav .logo-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.sidenav .logo-title img {
+    width: 90px;
+    position: relative;
+    bottom: 0px;
+    right: 10px;
+}
+.sidenav .logo-title h2{
+    position: relative;
+    color: black;
+    font-weight: bold;
+    right: 10px;
+}
+
+.sidenav {
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: black;
+}
+
+.sidenav ul { 
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav ul a {
+    padding: 10px;
+    padding-left: 10px;
+    color: white;
+    text-decoration: none;
+    margin-block: 2px;
+}
+.sidenav ul a:hover {
+    background-color: #5fa8d3 ;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+}
+
+.sidenav ul a li {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.sidenav ul a { color:#000; }
+.sidenav ul #settings li h3 { font-size: 20px; }
+.sidenav ul #settings li svg { color: #000; }
+.sidenav ul #logout li svg {color: darkred; }
+.sidenav ul #logout li svg:hover {color: red; }
+
+.sidenav ul .logout.active { background-color: #222; }
+

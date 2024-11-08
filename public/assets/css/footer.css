@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    font-family: Montserrat;
+    font-weight: 300;
+}
+
+footer{
+    position: relative;
+    margin-top: 60px;
+    border: 1px solid #000;
+
+    h2{
+        padding-top: 20px;
+        font-size: 2em;
+        font-family: Montserrat;
+        font-weight: 300;
+        letter-spacing: .30em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .link-a{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   
+
+        li{
+            list-style: none;
+
+            a{
+                padding: 10px;
+                color: #000;
+                font-family: Montserrat;
+                font-weight: 300;
+                font-size: 1rem;
+                text-decoration: none;
+            }
+            a:hover{
+                color:  rgb(200, 21, 21);
+            }
+        }
+    }
+    .media{
+        padding: 10px;
+        gap: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a{
+            color: #000;
+            font-size: 2rem;
+        }
+    }
+}

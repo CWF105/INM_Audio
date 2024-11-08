@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;
+}
+
+*{
+  scrollbar-width: none; 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+ul {
+    padding-left: 10px;
+  }
+  
+  body {
+    color: #0a0a0a;
+    line-height: 1.4;
+  }
+  
+  a {
+    color: #000;
+  }
+  
+  .content {
+    z-index: 9999;
+  }
+  
+  .secure,
+  .backBtn {
+    display: flex;
+  }
+  .secure span,
+  .backBtn span {
+    margin-left: 5px;
+  }
+  
+  .backBtn {
+    margin-top: 20px;
+  }
+  
+  .secure {
+    color: #afb5c0;
+    align-items: flex-end;
+  }
+  .secure .icon {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  
+  
+  .logo {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .logo .icon {
+    font-size: 32px;
+    line-height: 32px;
+    margin-right: 5px;
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .details {
+    max-width: 1100px;
+    min-height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .details__item {
+    display: flex;
+  }
+  .details__user {
+    background: #f6f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dadada;
+  }
+  
+  .item__quantity {
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    font-size: 20px;
+  }
+  .item__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item__image .earphone {
+    margin-top: 70px;
+    margin-left: 50px;
+    width: 200px;
+  }
+  .item__details {
+    padding: 80px;
+    font-family: Montserrat;
+    font-weight: 300;
+  }
+  .item__title {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .item__price {
+    font-size: 22px;
+    color: #bec3cb;
+  }
+  
+  .icon {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  
+  header {
+    margin-bottom: 10px;
+    /* min-height: 500px; */
+  
+    .address{
+      margin-left: 100px;
+  
+  
+      .address-text{
+        display: flex;
+        font-size: 1.50rem;
+        font-weight: 100;
+        gap: 10px;
+        
+        h4{
+          font-family: Montserrat;  
+          
+        }
+      }
+      .address-info{
+        display: flex;
+        gap: 25px;
+        font-family: Montserrat;  
+  
+        .name{
+          font-weight: bold;
+        }
+        .change{
+          color: #0210cb;
+          background-color: #f6f9fc;
+        }
+      }
+    
+    }
+}
+  
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0 80px 0;
+    color: #246eea;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  
+  .container {
+    width: 960px;
+    margin: 0 auto;
+    font-family: Montserrat;
+  }
+  
+  .shadow {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .txt {
+    border-color: #e1e8ee;
+    width: 100%;
+  }
+  .payment__title{
+    font-family: Montserrat;
+    font-size: 1.25rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  
+  }
+  .payment-types{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  
+    button{
+      width: 220px;
+      height: 60px;
+      border: 1px solid #000;
+      background-color: #fff;
+      font-size: 1rem;
+      font-family: Montserrat;
+      border-radius: 5px;
+  
+    }
+    button:hover{
+      background-color: #000;
+      color: #fff;
+    }
+  }
+  .card-block{
+    margin-top: 40px;
+    margin-left: 200px;
+    height: 100%;
+    display: flex;
+  
+    .cod{
+      display: none;
+  
+      h3{
+        font-family: Montserrat;
+        font-size: 1.50rem;
+        font-weight: 300;
+      }
+    }
+
+    .gcash{
+        display: none;
+        align-items: center;
+
+        
+        .checkbox{
+            height: 100%;
+        }
+        img{
+        width: 100px;
+      }
+    }
+
+    .paypal{
+      display: none;
+      align-items: center;
+
+      .checkbox{
+        height: 10%;
+    }
+      img{
+          width: 100px;
+        }
+    }
+    .bank{
+        display: none;
+        align-items: center;
+  
+        .checkbox{
+          height: 50%;
+      }
+        img{
+            width: 100px;
+          }
+      }
+    
+}
+
+  
+  .payment-done{
+    text-decoration: none;
+    padding: 20px;
+    font-family: Montserrat;
+    border-radius: 5px;
+    margin-left: 550px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+    
+    .btn{
+      text-decoration: none;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  
+    .btn:hover{
+      background-color: #000;
+      color: #fff;
+    }
+  
+    .btnn{
+      /* margin-top: 20px; */
+      font-family: Montserrat;
+      text-decoration: underline;
+      border: none;
+  
+    }
+  }
