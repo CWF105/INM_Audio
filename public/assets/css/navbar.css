@@ -69,28 +69,38 @@ body{
                 }
             }
             a:hover {
-                background: #333;
+                background: #696969;
+                color: white;
                 li {
                     color: rgb(255, 193, 148);
                 }
             }
             .dropdown-container{
                 position: relative;
-                
+                cursor: pointer;
                 .dropdown{
                     width: 140px;
-                    height: 120px;
-                    display: none;
+                    height: auto;
+                    display: none; /* Initially hidden */
                     position: absolute;
+                    top: 110%;
+                    left: 20px;
+                    cursor: pointer;
+                    background: gainsboro;
                     
                     .links{
-                        padding: 15px 10px 10px 10px;
+                        cursor: pointer;
+                        padding-block: 5px;
+                        padding-inline: 0;
                         display: flex;
+                        width: 200px;
                         flex-direction: column;
-                        gap: 10px;
+                        gap: 3px;
                         align-items: start;
                         a{
-                            
+                            cursor: pointer;
+                            width: 140px;
+                            padding: 10px;     
                             font-family: Montserrat;
                             font-size: .90em;
                             font-weight: 500;
@@ -100,20 +110,24 @@ body{
                 }
                 .dropdown::before {
                     content: "";
-                    width: 50px;
-                    height: 50px;
+                    width: 100%;
+                    height: 10px; /* Adjust height as needed */
                     background: gainsboro;
                     position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-60%) rotate(45deg);
-                    z-index: -1;
+                    top: -10px;
+                    left: 0;
+                    transform: none;
+                    z-index: 1;
                 }
                 a:hover ~ .dropdown {
                     display: block;
                     position: absolute;
                     top: 110%;
                     background: gainsboro;
+                }
+                &:hover .dropdown,
+                .dropdown:hover {
+                    display: block;
                 }
             }
         }
@@ -165,48 +179,7 @@ body{
                 color: rgb(255, 193, 148);
             }
         }
-        .dropdown-container{
-            position: relative;
 
-            .dropdown{
-                width: 140px;
-                height: 120px;
-                display: none;
-                position: absolute;
-                
-                .links{
-                    padding: 15px 10px 10px 10px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    align-items: start;
-                    a{
-                        
-                        font-family: Montserrat;
-                        font-size: .90em;
-                        font-weight: 500;
-                    }
-
-                }
-            }
-            .dropdown::before {
-                content: "";
-                width: 50px;
-                height: 50px;
-                background: gainsboro;
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-60%) rotate(45deg);
-                z-index: -1;
-            }
-            a:hover ~ .dropdown {
-                display: block;
-                position: absolute;
-                top: 110%;
-                background: gainsboro;
-            }
-        }
     }
 }
 
