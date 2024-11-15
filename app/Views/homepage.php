@@ -31,7 +31,6 @@
             echo view('includes/header_introduction');
         ?>
         <!-- @END PHP CODE -->
-        
     </div>
 </div>
 <!-- @SECTION 2 - about -->

@@ -30,7 +30,6 @@
 
         <div class="bg">
             <div class="card-container">
-    
                 <?php if(!empty($categories)) :?>
                     <?php foreach($categories as $index => $category) :?>
                         <!-- container -->
@@ -50,34 +49,33 @@
                                 </div>
                                 
                                 <div class="modal-body">
-                                <!-- Filter gears for the current category -->
-                                <?php 
-                                    $gearsForCategory = array_filter($gearsPerCategory, function($gear) use ($category) {
-                                        return $gear['category_id'] == $category['category_id'];
-                                    });
-                                ?>
-                                <!-- displaying gears per category -->
-                                <?php if (!empty($gearsForCategory)) : ?>
-                                    <?php foreach ($gearsForCategory as $gear) : ?>
-                                        <div class="gears">
-                                            <div class="con">
-                                                <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
-                                                    <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
-                                                </a>
-                                                <a class="shopBtn" href="<?= base_url('/shop#'. $gear['product_id']) ?>">browse in Shop</a>
-                                            </div>
-                                            
-                                            <div class="onHover">
-                                                <h3><?= esc($gear['product_name']) ?></h3>
-                                                <p><?= esc($gear['description']) ?></p><br>
-                                            </div>
-                                        </div>  
-    
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    <p>No gears available for this category.</p>
-                                <?php endif; ?>
-                                    
+                                    <!-- Filter gears for the current category -->
+                                    <?php 
+                                        $gearsForCategory = array_filter($gearsPerCategory, function($gear) use ($category) {
+                                            return $gear['category_id'] == $category['category_id'];
+                                        });
+                                    ?>
+                                    <!-- displaying gears per category -->
+                                    <?php if (!empty($gearsForCategory)) : ?>
+                                        <?php foreach ($gearsForCategory as $gear) : ?>
+                                            <div class="gears">
+                                                <div class="con">
+                                                    <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
+                                                        <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
+                                                    </a>
+                                                    <a class="shopBtn" href="<?= base_url('/shop#'. $gear['product_id']) ?>">browse in Shop</a>
+                                                </div>
+                                                
+                                                <div class="onHover">
+                                                    <h3><?= esc($gear['product_name']) ?></h3>
+                                                    <p><?= esc($gear['description']) ?></p><br>
+                                                </div>
+                                            </div>  
+        
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <p>No gears available for this category.</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div> 

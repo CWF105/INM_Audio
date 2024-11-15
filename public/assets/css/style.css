@@ -191,3 +191,55 @@ body{
         }
     }
 }
+
+@media (max-width: 992px) {
+    .bg {
+        background-position: center;
+    }
+
+    .about {
+        .about-title {
+            width: 100%;
+
+            h2 {
+                width: 80%;
+                margin: 20px auto 30px;
+            }   
+        }
+
+        .about-body {
+            width: 100%;
+            margin: 0;
+            justify-content: center;
+            flex-direction: column;
+
+            .about-question {
+                width: 80%;
+                margin: auto;
+            }
+
+            .about-img {
+                width: 100%;
+            }
+        }
+    }
+
+    .product {
+        .card {
+            height: 80vh;
+        }
+    }
+
+    .fav-gear {
+        width: 100%;
+
+        .card-container {
+            width: 100%;
+            padding: 0 30px;
+
+            .card1 {
+                width: 100%;
+            }
+        }
+    }
+}

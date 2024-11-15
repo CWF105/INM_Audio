@@ -15,7 +15,6 @@ html, body {
 
 }
 .bg {
-    /* padding-top: 20px; */
     background-image: url("../img/sbg.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,10 +23,12 @@ html, body {
         padding-bottom: 100px;
         background-color: #222;
         opacity: .8;
-        color: white;
+        color: rgb(255, 255, 255);
     }
 }
 .comm-container{
+    width: 100%;
+    
     .comm-title{
         h2{
             padding-top: 70px;
@@ -88,9 +89,7 @@ html, body {
         }
     }
     .reviews{
-
         .review-title{
-
             h2{
                 padding-top: 40px;
                 padding-bottom: 40px;
@@ -102,46 +101,111 @@ html, body {
             }
         }
     }
+
     .comm-reviews {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        width: 95%;
+        padding: 10px 0;
+        margin: auto;
 
         .comment {
             width: 100%;
+            height: auto;
+            padding: 20px;
             display: none;
+
+            .card-blocks {
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+            }
             
             .card {
                 width: 100%;
-                height: auto;
-                margin: 5px 0;
+                margin: 20px 0;
                 padding: 10px;
                 display: flex;
-                gap: 30px;
+                flex-direction: column;
+                gap: 20px;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 
                 .user {
-                    width: 10%;
+                    width: 100%;
                     display: flex;
+                    justify-content: start;
                     align-items: center;
-                    flex-direction: column;
 
                     img {
                         width: 50px;
                         height: 50px;
                         border-radius: 50%;
+                        object-fit: cover;
                     }
                 }
+            }
 
-                .user-comment {
-                    height: 100%;
+            .comment-input {
+                width: 40%;
+                margin: 20px 0;
+                position: relative;
+
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 5px;
+                    border: 1px solid black;
+                    color: black;
+                }
+
+                button {
+                    border: none;
+                    outline: none;
+                    position: absolute;
+                    top: 50%;
+                    right: 8px;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .comm-container {
+        .comm-title {
+            h2 {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+
+        .comm-block {
+            .picture-block {
+                flex-wrap: wrap;
+
+                .comm-picture {
+                    width: 100%;
                 }
             }
         }
 
-        .comment.active {
-            display: block;
+        .reviews {
+            .review-title {
+                h2 {
+                    padding-left: 0;
+                    text-align: center;
+                }
+            }
+        }
+
+        .comm-reviews {
+            .comment {
+                padding: 10px;
+
+                .comment-input {
+                    width: 100%;
+                }
+            }
         }
     }
 }

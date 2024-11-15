@@ -110,4 +110,4 @@
     </div>
 </header>
 
-<script src="<?= base_url('assets/js/nav.js') ?>"></script>
+<script src="<?= base_url('./assets/js/nav.js') ?>"></script>

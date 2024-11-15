@@ -9,8 +9,8 @@ use App\Controllers\BaseController;
 class EmailVerificationController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    protected $sender = "flaviano.chriswendell105@gmail.com";  //jlnbrrnts32029@gmail.com    
-    protected $passkey = "cagg cmdo hzvf qprr";
+    protected $sender = "jlnbrrnts32029@gmail.com";  //jlnbrrnts32029@gmail.com    
+    protected $passkey = "fvkd ifio hrxt xtxe";
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------

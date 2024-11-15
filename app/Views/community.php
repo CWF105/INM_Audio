@@ -62,9 +62,9 @@
                     <p>GEAR 6</p>
                 </a>
             </div>
-           
-        <!-- reviews -->
         </div>
+
+        <!-- reviews -->
         <div class="reviews" id="reviews">
             <div class="review-title">
                 <h2>Reviews</h2>
@@ -73,140 +73,188 @@
 
         <div class="comm-reviews">
             <div class="comment comment1">
-                <div class="card">
-                    <div class="user">
-                        <img src=" <?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src=" <?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                        </div>
                     </div>
-
-                    <div class="user-comment">
-                        <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
+                
 
-                    <div class="user-comment">
-                        <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
 
             <div class="comment comment2">
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>adoidhadbfnoiajdfnoaj</p>
+                        </div>
                     </div>
+                </div>
+                
 
-                    <div class="user-comment">
-                        <p>adoidhadbfnoiajdfnoaj</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
 
             <div class="comment comment3">
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>SFASDFSDGSD</p>
+                        </div>
                     </div>
-
-                    <div class="user-comment">
-                        <p>SFASDFSDGSD</p>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>SFASDFSDGSD</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>SFASDFSDGSD</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
+                
 
-                    <div class="user-comment">
-                        <p>SFASDFSDGSD</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
-
-                    <div class="user-comment">
-                        <p>SFASDFSDGSD</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
 
             <div class="comment comment4">
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                        </div>
                     </div>
-
-                    <div class="user-comment">
-                        <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
+                
 
-                    <div class="user-comment">
-                        <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
 
             <div class="comment comment5">
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>DFADFA;LFIAHRFJKN KJLIUHB</p>
+                        </div>
                     </div>
+                </div>
+                
 
-                    <div class="user-comment">
-                        <p>DFADFA;LFIAHRFJKN KJLIUHB</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
 
             <div class="comment comment6">
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
+                <div class="card-blocks">
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
+                        </div>
                     </div>
-
-                    <div class="user-comment">
-                        <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="user">
+                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
+                            <p>User Name</p>
+                        </div>
+    
+                        <div class="user-comment">
+                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
+                
 
-                    <div class="user-comment">
-                        <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="user">
-                        <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                        <p>User Name</p>
-                    </div>
-
-                    <div class="user-comment">
-                        <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
-                    </div>
+                <div class="comment-input">
+                    <input type="text" placeholder="Enter comment">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>

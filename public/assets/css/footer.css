@@ -35,12 +35,12 @@ footer{
         justify-content: center;
         align-items: center;
     }
+
     .link-a{
         margin: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-   
 
         li{
             list-style: none;
@@ -58,15 +58,29 @@ footer{
             }
         }
     }
+
     .media{
         padding: 10px;
         gap: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
+
         a{
             color: #000;
             font-size: 2rem;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .link-a {
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        li {
+            width: 50%;
+            text-align: center;
         }
     }
 }
