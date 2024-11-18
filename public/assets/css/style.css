@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Montserrat;
+    font-weight: 300;
+}
+
+.bg {
+    /* padding-top: 20px; */
+    height: 90vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/homelogo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .bg2 {
+        height: 90vh;
+        padding-top: 10px;
+        color: white;
+    }
+}
+
+/* about */
+.about{
+    width: 100%;
+
+    .about-title{
+        h2{
+            margin-top: 90px;
+            margin-left: 90px;
+            font-family: Montserrat;
+            font-size: 1.70rem;
+            font-weight: 300;
+        }
+    }
+    .about-body{
+        margin-left: 90px;
+        margin-right: 90px;
+        gap: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .about-question{
+            width: 60%;  
+            h2{
+                font-family: Montserrat;
+                font-size: 1.70rem;
+                font-weight: 300;
+            }
+        }
+        .about-img{
+            width: 40%;
+            img{
+                width: 450px;
+            }
+        }
+    }
+}
+
+/* product */
+
+.product{
+    padding-bottom: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+    position: relative;
+    
+    .product-title{
+
+        h2{
+            /* color: rgb(232, 116, 33); */
+            padding-top: 50px;
+            padding-left: 90px;
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+    }
+    
+    .card{
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        margin-bottom: 0;
+        overflow-x: auto;
+    
+        #image-track {
+            gap: 4vmin;
+            display: flex;
+            position: absolute;
+            left: 40%;
+            top: 50%;
+            transform: translate(0%, -50%); 
+            user-select: none; /* -- Prevent image highlighting -- */
+          }
+          
+          #image-track > .image {
+            width: 40vmin;
+            height: 56vmin;
+            object-fit: cover;
+            object-position: 100% center;
+            transition: 500ms;
+            border-radius: 3px;
+        }
+        .image:hover {
+            cursor: pointer;
+            border-radius: 5px;
+            scale: 1.1;
+        }
+    }
+}
+
+.fav-gear{
+
+    .fav-title{
+        
+        h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+    }
+    .card-container{
+        padding-top: 40px;
+        padding-left: 90px;
+        padding-right: 90px;
+        gap: 50px;
+        flex-wrap: wrap; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .card1{
+            width: 500px;
+            height: 350px;
+            background-color: #fff;
+            border: 1px solid #000;
+            display: flex;
+
+            img{
+                /* margin-top: 5px; */
+                height: 100%;
+                width: 50%;
+                object-fit: cover;
+            }
+
+            .card-content{
+                padding: 10px;
+                
+
+                h1{
+                    margin: 0;
+                    font-size: 24px;
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    padding-top: 50px;
+                }
+                p{
+                    padding-bottom: 20px;
+                    margin: 10px 0;
+                    font-family: Montserrat;
+                    font-size: 14px;
+                    color: #555;
+                }
+                .meta{
+                    padding-bottom: 20px;
+                    font-size: 12px;
+                    font-family: Montserrat;
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .bg {
+        background-position: center;
+    }
+
+    .about {
+        .about-title {
+            width: 100%;
+
+            h2 {
+                width: 80%;
+                margin: 20px auto 30px;
+            }   
+        }
+
+        .about-body {
+            width: 100%;
+            margin: 0;
+            justify-content: center;
+            flex-direction: column;
+
+            .about-question {
+                width: 80%;
+                margin: auto;
+            }
+
+            .about-img {
+                width: 100%;
+            }
+        }
+    }
+
+    .product {
+        .card {
+            height: 80vh;
+        }
+    }
+
+    .fav-gear {
+        width: 100%;
+
+        .card-container {
+            width: 100%;
+            padding: 0 30px;
+
+            .card1 {
+                width: 100%;
+            }
+        }
+    }
+}

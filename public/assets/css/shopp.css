@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.shop{
+
+
+    .shop-title{
+        padding-right: 90px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-size: 2em;
+            font-family: Montserrat;
+            font-weight: 300;
+            letter-spacing: .30em;
+        }
+
+        .ss {
+            padding-top: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+
+            form {
+                input {
+                    padding: 5px;
+                    padding-inline: 10px;
+                }
+                button {
+                    position: relative;
+                    right: 40px;
+                    padding: 5px;
+                    padding-inline: 10px;
+                }
+            }
+
+            h2{
+                font-size: 2em;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+            }
+            a{
+                color: #000;
+                font-size: 1.25rem;
+            }
+        }
+    }
+    .card-container{
+        padding-inline: 100px;
+        padding-block: 30px;
+        margin-top: 20px;
+        gap: 20px;
+        background-image: url('../img/sbg.png');
+        background-size: cover;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .library-card{
+            background-color: rgba(104, 104, 104, 0.678);
+            width: 320px;
+            height: 450px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; 
+            border: 1px solid rgba(104, 104, 104, 0.678);
+            padding-top: 80px;
+            padding-bottom: 50px;
+            color: white;
+            border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
+            transition: all 200ms;
+        }
+        .library-card:hover { 
+                transform: scale(1.1); 
+                background: #2c2c2cf3;
+                color: white;
+                border-radius: 66% 34% 61% 39% / 45% 59% 41% 55%;
+            }
+            .library-card:hover img {
+                border-radius: 75% 25% 66% 34% / 36% 53% 47% 64% ;
+            }
+
+            img{
+                background-color: rgba(17, 25, 40, 0.75);
+                padding: 50px; 
+                width: 290px;
+                opacity: .9;
+                margin-top: 30px;
+                border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
+            }
+            
+            h3{
+                padding-top: 5px;
+                font-size: 1.1em;
+                font-weight: 600;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+            }
+            h4{
+                margin: 20px;
+                margin-left: 0px;
+                font-size: .90em;
+                font-family: Montserrat;
+                font-weight: 300;
+                letter-spacing: .30em;
+                transition: all 200ms;
+            }
+            .btn{
+                width: 150px;
+                padding: 10px 20px;
+                font-size: 1rem;
+                font-family: Montserrat;
+                font-weight: 600;
+                position: relative;
+                bottom: 137px;
+                cursor: pointer;
+                /* letter-spacing: .30em; */
+                border-radius: 3px;
+                color: white;
+                background-color: transparent;
+                border: 1px solid #e7e7e7;
+                opacity: 0;
+                transition: all 200ms;
+            }
+            .btn:hover{
+                background-color: rgb(27, 27, 27);
+                color: #fff;
+            }
+
+
+            
+            .modal{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: 200ms ease-in-out;
+                border: 1px solid black;
+                z-index: 10;
+                backdrop-filter: blur(25px) saturate(133%);
+                -webkit-backdrop-filter: blur(25px) saturate(133%);
+                background-color: white;
+                border-radius: 10px;
+                border: 1px solid black;               
+                width: 60%;
+                height: 550px;
+                overflow: hidden;
+                
+                
+            }
+            .modal-header{
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .product-img{
+                    width: 80%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+            
+                    img{
+                        width: 450px;
+                        height: 380px;
+                        background-color: white;
+                        border: 1px solid rgb(207, 203, 203);
+                        border-radius: 3px;
+                        /* border-radius: 10px; */
+                    }
+                }
+
+                form {
+                    height: 100%;
+
+                    .product-details{
+                        width: 400px;
+                        height: 100%;
+                        padding: 15px;
+                        padding-top: 70px;
+                        padding-left: 30px;
+                        background-color: #fff;
+                        p {
+                            font-family: Montserrat;
+                            font-size: 1.70rem;
+                            display: flex;
+                            justify-content: center;
+                            /* font-weight: 600; */
+                        }
+                        h3{
+                            font-family: Montserrat;
+                            font-size: 1.20rem;
+                            padding-top: 40px;
+                            /* font-weight: 500; */
+                        }
+
+                        .inputs {
+                            margin-top: 30px;
+                            gap: 30px;
+                            display: flex;
+                            flex-direction: column;
+
+                            .dropdown{
+                                gap: 5px;
+                                display: flex;
+                                flex-direction: column;
+                                select {
+                                    width: 300px;
+                                    text-align: center;
+                                }
+                            }
+
+                            .quantity {
+                                display: flex;
+                                justify-content: start;
+                                gap: 5px;
+                                
+                                .qlabel{
+                                    position: relative;
+                                    display: flex;
+                                    gap: 10px;
+
+                                }
+                                input {
+                                    width: 50px;
+                                    text-align: center  ;
+                                    
+                                }
+                                input[type="number"]::-webkit-inner-spin-button,
+                                input[type="number"]::-webkit-outer-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                .control {
+                                    gap: 5px;
+                                    display: flex;
+                                    
+                                    button { 
+                                        width: 20px;
+                                        color: white;
+                                        background-color:  rgb(236, 60, 29);
+                                        border: 1px solid black;
+                                    }
+                                }
+                            }
+                        }
+                        .cart-button {
+                            gap: 10px;
+                            font-family: Verdana, Geneva, Tahoma, sans-serif;
+                            display: flex;
+                            justify-content: center;
+
+                            .cart button {
+                                width: 150px; 
+                                padding: 10px;
+                                color: white; 
+                                background-color: rgb(236, 60, 29); 
+                                border-radius: 3px; 
+                                border: 1px solid black;
+                                font-size: 14px; 
+                                font-weight: 600; 
+                                cursor: pointer;
+                            }
+                            .buy button {
+                                width: 120px; 
+                                padding: 10px;
+                                color: white; 
+                                background-color: rgb(236, 60, 29); 
+                                border-radius: 3px; 
+                                border: 1px solid black;
+                                font-size: 14px; 
+                                font-weight: 600; 
+                                cursor: pointer; 
+                            }
+                            
+                            .buy button:hover { 
+                                background-color: #1d1d1d;
+                                color: white;
+                            }
+                            .cart button:hover { 
+                                background-color: #1d1d1d;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .modal-header .close-button{
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background: none;
+                font-size: 2.50rem;
+                font-weight: bold;
+                position: absolute;
+                top: 10px;
+                right: 13px;
+                transition: 500ms;
+            }
+            .modal-header .close-button:hover {
+                color: darkred;
+            }
+
+            #overlay{
+                position: fixed;
+                opacity: 0;
+                transition: 200ms ease-in-out;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                pointer-events: none;
+            }
+            #overlay.active{
+                opacity: 1;
+                pointer-events: all;
+            }
+
+
+
+
+            .modal.active{
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        .library-card:hover {
+            transform: scale(1.1);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(17, 25, 40, 0.75);
+        }
+        .library-card:hover img{
+            background-color: rgb(42, 42, 49);
+        }   
+
+        .library-card:hover .btn{
+            opacity: 1;
+        }
+        
+    }
+
+    

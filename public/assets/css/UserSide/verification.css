@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    font-family: Montserrat;
+}
+/* For most modern browsers */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.container{
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    .verify-title{
+        
+        h2{
+            font-style: bold;
+            font-weight: 400;
+        }
+        h4{
+            display: flex;
+            justify-content: center;
+            font-weight: 400;
+        }
+
+    }
+    form{
+        .input-box{
+            gap: 10px;
+            display: flex;
+            
+            .input-verify{
+                
+                input{
+                    width: 60px;
+                    height: 60px;
+                    border: 1px solid rgb(181, 181, 181);
+                    border-radius: 8px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            }
+        }
+        .verify-button{
+            padding-top: 20px;
+            button{
+                width: 220px;
+                height: 35px;
+            }
+            input{
+                width: 220px;
+                height: 35px;
+                
+            }
+        }
+    }
+    .form-resend{
+        form{
+            display: flex;
+
+            h4{
+                font-weight: 400;
+            }
+            button{
+                color: black;
+                border: none;
+                background-color: transparent;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    width: 100%;
+    position: relative;
+
+    nav {
+        width: 100%;   
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 30px;
+        background-color: gray;
+        
+    
+        .logo{
+
+            img{
+                width: 80px;
+                filter: drop-shadow(0 0 10px white);
+            }
+        }
+    
+        .links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+
+            li {
+                list-style-type: none;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+
+            .logn {
+                i {
+                    font-size: 1rem;
+                    color: rgb(249, 249, 249);
+                }
+            }
+        }
+    }
+}
+.cartp{
+    padding-top: 50px;
+    padding-left: 40px;
+}
+.ctable{
+    width: 95%;
+    border: 1px solid black;
+    margin: 80px auto;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 3px 3px 5px black;
+    /* display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center; */
+}
+/* table tr, th{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 250px;
+    
+} */
+.card-info{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* padding-left: -50px; */
+
+    h3{
+        padding-top: 40%;
+        
+    }
+}
+th{
+    text-align: left;
+    padding: 20px;
+    padding-left: 35px;
+    color: white;
+    background: black;
+}
+td{
+    padding: 10px 5px;
+}
+.cprice{
+    padding-left: 40px;
+    font-weight: 400;
+    color: red;
+}
+.card-info img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    padding-left: 10px;
+}

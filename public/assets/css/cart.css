@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none;
+}
+
+*{
+    scrollbar-width: none; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cart{
+
+
+    .cart-title{
+
+        h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-family: Montserrat;
+            font-weight: 300;
+            font-size: 2em;
+            letter-spacing: 0.30em;
+            margin-bottom: 40px;
+        }
+    }
+    
+    .cart-table{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: Montserrat;
+        gap: 10px;
+
+        .thead{
+            width: 100%;
+            padding: 10px;
+            background-color: #fff;
+            display: flex;
+            border: 1px solid #000;
+
+            .head-one{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+            .head-two{
+                width: 50%;
+                display: flex;
+                justify-content: space-evenly;
+                /* border: 1px solid #000; */
+
+                p{
+                    width: 25%;
+                    font-family: Montserrat;
+                    /* border: 1px solid #000; */
+                    text-align: center;
+                }
+            }
+        }
+        .table-body{
+            width: 100%;
+            display: flex;
+            border: 1px solid #000;
+            flex-direction: column;
+            hr{ margin-bottom: 20px; margin-top: 20px;}
+            background-color: #e0e0e0;
+            
+            .wawa {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+                padding: 10px;
+                background: #9999;
+                .body-one{
+                    /* align-items: center; */
+                    margin-right: 200px;
+                    img{
+                        width: 100px;
+                        height: 100px;
+                        border: 1px solid #000;
+                    }
+                }
+                .body-two{
+                    width: 50%;
+                    gap: 50px;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    justify-content: space-between;
+    
+                    p, a{
+                        width: 25%;
+                        display: flex;
+                        text-align: center; 
+                    } 
+                    a{
+                        color: red;
+                        font-weight: bold;
+                        padding: 10px 5px;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        .card-checkout{
+            width: 100%;
+            padding: 30px 10px;
+            margin: 20px 0;
+            gap: 10px;
+            border: 1px solid #000;
+            display: flex;
+            
+
+            .select{
+                width: 50%;
+                gap: 20px;
+                display: flex;
+                align-items: center;
+
+                .card-check{
+                    border: none;
+                    background-color: #fff;
+                    font-family: Montserrat;
+                    font-size: 1.15rem;
+                    
+                }
+            }
+            .total{
+                width: 50%;
+                padding-left: 210px;
+                gap: 20px;
+                font-size: 1.15rem;
+                display: flex;
+                align-items: center;
+                .total-checkout{
+                    cursor: pointer;
+                    padding: 10px 30px;
+                    border: 1px solid #000;
+                    border-radius: 4px;
+                    background-color: #8d8d8d;
+                    font-family: Montserrat;               
+                }
+            }
+        }
+    }
+}
