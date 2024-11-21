@@ -24,18 +24,7 @@ $routes->group('', function($routes) {
 // Users Routers
 $routes->group('', function($routes){
     // post -------------------------------------------------------------
-        $routes->post('/user/changeProfile', 'UserController::changeProfile');
-        $routes->post('/user/changeUsername', 'UserController::changeUsername');
-        $routes->post('/user/changeFirstname', 'UserController::changeFirstname');
-        $routes->post('/user/changeLastname', 'UserController::changeLastname');
-        $routes->post('/user/changeEmail', 'UserController::changeEmail');
-        $routes->post('/user/changePhone', 'UserController::changePhone');
-        $routes->post('/user/changeAddress', 'UserController::changeAddress');
-        $routes->post('/user/changeCM', 'UserController::changeCityMunicipality');
-        $routes->post('/user/changeZipcode', 'UserController::changeZipcode');
-        $routes->post('/user/changeCountry', 'UserController::changeCountry');
-        $routes->post('/user/changePassword', 'UserController::cahngePassword');
-
+        $routes->post('/user/updateProfile', 'UserController::updateAccount');
 
     // get -------------------------------------------------------------
         $routes->get('/user/setting', 'UserController::userSettings');

@@ -220,7 +220,7 @@ class Login_SignupController extends BaseController
 ## ----- FORGOT PASSWORD ----- ##
     ## forgot password
     public function forgotPass() {
-        return view('UserSide/forgotpassword');
+        return view('UserSide/others/forgotpassword');
     }
 
 
@@ -270,7 +270,7 @@ class Login_SignupController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## create new pass after email is check and is valid
     public function createNewPass() {
-        return view('UserSide/CreateNewPassword');
+        return view('UserSide/others/CreateNewPassword');
     }
 
 
@@ -323,6 +323,6 @@ class Login_SignupController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## redirect to success reset page
     public function successReset() {
-        return view('UserSide/successfulReset');
+        return view('UserSide/others/successfulReset');
     }
 }

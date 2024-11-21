@@ -1,0 +1,84 @@
+.main {
+    main {
+        .card-container {
+            .top {
+                background-color: #b3b2b2;
+                margin: 5px;
+                padding: 10px;
+
+                h2, h3 { font-family: monospace; }
+            }
+
+            .content {
+                padding-inline: 50px;
+                margin-top: 20px;
+                margin-left: 40px;
+                margin-bottom: 5px;
+                
+                form {
+                    display: flex;
+                    
+                    div {
+                        fieldset {
+                            display: flex;
+                            padding: 10px;
+                            .input-block {
+                                gap: 5px;
+                                line-height: 10px;
+                                display: flex;
+                                flex-direction: column;
+                                input {
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .user-image {
+                        display: flex;
+                        flex-direction: column;
+                        img {
+                            width: 180px;
+                            border-radius: 3px;
+                        }
+                        input {
+                            color: darkred;
+                        }
+                    }
+                    
+                    .edit-profile {
+                        position: relative;
+                        right: 90px;
+                        input {
+                            padding: 5px;
+                            border-radius: 3px;
+                            color:#3b6237;
+                        }
+                        input:focus {
+                            color: #4a4a4a;
+                        }
+                    }
+                    
+                    button {              
+                        position: absolute;
+                        bottom: 100px;
+                        /* float: right; */
+                        padding-inline: 5px;
+                        border-radius: 2px;
+                        width: 150px;
+                        height: 40px;
+                        cursor: pointer;
+                        transition: 300ms;
+                        border-radius: 5px;
+                        border: 1px solid gray;
+                        font-weight: 600;
+                    }
+                    button:hover {
+                        background-color: darkgreen;
+                        color: #d1d1d1;
+                    }
+                }
+            }
+
+        }
+    }
+}

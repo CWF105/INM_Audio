@@ -14,8 +14,6 @@ class EmailVerificationController extends BaseController
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- THIS PREVENTS LOADING MODELS AND MEMORY ISSUES ----- ##
-## call this methods to load models
     // generating a random int number for verification code, then setting it temporarily in session for future access and use
     // then redirects to emailVerification() method
     public function sendEmailVerification($email){
@@ -69,7 +67,7 @@ class EmailVerificationController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## render page - verification page
     public function verificationPage() {
-        return view('UserSide/verification');
+        return view('UserSide/others/verification');
     }
 
 
