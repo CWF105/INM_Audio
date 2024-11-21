@@ -12,22 +12,22 @@
     <!-- NAVIGATIONS -->
         <ul>
             <!-- My Profile -->
-            <a href="<?= base_url('/user/setting') ?>">
+            <a id="myprofile" href="<?= base_url('/user/setting') ?>">
                 <li><h3>My Profile</h3></li>
             </a>
 
             <!-- My purchase -->
-            <a href="<?= base_url('/user/mypurchase') ?>">
+            <a id="mypurchase" href="<?= base_url('/user/mypurchase') ?>">
                 <li><h3>My Purchase</h3></li>
             </a>
 
             <!-- My Likes -->
-            <a href="">
+            <a id="mylikes" href="">
                 <li><h3>My Likes</h3></li>
             </a>
 
             <!-- Logout  -->
-            <a href="<?= base_url('/user/logout') ?>">
+            <a id="logout" href="<?= base_url('/user/logout') ?>">
                 <li class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><h3>Logout</h3></li>
             </a>
         </ul>

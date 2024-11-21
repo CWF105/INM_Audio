@@ -58,12 +58,14 @@ class UserController extends BaseController
     ## User Setting
     public function userSettings() {
         return $this->checkSessionThenRedirect('UserSide/userAccount', true);
-        // return $this->checkSessionThenRedirect('UserSide/userprof', true);
-
     }
     ## User purchase history
     public function myPurchase() {
         return $this->checkSessionThenRedirect('UserSide/myPurchase', true);
+    }
+    ## User likes
+    public function myLikes() {
+        
     }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------

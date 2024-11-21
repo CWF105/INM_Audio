@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>My Profile</title>
+    <style>
+        #myprofile { background-color: #555; color: white;}
+    </style>
 </head>
 <body>
   <!-- INCLUDE TOP(FIXED/STICKY) NAV -->
