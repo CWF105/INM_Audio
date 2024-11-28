@@ -3,127 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="<?= base_url('admin/css/dashboard.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('admin/css/grid.css') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="<?= base_url('Admin/css/dashboard.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('Admin/css/grid.css') ?>">
+    <title>Dashboard</title>
     <style>
-        #dashboard { 
-            background-color: #5fa8d3; 
-            color: white;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px; 
-        }
+        /* SIDE NAV WHEN IN THIS PAGE - below css selectors can be found in the "sideNav.php" file */
+        #dashboard { background-color: #d4ebf844; }
+        aside nav ul #dashboard span { opacity: 1;}
     </style>
 </head>
 <body>
+<!-- 
+// * INCLUDE THE SIDE NAVIGATION FILE *
+-->
+<?php echo view('AdminSide/includes/sideNav') ?>
 
-<!-- Main Content -->
-<main class="main-container">
-    <!-- Side Navigation -->
-    <aside>
-        <?php echo view('AdminSide/includes/sideNav'); ?>
-    </aside>
 
-    
-    <!-- newly logged in modal show -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <center>
-                    <span style="color: green; font-size: 24px; padding: 15px;">
-                        Welcome <?= session()->get('username'); ?>
-                    </span>
-                </center>
-                <center>
-                    <button type="button" style="font-size: 10px; width: 100px; padding: 10px;" class="btn btn-danger" data-bs-dismiss="modal">
-                        Close
-                    </button> 
-                </center>
-            </div>
-        </div>
+<!-- 
+// * MAIN CONTENT *
+-->
+<main>
+    <div class="header">
+        <h3>DASHBOARD</h2>
     </div>
 
-    
-    
-    <!-- Dashboard Content -->
-    <section class="container-section item-container ">
-        <h1>Dashboard</h1>
-
-        
-       
-        <div class="dash-container">  
+    <div class="main">
+        <div class="row1">
             <div class="box1">
-                <div class="box-container">
-                    <h3>Total Sales</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Total Transaction</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Total Stocks</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Available Stocks</h3>
-                    <h2></h2>
+                <h4>Sales</h4>
+                <hr>
+                <button class="dropdown-button"><img src="<?= base_url('Admin/img/icons/down-arrow.png') ?>" alt=""></button>
+                <p id="sales-display">All the time</p>
+                <div class="dropdown">
+                    <ul class="dropdown-menu">
+                        <li onclick="updateSales('All the time:')">All the time</li>
+                        <li onclick="updateSales('Per Year:')">Per Year</li>
+                        <li onclick="updateSales('Per Month:')">Per Month</li>
+                        <li onclick="updateSales('Per Week:')">Per Week</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="box2">
-                <div class="box-container">
-                    <h3>Total Sales</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Total Transaction</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Total Stocks</h3>
-                    <h2></h2>
-                </div>
-    
-                <div class="box-container">
-                    <h3>Available Stocks</h3>
-                    <h2></h2>
+                <h4>Products</h4>
+                <hr>
+                <div class="product">
+                    <div class="one">
+                        <p>Items</p>
+                        <span>0</span>
+                    </div>
+                    <div class="one">
+                        <p>sold out</p>
+                        <span>0</span>
+                    </div>
                 </div>
             </div>
-
-            <div class="box3">
-
-                <div class="box2-container">
-                    <h3>Monthly Sales</h3>
-                </div>
-
-                <div class="box2-container">
-                    <h3>Monthly Sales</h3>
-                </div>
-            </div>
-
         </div>
 
-    </section>
-    
-
+        <div class="row2">
+            <div class="order">
+                <h4>Orders</h4>
+            </div>
+            <div class="order-container">
+                <div class="box box1">
+                    <h3>Placed</h3>
+                    <span>0</span>
+                </div>
+                <div class="box box2">
+                    <h3>Processing</h3>
+                    <span>0</span>
+                </div>
+                <div class="box box3">
+                    <h3>Shipped</h3>
+                    <span>0</span>
+                </div>
+                <div class="box box4">
+                    <h3>Cancelled</h3>
+                    <span>0</span>
+                </div>
+                <div class="box box5">
+                    <h3>Returns</h3>
+                    <span>0</span>
+                </div>
+                <div class="box box6">
+                    <h3>Complete</h3>
+                    <span>0</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
-
-<!-- scripts  -->
-<script>
-     <?php if(session()->getFlashdata('welcome_admin')): ?>
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-        myModal.show();
-    <?php endif; ?>
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('Admin/js/dashboard.js') ?>"></script>
 </body>
 </html>
+

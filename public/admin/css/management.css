@@ -1,0 +1,194 @@
+/* MODAL CSS */
+.modalButton {
+    border-radius: 3px;
+    background-color: #1f509ad0;
+    color: white;
+    padding: 5px;
+    width: 140px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+
+    img {
+        width: 20px;
+    }
+}
+
+
+.modalButton:hover {
+    background-color: #323232;
+}
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    overflow: auto;
+}
+
+
+.modal-content {
+    margin: 15% auto;
+    width: 50%; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px; 
+
+    .add {
+        background-color: #3763a5;
+        padding: 10px;
+        color: white;
+    }
+    .content {
+        background-color: #fff;
+        padding: 5px;
+        
+        input {
+            margin-left: 20px;
+        }
+        button {
+            margin-top: 5px;
+            padding: 5px;
+            width: 70px;
+        }
+    }
+}
+
+
+.close {
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.close:hover,
+.close:focus {
+    color: rgba(255, 0, 0, 0.73);
+    text-decoration: none; 
+}
+
+
+
+
+/* MAIN CSS */
+main {
+    .main {
+        .top {
+            background-color: #1f509a50;
+            display: flex;
+            justify-content: end;
+            padding: 3px;
+        }
+        .content {
+            background-color: #d4d4d4;
+            padding-top: 2px;
+            color: #2c3441c8;
+
+            .tab-content { display: none; }
+            .tab-content.active { display: block; }
+
+            .tabs{
+                display: flex;
+                justify-content: center;
+
+                button {
+                    font-weight: 600;
+                    font-size: 15px;
+                    border-left: 1px solid slategrey;
+                    border-top: 1px solid slategrey;
+                    border-right: 1px solid slategrey;
+                    border-bottom: none;
+                    border-radius: 3px 3px 0 0;
+                    padding: 5px;
+                    cursor: pointer;
+                    width: 200px;
+                    background-color: #b5b5b5;
+                }
+                button:focus {
+                    background-color: #EEEEEE;
+                    color: #1F509A;
+                }
+            }
+            .tab-content {
+                border-top: 1px solid slategrey;
+                width: 100%;
+                h3 {
+                    padding-left: 10px;
+                    color: #1F509A;
+                }
+
+                table {
+                    border: 1px solid gray;
+                    border-collapse: collapse;
+
+                    thead {
+                        tr {
+                            th {
+                                width: 300vw;
+                                padding: 3px;
+                                border: 1px solid gray;
+                                text-align: center;
+                                color: #1d1d1d;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            .one {
+                                color: #1d1d1d6c;
+                            }
+                            .two {
+                                padding-block: 2px;
+                                
+                                img {
+                                    width: 60px;
+                                    height: 60px;
+                                    border-radius: 3px;
+                                    border: 1px solid gray;
+                                }
+                                p {
+                                    color: #1f509aa1;
+                                }
+                            }
+                            .six {
+                                margin-top: 20px;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1px;
+                                padding-block: 1px;
+
+                                a {
+                                    width: 100px;
+                                    text-decoration: none;
+                                    border: 1px solid gray;
+                                    border-radius: 2px ;
+                                    padding-block:1px;
+                                }
+
+                                .button1 { background-color: #1F509A; color: white;}
+                                .button2 { background-color: rgba(0, 100, 0, 0.809);  color: white;}
+                                .button3 { background-color: rgba(139, 0, 0, 0.809);  color: white;}
+                            }
+                            td {
+                                align-items: center;                                cursor: default;
+                                color: #1d1d1dcc;
+                                font-weight: 600;
+                                text-align: center;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

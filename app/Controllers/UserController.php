@@ -10,6 +10,11 @@ class UserController extends BaseController
         if($this->isAdmin()) {
             return redirect()->to('/admin/dashboard');
         }
+
+        if(!$this->isUser()) {
+            return redirect()->to('/');
+        }
+        
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("user");
             return redirect()->to('/');

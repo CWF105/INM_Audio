@@ -1,0 +1,58 @@
+aside {
+    nav {
+        .logo-title {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+            img { 
+                width: 50px;
+                background-color: #d1d1d1;
+                border-radius: 50px;
+            }
+            h3 { color: white;}
+        }
+        ul {
+            #account {
+                margin-bottom: 30px;
+            }
+            a {
+                display: flex;
+                justify-content: start;
+                margin-block: 5px;
+                margin-left: 10px;
+                margin-right: 2px;
+                padding-block: 5px;
+                padding-left: 7px;
+                gap: 10px;
+                text-decoration: none;
+                align-items: center;
+                border-radius: 3px;
+
+                span {
+                    background-color: rgb(196, 150, 238);
+                    width: 2px;
+                    height: 30px;
+                    opacity: 0;
+                    border-radius: 10px;
+                }
+                img {
+                    width: 30px;
+                    border-radius: 3px;
+                }
+                li {
+                    list-style: none;
+                    color: white;
+                    font-size: 13px;
+                }
+            }
+
+            a:hover {
+                background-color: #d4ebf844;
+            }
+        }
+    }
+}

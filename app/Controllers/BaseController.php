@@ -35,9 +35,6 @@ abstract class BaseController extends Controller
         $this->load = new loader();
         $this->load->requireMethod('session');
         $this->load->requireMethod('expirationTime');
-        if($this->load->session->has('isLoggedIn')) {
-            redirect()->to('/');
-        }
     }
 
     ## check if session is set to admin
@@ -45,6 +42,13 @@ abstract class BaseController extends Controller
         return  $this->load->session->get('type') == "admin" && 
                 $this->load->session->get('isLoggedIn') && 
                 $this->load->session->get('admin_id');
+    }
+
+    ## check if session is set to user
+    protected function isUser() {
+        return  $this->load->session->get('type') == "user" &&
+                $this->load->session->get('user_id') &&
+                $this->load->session->get('isLoggedIn');
     }
 
     ## check if session is expired
@@ -105,6 +109,9 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        if($this->load->session->has('isLoggedIn')) {
+            redirect()->to('/');
+        }
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();

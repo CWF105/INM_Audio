@@ -72,11 +72,11 @@ $routes->group('/admin/', function($routes) {
 
     // get -------------------------------------------------------------
         ## routes
-        $routes->get('accountSetting', 'AdminController::accountSetting');
+        $routes->get('account', 'AdminController::accountSetting');
         $routes->get('dashboard', 'AdminController::dashboard');
-        $routes->get('transactions', 'AdminController::transactions');
+        $routes->get('orders_transactions', 'AdminController::transactions');
         ## gear management
-        $routes->get('gears', 'AdminController::gearManagement');
+        $routes->get('management', 'AdminController::gearManagement');
         $routes->get('gears/addGears', 'AdminController::addGears');
         $routes->get('gears/removeGears/(:num)', 'AdminController::removeGear/$1');
         $routes->get('gears/addCategory', 'AdminController::addCategories'); 
@@ -85,6 +85,8 @@ $routes->group('/admin/', function($routes) {
         ## transaction
         $routes->get('transaction/removeTransaction/(:num)', 'AdminController::removeTransaction/$1');
         $routes->get('transaction/view/(:num)', 'AdminController::viewTransaction/$1');
+        ## customers
+        $routes->get('customers', 'AdminController::customers');
         ## logging out admin account
         $routes->get('loggingOut', 'AdminController::logout');
         ## register new admin or user account

@@ -1,0 +1,111 @@
+main {
+    .main{
+        margin: 5px 2px 5px 2px;
+        border-radius: 5px;
+        background-color: #B3C8CF;
+
+        form{
+            display: grid;
+            grid-template-columns: 30% 70%;
+
+            .profile-pic {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 50px;
+                img { 
+                    width: 100px;
+                }
+
+                /* UPLOAD PROFILE PIC  */
+                .file-input {
+                    display: none;
+                }
+                .file-input-container {
+                    width: 100px;
+                    display: inline-flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 1px solid #a7a5a5;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    order: 1;
+                }
+                .choose-file-btn {
+                    background-color: #007BFF;
+                    order: 2;
+                    color: #fff;
+                    border: none;
+                    padding: 5px 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 9px;
+                }
+                .choose-file-btn:hover {
+                    background-color: #0056b3;
+                }
+                .file-name {
+                    font-size: 9px;
+                    color: #555;
+                }
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                margin-top: 100px;
+
+                .label {
+                    margin-bottom: 50px;
+                }
+
+                .container {
+                    .one {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 1px solid slategray;
+                        border-radius: 5px;
+                        padding: 5px;
+                        gap: 5px;
+                        margin-block: 15px;
+                        font-weight: 600;
+                        width: 600px;
+
+                        input {
+                            padding: 3px;
+                            padding-left: 5px;
+                            border-radius: 3px;
+                        }
+                                             
+                    }
+                    .password input { margin-bottom: 20px;}
+                    #username, #email, #password {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        label {
+                            text-align: start;
+                        }
+                    }
+                    
+                }
+
+                button {
+                    width: 100px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    background-color: #AE445A;
+                    cursor: pointer;
+                    color: white;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+                button:hover {
+                    background-color: #40b63c;
+                }
+            }
+        }
+    }
+}

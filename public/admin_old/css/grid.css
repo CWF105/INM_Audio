@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* set the side bar fixed sized and auto width the main content */
+.main-container{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.item-container { 
+    background-color: #cae9ff;
+    background-color: #fff;
+}
+
+.container-section h1 { 
+    padding: 10px 20px 10px;
+    color: black;
+}
+
+.container-content {
+    margin: 3px;
+    border-radius: 5px;
+    background: #cae9ff;
+    padding: 5px;
+}
+.header .notif {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 50px;
+    z-index: 1;
+    transition: 500ms;
+    img {
+        width: 30px;
+    }
+}
+.header .notif:hover {
+    border-radius: 10px;
+    background-color: #e6e6e6be;
+}

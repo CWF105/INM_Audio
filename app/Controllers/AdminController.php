@@ -70,19 +70,26 @@ class AdminController extends BaseController
     }
     ## redirect to transactions
     public function transactions() { 
-        return $this->checkSessionThenRedirect('AdminSide/transactions/transactions', true); 
+        // return $this->checkSessionThenRedirect('AdminSide/transactions/transactions', true); 
+        return $this->checkSessionThenRedirect('AdminSide/orders_transactions', true); 
     }
     ## redirect to gearManagement / addGear / addCategory
     public function gearManagement() { 
-        return $this->checkSessionThenRedirect('AdminSide/gearManagement/gearManagement', true); 
+        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/gearManagement', true); 
+        return $this->checkSessionThenRedirect('AdminSide/management'); 
+    }
+    ## redirect to gearManagement / addGear / addCategory
+    public function customers() { 
+        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/gearManagement', true); 
+        return $this->checkSessionThenRedirect('AdminSide/customers'); 
     }
     ## redirect to add gears page
     public function addGears() {
-        return $this->checkSessionThenRedirect('AdminSide/gearManagement/addGear', true);;
+        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/addGear', true);;
     }
     ## redirect to add categories page
     public function addCategories(){
-        return $this->checkSessionThenRedirect('AdminSide/gearManagement/addCategory', true);;
+        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/addCategory', true);;
     }
     ## redirect to register
     public function register() { 
@@ -94,7 +101,8 @@ class AdminController extends BaseController
     }
     ## redirect to accountSetting
     public function accountSetting() { 
-        return $this->checkSessionThenRedirect('AdminSide/accountSetting', true); 
+        // return $this->checkSessionThenRedirect('AdminSide/accountSetting', true); 
+        return $this->checkSessionThenRedirect('AdminSide/account'); 
     }
 ## ----- END ----- ##
 
