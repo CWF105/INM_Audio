@@ -13,7 +13,11 @@
              <!-- ACCOUNT | SETTINGS -->
              <a href="<?= base_url('/admin/account') ?>" id="account">
                 <span><!-- DO NOT REMOVE THIS LINE--></span>
-                <img src="<?= base_url('Admin/img/icons/account.png') ?>" alt="[]">
+                <?php if($adminAccount && $adminAccount['profile_pic'] != null) : ?>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($adminAccount['profile_pic']) ?>" width="20" height="20" style="border-radius: 100px;" alt="">
+                <?php else: ?>
+                    <img src="<?= base_url('Admin/img/icons/account.png') ?>" alt="[]">
+                <?php endif;?>
                 <li>MyAccount</li>
             </a>
 

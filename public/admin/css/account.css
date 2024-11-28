@@ -17,38 +17,7 @@ main {
                     width: 100px;
                 }
 
-                /* UPLOAD PROFILE PIC  */
-                .file-input {
-                    display: none;
-                }
-                .file-input-container {
-                    width: 100px;
-                    display: inline-flex;
-                    flex-direction: column;
-                    align-items: center;
-                    border: 1px solid #a7a5a5;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    order: 1;
-                }
-                .choose-file-btn {
-                    background-color: #007BFF;
-                    order: 2;
-                    color: #fff;
-                    border: none;
-                    padding: 5px 15px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 9px;
-                }
-                .choose-file-btn:hover {
-                    background-color: #0056b3;
-                }
-                .file-name {
-                    font-size: 9px;
-                    color: #555;
-                }
+                
             }
 
             .info {

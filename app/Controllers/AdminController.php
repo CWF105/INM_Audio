@@ -7,41 +7,40 @@ class AdminController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
     ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $isDisplaying = false){
+    public function checkSessionThenRedirect($path, $data = null){
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("admin");
             return redirect()->to('/');
         }
-        return $this->renderView($path, $isDisplaying);
+        if($data) {
+            return $this->renderView($path, $data);
+        }
+        return $this->renderView($path);
     }
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Render View
-    private function renderView($path, $isDisplaying, $gears = null)
+    private function renderView($path, $data = null, $gears = null)
     {
-        if ($isDisplaying) {
-            // Load models here to avoid initializing them in the constructor
-            $this->load->requireMethod('gears');
-            $this->load->requireMethod('categories');
-            $this->load->requireMethod('adminAccount');
-            $this->load->requireMethod('transactions');
+        $id = $this->load->session->get('admin_id');
+        // Load models here to avoid initializing them in the constructor
+        $this->load->requireMethod('gears');
+        $this->load->requireMethod('categories');
+        $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('transactions');
             
-            $data = [
-                'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
-                'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory(),
-                'categories' => $this->load->categories->getAll(),
-                'transactions' => $this->load->transactions->getAll() 
-            ];
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $id),
+            'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory(),
+            'categories' => $this->load->categories->getAll(),
+            'transactions' => $this->load->transactions->getAll() 
+        ];
 
-            if (!$data['adminAccount']) {
-                return redirect()->to('/admin/loggingOut');
-            }
-
-            return view($path, $data);
+        if (!$data['adminAccount']) {
+            return redirect()->to('/admin/loggingOut');
         }
-
-        return view($path);
+        return view($path, $data);
     }
 
 
@@ -100,7 +99,7 @@ class AdminController extends BaseController
         return $this->checkSessionThenRedirect('AdminSide/register/registerU'); 
     }
     ## redirect to accountSetting
-    public function accountSetting() { 
+    public function account() { 
         // return $this->checkSessionThenRedirect('AdminSide/accountSetting', true); 
         return $this->checkSessionThenRedirect('AdminSide/account'); 
     }
@@ -161,6 +160,7 @@ class AdminController extends BaseController
     private function checkIfExist() {  
         $this->load->requireMethod('adminAccount');
         $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('emailVerify');
 
         $isAdminUsernameExist = $this->load->adminAccount->getUser('username', $this->load->session->get('username'));
         $isAdminEmailExist = $this->load->adminAccount->getUser('email', $this->load->session->get('email'));
@@ -384,8 +384,8 @@ class AdminController extends BaseController
 
         $username = $this->request->getPost('username');
         $email = $this->request->getPost('email');
+        $cpassword = $this->request->getPost('cpassword');
         $password = $this->request->getPost('password');
-
         $admin = $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'));
         $userUsername = $this->load->userAccount->getUser('username', $username);
         $userEmail = $this->load->userAccount->getUser('email', $email);
@@ -403,6 +403,18 @@ class AdminController extends BaseController
         $admin_Username = $this->load->adminAccount->checkIfDataIsUsedByAnotherUser('username', $username, '!=');
         $admin_email = $this->load->adminAccount->checkIfDataIsUsedByAnotherUser('email', $email, '!=');
 
+        if($admin['username'] == $username) {
+            $this->load->session->setFlashdata('existingUsername', 'Username is already using');
+            return redirect()->back();
+        }
+        if($admin['email'] == $email) {
+            $this->load->session->setFlashdata('existingEmail', 'Email is already using');
+            return redirect()->back();
+        }
+        if(password_verify($password, $admin['password'])) {
+            $this->load->session->setFlashdata('existingEmail', 'Already using the new password input');
+            return redirect()->back();
+        }
         if($admin_Username > 0 || $userUsername) {
             $this->load->session->setFlashdata('existingUsername', 'Username is already in use');
             return redirect()->back();
@@ -417,43 +429,50 @@ class AdminController extends BaseController
         }
 
         // check if the password field is empty if empty proceed and update without the password
-        if(empty($password)) {
+        if(empty($cpassword)) {
+           if(empty($password)) {
+                $data = [
+                    'username' => $username,
+                    'email' => $email
+                ];
+                if($this->request->getFile('profile_pic')->isValid()) {
+                    $pfp = $this->request->getFile('profile_pic');
+                    $data['profile_pic'] = file_get_contents($pfp->getTempName());
+                }
+                $this->load->adminAccount->update($admin, $data);
+                $this->load->session->set([
+                    'username' => $username,
+                    'email' => $email
+                ]);
+                return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+           }
+           return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+        }
+
+        // if the conditions above didnt turn true, proceed with this one below
+        if($cpassword == $password) {
+            $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             $data = [
                 'username' => $username,
-                'email' => $email
+                'email' => $email,
+                'password' => $hashedPass
             ];
+    
             if($this->request->getFile('profile_pic')->isValid()) {
                 $pfp = $this->request->getFile('profile_pic');
                 $data['profile_pic'] = file_get_contents($pfp->getTempName());
             }
-            $this->load->adminAccount->update($admin, $data);
+    
             $this->load->session->set([
                 'username' => $username,
                 'email' => $email
             ]);
+            $this->load->adminAccount->update($admin, $data);
             return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
         }
-
-        // if the conditions above didnt turn true, proceed with this one below
-        $hashedPass = password_hash($password, PASSWORD_DEFAULT);
-        $data = [
-            'username' => $username,
-            'email' => $email,
-            'password' => $hashedPass
-        ];
-
-        if($this->request->getFile('profile_pic')->isValid()) {
-            $pfp = $this->request->getFile('profile_pic');
-            $data['profile_pic'] = file_get_contents($pfp->getTempName());
-        }
-
-        $this->load->session->set([
-            'username' => $username,
-            'email' => $email
-        ]);
-        $this->load->adminAccount->update($admin, $data);
-        return redirect()->back()->with('successUpdateProfile', 'Profile updated successfully.');
+        return redirect()->back()->with('passwordErr', 'password did not match');
     }
+    
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -72,7 +72,7 @@ $routes->group('/admin/', function($routes) {
 
     // get -------------------------------------------------------------
         ## routes
-        $routes->get('account', 'AdminController::accountSetting');
+        $routes->get('account', 'AdminController::account');
         $routes->get('dashboard', 'AdminController::dashboard');
         $routes->get('orders_transactions', 'AdminController::transactions');
         ## gear management
