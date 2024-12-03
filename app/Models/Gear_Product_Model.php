@@ -11,8 +11,8 @@ class Gear_Product_Model extends Model
 
     protected $allowedFields = [
         'category_id',
-        'description',
         'product_name',
+        'description',
         'price',
         'stock_quantity',
         'image_url' 
@@ -36,7 +36,10 @@ class Gear_Product_Model extends Model
     public function getAllPaginated($perPage) {
         return $this->orderBy('product_id', 'DESC')->paginate($perPage, 'gears');
     }
-
+    public function countAllGears()
+    {
+        return $this->db->table('gears')->countAll();
+    }
 
     public function getAll() 
     {

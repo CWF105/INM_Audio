@@ -7,13 +7,13 @@ class AdminController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
     ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $data = null){
+    public function checkSessionThenRedirect($path, $isDisplaying = false){
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("admin");
             return redirect()->to('/');
         }
-        if($data) {
-            return $this->renderView($path, $data);
+        if($isDisplaying) {
+            return $this->renderView($path, $isDisplaying);
         }
         return $this->renderView($path);
     }
@@ -21,20 +21,17 @@ class AdminController extends BaseController
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Render View
-    private function renderView($path, $data = null, $gears = null)
+    private function renderView($path, $data = null)
     {
         $id = $this->load->session->get('admin_id');
-        // Load models here to avoid initializing them in the constructor
-        $this->load->requireMethod('gears');
-        $this->load->requireMethod('categories');
         $this->load->requireMethod('adminAccount');
-        $this->load->requireMethod('transactions');
-            
+        $this->load->requireMethod('gears');
+        $this->load->requireMethod('categories');   
+
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $id),
-            'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory(),
             'categories' => $this->load->categories->getAll(),
-            'transactions' => $this->load->transactions->getAll() 
+            'gears' =>  $this->load->gears->getGearLeftJoinCategory()
         ];
 
         if (!$data['adminAccount']) {
@@ -42,6 +39,10 @@ class AdminController extends BaseController
         }
         return view($path, $data);
     }
+
+
+
+
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,14 +69,13 @@ class AdminController extends BaseController
         return $this->checkSessionThenRedirect('AdminSide/dashboard', true); 
     }
     ## redirect to transactions
-    public function transactions() { 
+    public function orders_transactions() { 
         // return $this->checkSessionThenRedirect('AdminSide/transactions/transactions', true); 
         return $this->checkSessionThenRedirect('AdminSide/orders_transactions', true); 
     }
     ## redirect to gearManagement / addGear / addCategory
-    public function gearManagement() { 
-        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/gearManagement', true); 
-        return $this->checkSessionThenRedirect('AdminSide/management'); 
+    public function gearManagement() {      
+        return $this->checkSessionThenRedirect('AdminSide/management', true); 
     }
     ## redirect to gearManagement / addGear / addCategory
     public function customers() { 
@@ -268,12 +268,12 @@ class AdminController extends BaseController
     public function addGear() {
         $this->load->requireMethod('gears');
 
-        $gearName = $this->request->getPost('gear');
+        $gearName = $this->request->getPost('gearname');
         $description = $this->request->getPost('description');
         $price = $this->request->getPost('price');
-        $quantity = $this->request->getPost('quantity');
-        $category = $this->request->getPost('categorySelected');
-        $gearImageUrl = $this->request->getFile('image');
+        $quantity = $this->request->getPost('stock');
+        $category = $this->request->getPost('category');
+        $gearImageUrl = $this->request->getFile('img');
 
         $gearIsExist = $this->load->gears->getGear('product_name', $gearName);
         
@@ -310,43 +310,7 @@ class AdminController extends BaseController
     public function removeGear($id) {
         $this->load->requireMethod('gears');
         if ($this->load->gears->delete($id)) {
-            return redirect()->to('/admin/gears')->with('removeSuccess', 'Product deleted successfully.');
-        }
-    }
-
-
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- view order / shipping for specific transaction ----- ##
-    public function viewTransaction($id) {
-        $this->load->requireMethod('userAccount');
-        $name = $this->load->userAccount->getUser('user_id', $id);
-
-        $data = [
-            'id' => $id,
-            'user' => $name['firstname']." ".$name['lastname']
-        ];
-        return view('AdminSide/transactions/viewTransaction', $data);
-    }
-
-## ----- update transaction ----- ##
-    public function updateStatus(){
-        $this->load->requireMethod('transactions');
-        $transactionId = $this->request->getPost('transaction_id');
-        $status = $this->request->getPost('status');
-
-        // Update the status in the database
-        $this->load->transactions->update($transactionId, ['status' => $status]);
-
-        // Redirect back to the transaction management page
-        return redirect()->to('/admin/transactions');
-    }
-
-
-## ----- remove transaction ----- ##
-    public function removeTransaction($id) {
-        $this->load->requireMethod('transactions');
-        if($this->load->transactions->delete($id)) {
-            return redirect()->to('/admin/transactions')->with('removeSuccess', 'Transaction deleted successfully.');
+            return redirect()->to('/admin/gemanagementars')->with('removeSuccess', 'Product deleted successfully.');
         }
     }
 
@@ -371,7 +335,7 @@ class AdminController extends BaseController
     public function removeCategory($id){
         $this->load->requireMethod('categories');
         if ($this->load->categories->delete($id)) {
-            return redirect()->to('/admin/gears/addCategory')->with('catDeleted', 'Category deleted successfully.');
+            return redirect()->to('/admin/management')->with('catDeleted', 'Category deleted successfully.');
         }
     }
 

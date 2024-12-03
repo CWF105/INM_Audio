@@ -19,20 +19,11 @@ class Admin_Account_Model extends Model
     protected $useTimestamps = true; 
 
 
-
 // get all admin accounts
     public function getAll() 
     {
         return $this->findAll();
     }
-
-
-
-// update password
-    // public function updatePass($newPass) {
-    //     return $this->where()->set()->update();
-    // }
-
 
 // get admin account by field/column
     public function getUser($field, $toGet) 

@@ -15,8 +15,9 @@ use App\Models\Gear_Product_Model as gears;
 use App\Models\Cart_Model as carts;
 use App\Models\Cart_Item_Model as cartItems;
 use App\Models\Order_Model as orders;
-use App\Models\Order_Items_Model as orderItems;
-use App\Models\Transaction_Model as transactions;
+use App\Models\Comments_Model as comments;
+use App\Models\Shipping_Model as shippings;
+use App\Models\Placed_Orders_Model as placed;
 
 class LoadersController
 {   
@@ -31,8 +32,9 @@ class LoadersController
     public $carts;
     public $cartItems;
     public $orders;
-    public $orderItems;
-    public $transactions;
+    public $shippings;
+    public $placed;
+    public $comments;
     public $emailVerify;
     public $logResCon;
     public $adminCon;
@@ -74,11 +76,14 @@ class LoadersController
             case "orders":
                 $this->loadOrders();
                 break;
-            case "orderItems":
-                $this->loadOrderItems();
+            case "comments":
+                $this->loadComments();
                 break;
-            case "transactions":
-                $this->loadTransactions();
+            case "shippings":
+                $this->loadShippings();
+                break;
+            case "placed":
+                $this->loadPlacedOrders();
                 break;
             case "emailVerify":
                 $this->loadEVerify();
@@ -102,6 +107,24 @@ class LoadersController
  * METHODS TO LOAD FOR MODELS
  * --------------------------------------------------------------------
  */
+    ## Load placed orders model ##
+    private function loadPlacedOrders() {
+        if(!$this->placed) {
+            $this->placed = new placed();
+        }
+    }
+    ## Load comments model ##
+    private function loadComments() {
+        if(!$this->comments) {
+            $this->comments = new comments();
+        }
+    }
+    ## Load shippings model ##
+    private function loadShippings() {
+        if(!$this->shippings) {
+            $this->shippings = new shippings();
+        }
+    }
     ## Load Session ##
     private function loadSession() {
         if(!$this->session) {
@@ -163,20 +186,6 @@ class LoadersController
     private function loadOrders() {
         if(!$this->orders) {
             $this->orders = new orders();
-        }
-    }
-
-    ## Load Order Items ##
-    private function loadOrderItems() {
-        if(!$this->orderItems) {
-            $this->orderItems = new orderItems();
-        }
-    }
-
-    ## Load Transactions ##
-    private function loadTransactions() {
-        if(!$this->transactions) {
-            $this->transactions = new transactions();
         }
     }
 

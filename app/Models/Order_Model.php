@@ -8,10 +8,20 @@ class Order_Model extends Model {
 
     protected $allowedFields = [ 
         'user_id',
-        'total_amount',
+        'product_id	',
         'order_status',
-        'payment_method'
+        'quantity',
+        'price',
+        'payment_method',
+        'delivery_date',
+        'date_completed',
+        'date_returned',
+        'date_cancelled'
     ];
-
     protected $useTimeStamps = true;
+    public function getAll() 
+    {
+        return $this->findAll();
+    }
+
 }

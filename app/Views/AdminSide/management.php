@@ -25,6 +25,25 @@
 <main>
     <div class="header">
         <h3>Management</h2>
+
+        <!-- SUCCESS MESSAGE -->
+        <?php if(session()->getFlashdata('catAdded')) :?>
+            <span style="color: darkgreen;"><?= esc(session()->get('catAdded')) ?></span>
+        <?php endif;?>
+        <?php if(session()->getFlashdata('catDeleted')) :?>
+            <span style="color: darkgreen;"><?= esc(session()->get('catDeleted')) ?></span>
+        <?php endif;?>
+        <?php if(session()->getFlashdata('gearAdded')) :?>
+            <span style="color: darkgreen;"><?= esc(session()->get('gearAdded')) ?></span>
+        <?php endif;?>
+
+        <!-- ERROR MESSAGE -->
+        <?php if(session()->getFlashdata('catError')) :?>
+            <span style="color:darkred;"><?= esc(session()->get('catError')) ?></span>
+        <?php endif;?>
+        <?php if(session()->getFlashdata('gearError')) :?>
+            <span style="color:darkred;"><?= esc(session()->get('gearError')) ?></span>
+        <?php endif;?>
     </div>
 
     <div class="main">
@@ -57,28 +76,43 @@
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Category</th>
-                            <!-- <th>Description</th> -->
-                            <!-- put the discription when view is clicked  -->
                             <th>...</th>                        
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="th one">48372</td>
-                            <td class="th two">
-                                <img src="<?= base_url('Admin/img/icons/account.png')?>" alt="image">
-                                <p>item name</p>
-                            </td>
-                            <td class="th three">243</td>
-                            <td class="th four">1345</td>
-                            <td class="th five">gaming</td>
-                            <td class="th six">
-                                <a href="#" class="button1 view-button" data-target="gearItem">View</a>
-                                <a href="" class="button3">remove</a>
-                            </td>                        
-                        </tr>
+                        <?php if(isset($gears) && !empty($gears)) :?>
+                            <?php foreach($gears as  $gear) : ?>
+                            <tr>
+                                <td class="th one"><?= esc($gear['product_id']) ?></td>
+                                <td class="th two">
+                                    <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
+                                        <img src="<?= esc($gear['image_url']) ?>" alt="image">
+                                    </a>
+                                    <p><?= esc($gear['product_name']) ?></p>
+                                </td>
+                                <td class="th three"><?= esc($gear['price']) ?></td>
+                                <td class="th four"><?= esc($gear['stock_quantity']) ?></td>
+                                <td class="th five">
+                                    <?php if($gear['category']) :?> 
+                                        <?= esc($gear['category']) ?>
+                                    <?php else : ?>
+                                        <p style="color: red;">Category not set</p>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="th six">
+                                    <a href="#" class="button1 view-button" data-target="gearItem">View</a>
+                                    <a href="" class="button3">remove</a>
+                                </td>              
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else :?>
+                            <tr>
+                                <td colspan="8" id="zero">No Gears Added</td>
+                            </tr>
+                        <?php endif; ?>          
                     </tbody>
                 </table>
+
             </div>
 
             <!-- CATEGORIES -->
@@ -93,13 +127,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if(isset($categories) && !empty($categories)) :?>
+                        <?php foreach($categories as  $category) : ?>
                         <tr>
-                            <td class="th one">8574</td>
-                            <td class="th two">Gaming</td>
+                            <td class="th one"><?= $category['category_id'] ?></td>
+                            <td class="th two"><?= $category['category'] ?></td>
                             <td class="th six">
-                                <a href="" class="button3">Remove</a>
+                                <a href="<?= base_url('/admin/gears/removeCats/'. $category['category_id']) ?>" class="button3"
+                                onclick="return confirm('Are you sure you want to delete this Category?\nGear that has this category will be unset')"
+                                class="btn btn-danger">Remove</a>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
+                    <?php else :?>
+                        <tr>
+                            <td colspan="8" style="color: #4f4f4f; opacity: .4; padding: 10px;">No Categories Added</td>
+                        </tr>
+                    <?php endif; ?>
                     </tbody>
                 </table>            
             </div>
@@ -166,7 +210,7 @@
                 </form>
             </div>
         </div>
-</div>
+    </div>
 
 
 
@@ -179,31 +223,38 @@
                     <h2>Add Gear</h2>
                 </div>
                 <div class="content">
-                    <form action="" method="post">
+                    <form action="<?= base_url('/admin/gears/addGear') ?>" method="post" enctype="multipart/form-data">
                         <div class="gearname">
                             <label for="gearname">Gear name</label>
                             <input type="text" name="gearname" id="gearname" placeholder="Enter Gear Name"  required>
                         </div>
 
                         <div class="description">
-                            <label for="description">Gear name</label>
+                            <label for="description">Description</label>
                             <input type="text" name="description" id="description" placeholder="Enter Gear Description" required>
                         </div>
 
                         <div class="price">
-                            <label for="price">Gear name</label>
+                            <label for="price">Base Price</label>
                             <input type="number" id="price" name="price" placeholder="Enter Gear price" required>
                         </div>
 
                         <div class="stock">
-                            <label for="stock">Gear name</label>
+                            <label for="stock">Stock</label>
                             <input type="number" id="stock" name="stock" placeholder="Enter Gear stock" required>
                         </div>
 
                         <div class="category">
                             <label for="category">Gear Category</label>
                             <select name="category" id="category" required>
-                                <option value="" selected disabled>Select Category</option>
+                                <option value="" selected disabled style="background: #999; color: black;">Select Category</option>
+                                <?php if(!empty($categories)) :?>
+                                    <?php foreach($categories as $category) : ?>
+                                    <option value="<?= esc($category['category_id']); ?>"><?= esc($category['category']); ?></option>
+                                    <?php endforeach;?>
+                                <?php else :?>
+                                    <option value="" title="will set to null if there is no category">No categories available</option>
+                                <?php endif;?>
                             </select>
                         </div>
 
@@ -222,7 +273,7 @@
 
 
 
-        <!-- MODAL FOR ADDING NEW GEAR -->
+        <!-- MODAL FOR ADDING NEW GEAR CATEGORY -->
         <div id="categoriesModal" class="modal">
             <div class="modal-content">
                 <div class="add">
@@ -231,10 +282,14 @@
                 </div>
 
                 <div class="content">
-                    <form action="" method="post">
+                    <form action="<?= base_url('/admin/gears/addCat') ?>" method="post">
                         <div class="gearCategory">
                             <label for="category">Category</label>
                             <input type="text" name="category" id="category" placeholder="Category">
+                            <!-- ERROR MESSAGE -->
+                            <?php if(session()->getFlashdata('catError')) :?>
+                                <span style="color:darkred;"><?= esc(session()->get('catError')) ?></span>
+                            <?php endif;?>
                         </div>
 
                         <button type="submit">Add</button>
