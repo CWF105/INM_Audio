@@ -81,7 +81,7 @@
                     </thead>
                     <tbody>
                         <?php if(isset($gears) && !empty($gears)) :?>
-                            <?php foreach($gears as  $gear) : ?>
+                            <?php foreach($gears as $index => $gear) : ?>
                             <tr>
                                 <td class="th one"><?= esc($gear['product_id']) ?></td>
                                 <td class="th two">
@@ -100,10 +100,85 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="th six">
-                                    <a href="#" class="button1 view-button" data-target="gearItem">View</a>
-                                    <a href="" class="button3">remove</a>
+                                    <a href="#" class="button1 view-button" data-target="gearItem-<?= $index ?>">View</a>
+                                    <a href="<?= base_url('/admin/gears/removeGears/'. $gear['product_id']) ?>" class="button3">remove</a>
                                 </td>              
                             </tr>
+
+                            <!-- MODAL FOR VIEWING EACH ITEM --> 
+                            <div id="gearItem-<?= $index ?>" class="modal">
+                                <div class="modal-content">
+                                    <div class="add">
+                                        <span class="close close-gear">&times;</span>
+                                        <h2><?= esc($gear['product_name'])?></h2></h2>
+                                        <h5><?= esc($gear['product_id'])?></h5>
+                                    </div>
+                                    <form action="<?= base_url('/admin/updateGear/'. $gear['product_id']) ?>" method="post"  enctype="multipart/form-data">
+                                        <div class="content">
+                                            <button type="button" id="editButton-<?= $index ?>">Edit</button>
+                                            <button type="submit" id="saveButton-<?= $index ?>" style="display: none;">Save</button>
+                                            <button type="button" id="cancelButton-<?= $index ?>" style="display: none;">Cancel</button>
+
+                                            <div class="gearName">
+                                                <input type="text" name="gearName" class="edit-mode" value="<?= esc($gear['product_name'])?>" style="display: none;">
+                                            </div>
+
+                                            <div class="img">
+                                                <img src="<?= esc($gear['image_url']) ?>" alt="image">
+                                                <input type="file" name="img" class="edit-mode" value="" style="display: none;">
+                                            </div>
+
+                                            <div class="description">
+                                                <h3>Description</h3>
+                                                <p class="read-only"><?= esc($gear['description'])?></p>
+                                                <textarea name="description" class="edit-mode text" style="display: none; width: 500px; height: 100px;" ><?= esc($gear['description'])?></textarea>
+                                                <!-- <input type="" name="description" class="edit-mode" value="<?= esc($gear['description'])?>" style="display: none;"> -->
+                                            </div>
+
+                                            <div class="category">
+                                                <h3>Category</h3>
+                                                <p class="read-only"><?= esc($gear['category']) ?></p>
+                                                
+                                                <select name="category" class="edit-mode text" id="category-<?= esc($gear['category_id']) ?>" disabled>
+                                                    <?php if (!empty($categories)) : ?>
+                                                        <?php foreach ($categories as $category) : ?>
+                                                            <option value="<?= esc($category['category_id']); ?>" 
+                                                                <?= $category['category'] === $gear['category'] ? 'selected' : ''; ?>>
+                                                                <?= esc($category['category']); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    <?php else : ?>
+                                                        <option value="" title="Will set to null if there is no category">No categories available</option>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="price">
+                                                <h3>Price</h3>
+                                                <p class="read-only"><?= esc($gear['price'])?></p>
+                                                <input type="number" name="price" class="edit-mode" value="<?= esc($gear['price'])?>" style="display: none;">
+                                            </div>
+
+                                            <div class="stocks">
+                                                <h3>Stock</h3>
+                                                <p class="read-only"><?= esc($gear['stock_quantity'])?></p>
+                                                <input type="number" name="stock" class="edit-mode" value="<?= esc($gear['stock_quantity'])?>" style="display: none;">
+                                            </div>
+
+                                            <div class="dateAdded">
+                                                <h3>Date Added</h3>
+                                                <p class="read-only"><?= esc($gear['created_at'])?></p>
+                                                <input type="text" name="dateAdded" class="edit-mode" value="<?= esc($gear['created_at'])?>" style="display: none;" disabled>
+                                            </div>
+
+                                            <div class="action">
+                                                <a href="<?= base_url('/admin/gears/removeGears/'. $gear['product_id']) ?>" class="remove-button">Remove Item</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <?php endforeach; ?>
                         <?php else :?>
                             <tr>
@@ -112,7 +187,6 @@
                         <?php endif; ?>          
                     </tbody>
                 </table>
-
             </div>
 
             <!-- CATEGORIES -->
@@ -148,154 +222,86 @@
                 </table>            
             </div>
         </div>
+    </div>
 
-
-        <!-- MODAL FOR VIEWING EACH ITEM--> 
-        <div id="gearItem" class="modal">
-            <div class="modal-content">
-                <div class="add">
-                    <span class="close close-gear">&times;</span>
-                    <h2>Gear Item Name</h2>
-                    <h5>Gear ID: 84736</h5>
-                </div>
-                <form action="/updateGear" method="post">
-                    <div class="content">
-                        <button type="button" id="editButton">Edit</button>
-                        <button type="submit" id="saveButton" style="display: none;">Save</button>
-                        <button type="button" id="cancelButton" style="display: none;">Cancel</button>
-
-                        <div class="gearName">
-                            <input type="text" name="gearName" class="edit-mode" value="GearName" style="display: none;">
-                        </div>
-
-                        <div class="img">
-                            <img src="<?= base_url('Admin/img/icons/account.png') ?>" alt="">
-                            <input type="file" name="img" class="edit-mode" value="" style="display: none;">
-                        </div>
-
-                        <div class="description">
-                            <h3>Description</h3>
-                            <p class="read-only">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <input type="text" name="description" class="edit-mode" value="Lorem, ipsum dolor sit amet consectetur adipisicing elit." style="display: none;">
-                        </div>
-
-                        <div class="category">
-                            <h3>Category</h3>
-                            <p class="read-only">Musical</p>
-                            <input type="text" name="category" class="edit-mode" value="Musical" style="display: none;">
-                        </div>
-
-                        <div class="price">
-                            <h3>Price</h3>
-                            <p class="read-only">100</p>
-                            <input type="number" name="price" class="edit-mode" value="100" style="display: none;">
-                        </div>
-
-                        <div class="stocks">
-                            <h3>Stock</h3>
-                            <p class="read-only">129</p>
-                            <input type="number" name="stock" class="edit-mode" value="129" style="display: none;">
-                        </div>
-
-                        <div class="dateAdded">
-                            <h3>Date Added</h3>
-                            <p class="read-only">19-19-1999</p>
-                            <input type="text" name="dateAdded" class="edit-mode" value="19-19-1999" style="display: none;" disabled>
-                        </div>
-
-                        <div class="action">
-                            <button type="button" class="remove-button">Remove Item</button>
-                        </div>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- MODAL FOR ADDING NEW GEAR -->
+    <div id="gearModal" class="modal">
+        <div class="modal-content">
+            <div class="add">
+                <span class="close close-gear">&times;</span>
+                <h2>Add Gear</h2>
+            </div>
+            <div class="content">
+                <form action="<?= base_url('/admin/gears/addGear') ?>" method="post" enctype="multipart/form-data">
+                    <div class="gearname">
+                        <label for="gearname">Gear name</label>
+                        <input type="text" name="gearname" id="gearname" placeholder="Enter Gear Name"  required>
                     </div>
+
+                    <div class="description">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" placeholder="Enter Gear Description" required>
+                    </div>
+
+                    <div class="price">
+                        <label for="price">Base Price</label>
+                        <input type="number" id="price" name="price" placeholder="Enter Gear price" required>
+                    </div>
+
+                    <div class="stock">
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" placeholder="Enter Gear stock" required>
+                    </div>
+
+                    <div class="category">
+                        <label for="category">Gear Category</label>
+                        <select name="category" id="category" required>
+                            <option value="" selected disabled style="background: #999; color: black;">Select Category</option>
+                            <?php if(!empty($categories)) :?>
+                                <?php foreach($categories as $category) : ?>
+                                <option value="<?= esc($category['category_id']); ?>"><?= esc($category['category']); ?></option>
+                                <?php endforeach;?>
+                            <?php else :?>
+                                <option value="" title="will set to null if there is no category">No categories available</option>
+                            <?php endif;?>
+                        </select>
+                    </div>
+
+                    <div class="img">
+                        <label for="img">Gear Image</label>
+                        <input type="file" id="img" name="img" placeholder="Select Img" required>
+                    </div>
+
+                    <button type="submit">Add</button>
+                    <button type="reset">Reset</button>
                 </form>
             </div>
         </div>
     </div>
 
-
-
-
-        <!-- MODAL FOR ADDING NEW GEAR -->
-        <div id="gearModal" class="modal">
-            <div class="modal-content">
-                <div class="add">
-                    <span class="close close-gear">&times;</span>
-                    <h2>Add Gear</h2>
-                </div>
-                <div class="content">
-                    <form action="<?= base_url('/admin/gears/addGear') ?>" method="post" enctype="multipart/form-data">
-                        <div class="gearname">
-                            <label for="gearname">Gear name</label>
-                            <input type="text" name="gearname" id="gearname" placeholder="Enter Gear Name"  required>
-                        </div>
-
-                        <div class="description">
-                            <label for="description">Description</label>
-                            <input type="text" name="description" id="description" placeholder="Enter Gear Description" required>
-                        </div>
-
-                        <div class="price">
-                            <label for="price">Base Price</label>
-                            <input type="number" id="price" name="price" placeholder="Enter Gear price" required>
-                        </div>
-
-                        <div class="stock">
-                            <label for="stock">Stock</label>
-                            <input type="number" id="stock" name="stock" placeholder="Enter Gear stock" required>
-                        </div>
-
-                        <div class="category">
-                            <label for="category">Gear Category</label>
-                            <select name="category" id="category" required>
-                                <option value="" selected disabled style="background: #999; color: black;">Select Category</option>
-                                <?php if(!empty($categories)) :?>
-                                    <?php foreach($categories as $category) : ?>
-                                    <option value="<?= esc($category['category_id']); ?>"><?= esc($category['category']); ?></option>
-                                    <?php endforeach;?>
-                                <?php else :?>
-                                    <option value="" title="will set to null if there is no category">No categories available</option>
-                                <?php endif;?>
-                            </select>
-                        </div>
-
-                        <div class="img">
-                            <label for="img">Gear Image</label>
-                            <input type="file" id="img" name="img" placeholder="Select Img" required>
-                        </div>
-
-                        <button type="submit">Add</button>
-                        <button type="reset">Reset</button>
-                    </form>
-                </div>
+    <!-- MODAL FOR ADDING NEW GEAR CATEGORY -->
+    <div id="categoriesModal" class="modal">
+        <div class="modal-content">
+            <div class="add">
+                <span class="close close-categories">&times;</span>
+                <h2>Add Gear</h2>
             </div>
-        </div>
 
+            <div class="content">
+                <form action="<?= base_url('/admin/gears/addCat') ?>" method="post">
+                    <div class="gearCategory">
+                        <label for="category">Category</label>
+                        <input type="text" name="category" id="category" placeholder="Category">
+                        <!-- ERROR MESSAGE -->
+                        <?php if(session()->getFlashdata('catError')) :?>
+                            <span style="color:darkred;"><?= esc(session()->get('catError')) ?></span>
+                        <?php endif;?>
+                    </div>
 
-
-
-        <!-- MODAL FOR ADDING NEW GEAR CATEGORY -->
-        <div id="categoriesModal" class="modal">
-            <div class="modal-content">
-                <div class="add">
-                    <span class="close close-categories">&times;</span>
-                    <h2>Add Gear</h2>
-                </div>
-
-                <div class="content">
-                    <form action="<?= base_url('/admin/gears/addCat') ?>" method="post">
-                        <div class="gearCategory">
-                            <label for="category">Category</label>
-                            <input type="text" name="category" id="category" placeholder="Category">
-                            <!-- ERROR MESSAGE -->
-                            <?php if(session()->getFlashdata('catError')) :?>
-                                <span style="color:darkred;"><?= esc(session()->get('catError')) ?></span>
-                            <?php endif;?>
-                        </div>
-
-                        <button type="submit">Add</button>
-                        <button type="reset">Reset</button>
-                    </form>
-                </div>
+                    <button type="submit">Add</button>
+                    <button type="reset">Reset</button>
+                </form>
             </div>
         </div>
     </div>

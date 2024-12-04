@@ -7,13 +7,13 @@ class AdminController extends BaseController
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
     ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $isDisplaying = false){
+    public function checkSessionThenRedirect($path, $isDisplaying = false, $config = null){
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("admin");
             return redirect()->to('/');
         }
         if($isDisplaying) {
-            return $this->renderView($path, $isDisplaying);
+            return $this->renderView($path, $isDisplaying, $config);
         }
         return $this->renderView($path);
     }
@@ -21,7 +21,7 @@ class AdminController extends BaseController
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Render View
-    private function renderView($path, $data = null)
+    private function renderView($path, $data = null, $dataVal = null)
     {
         $id = $this->load->session->get('admin_id');
         $this->load->requireMethod('adminAccount');
@@ -29,9 +29,10 @@ class AdminController extends BaseController
         $this->load->requireMethod('categories');   
 
         $data = [
+            'dashboard' => $dataVal,
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $id),
             'categories' => $this->load->categories->getAll(),
-            'gears' =>  $this->load->gears->getGearLeftJoinCategory()
+            'gears' => $dataVal ? $dataVal : $this->load->gears->getGearLeftJoinCategory(),        
         ];
 
         if (!$data['adminAccount']) {
@@ -39,10 +40,6 @@ class AdminController extends BaseController
         }
         return view($path, $data);
     }
-
-
-
-
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,11 +63,11 @@ class AdminController extends BaseController
 ## ----- ROUTES ----- ##
     ## redirect to dashboard
     public function dashboard() { 
+
         return $this->checkSessionThenRedirect('AdminSide/dashboard', true); 
     }
     ## redirect to transactions
     public function orders_transactions() { 
-        // return $this->checkSessionThenRedirect('AdminSide/transactions/transactions', true); 
         return $this->checkSessionThenRedirect('AdminSide/orders_transactions', true); 
     }
     ## redirect to gearManagement / addGear / addCategory
@@ -79,16 +76,7 @@ class AdminController extends BaseController
     }
     ## redirect to gearManagement / addGear / addCategory
     public function customers() { 
-        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/gearManagement', true); 
         return $this->checkSessionThenRedirect('AdminSide/customers'); 
-    }
-    ## redirect to add gears page
-    public function addGears() {
-        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/addGear', true);;
-    }
-    ## redirect to add categories page
-    public function addCategories(){
-        // return $this->checkSessionThenRedirect('AdminSide/gearManagement/addCategory', true);;
     }
     ## redirect to register
     public function register() { 
@@ -304,13 +292,47 @@ class AdminController extends BaseController
         return redirect()->back()->with('gearError', 'Image is not set or not valid!');
     }
 
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----- update gear----- ##
+    public function updateGear($gearID) {
+        $this->load->requireMethod('gears');
+        $gearName = $this->request->getPost('gearName');
+        $description = $this->request->getPost('description');
+        $category = $this->request->getPost('category');
+        $price = $this->request->getPost('price');
+        $quantity = $this->request->getPost('stock');
+        $gearImageUrl = $this->request->getFile('img');
+
+        if ($gearImageUrl->isValid() && !$gearImageUrl->hasMoved()) {
+            $generatedRandomName = $gearImageUrl->getRandomName();
+            $gearImageUrl->move('admin/uploads/', $generatedRandomName);
+            $imageUrlPath = base_url('admin/uploads/' . $generatedRandomName);
+            $this->load->gears->update($gearID,[
+                'image_url' => $imageUrlPath,
+                'product_name' => $gearName,
+                'description' => $description,
+                'category_id' => $category,
+                'price' => $price,
+                'stock_quantity' => $quantity
+            ]);
+            return redirect()->back()->with('gearAdded', 'a gear is updated');
+        }
+        $this->load->gears->update($gearID,[
+            'product_name' => $gearName,
+            'description' => $description,
+            'category_id' => $category,
+            'price' => $price,
+            'stock_quantity' => $quantity
+        ]);
+        return redirect()->back()->with('gearAdded', 'a gear is updated');    
+    }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- remove gear----- ##
     public function removeGear($id) {
         $this->load->requireMethod('gears');
         if ($this->load->gears->delete($id)) {
-            return redirect()->to('/admin/gemanagementars')->with('removeSuccess', 'Product deleted successfully.');
+            return redirect()->to('/admin/management')->with('removeSuccess', 'Product deleted successfully.');
         }
     }
 

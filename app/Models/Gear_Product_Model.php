@@ -32,41 +32,32 @@ class Gear_Product_Model extends Model
                     ->findAll();
     }
 
-    ## show only
-    public function getAllPaginated($perPage) {
-        return $this->orderBy('product_id', 'DESC')->paginate($perPage, 'gears');
-    }
-    public function countAllGears()
-    {
-        return $this->db->table('gears')->countAll();
+
+    public function countAllGears(){
+        return $this->db->table('products')->countAll();
     }
 
-    public function getAll() 
-    {
+    public function getAll() {
         return $this->findAll();
     }
 
-    public function getPerCategory($categoryId)
-    {
+    public function getPerCategory($categoryId){
         return $this->where('category_id', $categoryId)->findAll();
     }
 
-    public function getGear($field, $toGet) 
-    {
+    public function getGear($field, $toGet) {
         return $this->where($field, $toGet)->first();
     }
 
 
-    public function removeGear($field = null, $toRemove)
-    {
+    public function removeGear($field = null, $toRemove){
         if(empty($field)) {
             return $this->delete($toRemove);
         }
         return $this->delete($field, $toRemove);
     }
 
-    public function getGearLeftJoinCategory()
-    {    
+    public function getGearLeftJoinCategory(){    
        $sql = "SELECT * FROM products AS prod 
                LEFT JOIN category AS cat 
                ON cat.category_id = prod.category_id";

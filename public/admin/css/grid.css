@@ -17,9 +17,11 @@ body {
     scrollbar-width: none; 
 }
 
+
 aside { 
-    background-color: #1F509A;
+    background-color: #1F509A;    
 }
+
 
 main .main {
     height: 100vh;

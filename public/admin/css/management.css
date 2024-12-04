@@ -53,10 +53,32 @@
         input {
             margin-left: 20px;
         }
+        img {
+            margin: 5px 0 5px 0;
+            width: 70px;
+            border-radius: 3px;
+        }
         button {
             margin-top: 5px;
             padding: 5px;
             width: 70px;
+        }
+        .action {
+            margin: 15px 0 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            border: 1px solid #1d1d1d;
+            background-color: #d1d1d1;
+            margin-top: 5px;
+            padding: 5px;
+            width: 70px;
+        }
+        a:hover {
+            border: 1px solid darkred;
+            background-color: darkred;
+            color: white;
         }
     }
 }

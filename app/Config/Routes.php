@@ -69,7 +69,8 @@ $routes->group('/admin/', function($routes) {
         $routes->post('updateAccount', 'AdminController::updateAdmin');
         ## admin transactions update/remove
         $routes->post('transaction/updateStatus', 'AdminController::updateStatus');
-
+        ## update gear
+        $routes->post('updateGear/(:num)', 'AdminController::updateGear/$1');
     // get -------------------------------------------------------------
         ## routes
         $routes->get('account', 'AdminController::account');

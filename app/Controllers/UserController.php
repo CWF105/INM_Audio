@@ -25,13 +25,12 @@ class UserController extends BaseController
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## render view 
-    private function renderView($path, $isDisplaying, $data=null){
+    private function renderView($path, $isDisplaying){
         $this->load->requireMethod('userAccount');
         $session_id = $this->load->session->get('user_id');
         if($isDisplaying) {    
             $data = [
-                'userAccount' => $this->load->userAccount->getUser('user_id', $session_id),
-                'message' => $data
+                'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
             ];
             return view($path, $data);
         }
