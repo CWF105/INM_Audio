@@ -74,7 +74,19 @@ CREATE TABLE comments (
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
 );
+
+
+-- likes 
+CREATE TABLE likes(
+    likes_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    FOREIGN KEY(user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE,
+    FOREIGN KEY(product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+
 -- ------------------------------------------------------------------------------
+
 
 -- placed order
 CREATE TABLE placedOrders(

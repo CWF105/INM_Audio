@@ -29,7 +29,9 @@ $routes->group('', function($routes){
     // get -------------------------------------------------------------
         $routes->get('/user/setting', 'UserController::userSettings');
         $routes->get('/user/mypurchase', 'UserController::myPurchase');
+        $routes->get('/user/myLikes', 'UserController::myLikes');
         $routes->get('/user/logout', 'UserController::logout');
+        $routes->get('/user/bookmark/(:num)', 'UserController::removeToLikes/$1');
 });
 
 ## ---------------------------------------------------------------------
@@ -48,6 +50,7 @@ $routes->group('', function($routes) {
         $routes->get('/buy', 'ShopController::buynow');
         $routes->get('/buy(:any)', 'ShopController::buynow/$1');
         $routes->get('/searchGears', 'ShopController::searchGears');
+        $routes->get('/bookmark/(:num)', 'ShopController::addToLikes/$1');
 
         $routes->get('/donePurchase', 'ShopController::donePurchase');
         // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');

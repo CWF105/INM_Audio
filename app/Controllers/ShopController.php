@@ -22,13 +22,20 @@ class ShopController extends BaseController
     // redirect to shop
     public function shop($gears = null, $message = null){
         $this->load->requireMethod('gears');
+        $this->load->requireMethod('likes');
+        $user_id = $this->load->session->get('user_id');
+
         $container = [
             'errorMessage' => $message,
-            'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory()
+            'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory(),
+            'isBookmark' => $this->load->likes->getBookmarked($user_id)
         ];
         return $this->checkUserSession('shop/shop', $container);
     }
 
+
+
+  
     // redirect to viewItem
     public function viewItem($id){
         $this->load->requireMethod('gears');
@@ -257,5 +264,31 @@ class ShopController extends BaseController
             $this->load->session->setFlashdata('error', '*please set your address in your profile setting');
             return redirect()->to('/buy#payment');
         }        
+    }
+
+
+
+    ## ADD TO LIKES
+    public function addToLikes($id) {
+        $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('likes');
+        
+        if($this->load->session->has('isLoggedIn') && $this->load->session->has('user_id')) {
+            $user_id = $this->load->session->get('user_id');
+            $isSave = $this->load->likes->checkIfAlreadyBookmark($user_id, $id);
+            if($isSave) {
+                $this->load->likes->where('user_id', $user_id)->where('product_id', $id)->delete();
+                return redirect()->to('/shop');
+            }
+            else {
+                $data = [
+                    'user_id' => $user_id,
+                    'product_id' => $id
+                ];
+                $this->load->likes->save($data);
+                return redirect()->to('/shop');
+            }  
+        }
+        return redirect()->to('/login')->with('noAccount', '**Login to bookmark an item**');
     }
 }

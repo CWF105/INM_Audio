@@ -18,7 +18,7 @@ use App\Models\Order_Model as orders;
 use App\Models\Comments_Model as comments;
 use App\Models\Shipping_Model as shippings;
 use App\Models\Placed_Orders_Model as placed;
-
+use App\Models\My_Likes_Model as likes;
 class LoadersController
 {   
     ## GLOBAL VARIABLES ##
@@ -34,6 +34,7 @@ class LoadersController
     public $orders;
     public $shippings;
     public $placed;
+    public $likes;
     public $comments;
     public $emailVerify;
     public $logResCon;
@@ -66,6 +67,9 @@ class LoadersController
                 break;
             case "gears":
                 $this->loadGears();
+                break;
+            case "likes":
+                $this->loadMyLikes();
                 break;
             case "carts":
                 $this->loadCarts();
@@ -154,6 +158,12 @@ class LoadersController
         }
     }
 
+    ## Load My Likes model ##
+    private function loadMyLikes() {
+        if(!$this->likes) {
+            $this->likes = new likes();
+        }
+    }
     ## Load Categories ##
     private function loadCategories() {
         if(!$this->categories) {

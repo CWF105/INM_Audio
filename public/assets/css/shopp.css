@@ -15,6 +15,7 @@ html, body {
 }
 
 
+
 .shop{
 
 
@@ -69,7 +70,7 @@ html, body {
         padding-inline: 100px;
         padding-block: 30px;
         margin-top: 20px;
-        gap: 20px;
+        gap: 25px;
         background-image: url('../img/sbg.png');
         background-size: cover;
         display: flex;
@@ -77,82 +78,89 @@ html, body {
         align-items: center;
         flex-wrap: wrap;
 
-        .library-card{
-            background-color: rgba(104, 104, 104, 0.678);
+        .library-card {
+            background-color: #878787b1;
             width: 320px;
             height: 450px;
-            padding: 20px;
+            padding: 5px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none; 
-            border: 1px solid rgba(104, 104, 104, 0.678);
-            padding-top: 80px;
-            padding-bottom: 50px;
-            color: white;
-            border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
-            transition: all 200ms;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #1d1d1d;
+            transition: 300ms;
+
+            img {
+                width: 310px;
+                height: 300px;
+
+                border-radius: 15px;
+            }
+            h3 {
+                margin-top: 5px;
+                color: #1d1d1d;
+            }
+            h4 {
+                color: #393939;
+            }
+            .button {
+                display: flex;
+                gap: 15px;
+                padding-top: 20px;
+                button {
+                    width: 250px;
+                    color: #1d1d1d;
+                    cursor: pointer;
+                    background-color: transparent;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid slategray;
+                }
+                button {
+                    color: #d1d1d1;
+                    background-color: #1d1d1d;
+                    border: 1px solid black;                    border: 1px solid slategray;
+
+                }
+                a {
+                    background-color: transparent;
+                    img {
+                        width: 30px;
+                        border-radius: 0;
+                        height: 30px;
+                        transition: 200ms;
+                    }
+                    img:hover {
+                        background-color: none;
+                    }
+                }
+            }
         }
-        .library-card:hover { 
-                transform: scale(1.1); 
-                background: #2c2c2cf3;
-                color: white;
-                border-radius: 66% 34% 61% 39% / 45% 59% 41% 55%;
+        .library-card:hover, a .library-card img:hover {
+            background-color: #c1c1c1aa;
+        }
+        .library-card:hover {
+            scale: 1;
+            .button {
+                button:hover {
+                    color: coral;
+                    border: 1px solid chocolate;
+                }
+                a {
+                    img {
+                        background-color: transparent;
+                    }
+                }
+                a {
+                    img:hover {
+                        scale: 1.1;
+                    }
+                }
             }
-            .library-card:hover img {
-                border-radius: 75% 25% 66% 34% / 36% 53% 47% 64% ;
-            }
-
-            img{
-                background-color: rgba(17, 25, 40, 0.75);
-                padding: 50px; 
-                width: 290px;
-                opacity: .9;
-                margin-top: 30px;
-                border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
-            }
-            
-            h3{
-                padding-top: 5px;
-                font-size: 1.1em;
-                font-weight: 600;
-                font-family: Montserrat;
-                font-weight: 300;
-                letter-spacing: .30em;
-            }
-            h4{
-                margin: 20px;
-                margin-left: 0px;
-                font-size: .90em;
-                font-family: Montserrat;
-                font-weight: 300;
-                letter-spacing: .30em;
-                transition: all 200ms;
-            }
-            .btn{
-                width: 150px;
-                padding: 10px 20px;
-                font-size: 1rem;
-                font-family: Montserrat;
-                font-weight: 600;
-                position: relative;
-                bottom: 137px;
-                cursor: pointer;
-                /* letter-spacing: .30em; */
-                border-radius: 3px;
-                color: white;
-                background-color: transparent;
-                border: 1px solid #e7e7e7;
-                opacity: 0;
-                transition: all 200ms;
-            }
-            .btn:hover{
-                background-color: rgb(27, 27, 27);
-                color: #fff;
-            }
-
-
+        }
+        
+        
             
             .modal{
                 position: fixed;

@@ -14,6 +14,9 @@
         <div class="form-section">
             <a href="<?= base_url('/') ?>" class="exit">Exit</a>
             <h2>Log In</h2>
+            <?php if(session()->getFlashdata('noAccount')) : ?>
+                <span style="color: darkred; margin-button:10px;"><?= session()->getFlashdata('noAccount')?></span>
+            <?php endif;?>
             <form action="<?= base_url('/account/login') ?>" method="post">
             <?= csrf_field() ?> 
 

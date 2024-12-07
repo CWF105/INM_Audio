@@ -52,7 +52,28 @@
                     <img src="<?= esc($gear['image_url']) ?>" alt="">
                     <h3><?= esc($gear['product_name']) ?></h3>
                     <h4>₱<?= esc($gear['price']) ?></h4>
-                    <button data-modal-target="#modal-<?= $index; ?>" class="btn">Buy</button>
+                    <div class="button">
+                        <button data-modal-target="#modal-<?= $index; ?>" class="btn" title="buy or add to cart">Buy</button>
+                        <a href="<?= base_url('/bookmark/' . $gear['product_id']) ?>" >
+                            <?php 
+                            $isBookmarked = false; 
+                            if ($isBookmark && !empty($isBookmark)): 
+                                foreach ($isBookmark as $bookmark): 
+                                    if ($bookmark['product_id'] == $gear['product_id']): 
+                                        $isBookmarked = true; 
+                                        break; 
+                                    endif; 
+                                endforeach; 
+                            endif; 
+                            ?>
+
+                            <?php if ($isBookmarked): ?>
+                                <img class="bookmark" src="<?= base_url('assets/img/icons/bookmark.png') ?>" title="saved to likes" alt="saved to likes">
+                            <?php else: ?>
+                                <img class="bookmark" src="<?= base_url('assets/img/icons/save-instagram.png') ?>" title="save to likes" alt="save to likes">
+                            <?php endif; ?>
+                        </a>
+                    </div>
                 </div>  
 
             <!-- MODAL -->

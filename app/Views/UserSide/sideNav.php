@@ -22,7 +22,7 @@
             </a>
 
             <!-- My Likes -->
-            <a id="mylikes" href="">
+            <a id="mylikes" href="<?= base_url('/user/myLikes') ?>">
                 <li><h3>My Likes</h3></li>
             </a>
 

@@ -60,10 +60,18 @@ class UserController extends BaseController
     ## User likes
     public function myLikes() {
         $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('likes');
+        $user_id = $this->load->session->get('user_id');
+        $bookmarks = $this->load->likes->getAllProductBookmarks();
+        $filteredBookmarks = array_filter($bookmarks, function($bookmark) use ($user_id) {
+            return $bookmark['user_id'] === $user_id;
+        });
+    
         $data = [
-            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id'))
+            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
+            'bookmark' => $filteredBookmarks
         ];
-        return $this->checkUserSession('', $data);
+        return $this->checkUserSession('UserSide/myLikes', $data);
     }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,4 +156,18 @@ class UserController extends BaseController
         }
         return redirect()->back()->with('profileUpdated', '*Account updated.');
     }
+
+
+    public function removeToLikes($id) {
+        $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('likes');
+        if($this->load->session->has('isLoggedIn') && $this->load->session->has('user_id')) {
+            $user_id = $this->load->session->get('user_id');
+            $this->load->likes->where('user_id', $user_id)->where('product_id', $id)->delete();
+            return redirect()->to('/user/myLikes');
+        }
+        return redirect()->to('/login')->with('noAccount', '**Login to your account**');
+    }
 }
+
+

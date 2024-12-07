@@ -41,6 +41,7 @@
                     <div class="dropdown">
                         <div class="links">
                             <a href="<?= base_url('/user/setting') ?>">My Account</a>
+                            <a href="<?= base_url('/cart') ?>">My Cart</a>
                             <a href="<?= base_url('/user/mypurchase') ?>">My purchase</a>
                             <a href="<?= base_url('/user/logout') ?>">Logout</a>
                         </div>
@@ -96,7 +97,8 @@
                     <div class="dropdown">
                         <div class="links">
                             <a href="<?= base_url('/user/setting') ?>">My Account</a>
-                            <a href="<?= base_url() ?>">My purchase</a>
+                            <a href="<?= base_url('/cart') ?>">My Cart</a>
+                            <a href="<?= base_url('/user/mypurchase') ?>">My purchase</a>
                             <a href="<?= base_url('/user/logout') ?>">Logout</a>
                         </div>
                     </div>
