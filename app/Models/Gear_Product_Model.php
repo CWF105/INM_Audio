@@ -32,7 +32,10 @@ class Gear_Product_Model extends Model
                     ->findAll();
     }
 
-
+    public function getAllPaginated($perPage) {
+        return $this->orderBy('product_id', 'DESC')->paginate($perPage, 'gears');
+    }
+    
     public function countAllGears(){
         return $this->db->table('products')->countAll();
     }

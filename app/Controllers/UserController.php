@@ -4,46 +4,26 @@ namespace App\Controllers;
 class UserController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
-    ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $isDisplaying = false){
+## ----- SESSION ----- ##
+    private function checkUserSession($path, $data = null) {
         if($this->isAdmin()) {
             return redirect()->to('/admin/dashboard');
         }
-
         if(!$this->isUser()) {
             return redirect()->to('/');
-        }
-        
+        }        
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("user");
-            return redirect()->to('/');
+            return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
         }
-        return $this->renderView($path, $isDisplaying);
+        return view($path, $data);
     }
-
-
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ## render view 
-    private function renderView($path, $isDisplaying){
-        $this->load->requireMethod('userAccount');
-        $session_id = $this->load->session->get('user_id');
-        if($isDisplaying) {    
-            $data = [
-                'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
-            ];
-            return view($path, $data);
-        }
-        return view($path); 
-    }
-
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- LOGOUT ----- ##
     ## logout method
     public function logout(){
         $this->load->requireMethod('userAccount');
-
         helper('cookie');
         
         $user_id = $this->load->session->get('user_id');
@@ -61,15 +41,29 @@ class UserController extends BaseController
 ## ----- ROUTES ----- ##
     ## User Setting
     public function userSettings() {
-        return $this->checkSessionThenRedirect('UserSide/userAccount', true);
+        $this->load->requireMethod('userAccount');
+        $data = [
+            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id'))
+        ];
+        return $this->checkUserSession('UserSide/userAccount', $data);
     }
+
     ## User purchase history
     public function myPurchase() {
-        return $this->checkSessionThenRedirect('UserSide/myPurchase', true);
+        $this->load->requireMethod('userAccount');
+        $data = [
+            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id'))
+        ];
+        return $this->checkUserSession('UserSide/myPurchase', $data);
     }
+
     ## User likes
     public function myLikes() {
-        
+        $this->load->requireMethod('userAccount');
+        $data = [
+            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id'))
+        ];
+        return $this->checkUserSession('', $data);
     }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------

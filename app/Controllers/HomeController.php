@@ -4,68 +4,64 @@ namespace App\Controllers;
 class HomeController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
-    ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $isDisplaying = false){
+## ----- SESSION ----- ##
+private function checkUserSession($path, $data = null) {
         if($this->isAdmin()) {
             return redirect()->to('/admin/dashboard');
         }
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("user");
-            return redirect()->to('/');
+            return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
         }
-        return $this->renderView($path, $isDisplaying);
-    }
-
-
- ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ## render view 
-    private function renderView($path, $isDisplaying){
-        $this->load->requireMethod('gears');
-        $this->load->requireMethod('categories');
-
-        if($isDisplaying) {
-            $pager = \Config\Services::pager(); 
-    
-            $perPage = 10; 
-            $gears = $this->load->gears->getAllPaginated($perPage);
-    
-            $data = [
-                'categories' => $this->load->categories->getAll(),
-                'gearsPerCategory' => $gears, 
-                'pager' => $this->load->gears->pager 
-            ];
+        if($data != null) {
             return view($path, $data);
         }
-        return view($path); 
+        return view($path);
     }
-
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- ROUTES ----- ##
     ## redirect to homepage 
-    public function home() {
-        return $this->checkSessionThenRedirect('homepage');
+    public function home() {  
+        return $this->checkUserSession('homepage');
     }
+
     ## redirect to gear library 
     public function library(){
-        return $this->checkSessionThenRedirect('library', true);
+        $pager = \Config\Services::pager(); 
+        $this->load->requireMethod('gears');
+        $this->load->requireMethod('categories');
+        $perPage = 10; 
+        $gears = $this->load->gears->getAllPaginated($perPage);
+        $data = [
+            'categories' => $this->load->categories->getAll(),
+            'gearsPerCategory' => $gears, 
+        ];
+        return $this->checkUserSession('library', $data);
     }
+
     ## redirect to  community
     public function community(){
-        return $this->checkSessionThenRedirect('community', true);
+        return $this->checkUserSession('community');
+
     }
     ## redirect to customize 
     public function customize(){
-        return $this->checkSessionThenRedirect('customize', true);
+        return $this->checkUserSession('customize');
     }
     ## redirect to login 
     public function login(){
-        return $this->checkSessionThenRedirect('login');
+        if($this->isUser()) {
+            return redirect()->to('/admin/dashboard');
+        }
+        return $this->checkUserSession('login');
     }
     ## redirect to signup
     public function signup() {
-        return $this->checkSessionThenRedirect('signup');
+        if($this->isUser()) {
+            return redirect()->to('/admin/dashboard');
+        }
+        return $this->checkUserSession('signup');
     }
 
 ## ----- END ROUTES ----- ##

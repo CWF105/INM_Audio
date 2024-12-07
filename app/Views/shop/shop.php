@@ -6,7 +6,7 @@
     <link rel="stylesheet" href=" <?= base_url('assets/css/shopp.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
-    <link rel="shortcut icon" href="<?= base_url(relativePath: 'assets/img/logo.png') ?>" type="image/x-icon">
+    <link rel="image/icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -26,6 +26,10 @@
             <form action="<?= base_url('/searchGears') ?>" method="get">
                 <input type="search" name="search" placeholder="Search Gear">
                 <input class="search" type="submit" value="Search">
+                <!-- ERROR MESSAGE -->
+                <?php if(isset($errorMessage) && !empty($errorMessage)) :?>
+                    <span style="color:darkred;"><?= $errorMessage ?></span>
+                <?php endif;?>
             </form>
             <?php if(session()->getFlashdata('successAddToCart')) :?>
                 <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
@@ -33,7 +37,11 @@
                 <span style="width: 450px;"></span>
             <?php endif;?>
             <div class="ss">
-                <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a>
+                <?php if(session()->has('isLoggedIn')) :?>
+                    <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to cart if an account is logged in -->
+                <?php else: ?>
+                    <a href="<?= base_url('/login') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to login if an account is not logged in -->
+                <?php endif;?>
             </div>
         </div>
 

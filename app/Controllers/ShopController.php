@@ -5,70 +5,68 @@ namespace App\Controllers;
 class ShopController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
-    ## check sessions and redirect to views
-    public function isSessionSetThenRedirect($path, $isDisplaying = false) {
+## ----- SESSION ----- ##
+    private function checkUserSession($path, $data = null) {
         if($this->isAdmin()) {
             return redirect()->to('/admin/dashboard');
         }
         if($this->isSessionExpired()) {
             $this->deleteCookiesAndSession("user");
-            return redirect()->to('/');
+            return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
         }
-        return $this->renderView($path, $isDisplaying);
+        return view($path, $data);
     }
-
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ## render view 
-    private function renderView($path, $isDisplaying, $gears = null){
-        $this->load->requireMethod('gears');
-        $this->load->requireMethod('categories');
-        $this->load->requireMethod('userAccount');
-        $this->load->requireMethod('carts');
-        $this->load->requireMethod('cartItems');
-
-        $user_id = $this->load->session->get('user_id'); $username = $this->load->session->get('username');
-        if ($isDisplaying) {
-            $container = [
-                'categories' => $this->load->categories->getAll(),
-                'gearsPerCategory' => $this->load->gears->getAll(),
-                'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory()
-            ];
-            $cart = $this->load->carts->getUserCartById($user_id);
-            if($cart) {
-                $container['cart_items'] = $this->load->cartItems->get_cart_items($cart['cart_id']);
-                $totalQuantity = 0;
-                $totalPrice = 0;
-                foreach($container['cart_items'] as $item) {
-                    $totalQuantity += $item['quantity'];
-                    $totalPrice += $item['price'] * $item['quantity'];
-                }
-                $container['totalQuantity'] = $totalQuantity;
-                $container['totalPrice'] = $totalPrice;
-            }
-            $container['name'] = $this->load->session->get('user_id');
-            return view($path, $container);
-        }
-        return view($path);
-    }
-
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- ROUTES ----- ##
     // redirect to shop
-    public function shop(){
-        return $this->isSessionSetThenRedirect('shop/shop', true);
+    public function shop($gears = null, $message = null){
+        $this->load->requireMethod('gears');
+        $container = [
+            'errorMessage' => $message,
+            'gears' => $gears ? $gears : $this->load->gears->getGearLeftJoinCategory()
+        ];
+        return $this->checkUserSession('shop/shop', $container);
     }
+
     // redirect to viewItem
     public function viewItem($id){
-        return $this->isSessionSetThenRedirect('shop/shop#'. $id, true);
+        $this->load->requireMethod('gears');
+        $container = [
+            'gears' => $this->load->gears->getGearLeftJoinCategory()
+        ];
+        return $this->checkUserSession('shop/shop#'. $id, $container);
     }
+
     // redirect to cart
-    public function cart(){
-        return $this->isSessionSetThenRedirect('shop/cart', true);
+    public function cart(){ 
+        if(!$this->isUser()) {
+            return redirect()->to('/');
+        }       
+        $this->load->requireMethod('carts');
+        $this->load->requireMethod('cartItems');
+        $user_id = $this->load->session->get('user_id');
+        $cart = $this->load->carts->getUserCartById($user_id);
+        $container = [];
+        if($cart) {
+            $container['cart_items'] = $this->load->cartItems->get_cart_items($cart['cart_id']);
+            $totalQuantity = 0;
+            $totalPrice = 0;
+            foreach($container['cart_items'] as $item) {
+                $totalQuantity += $item['quantity'];
+                $totalPrice += $item['price'] * $item['quantity'];
+            }
+            $container['totalQuantity'] = $totalQuantity;
+            $container['totalPrice'] = $totalPrice;
+        }
+        return $this->checkUserSession('shop/cart', $container);
     }
+
     // redirect to buynow
     public function buynow($id = null){
+        if(!$this->isUser()) {
+            return redirect()->to('/');
+        }        
         $this->load->requireMethod('carts');
         $this->load->requireMethod('cartItems');
         $this->load->requireMethod('userAccount');
@@ -87,11 +85,12 @@ class ShopController extends BaseController
         else {
             $location = "<span>No location is set</span>";
         }
-        return view('shop/buynow', ['cartItems' => $items,  'loc' => $location]);
+        return $this->checkUserSession('shop/buynow', ['cartItems' => $items,  'loc' => $location]);
     }
+
     // redirect to donePurchase
-    public function donePurchase(){
-        return $this->isSessionSetThenRedirect('shop/purchase-success');
+    public function donePurchase(){   
+        return $this->checkUserSession('shop/purchase-success');
     }
 
 
@@ -101,7 +100,10 @@ class ShopController extends BaseController
         $this->load->requireMethod('gears');
         $query = $this->request->getGet('search');
         $gears = $this->load->gears->searchGears($query);
-        return $this->renderView('shop/shop', true, $gears);
+        if($gears) {
+            return $this->shop($gears);
+        }
+        return $this->shop($gears, '*"'. $query . '" not found!');
     }
 
 
@@ -213,12 +215,12 @@ class ShopController extends BaseController
                         ->where('cart_id', $item['cart_id'])
                         ->delete();
                 }
-                    $this->load->transactions->save([
-                        'user_id' => $userId,
-                        'ammount' => $totalAmount,
-                        'payment_method' => "COD",
-                        'status' => 'Pending'
-                    ]);    
+                    // $this->load->transactions->save([
+                    //     'user_id' => $userId,
+                    //     'ammount' => $totalAmount,
+                    //     'payment_method' => "COD",
+                    //     'status' => 'Pending'
+                    // ]);    
                     return $this->load->emailVerify->sendNotifOrderPlaced($userEmail['email']);
                 }
                 else if($payment_method == "gcash") {

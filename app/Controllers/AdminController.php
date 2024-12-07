@@ -5,42 +5,20 @@ namespace App\Controllers;
 class AdminController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## ----- FOR REDERING VIEWS AND CHECKING SESSIONS AND EXPIRATIONS ----- ##
-    ## check sessions and redirect to views
-    public function checkSessionThenRedirect($path, $isDisplaying = false, $config = null){
-        if($this->isSessionExpired()) {
-            $this->deleteCookiesAndSession("admin");
+## ----- SESSION ----- ##
+    protected function checkAdminSession($path, $data = null) {
+        if(!$this->isAdmin()) {
             return redirect()->to('/');
         }
-        if($isDisplaying) {
-            return $this->renderView($path, $isDisplaying, $config);
+        if($this->isSessionExpired()) {
+            $this->deleteCookiesAndSession("admin");
+            return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
         }
-        return $this->renderView($path);
-    }
-
-
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Render View
-    private function renderView($path, $data = null, $dataVal = null)
-    {
-        $id = $this->load->session->get('admin_id');
-        $this->load->requireMethod('adminAccount');
-        $this->load->requireMethod('gears');
-        $this->load->requireMethod('categories');   
-
-        $data = [
-            'dashboard' => $dataVal,
-            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $id),
-            'categories' => $this->load->categories->getAll(),
-            'gears' => $dataVal ? $dataVal : $this->load->gears->getGearLeftJoinCategory(),        
-        ];
-
-        if (!$data['adminAccount']) {
-            return redirect()->to('/admin/loggingOut');
+        if($data != null) {
+            return view($path, $data);
         }
-        return view($path, $data);
+        return view($path);
     }
-
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- LOGOUT ----- ##
@@ -63,33 +41,64 @@ class AdminController extends BaseController
 ## ----- ROUTES ----- ##
     ## redirect to dashboard
     public function dashboard() { 
+        $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('gears');
 
-        return $this->checkSessionThenRedirect('AdminSide/dashboard', true); 
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
+            'numberItems' => $this->load->gears->countAllGears()
+        ];
+        return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
+
     ## redirect to transactions
     public function orders_transactions() { 
-        return $this->checkSessionThenRedirect('AdminSide/orders_transactions', true); 
+        $this->load->requireMethod('adminAccount');
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'))
+        ];
+        return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
+
     ## redirect to gearManagement / addGear / addCategory
-    public function gearManagement() {      
-        return $this->checkSessionThenRedirect('AdminSide/management', true); 
+    public function gearManagement($dataVal = null) { 
+        $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('gears');
+        $this->load->requireMethod('categories');  
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
+            'categories' => $this->load->categories->getAll(),
+            'gears' => $dataVal ? $dataVal : $this->load->gears->getGearLeftJoinCategory()       
+        ];
+        return $this->checkAdminSession('AdminSide/management', $data);
     }
+
     ## redirect to gearManagement / addGear / addCategory
     public function customers() { 
-        return $this->checkSessionThenRedirect('AdminSide/customers'); 
+        $this->load->requireMethod('adminAccount');
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'))
+        ];
+        return $this->checkAdminSession('AdminSide/customers', $data);
     }
+
     ## redirect to register
     public function register() { 
-        return $this->checkSessionThenRedirect('AdminSide/register/registerA'); 
+        return $this->checkAdminSession('AdminSide/register/registerA');
     }
+
     ## redirect to registerUser
     public function registerUser() { 
-        return $this->checkSessionThenRedirect('AdminSide/register/registerU'); 
+        return $this->checkAdminSession('AdminSide/register/registerU');
     }
+
     ## redirect to accountSetting
     public function account() { 
-        // return $this->checkSessionThenRedirect('AdminSide/accountSetting', true); 
-        return $this->checkSessionThenRedirect('AdminSide/account'); 
+        $this->load->requireMethod('adminAccount');
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'))
+        ];
+        return $this->checkAdminSession('AdminSide/account', $data);
     }
 ## ----- END ----- ##
 
@@ -247,7 +256,7 @@ class AdminController extends BaseController
         $this->load->requireMethod('gears');
         $query = $this->request->getGet('search');
         $gears = $this->load->gears->searchGears($query);
-        return $this->renderView('AdminSide/gearManagement/gearManagement', true, $gears);
+        return $this->gearManagement($gears);
     }
 
 
@@ -315,7 +324,7 @@ class AdminController extends BaseController
                 'price' => $price,
                 'stock_quantity' => $quantity
             ]);
-            return redirect()->back()->with('gearAdded', 'a gear is updated');
+            return redirect()->back()->with('gearAdded', '*A gear is updated');
         }
         $this->load->gears->update($gearID,[
             'product_name' => $gearName,
@@ -389,14 +398,6 @@ class AdminController extends BaseController
         $admin_Username = $this->load->adminAccount->checkIfDataIsUsedByAnotherUser('username', $username, '!=');
         $admin_email = $this->load->adminAccount->checkIfDataIsUsedByAnotherUser('email', $email, '!=');
 
-        if($admin['username'] == $username) {
-            $this->load->session->setFlashdata('existingUsername', 'Username is already using');
-            return redirect()->back();
-        }
-        if($admin['email'] == $email) {
-            $this->load->session->setFlashdata('existingEmail', 'Email is already using');
-            return redirect()->back();
-        }
         if(password_verify($password, $admin['password'])) {
             $this->load->session->setFlashdata('existingEmail', 'Already using the new password input');
             return redirect()->back();

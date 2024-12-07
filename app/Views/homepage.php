@@ -122,9 +122,30 @@
 <!-- @PHP CODE END FOOTER  -->
 
 
+<!-- OPENS THIS MODAL IF A USER IS LOGGED OUT OR SESSION EXPIRED -->
+<div id="sessionTimeoutModal" class="modal">
+    <div class="modal-content">
+        <h2>Session Timeout</h2>
+        <p><?= session()->getFlashdata('sessionTimeout'); ?></p>
+        <button class="close-btn" id="closeModalBtn">Close</button>
+    </div>
+</div>
+
+
 <!-- @SCRIPTS -->
 <script defer src="<?= base_url('assets/js/script.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+     <?php if (session()->getFlashdata('sessionTimeout')): ?>
+            document.addEventListener('DOMContentLoaded', function () {
+                const modal = document.getElementById('sessionTimeoutModal');
+                modal.style.display = 'flex';
+            });
+        <?php endif; ?>
+        document.getElementById('closeModalBtn').addEventListener('click', function () {
+            const modal = document.getElementById('sessionTimeoutModal');
+            modal.style.display = 'none';
+        });
+</script>
 </body>
 </html>

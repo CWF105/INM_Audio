@@ -37,43 +37,41 @@ abstract class BaseController extends Controller
         $this->load->requireMethod('expirationTime');
     }
 
-    ## check if session is set to admin
-    protected function isAdmin(){
-        return  $this->load->session->get('type') == "admin" && 
-                $this->load->session->get('isLoggedIn') && 
-                $this->load->session->get('admin_id');
-    }
-
-    ## check if session is set to user
-    protected function isUser() {
-        return  $this->load->session->get('type') == "user" &&
-                $this->load->session->get('user_id') &&
-                $this->load->session->get('isLoggedIn');
-    }
-
-    ## check if session is expired
-    protected function isSessionExpired() {
-        return  $this->load->session->get('timeLoggedIn') && 
-                (time() - $this->load->session->get('timeLoggedIn')) > $this->load->expirationTime;
-    }
-
-    ## delete both cookies and session
-    protected function deleteCookiesAndSession($val){
-        helper('cookie');
-        $this->load->requireMethod('userAccount');
-        $this->load->requireMethod('adminAccount');
-
-        if($val == "user") {
-            $user_id = $this->load->session->get('user_id');
-            $this->load->userAccount->update($user_id , ['remember_token' => null]);
+// SESSION DATA CHECKING -------------------------------------------
+        ## check if session is expired
+        protected function isSessionExpired() {
+            return  $this->load->session->get('timeLoggedIn') && 
+                    (time() - $this->load->session->get('timeLoggedIn')) > $this->load->expirationTime;
         }
-        if($val == "admin") {
-            $admin_id = $this->load->session->get('admin_id');
-            $this->load->adminAccount->update($admin_id , ['remember_token' => null]);
+        ## check if session is set to admin
+        protected function isAdmin(){
+            return  $this->load->session->get('type') == "admin" && 
+                    $this->load->session->get('isLoggedIn') && 
+                    $this->load->session->get('admin_id');
         }
-        $this->load->session->destroy();
-        delete_cookie('remember_token');
-    }
+        ## check if session is set to user
+        protected function isUser() {
+            return  $this->load->session->get('type') == "user" &&
+                    $this->load->session->get('user_id') &&
+                    $this->load->session->get('isLoggedIn');
+        }
+        ## delete both cookies and session
+        protected function deleteCookiesAndSession($val){
+            helper('cookie');
+            $this->load->requireMethod('userAccount');
+            $this->load->requireMethod('adminAccount');
+
+            if($val == "user") {
+                $user_id = $this->load->session->get('user_id');
+                $this->load->userAccount->update($user_id , ['remember_token' => null]);
+            }
+            if($val == "admin") {
+                $admin_id = $this->load->session->get('admin_id');
+                $this->load->adminAccount->update($admin_id , ['remember_token' => null]);
+            }
+            $this->load->session->destroy();
+            delete_cookie('remember_token');
+        }
 
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,8 +105,7 @@ abstract class BaseController extends Controller
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
-        parent::initController($request, $response, $logger);
-
+        parent::initController($request, $response, $logger);        
         if($this->load->session->has('isLoggedIn')) {
             redirect()->to('/');
         }

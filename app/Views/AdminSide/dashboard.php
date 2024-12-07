@@ -50,7 +50,7 @@
                 <div class="product">
                     <div class="one">
                         <p>Items</p>
-                        <span>0</span>
+                        <span><?= $numberItems; ?></span>
                     </div>
                     <div class="one">
                         <p>sold out</p>
