@@ -27,18 +27,41 @@
         <div class="card-container">
             <!-- Tab buttons -->
             <div class="tabs">
-                <button onclick="switchTab('toPay')">To Pay</button>
+                <button onclick="switchTab('Placed-Orders')">Placed Orders</button>
                 <button onclick="switchTab('toShip')">To Ship</button>
                 <button onclick="switchTab('toRecieve')">To Receive</button>
-                <button onclick="switchTab('toReturn')">To Return/Refund</button>
+                <!-- <button onclick="switchTab('toReturn')">To Return/Refund</button> -->
                 <button onclick="switchTab('completed')">Completed</button>
                 <button onclick="switchTab('cancelled')">Cancelled</button>
             </div>
 
             <!-- TO PAY TAB -->
-            <div id="toPay" class="tab-content active">
-                <h2>To Pay</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur?</p>
+            <div id="Placed-Orders" class="tab-content active">
+                <h2>Placed Orders</h2>
+                <?php if(session()->has('success')) :?>
+                    <span style="color: darkgreen;"><?= session()->getFlashdata('success') ?></span>
+                <?php endif;?>
+                <div class="orders">
+                    <?php if($toConfirmOrders) :?>
+                        <?php foreach($toConfirmOrders as $orders) :?>
+                            <div class="withOrders">
+                                <img src="<?= $orders->image_url ?>" alt="">
+                                <h4><?= $orders->product_name ?></h4>
+                                <p>Price: <?= $orders->price ?></p>
+                                <p>Quantity: <?= $orders->quantity ?></p>
+                                <p>Total: <?= $orders->total_price ?></p>
+                                <p>Payment: <?= $orders->payment_method ?></p>
+                                <p style="color: darkgreen; font-size: 12px;">waiting for confirmation</p>
+                                <br>
+                                <a href="<?= base_url('/user/cancelOrder/'.$orders->product_id) ?>">cancel order</a>
+                            </div>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <div class="noOrders">
+                            <p>NO ORDERS YET</p>
+                        </div>
+                    <?php endif;?>
+                </div>
             </div>
 
             <!-- TO SHIP TAB -->
@@ -54,10 +77,10 @@
             </div>
 
             <!-- TO RETURN TAB -->
-            <div id="toReturn" class="tab-content">
+            <!-- <div id="toReturn" class="tab-content">
                 <h2>To Return/Refund</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur?</p>
-            </div>
+            </div> -->
 
             <!-- COMPLETE TAB -->
             <div id="completed" class="tab-content">
@@ -68,7 +91,25 @@
             <!-- TO CANCELLED TAB -->
             <div id="cancelled" class="tab-content">
                 <h2>Cancelled</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur?</p>
+                <div class="cancelled">
+                    <?php if($cancelledOrders) : ?>
+                        <?php foreach($cancelledOrders as $orders) :?>
+                            <div class="cancelledOrders">
+                                <img src="<?= $orders->image_url ?>" alt="">
+                                <h4><?= $orders->product_name ?></h4>
+                                <p>Base Price: <?= $orders->price ?></p>
+                                <p>Total Price: <?= $orders->totalPrice ?></p>
+                                <p>Quantity: <?= $orders->quantity ?></p>
+                                <p>Payment: <?= $orders->payment_method ?></p>
+                                <p>Date: <?= $orders->date_cancelled ?></p>
+                            </div>
+                        <?php endforeach;?>
+                    <?php else :?>
+                        <div class="noCancelledOrders">
+                            <p>No Cancelled Orders</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </main>

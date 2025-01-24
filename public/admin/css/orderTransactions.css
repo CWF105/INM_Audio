@@ -112,7 +112,7 @@ main {
                 width: 100%;
             }   
 
-            #table1, #table2, #table3, #table4, #table5 {
+            #table0, #table1, #table2, #table3, #table4, #table5 {
                 table {
                     border: 1px solid gray;
                     border-collapse: collapse;

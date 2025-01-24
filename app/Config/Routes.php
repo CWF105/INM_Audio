@@ -32,6 +32,7 @@ $routes->group('', function($routes){
         $routes->get('/user/myLikes', 'UserController::myLikes');
         $routes->get('/user/logout', 'UserController::logout');
         $routes->get('/user/bookmark/(:num)', 'UserController::removeToLikes/$1');
+        $routes->get('/user/cancelOrder/(:any)', 'UserController::cancelOrder/$1');
 });
 
 ## ---------------------------------------------------------------------
@@ -51,7 +52,7 @@ $routes->group('', function($routes) {
         $routes->get('/buy(:any)', 'ShopController::buynow/$1');
         $routes->get('/searchGears', 'ShopController::searchGears');
         $routes->get('/bookmark/(:num)', 'ShopController::addToLikes/$1');
-
+        
         $routes->get('/donePurchase', 'ShopController::donePurchase');
         // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });
@@ -74,6 +75,7 @@ $routes->group('/admin/', function($routes) {
         $routes->post('transaction/updateStatus', 'AdminController::updateStatus');
         ## update gear
         $routes->post('updateGear/(:num)', 'AdminController::updateGear/$1');
+
     // get -------------------------------------------------------------
         ## routes
         $routes->get('account', 'AdminController::account');
@@ -89,6 +91,17 @@ $routes->group('/admin/', function($routes) {
         ## transaction
         $routes->get('transaction/removeTransaction/(:num)', 'AdminController::removeTransaction/$1');
         $routes->get('transaction/view/(:num)', 'AdminController::viewTransaction/$1');
+
+        $routes->get('order/toConfirm/(:num)', 'AdminController::confirmOrder/$1');
+        $routes->get('order/cancelToConfirm/(:num)', 'AdminController::deleteToConfirmOrder/$1');
+
+        $routes->get('order/complete/(:num)', 'AdminController::completeOrder/$1');
+        $routes->get('order/cancelConfirmOrder/(:num)', 'AdminController::cancelOrder/$1');
+
+        $routes->get('order/deleteComplete/(:num)', 'AdminController::deleteComplteOrder/$1');
+        $routes->get('order/cancelled/(:num)', 'AdminController::deleteCancelledOrder/$1');
+
+        $routes->get('orders/search', 'AdminController::searchOrders');
         ## customers
         $routes->get('customers', 'AdminController::customers');
         ## logging out admin account

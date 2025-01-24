@@ -19,7 +19,7 @@ class Cart_Item_Model extends Model
 
 
 // Method to get cart items for a specific user
-public function getCartItems($userId)
+    public function getCartItems($userId)
     {
         return $this->db->table('cart_items')
             ->select('cart_items.*, products.product_name, products.price, products.image_url')

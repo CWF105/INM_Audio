@@ -51,8 +51,12 @@ class UserController extends BaseController
     ## User purchase history
     public function myPurchase() {
         $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('placed');
+        $this->load->requireMethod('orders');
         $data = [
-            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id'))
+            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
+            'toConfirmOrders' => $this->load->placed->getAllOrdersById($this->load->session->get('user_id')),
+            'cancelledOrders' => $this->load->orders->getCancelledOrdersForUser($this->load->session->get('user_id'))
         ];
         return $this->checkUserSession('UserSide/myPurchase', $data);
     }
@@ -167,6 +171,27 @@ class UserController extends BaseController
             return redirect()->to('/user/myLikes');
         }
         return redirect()->to('/login')->with('noAccount', '**Login to your account**');
+    }
+
+
+    public function cancelOrder($productId) {
+        $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('orders');
+        $this->load->requireMethod('placed');
+
+        $placedOrderItem = $this->load->placed->getOrderItemById($productId);
+        $dateOfCancellation = date('Y-m-d');
+        $this->load->orders->save([
+            'user_id' => $this->load->session->get('user_id'),
+            'product_id' => $placedOrderItem->product_id,
+            'order_status' => "cancelled",
+            'quantity' => $placedOrderItem->quantity,
+            'price' => $placedOrderItem->total_price,
+            'payment_method' => $placedOrderItem->payment_method,
+            'date_cancelled' => $dateOfCancellation
+        ]);
+        $this->load->placed->deleteItemByProductId($productId);
+        return redirect()->back()->with('success', 'item canccelled!');
     }
 }
 

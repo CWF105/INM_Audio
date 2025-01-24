@@ -26,7 +26,7 @@
     <div class="header">
         <h3>Orders | Transactions</h2>
         <div class="searchbar">
-            <form action="">
+            <form action="<?= base_url('/admin/orders/search') ?>" method="get">
                 <input type="search" name="search" id="search" placeholder="search here">
                 <button type="submit">Search</button>
             </form>
@@ -39,7 +39,9 @@
                 <img src="<?= base_url('Admin/img/icons/apps-sort.png') ?>" alt="icon">
                 <div class="text">
                     <p>Total Orders</p>
-                    <p class="val">0</p>
+                    <p class="val">
+                        <?php echo ($totalOrders) ? $totalOrders->totalOrders : 0;?>
+                    </p>
                 </div>
             </div>
             
@@ -47,31 +49,35 @@
                 <img src="<?= base_url('Admin/img/icons/order-history.png') ?>" alt="icon">
                 <div class="text">
                     <p>Placed orders</p>
-                    <p class="val">0</p>
+                    <p class="val">
+                        <?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?>
+                    </p>
                 </div>
             </div>
 
-            <div class="box" id="box3">
+            <!-- <div class="box" id="box3">
                 <img src="<?= base_url('Admin/img/icons/shipping-fast.png') ?>" alt="icon">
                 <div class="text">
                     <p>Delivered</p>
                     <p class="val">0</p>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="box" id="box4">
+            <!-- <div class="box" id="box4">
                 <img src="<?= base_url('Admin/img/icons/restock.png') ?>" alt="icon">
                 <div class="text">
                     <p>Returns</p>
                     <p class="val">0</p>
                 </div>
-            </div>
+            </div> -->
 
             <div class="box" id="box5">
                 <img src="<?= base_url('Admin/img/icons/delete.png') ?>" alt="icon">
                 <div class="text">
                     <p>Cancelled</p>
-                    <p class="val">0</p>
+                    <p class="val">
+                        <?php echo ($totalCancelled) ? $totalCancelled->totalCancelled : 0;?>
+                    </p>
                 </div>
             </div>
 
@@ -79,7 +85,9 @@
                 <img src="<?= base_url('Admin/img/icons/clipboard-check.png') ?>" alt="icon">
                 <div class="text">
                     <p>Completed</p>
-                    <p class="val">0</p>
+                    <p class="val">
+                        <?php echo ($totalComplete) ? $totalComplete->totalComplete : 0;?>
+                    </p>
                 </div>
             </div>
 
@@ -87,7 +95,9 @@
                 <img src="<?= base_url('Admin/img/icons/revenue-alt.png') ?>" alt="icon">  
                 <div class="text">
                     <p>Total revenue</p>
-                    <p class="val">0</p>
+                    <p class="val">
+                        <?php echo ($totalRevenue) ? $totalRevenue->totalRevenue : 0;?>
+                    </p>
                 </div>
             </div>
         </div>
@@ -99,14 +109,63 @@
                 <h2>Order Details</h2>
 
                 <div class="tabs">
+                    <button onclick="switchTab('table0')">confirmOrders</button>
                     <button onclick="switchTab('table1')">Orders</button>
                     <button onclick="switchTab('table2')">Completed</button>
-                    <button onclick="switchTab('table4')">Refund | Returns</button>
+                    <!-- <button onclick="switchTab('table4')">Refund | Returns</button> -->
                     <button onclick="switchTab('table5')">Cancelled</button>
                 </div>
     
                 <!-- TABS PER BUTTON -->
-                 <!-- ALL ORDERS -->
+                 <!-- to confirm -->
+                <div id="table0" class="tab-content">
+                    <h2>Confirm orders</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Placed Order ID</th>
+                                <th>Item</th>
+                                <th>Customer</th>
+                                <th>Base Price</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>PaymentMethod</th>
+                                <th>Date placed</th>
+                                <th>...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if($confirmOrder) : ?>
+                                <?php foreach($confirmOrder as $order) :?>
+                                    <tr>
+                                        <td class="th one"><?= $order->placed_order_id ?></td>
+                                        <td class="th two">
+                                            <img src="<?= $order->image_url ?>" alt="image">
+                                            <p><?= $order->product_name ?></p>
+                                        </td>
+                                        <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
+                                        <th class="th five"><?= $order->price ?></th>
+                                        <td class="th five"><?= $order->quantity ?></td>
+                                        <td class="th six"><?= $order->total_price ?></td>
+                                        <td class="th seven"><?= $order->payment_method ?></td>
+                                        <td class="th eight"><?= $order->date_placed ?></td>
+                                        <td class="th nine">
+                                            <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
+                                            <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else :?>
+                                <tr>
+                                    <td colspan="9">No placed orders</td>
+                                </tr>
+                            <?php endif;?>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                 <!-- comfrimed orders -->
                 <div id="table1" class="tab-content active">
                     <h2>Orders</h2>
                     <table>
@@ -115,34 +174,45 @@
                                 <th>Order ID</th>
                                 <th>Item</th>
                                 <th>Customer</th>
-                                <th>Delivery Date</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                                <th>PaymentMethod</th>
+                                <th>Base Price</th>
                                 <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>PaymentMethod</th>
+                                <th>Status</th>
+                                <!-- <th>Delivery Date</th> -->
+                                <th>Date placed</th>
                                 <th>...</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="th one">45gfgs34fs</td>
-                                <td class="th two">
-                                    <img src="<?= base_url('Admin/img/icons/account.png')?>" alt="image">
-                                    <p>item name</p>
-                                </td>
-                                <td class="th three">Elle Smith</td>
-                                <td class="th four">12-30-2020</td>
-                                <td class="th five">199</td>
-                                <td class="th six">ongoing</td>
-                                <td class="th seven">gcash</td>
-                                <td class="th eight">1</td>
-                                <td class="th nine">
-                                    <!-- in view can set or change the date of delivery, set if its complete, or canclled(note: user can cancelled his order) -->
-                                    <a href="#" class="button1 view-button" data-target="viewOrder">View</a>
-                                    <a href="" class="button2">complete</a>
-                                    <a href="" class="button3">remove</a>
-                                </td>
-                            </tr>
+                             <?php if($orders) :?>
+                                <?php foreach($orders as $order) :?>
+                                    <tr>
+                                        <td class="th one"><?= $order->order_id ?></td>
+                                        <td class="th two">
+                                            <img src="<?= $order->image_url ?>" alt="image">
+                                            <p><?= $order->product_name ?></p>
+                                        </td>
+                                        <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
+                                        <td class="th five"><?= $order->price ?></td>
+                                        <td class="th six"><?= $order->quantity ?></td>
+                                        <td class="th seven"><?= $order->totalPrice ?></td>
+                                        <td class="th eight"><?= $order->payment_method ?></td>
+                                        <td class="th eight"><?= $order->order_status ?></td>
+                                        <td class="th eight"><?= $order->created_at ?></td>
+                                        <td class="th nine">
+                                            <!-- in view can set or change the date of delivery, set if its complete, or canclled(note: user can cancelled his order) -->
+                                            <a href="#" class="button1 view-button" data-target="viewOrder">View</a>
+                                            <a href="<?= base_url('/admin/order/complete/'.$order->order_id) ?>" class="button2">complete</a>
+                                            <a href="<?= base_url('/admin/order/cancelConfirmOrder/'.$order->order_id) ?>" class="button3">Cancel</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="9">No confirmed Orders</td>
+                                </tr>
+                            <?php endif;?>
                         </tbody>
                     </table>
                 </div>
@@ -156,39 +226,48 @@
                                 <th>Order ID</th>
                                 <th>Item</th>
                                 <th>Customer</th>
-                                <th>Delivery Date</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                                <th>PaymentMethod</th>
+                                <!-- <th>Delivery Date</th> -->
+                                <th>Base Price</th>
                                 <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>PaymentMethod</th>
+                                <th>Status</th>
                                 <th>Date Completed</th>
                                 <th>...</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="th one">fjks234fk</td>
-                                <td class="th two">
-                                    <img src="<?= base_url('Admin/img/icons/account.png')?>" alt="image">
-                                    <p>item name</p>
-                                </td>
-                                <td class="th three">John Doe</td>
-                                <td class="th four">19-18-1923</td>
-                                <td class="th five">23456</td>
-                                <td class="th six">complete</td>
-                                <td class="th seven">cod</td>
-                                <td class="th eigth">3</td>
-                                <td class="th">19-20-1923</td>
-                                <td class="th nine">
-                                    <a href="" class="button3">delete</a>
-                                </td>
-                            </tr>
+                            <?php if($complete) :?>
+                                <?php foreach($complete as $completes) :?>
+                                    <tr>
+                                        <td class="th one"><?= $completes->order_id ?></td>
+                                        <td class="th two">
+                                            <img src="<?= $completes->image_url ?>" alt="image">
+                                            <p><?= $completes->product_name ?></p>
+                                        </td>
+                                        <td class="th three"><?= $completes->firstname." ".$completes->lastname ?></td>
+                                        <td class="th four"><?= $completes->price ?></td>
+                                        <td class="th five"><?= $completes->quantity ?></td>
+                                        <td class="th six"><?= $completes->totalPrice ?></td>
+                                        <td class="th seven"><?= $completes->payment_method ?></td>
+                                        <td class="th eigth"><?= $completes->order_status ?></td>
+                                        <td class="th"><?= $completes->date_completed ?></td>
+                                        <td class="th nine">
+                                            <a href="<?= base_url('/admin/order/deleteComplete/'.$completes->order_id) ?>" class="button3">delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="9">No complete Orders</td>
+                                </tr>
+                            <?php endif;?>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- RETURNS | REFUNDS -->
-                <div id="table4" class="tab-content">
+                <!-- <div id="table4" class="tab-content">
                     <h2>Refund | Returns</h2>
                     <table>
                         <thead>
@@ -209,7 +288,7 @@
                             <tr>
                                 <td class="th one">fjks234gdfk</td>
                                 <td class="th two">
-                                    <img src="<?= base_url('Admin/img/icons/account.png')?>" alt="image">
+                                    <img src="" alt="image">
                                     <p>item name</p>
                                 </td>
                                 <td class="th three">willy Doe</td>
@@ -225,7 +304,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
 
                 <!-- CANCELLED -->
                 <div id="table5" class="tab-content">
@@ -236,7 +315,6 @@
                                 <th>Order ID</th>
                                 <th>Item</th>
                                 <th>Customer</th>
-                                <th>Delivery Date</th>
                                 <th>Price</th>
                                 <th>Status</th>
                                 <th>PaymentMethod</th>
@@ -246,23 +324,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="th one">fjks234gdfk</td>
-                                <td class="th two">
-                                    <img src="<?= base_url('Admin/img/icons/account.png')?>" alt="image">
-                                    <p>item name</p>
-                                </td>
-                                <td class="th three">willy Doe</td>
-                                <td class="th four">19-12-1933</td>
-                                <td class="th five">2336</td>
-                                <td class="th six">Returned</td>
-                                <td class="th seven">cod</td>
-                                <td class="th eigth">3</td>
-                                <td class="th ten">19-20-1923</td>
-                                <td class="th nine">
-                                    <a href=""  class="button3">delete</a>
-                                </td>
-                            </tr>
+                            <?php if($cancelledOrders) :?>
+                                <?php foreach($cancelledOrders as $cancelled): ?>
+                                    <tr>
+                                        <td class="th one"><?= $cancelled->order_id ?></td>
+                                        <td class="th two">
+                                            <img src="<?= $cancelled->image_url ?>" alt="image">
+                                            <p><?= $cancelled->product_name ?></p>
+                                        </td>
+                                        <td class="th three"><?= $cancelled->firstname." ".$cancelled->lastname ?></td>
+                                        <td class="th five"><?= $cancelled->totalPrice ?></td>
+                                        <td class="th six"><?= $cancelled->order_status ?></td>
+                                        <td class="th seven"><?= $cancelled->payment_method ?></td>
+                                        <td class="th eigth"><?= $cancelled->quantity ?></td>
+                                        <td class="th ten"><?= $cancelled->date_cancelled ?></td>
+                                        <td class="th nine">
+                                            <a href="<?= base_url('/admin/order/cancelled/'.$cancelled->order_id) ?>"  class="button3">delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="9">No cancelled Orders</td>
+                                </tr>
+                            <?php endif;?>
+                            
                         </tbody>
                     </table>
                 </div>

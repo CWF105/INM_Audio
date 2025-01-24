@@ -91,10 +91,11 @@ CREATE TABLE likes(
 -- placed order
 CREATE TABLE placedOrders(
     placed_order_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL,
-    total_price INT NOT NULL,
+    user_id INT ,
+    product_id INT,
+    quantity INT,
+    total_price INT,
+    payment_method VARCHAR(10),
     date_placed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
@@ -129,7 +130,7 @@ CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     product_id INT,
-    order_status VARCHAR(50) DEFAULT 'PENDING',-- PENDING, ONGOING, COMPLETE, CANCELLED, RETURNED
+    order_status VARCHAR(50),-- PENDING, ONGOING, COMPLETE, CANCELLED, RETURNED
     quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     payment_method varchar(255),
@@ -140,21 +141,23 @@ CREATE TABLE orders (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user_accounts(user_id)
 );
--- set to cancelled if the use deletes it account
-DELIMITER //
+-- set to cancelled if the user deletes it account
+DROP TRIGGER IF EXISTS after_user_delete;
 
-CREATE TRIGGER after_user_delete
-AFTER DELETE ON user_accounts
-FOR EACH ROW
-BEGIN
-    UPDATE orders
-    SET order_status = 'Cancelled',
-        date_cancelled = CURRENT_DATE
-    WHERE user_id = OLD.user_id;
-END;
-//
+-- DELIMITER //
 
-DELIMITER ;
+-- CREATE TRIGGER after_user_delete
+-- AFTER DELETE ON user_accounts
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE orders
+--     SET order_status = 'Cancelled',
+--         date_cancelled = CURRENT_DATE
+--     WHERE user_id = OLD.user_id;
+-- END;
+-- //
+
+-- DELIMITER ;
 
 
 -- Stores shipping information related to an order.
@@ -170,29 +173,30 @@ CREATE TABLE shippings (
     FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );
 -- seting some setting
-DELIMITER //
+DROP TRIGGER IF EXISTS after_order_update;
+-- DELIMITER //
 
-CREATE TRIGGER after_order_update
-AFTER UPDATE ON orders
-FOR EACH ROW
-BEGIN
-    IF NEW.order_status = 'COMPLETE' THEN
-        UPDATE shippings
-        SET shipping_status = 'Successful'
-        WHERE order_id = NEW.order_id;
-    ELSEIF NEW.order_status = 'CANCELLED' THEN
-        UPDATE shippings
-        SET shipping_status = 'Unsuccessful'
-        WHERE order_id = NEW.order_id;
-    ELSEIF NEW.order_status = 'ONGOING' THEN
-        UPDATE shippings
-        SET shipping_status = 'On the Way'
-        WHERE order_id = NEW.order_id;
-    END IF;
-END;
-//
+-- CREATE TRIGGER after_order_update
+-- AFTER UPDATE ON orders
+-- FOR EACH ROW
+-- BEGIN
+--     IF NEW.order_status = 'COMPLETE' THEN
+--         UPDATE shippings
+--         SET shipping_status = 'Successful'
+--         WHERE order_id = NEW.order_id;
+--     ELSEIF NEW.order_status = 'CANCELLED' THEN
+--         UPDATE shippings
+--         SET shipping_status = 'Unsuccessful'
+--         WHERE order_id = NEW.order_id;
+--     ELSEIF NEW.order_status = 'ONGOING' THEN
+--         UPDATE shippings
+--         SET shipping_status = 'On the Way'
+--         WHERE order_id = NEW.order_id;
+--     END IF;
+-- END;
+-- //
 
-DELIMITER ;
+-- DELIMITER ;
 
 -- handling sessions time
 CREATE TABLE user_tokens (

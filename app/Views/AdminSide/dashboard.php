@@ -54,7 +54,7 @@
                     </div>
                     <div class="one">
                         <p>sold out</p>
-                        <span>0</span>
+                        <span><?php echo ($totalOrders) ? $totalOrders->totalOrders : 0; ?></span>
                     </div>
                 </div>
             </div>
@@ -67,27 +67,37 @@
             <div class="order-container">
                 <div class="box box1">
                     <h3>Placed</h3>
-                    <span>0</span>
+                    <span>                        
+                        <?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?>
+                    </span>
                 </div>
                 <div class="box box2">
                     <h3>Processing</h3>
-                    <span>0</span>
+                    <span>
+                        <?php echo ($totalConfirmed) ? $totalConfirmed->totalConfirmed : 0;?>
+                    </span>
                 </div>
                 <div class="box box3">
                     <h3>Shipped</h3>
-                    <span>0</span>
+                    <span>
+                        0
+                    </span>
                 </div>
                 <div class="box box4">
                     <h3>Cancelled</h3>
-                    <span>0</span>
+                    <span>
+                        <?php echo ($totalCancelled) ? $totalCancelled->totalCancelled : 0;?>
+                    </span>
                 </div>
-                <div class="box box5">
+                <!-- <div class="box box5">
                     <h3>Returns</h3>
                     <span>0</span>
-                </div>
+                </div> -->
                 <div class="box box6">
                     <h3>Complete</h3>
-                    <span>0</span>
+                    <span>
+                        <?php echo ($totalComplete) ? $totalComplete->totalComplete : 0;?>
+                    </span>
                 </div>
             </div>
         </div>

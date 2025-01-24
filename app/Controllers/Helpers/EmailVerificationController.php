@@ -180,4 +180,31 @@ class EmailVerificationController extends BaseController
             $mail->send();
             return redirect()->to('/donePurchase');
     }
+
+    ## sends confirmation of the order placed
+    public function sendOrderConfirmation($email) {
+        $mail = new PHPMailer(true);
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';                
+        $mail->SMTPAuth   = true;                                  
+        $mail->Username   = $this->sender;  //jlnbrrnts32029@gmail.com               
+        $mail->Password   = $this->passkey;                               
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+        $mail->Port       = 465;                                  
+    
+        //Recipients
+        $mail->setFrom($this->sender, 'Mailer');
+        $mail->addAddress($email, 'INM-AUDIO email verification');     
+    
+        //Content
+        $mail->isHTML(true);                                 
+        $mail->Subject = 'INM-AUDIO';
+        $mail->Body    = 'Confirmed order, waiting to ship. THANK YOU FOR PURCHASING <3';
+        $mail->AltBody = 'Confirmed order, waiting to ship. THANK YOU FOR PURCHASING <3';
+
+        $mail->send();
+        return;
+    }
 }

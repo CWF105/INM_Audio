@@ -14,6 +14,18 @@ class Cart_Model extends Model
 
 
     
+    public function getAllItemsById($id) {
+        $builder = $this->db->table('carts');
+        $builder->select('carts.user_id, 
+                          cart_items.product_id, 
+                          cart_items.quantity, 
+                          COALESCE(products.price, 0) as price'); 
+        $builder->join('cart_items', 'cart_items.cart_id = carts.cart_id', 'left');
+        $builder->join('products', 'products.product_id = cart_items.product_id', 'left');
+        $builder->where('carts.user_id', $id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 
 //gets the cart for user by id
     public function getUserCartById($user_id)
@@ -25,8 +37,7 @@ class Cart_Model extends Model
     public function deleteCartById($user_id) {
         return $this->where('user_id', $user_id)->delete();
     }
-
-
+    
 // check if the user cart is actives
     public function checkIfCartisActive($user_id, $session_id)
     {

@@ -14,7 +14,10 @@ class ShopController extends BaseController
             $this->deleteCookiesAndSession("user");
             return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
         }
-        return view($path, $data);
+        if($data != null) {
+            return view($path, $data);
+        }
+        return view($path);
     }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -184,76 +187,47 @@ class ShopController extends BaseController
 ## ----- PLACING ORDER / CHECKOUT ORDER ----- ##
     public function placeOrder() {
         $this->load->requireMethod('userAccount');
+        $this->load->requireMethod('gears');
         $this->load->requireMethod('carts');
         $this->load->requireMethod('cartItems');
-        $this->load->requireMethod('orders');
-        $this->load->requireMethod('orderItems');
         $this->load->requireMethod('emailVerify');
-        $this->load->requireMethod('transactions');
+        $this->load->requireMethod('placed');
 
         $payment_method = $this->request->getPost('paymentMethod');
         $userId = $this->load->session->get('user_id');
         $email = $this->load->session->get('email');
         $userEmail = $this->load->userAccount->getUser('email', $email);
-        $cartItem = $this->load->cartItems->getCartItems($userId);
-        if($userEmail['address'] && $userEmail['city_municipality']  && $userEmail['country']  &&  $userEmail['zipcode']) {
+        $cartItems = $this->load->carts->getAllItemsById($userId);
+
+        if( $userEmail['address'] && 
+            $userEmail['city_municipality']  && 
+            $userEmail['country']  &&  
+            $userEmail['zipcode']) {
+
             if($payment_method) {
-                if($payment_method == "cod") {
-                    $totalAmount = 0;
-                    foreach ($cartItem as $item) {
-                        $totalAmount += $item['price'] * $item['quantity'];
-                    }
-                    $orderData = [
-                        'user_id' => $userId,
-                        'total_amount' => $totalAmount,
-                        'order_status' => 'Pending',
-                        'payment_method' => $payment_method
-                    ];
-                    $this->load->orders->insert($orderData);
-                    $orderId = $this->load->orders->insertID();
-                    foreach ($cartItem as $item) {
-                        $this->load->orders->db->table('order_items')->insert([
-                            'order_id' => $orderId,
-                            'product_id' => $item['product_id'],
-                            'quantity' => $item['quantity'],
-                            'price' => $item['price']
-                        ]);
-                        $this->load->carts->db->table('cart_items')
-                        ->where('cart_id', $item['cart_id'])
-                        ->delete();
-                }
-                    // $this->load->transactions->save([
-                    //     'user_id' => $userId,
-                    //     'ammount' => $totalAmount,
-                    //     'payment_method' => "COD",
-                    //     'status' => 'Pending'
-                    // ]);    
-                    return $this->load->emailVerify->sendNotifOrderPlaced($userEmail['email']);
-                }
-                else if($payment_method == "gcash") {
-                    //TODO this is temporary
-                    //! $this->transaction->save([
-                    //!     'user_id' => $userId,
-                    //!     'description' => '',
-                    //!     'ammount' => $totalAmount,
-                    //!     'payment_method' => "GCash",
-                    //!     'status' => 'Pending'
-                    //! ]);
+                
+                if($payment_method == "gcash") {
                     $this->load->session->setFlashdata('error','*GCash payment is not currently available');
                     return redirect()->to('/buy#payment');
                 }
-                else if($payment_method == "paypal") {
-                    // TODO this is temporary
-                    //! $this->transaction->save([
-                    //!     'user_id' => $userId,
-                    //!     'description' => '',
-                    //!     'ammount' => $totalAmount,
-                    //!     'payment_method' => "Paypal",
-                    //!     'status' => 'Pending'
-                    //! ]);
-                    $this->load->session->setFlashdata('error','*Paypal payment is not currently available');
+                if($payment_method == "paypal") {
+                    $this->load->session->setFlashdata('error','*GCash payment is not currently available');
                     return redirect()->to('/buy#payment');
                 }
+
+                foreach($cartItems as $items) {
+                    $gear = $this->load->gears->getGear('product_id', $items['product_id']);
+                    $totalQuantityPerItem = $gear['price'] * $items['quantity'];
+                    $this->load->placed->save( [
+                        'user_id' => $userId,
+                        'product_id' => $items['product_id'],
+                        'quantity' => $items['quantity'],
+                        'total_price' => $totalQuantityPerItem,
+                        'payment_method' => $payment_method
+                    ]);
+                }
+                $this->load->carts->deleteCartById($userId);
+                return  $this->load->emailVerify->sendNotifOrderPlaced($userEmail['email']);
             }
             else {
                 $this->load->session->setFlashdata('error', '*Select payment method to place order');
@@ -263,9 +237,8 @@ class ShopController extends BaseController
         else {
             $this->load->session->setFlashdata('error', '*please set your address in your profile setting');
             return redirect()->to('/buy#payment');
-        }        
+        }
     }
-
 
 
     ## ADD TO LIKES

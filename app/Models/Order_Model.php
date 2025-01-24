@@ -8,7 +8,7 @@ class Order_Model extends Model {
 
     protected $allowedFields = [ 
         'user_id',
-        'product_id	',
+        'product_id',
         'order_status',
         'quantity',
         'price',
@@ -24,4 +24,125 @@ class Order_Model extends Model {
         return $this->findAll();
     }
 
+    public function getCancelledOrdersForUser($userId ) {
+        $query = $this->db->query("
+            SELECT  p.image_url,
+                    p.product_name,
+                    p.price,
+                    u.firstname,
+                    u.lastname,
+                    o.order_status,
+                    o.user_id,
+                    o.order_id,
+                    o.quantity,
+                    o.price as totalPrice,
+                    o.payment_method,
+                    o.date_cancelled
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.user_id = ?", [$userId]);
+        return $query->getResult();
+    }
+
+    public function getCancelledOrders() {
+        $query = $this->db->query(" 
+            SELECT 
+                o.order_id,
+                p.image_url,
+                p.product_name,
+                u.firstname,
+                u.lastname,
+                o.price as totalPrice,
+                o.order_status,
+                o.payment_method,
+                o.quantity,
+                o.date_cancelled
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.order_status = 'cancelled'");
+        return $query->getResult();
+    }
+
+    public function getOrders() {
+        $query = $this->db->query("
+            SELECT
+                o.order_id,
+                p.image_url,
+                p.product_name,
+                u.firstname,
+                u.lastname,
+                p.price,
+                o.quantity,
+                o.price AS totalPrice,
+                o.payment_method,
+                o.order_status,
+                o.created_at
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.order_status = 'to ship'");
+        return $query->getResult();
+    }
+
+    public function getCompleteOrders() {
+        $query = $this->db->query("
+            SELECT
+                o.order_id,
+                p.image_url,
+                p.product_name,
+                u.firstname,
+                u.lastname,
+                p.price,
+                o.quantity,
+                o.price AS totalPrice,
+                o.payment_method,
+                o.order_status,
+                o.created_at,
+                o.date_completed
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.order_status = 'complete'");
+        return $query->getResult();
+    }
+    public function deleteCancelledOrdersByOrderId($orderId) {
+        $query = $this->where('order_Id', $orderId)->delete();
+        return $query;
+    }
+
+    public function searchForOrders($toSearch) {
+        $query = $this->db->query("SELECT * FROM orders WHERE ");
+        return $query->getResult();
+    }
+
+    public function getTotalOrders() {
+        $query = $this->db->query("SELECT COUNT(*) as totalOrders FROM orders");
+        return $query->getRow();
+    }
+    public function getTotalConfirmed() {
+        $query = $this->db->query("SELECT COUNT(*) as totalConfirmed FROM orders WHERE order_status = 'to ship'");
+        return $query->getRow();
+    }
+    public function getTotalCancelled() {
+        $query = $this->db->query("SELECT COUNT(*) as totalCancelled FROM orders WHERE order_status = 'cancelled'");
+        return $query->getRow();
+    }
+    public function getTotalComplete() {
+        $query = $this->db->query("SELECT COUNT(*) as totalComplete FROM orders  WHERE order_status = 'complete'");
+        return $query->getRow();
+    }
+    public function getTotalRevenue() {
+        $query = $this->db->query("SELECT SUM(price) as totalRevenue FROM orders WHERE order_status != 'cancelled'");
+        return $query->getRow();
+    }
 }

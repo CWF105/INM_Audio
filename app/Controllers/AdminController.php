@@ -43,10 +43,19 @@ class AdminController extends BaseController
     public function dashboard() { 
         $this->load->requireMethod('adminAccount');
         $this->load->requireMethod('gears');
+        $this->load->requireMethod('orders');
+        $this->load->requireMethod('placed');
 
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
-            'numberItems' => $this->load->gears->countAllGears()
+            'numberItems' => $this->load->gears->countAllGears(),
+            'totalOrders' => $this->load->orders->getTotalOrders(),
+            'totalPlaced' => $this->load->placed->getTotalPlaced(),
+            'totalConfirmed' => $this->load->orders->getTotalConfirmed(),
+            'totalCancelled' => $this->load->orders->getTotalCancelled(),
+            'totalComplete' => $this->load->orders->getTotalComplete(),
+            'totalRevenue' => $this->load->orders->getTotalRevenue(),
+            'totalShipped'
         ];
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
@@ -54,8 +63,20 @@ class AdminController extends BaseController
     ## redirect to transactions
     public function orders_transactions() { 
         $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('orders');
+        $this->load->requireMethod('placed');
+
         $data = [
-            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'))
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
+            'cancelledOrders' => $this->load->orders->getCancelledOrders(),
+            'confirmOrder' => $this->load->placed->getAllOrders(),
+            'orders' => $this->load->orders->getOrders(),
+            'complete' => $this->load->orders->getCompleteOrders(),
+            'totalOrders' => $this->load->orders->getTotalOrders(),
+            'totalPlaced' => $this->load->placed->getTotalPlaced(),
+            'totalCancelled' => $this->load->orders->getTotalCancelled(),
+            'totalComplete' => $this->load->orders->getTotalComplete(),
+            'totalRevenue' => $this->load->orders->getTotalRevenue()
         ];
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
@@ -476,6 +497,84 @@ class AdminController extends BaseController
         return redirect()->to('/');
     }
 
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----- delete cancelled order ----- ##
+    public function deleteCancelledOrder($order_id) {
+        $this->load->requireMethod('orders');
+        $this->load->orders->deleteCancelledOrdersByOrderId($order_id);
+        return redirect()->to('/admin/orders_transactions');
+    }   
+## ------ confirm order ------ ##
+    public function confirmOrder($placedOrderId) {
+        $this->load->requireMethod('placed');
+        $this->load->requireMethod('orders');
+        $order = $this->load->placed->getOrderItemByPlaceOrderId($placedOrderId);
+
+        $this->load->orders->save([
+            'user_id' => $order->user_id,
+            'product_id' => $order->product_id,
+            'order_status' => 'to ship',
+            'quantity' => $order->quantity,
+            'price' => $order->total_price,
+            'payment_method' => $order->payment_method
+        ]);
+        $this->load->placed->deleteItemByProductId($order->product_id);
+        return redirect()->to('/admin/orders_transactions');
+    }
+## ----- cancel to confirm order ------ ##
+    public function deleteToConfirmOrder($placedOrderId) {
+        $this->load->requireMethod('placed');
+        $this->load->requireMethod('orders');
+        $placedOrderItem = $this->load->placed->getOrderItemByPlaceOrderId($placedOrderId);
+        $dateOfCancellation = date('Y-m-d');
+        $this->load->orders->save([
+            'user_id' => $placedOrderItem->user_id,
+            'product_id' => $placedOrderItem->product_id,
+            'order_status' => "cancelled",
+            'quantity' => $placedOrderItem->quantity,
+            'price' => $placedOrderItem->total_price,
+            'payment_method' => $placedOrderItem->payment_method,
+            'date_cancelled' => $dateOfCancellation
+        ]);
+        $this->load->placed->deleteItemByPlacedOrderId($placedOrderId);
+        return redirect()->to('/admin/orders_transactions');
+    }
+
+    public function cancelOrder($order_id) {
+        $this->load->requireMethod('orders');
+        $dateCancelled = date('Y-m-d');
+        $this->load->orders->update($order_id, [
+            'order_status' => 'cancelled',
+            'date_cancelled' => $dateCancelled
+        ]);
+        return redirect()->to('/admin/orders_transactions');
+
+    }
+
+
+## ----- complete order ------ ##
+    public function completeOrder($order_id) {
+        $this->load->requireMethod('orders');
+        $dateOrderComplete = date('Y-m-d');
+        $this->load->orders->update($order_id, [
+            'order_status' => 'complete',
+            'date_completed' => $dateOrderComplete
+        ]);
+        return redirect()->to('/admin/orders_transactions');
+    }
+
+    public function deleteComplteOrder($order_id) {
+        $this->load->requireMethod('orders');
+        $this->load->orders->where('order_id', $order_id)->delete();
+        return redirect()->to('/admin/orders_transactions');
+    }
+
+## ----- SEARCH ----- ##
+    public function searchOrders() {
+        $this->load->requireMethod('orders');
+        $this->load->requireMethod('placed');
+
+    }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private function removeTempSession($val) {

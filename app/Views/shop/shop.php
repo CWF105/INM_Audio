@@ -110,11 +110,11 @@
                                     <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
                                 </div>
 
-                                <div class="buy">
-                                    <a href="<?= base_url('/buy') ?>">
+                                <!-- <div class="buy">
+                                    <a href="<?= base_url('/buy/'. $gear['product_id']) ?>">
                                         <button type="button">Buy Now</button>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </form>

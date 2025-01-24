@@ -20,6 +20,36 @@
                 margin-top: 10px;
                 background-color: aliceblue;
                 width: 100%;
+                .orders, .cancelled{
+                    display: grid;
+                    justify-content: center;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                    padding-inline: 20px;
+
+                    .withOrders, .cancelledOrders {
+                        padding: 10px;
+                        border-radius: 10px;
+                        border: 1px solid black;
+                        width: 200px;
+                        img {
+                            width: 70px;
+                        }
+                        a{
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            background-color: red;
+                            color: white;
+                            padding: 5px;
+                            text-decoration: none;
+                        }
+                    }
+                    .noOrders p{
+                        color: gray
+                    }
+                    .noCancelledOrders p {
+                        color: gray
+                    }
+                }
             }
         }
     }
