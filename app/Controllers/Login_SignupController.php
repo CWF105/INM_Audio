@@ -24,7 +24,7 @@ class Login_SignupController extends BaseController
         }
         else {
             $this->load->session->setFlashdata('userError', 'password did not match');
-            return redirect()->to('/login');
+            return redirect()->to('/signup');
         }
     }
 
@@ -43,15 +43,15 @@ class Login_SignupController extends BaseController
         $userEmailExist = $this->load->userAccount->getUser('email', $this->load->session->get('email'));
         if(($adminUsernameExist && $adminEmailExist) || ($userUsernameExist && $userEmailExist)) {
             $this->load->session->setFlashdata('userError', 'Both username and email are already in use.');
-            return redirect()->to('/login'); 
+            return redirect()->to('/signup'); 
         }
         else if ($adminUsernameExist || $userUsernameExist) {
             $this->load->session->setFlashdata('userError', 'Username is already in use.');
-            return redirect()->to('/login');
+            return redirect()->to('/signup');
         }
         else if ($adminEmailExist || $userEmailExist) {
             $this->load->session->setFlashdata('userError', 'Email is already in use.');
-            return redirect()->to('/login');
+            return redirect()->to('/signup');
         }
         else {
             return $this->load->emailVerify->sendEmailVerification($this->load->session->get('email'));

@@ -63,11 +63,30 @@
                     <?php endif;?>
                 </div>
             </div>
-
+toShip
             <!-- TO SHIP TAB -->
             <div id="toShip" class="tab-content">
                 <h2>To Ship</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur?</p>
+                <div class="orders">
+                    <?php if($toShip) :?>
+                        <?php foreach($toShip as $ship) :?>
+                            <div class="withOrders">
+                                <img src="<?= $ship->image_url ?>" alt="">
+                                <h4><?= $ship->product_name ?></h4>
+                                <p>Price: <?= $ship->price ?></p>
+                                <p>Quantity: <?= $ship->quantity ?></p>
+                                <p>Total: <?= $ship->totalPrice ?></p>
+                                <p>Payment: <?= $ship->payment_method ?></p>
+                                <p style="color: teal; font-size: 12px;">waiting for delivery</p>
+                                <br>
+                            </div>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <div class="noOrders">
+                            <p>NO ORDERS MADE YET</p>
+                        </div>
+                    <?php endif;?>
+                </div>            
             </div>
 
             <!-- TO RECIEVE TAB -->
@@ -84,8 +103,27 @@
 
             <!-- COMPLETE TAB -->
             <div id="completed" class="tab-content">
-                <h2>Completed</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur?</p>
+                <h2>Completed</h2> 
+                <div class="orders">
+                    <?php if($complete) :?>
+                        <?php foreach($complete as $completes) :?>
+                            <div class="withOrders">
+                                <img src="<?= $completes->image_url ?>" alt="">
+                                <h4><?= $completes->product_name ?></h4>
+                                <p>Price: <?= $completes->price ?></p>
+                                <p>Quantity: <?= $completes->quantity ?></p>
+                                <p>Total: <?= $completes->totalPrice ?></p>
+                                <p>Payment: <?= $completes->payment_method ?></p>
+                                <p style="color: green; font-size: 12px;">complete</p>
+                                <br>
+                            </div>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <div class="noOrders">
+                            <p>NO COMPLETE ORDERS</p>
+                        </div>
+                    <?php endif;?>
+                </div>             
             </div>
 
             <!-- TO CANCELLED TAB -->

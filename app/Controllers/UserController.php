@@ -56,7 +56,9 @@ class UserController extends BaseController
         $data = [
             'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
             'toConfirmOrders' => $this->load->placed->getAllOrdersById($this->load->session->get('user_id')),
-            'cancelledOrders' => $this->load->orders->getCancelledOrdersForUser($this->load->session->get('user_id'))
+            'cancelledOrders' => $this->load->orders->getCancelledOrdersForUser($this->load->session->get('user_id')),
+            'toShip' => $this->load->orders->getToShipOrdersForUser($this->load->session->get('user_id')),
+            'complete' => $this->load->orders->getCompleteOrdersForUser($this->load->session->get('user_id'))
         ];
         return $this->checkUserSession('UserSide/myPurchase', $data);
     }

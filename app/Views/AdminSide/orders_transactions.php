@@ -25,12 +25,12 @@
 <main>
     <div class="header">
         <h3>Orders | Transactions</h2>
-        <div class="searchbar">
+        <!-- <div class="searchbar">
             <form action="<?= base_url('/admin/orders/search') ?>" method="get">
                 <input type="search" name="search" id="search" placeholder="search here">
                 <button type="submit">Search</button>
             </form>
-        </div>
+        </div> -->
     </div>
 
     <div class="main">

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= base_url('Admin/css/dashboard.css') ?>">
     <link rel="stylesheet" href="<?= base_url('Admin/css/grid.css') ?>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
     <style>
         /* SIDE NAV WHEN IN THIS PAGE - below css selectors can be found in the "sideNav.php" file */
@@ -32,7 +33,7 @@
             <div class="box1">
                 <h4>Sales</h4>
                 <hr>
-                <button class="dropdown-button"><img src="<?= base_url('Admin/img/icons/down-arrow.png') ?>" alt=""></button>
+                <!-- <button class="dropdown-button"><img src="<?= base_url('Admin/img/icons/down-arrow.png') ?>" alt=""></button>
                 <p id="sales-display">All the time</p>
                 <div class="dropdown">
                     <ul class="dropdown-menu">
@@ -41,7 +42,7 @@
                         <li onclick="updateSales('Per Month:')">Per Month</li>
                         <li onclick="updateSales('Per Week:')">Per Week</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
 
             <div class="box2">

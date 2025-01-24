@@ -43,7 +43,54 @@ class Order_Model extends Model {
             ON o.product_id = p.product_id
             LEFT JOIN user_accounts u
             ON o.user_id = u.user_id
-            WHERE o.user_id = ?", [$userId]);
+            WHERE o.order_status = 'cancelled' AND o.user_id = ?", [$userId]);
+        return $query->getResult();
+    }
+
+
+    public function getToShipOrdersForUser($userId ) {
+        $query = $this->db->query("
+            SELECT  p.image_url,
+                    p.product_name,
+                    p.price,
+                    u.firstname,
+                    u.lastname,
+                    o.order_status,
+                    o.user_id,
+                    o.order_id,
+                    o.quantity,
+                    o.price as totalPrice,
+                    o.payment_method,
+                    o.date_cancelled
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.order_status = 'to ship' AND o.user_id = ?", [$userId]);
+        return $query->getResult();
+    }
+
+    public function getCompleteOrdersForUser($userId ) {
+        $query = $this->db->query("
+            SELECT  p.image_url,
+                    p.product_name,
+                    p.price,
+                    u.firstname,
+                    u.lastname,
+                    o.order_status,
+                    o.user_id,
+                    o.order_id,
+                    o.quantity,
+                    o.price as totalPrice,
+                    o.payment_method,
+                    o.date_cancelled
+            FROM orders o
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            WHERE o.order_status = 'complete' AND o.user_id = ?", [$userId]);
         return $query->getResult();
     }
 
@@ -118,11 +165,6 @@ class Order_Model extends Model {
     public function deleteCancelledOrdersByOrderId($orderId) {
         $query = $this->where('order_Id', $orderId)->delete();
         return $query;
-    }
-
-    public function searchForOrders($toSearch) {
-        $query = $this->db->query("SELECT * FROM orders WHERE ");
-        return $query->getResult();
     }
 
     public function getTotalOrders() {

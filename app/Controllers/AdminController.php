@@ -570,11 +570,11 @@ class AdminController extends BaseController
     }
 
 ## ----- SEARCH ----- ##
-    public function searchOrders() {
-        $this->load->requireMethod('orders');
-        $this->load->requireMethod('placed');
+    // public function searchOrders() {
+    //     $this->load->requireMethod('orders');
+    //     $this->load->requireMethod('placed');
 
-    }
+    // }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private function removeTempSession($val) {
