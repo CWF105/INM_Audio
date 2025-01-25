@@ -87,17 +87,17 @@ function closeModal(modal) {
 
 
 
-function toggleComment(category) {
-  const cards = document.querySelectorAll('.comment');
+// function toggleComment(category) {
+//   const cards = document.querySelectorAll('.comment');
 
-  cards.forEach(card => {
-    if (card.classList.contains(category)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
+//   cards.forEach(card => {
+//     if (card.classList.contains(category)) {
+//       card.style.display = 'block';
+//     } else {
+//       card.style.display = 'none';
+//     }
+//   });
+// }
 
 //checkout
 
@@ -144,3 +144,89 @@ function toggleDropdown() {
     dropDown.style.display= 'block';
   }
 }
+
+
+
+
+
+
+document.querySelectorAll('[data-modal-target]').forEach(button => {
+  button.addEventListener('click', function() {
+      const modal = document.querySelector(this.getAttribute('data-modal-target'));
+      modal.style.display = 'flex';
+      document.getElementById('overlay').style.display = 'block';
+  });
+});
+
+// Close modal
+document.querySelectorAll('[data-close-button]').forEach(button => {
+  button.addEventListener('click', function() {
+      const modal = button.closest('.modal');
+      modal.style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+  });
+});
+
+// Optionally, you can also close the modal when clicking on the overlay
+document.getElementById('overlay').addEventListener('click', function() {
+  document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+  this.style.display = 'none';
+});
+
+
+
+
+
+document.querySelectorAll('.modal').forEach((modal, index) => {
+  const stars = modal.querySelectorAll('.star');
+  const ratingValue = modal.querySelector('.rating-value');
+  const ratingInput = modal.querySelector('.rating-value-input'); // The hidden input field
+
+  let currentRating = parseInt(ratingValue.textContent) || 0;  // Default to the current rating (if any)
+
+  // Mouse hover event to highlight stars
+  stars.forEach(star => {
+      star.addEventListener('mouseover', () => {
+          const value = parseInt(star.getAttribute('data-value'));
+          highlightStars(value);
+      });
+
+      // Mouse out event to reset star highlight
+      star.addEventListener('mouseout', () => {
+          highlightStars(currentRating);
+      });
+
+      // Click event to select the rating
+      star.addEventListener('click', () => {
+          currentRating = parseInt(star.getAttribute('data-value'));
+          ratingValue.textContent = currentRating;
+          ratingInput.value = currentRating;  // Set the value of the hidden input field
+          updateStars();  // Update the selected stars' styling
+      });
+  });
+
+  // Highlight stars based on rating
+  function highlightStars(rating) {
+      stars.forEach(star => {
+          if (parseInt(star.getAttribute('data-value')) <= rating) {
+              star.classList.add('hover');
+          } else {
+              star.classList.remove('hover');
+          }
+      });
+  }
+
+  // Update the stars' classes based on the selected rating
+  function updateStars() {
+      stars.forEach(star => {
+          if (parseInt(star.getAttribute('data-value')) <= currentRating) {
+              star.classList.add('selected');
+          } else {
+              star.classList.remove('selected');
+          }
+      });
+  }
+
+  // Initialize the star display on page load (in case there is an existing review)
+  updateStars();
+});

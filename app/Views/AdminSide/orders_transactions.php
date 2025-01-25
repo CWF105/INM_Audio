@@ -39,7 +39,7 @@
                 <img src="<?= base_url('Admin/img/icons/apps-sort.png') ?>" alt="icon">
                 <div class="text">
                     <p>Total Orders</p>
-                    <p class="val">
+                    <p class="val" style="color: <?= ($totalOrders->totalOrders > $totalCancelled->totalCancelled) ? "teal": "red";?>;">
                         <?php echo ($totalOrders) ? $totalOrders->totalOrders : 0;?>
                     </p>
                 </div>
@@ -49,7 +49,7 @@
                 <img src="<?= base_url('Admin/img/icons/order-history.png') ?>" alt="icon">
                 <div class="text">
                     <p>Placed orders</p>
-                    <p class="val">
+                    <p class="val" style="color: <?= ((($totalPlaced->totalPlacedOrders / $totalOrders->totalOrders) * 100) > 10) ? "green": "red";?>;">
                         <?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?>
                     </p>
                 </div>
@@ -75,7 +75,7 @@
                 <img src="<?= base_url('Admin/img/icons/delete.png') ?>" alt="icon">
                 <div class="text">
                     <p>Cancelled</p>
-                    <p class="val">
+                    <p class="val" style="color: <?= ($totalCancelled->totalCancelled > $totalComplete->totalComplete) ? "red": "green";?>;">
                         <?php echo ($totalCancelled) ? $totalCancelled->totalCancelled : 0;?>
                     </p>
                 </div>
@@ -85,7 +85,10 @@
                 <img src="<?= base_url('Admin/img/icons/clipboard-check.png') ?>" alt="icon">
                 <div class="text">
                     <p>Completed</p>
-                    <p class="val">
+                    <p class="val" style="color: <?= ($totalComplete->totalComplete > $totalCancelled->totalCancelled &&
+                                             $totalComplete->totalComplete > $totalConfirmed->totalConfirmed && 
+                                             $totalComplete->totalComplete > $totalPlaced->totalPlacedOrders &&
+                                             $totalComplete->totalComplete > $totalOrders->totalOrders) ? "red": "green";?>;">
                         <?php echo ($totalComplete) ? $totalComplete->totalComplete : 0;?>
                     </p>
                 </div>
@@ -95,8 +98,8 @@
                 <img src="<?= base_url('Admin/img/icons/revenue-alt.png') ?>" alt="icon">  
                 <div class="text">
                     <p>Total revenue</p>
-                    <p class="val">
-                        <?php echo ($totalRevenue) ? $totalRevenue->totalRevenue : 0;?>
+                    <p class="val" style="color:green;">
+                        <?php echo ($totalRevenue) ? "$".$totalRevenue->totalRevenue : "$". 0;?>
                     </p>
                 </div>
             </div>

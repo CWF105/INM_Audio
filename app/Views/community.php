@@ -27,248 +27,99 @@
         <div class="comm-title">
             <h2>INM Community</h2>
         </div>
+
+        <?php if($commentsPerProduct) : ?>
         <div class="comm-block">
             <div class="picture-block">
-                <!-- product 1 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment1')">
-                    <img src=" <?= base_url('assets/img/comm1.jpg') ?>" alt="">
-                    <p>GEAR 1</p>
-                </a>
-                <!-- product 2 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment2')">
-                    <img src=" <?= base_url('assets/img/comm2.jpg') ?>"alt="">
-                    <p>GEAR 2</p>
-                </a>
-                <!-- product 3 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment3')">
-                    <img src=" <?= base_url('assets/img/comm3.jpg') ?>" alt="">
-                    <p>GEAR 3</p>
-                </a>
-            </div>
-            <div class="picture-block">
-                 <!-- product 4 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment4')">
-                    <img src=" <?= base_url('assets/img/comm4.jpg') ?>"alt="">
-                    <p>GEAR 4</p>
-                </a>
-                <!-- product 5 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment5')">
-                    <img src=" <?= base_url('assets/img/comm5.jpg') ?>" alt="">
-                    <p>GEAR 5</p>
-                </a>
-                <!-- product 6 -->
-                <a href="#reviews" class="comm-picture" onclick="toggleComment('comment6')">  
-                    <img src=" <?= base_url('assets/img/comm6.jpg') ?>"alt="">
-                    <p>GEAR 6</p>
-                </a>
-            </div>
-        </div>
+                <?php foreach($commentsPerProduct as $index => $cpp) : ?>
+                    <!-- Product Card -->
+                    <a href="#reviews" class="comm-picture" data-modal-target="#modal-<?= $index; ?>">
+                        <img src="<?= esc($cpp['image_url']) ?>" alt="<?= esc($cpp['product_name']) ?>" />
+                        <p><?= esc($cpp['product_name']) ?></p>
+                    </a>
 
-        <!-- reviews -->
-        <div class="reviews" id="reviews">
-            <div class="review-title">
-                <h2>Reviews</h2>
-            </div>
-        </div>
+                    <!-- Modal for Product Comments -->
+                    <div class="modal" id="modal-<?= $index; ?>">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="title">
+                                    <h2>Reviews for <span style="color: teal;"><?= esc($cpp['product_name']) ?></span></h2>
+                                </div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
 
-        <div class="comm-reviews">
-            <div class="comment comment1">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src=" <?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                        </div>
-                    </div>
-                </div>
-                
+                            <div class="modal-body">
+                                <?php if (!empty($cpp['comments'])): ?>
+                                    <!-- Loop through comments for this product -->
+                                    <?php foreach ($cpp['comments'] as $comment): ?>
+                                        <div class="comment-item">
+                                            <p><strong><?= esc($comment['firstname']) . ' ' . esc($comment['lastname']) ?></strong> 
+                                                <span class="span">(Rating: 
+                                                    <?php
+                                                        switch($comment['rating']) {
+                                                            case 1: echo "⭐"; break;
+                                                            case 2: echo "⭐⭐"; break;
+                                                            case 3: echo "⭐⭐⭐"; break;
+                                                            case 4: echo "⭐⭐⭐⭐"; break;
+                                                            case 5: echo "⭐⭐⭐⭐⭐"; break;
+                                                            default: echo "No rating"; break;
+                                                        }
+                                                    ?>
+                                                )</span></p>
+                                            <hr>
+                                            <p id="text"><?= esc($comment['comment_text']) ?></p>
+                                            <p><small style="color: gray;">Commented on <?= date('F j, Y', strtotime($comment['created_at'])) ?></small></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p style="color: gray; text-align: center; padding: 20px;">No comments available for this product.</p>
+                                <?php endif; ?>
+                            </div>
 
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
+                            <div class="modal-footer">
+                                <form action="<?= base_url('/community/reviewProduct/'.$cpp['product_id']) ?>" method="post">
+                                    <div class="rating-container">
+                                        <?php
+                                        // Loop through stars and check if the user has already rated
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            $selectedClass = (isset($cpp['existingReview']) && $cpp['existingReview']['rating'] >= $i) ? 'selected' : '';
+                                            echo "<span class='star $selectedClass' data-value='$i'>&#9733;</span>";
+                                        }
+                                        ?>
+                                    </div>
+                                    <p>Rate: <span class="rating-value"><?= isset($cpp['existingReview']) ? $cpp['existingReview']['rating'] : 0; ?></span>/5</p>
+                                    <input type="text" hidden class="rating-value-input" name="rating-value" value="<?= isset($cpp['existingReview']) ? $cpp['existingReview']['rating'] : ''; ?>">
+                                    <textarea name="review" id="review" placeholder="Review this gear"><?= isset($cpp['existingReview']) ? esc($cpp['existingReview']['comment_text']) : ''; ?></textarea>
+                                    <button type="submit"><?= isset($cpp['existingReview']) ? 'Update Review' : 'Send Review'; ?></button>
+                                    <?php if($cpp['existingReview']) :?>
+                                        <a href="<?= base_url('/community/reviewDelete/'.$cpp['product_id']) ?>">Delete review</a>
+                                    <?php endif; ?>
+                                </form>
+                            </div>                             
+                        </div>
+                    </div> <!-- End Modal for Product Comments -->
 
-            <div class="comment comment2">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>adoidhadbfnoiajdfnoaj</p>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-
-            <div class="comment comment3">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>SFASDFSDGSD</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>SFASDFSDGSD</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>SFASDFSDGSD</p>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-
-            <div class="comment comment4">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>jidhahsbdajdfnoajsdbia shduasdyjasdohbcladsjlca sgdkcjsdckasdcjbhdc</p>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-
-            <div class="comment comment5">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>DFADFA;LFIAHRFJKN KJLIUHB</p>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-
-            <div class="comment comment6">
-                <div class="card-blocks">
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <img src="<?= base_url('assets/img/avatar.png') ?>" alt="">
-                            <p>User Name</p>
-                        </div>
-    
-                        <div class="user-comment">
-                            <p>asdasfsdfijrufwayhefuqiwejfqokejfu4r91373</p>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="comment-input">
-                    <input type="text" placeholder="Enter comment">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
+                <?php endforeach; ?>
+                <div id="overlay"></div>
             </div>
         </div>
-    </div>
+    <?php else : ?>
+        <div class="comm-block">
+            <div class="noProducts">
+                <h5 style="color: gray; text-align: center; padding: 20px;">NO PRODUCTS AVAILABLE</h5>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
+
+</div>
 <!-- @END SECTION products -->
-
 
 
 <!-- @PHP CODE FOOTER - this includes footer.php file on every website that has this code -->
 <?php echo view("includes/footer.php"); ?> 
 <!-- @PHP CODE END FOOTER  -->
-
-
 <!-- @SCRIPTS -->
-
 </body>
 </html>

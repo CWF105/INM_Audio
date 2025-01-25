@@ -36,7 +36,15 @@ class AdminController extends BaseController
         return redirect()->to('/');
     }
 
-
+    public function chart($time) {
+        $this->load->requireMethod('orders');
+        $result = $this->load->orders->totalSalesChart($time);
+        $chart = [];
+        foreach($result as $row) {
+            $chart = [$row['time']];
+        }
+        return $chart;
+    }
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- ROUTES ----- ##
     ## redirect to dashboard
@@ -55,7 +63,7 @@ class AdminController extends BaseController
             'totalCancelled' => $this->load->orders->getTotalCancelled(),
             'totalComplete' => $this->load->orders->getTotalComplete(),
             'totalRevenue' => $this->load->orders->getTotalRevenue(),
-            'totalShipped'
+            'totalShipped',
         ];
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
@@ -569,12 +577,8 @@ class AdminController extends BaseController
         return redirect()->to('/admin/orders_transactions');
     }
 
-## ----- SEARCH ----- ##
-    // public function searchOrders() {
-    //     $this->load->requireMethod('orders');
-    //     $this->load->requireMethod('placed');
+## ----- SEARCH ----- #
 
-    // }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private function removeTempSession($val) {

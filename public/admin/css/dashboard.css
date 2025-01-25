@@ -15,12 +15,21 @@ main {
             .box1 {
                 background-color: #EEEEEE;
                 border: 1px solid #ddd;
-                padding: 20px;
-                height: 200px;
+                /* padding: 20px; */
+                height: 300px;
                 position: relative;
                 flex-grow: 1;
                 min-width: 220px;
                 max-width: 800px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3px;
+                .chart {
+                    width: 100%;
+                    height: auto;
+                    /* margin: 0 auto; */
+                    border: 1px solid teal;
+                }
 
                 h4 {
                     font-size: 20px;
@@ -81,7 +90,7 @@ main {
                 background-color: #EEEEEE;
                 border: 1px solid #ddd;
                 padding: 20px;
-                height: 200px;
+                height: 300px;
                 position: relative;
                 min-width: 320px;
                 max-width: 500px;

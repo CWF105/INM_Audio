@@ -17,6 +17,8 @@ $routes->group('', function($routes) {
     $routes->get('/customize', 'HomeController::customize');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
+    $routes->get('/community/reviewDelete/(:num)', 'HomeController::deleteReview/$1');
+    $routes->post('/community/reviewProduct/(:num)', 'HomeController::rateReviewProduct/$1');
 });
 
 
@@ -25,7 +27,6 @@ $routes->group('', function($routes) {
 $routes->group('', function($routes){
     // post -------------------------------------------------------------
         $routes->post('/user/updateProfile', 'UserController::updateAccount');
-
     // get -------------------------------------------------------------
         $routes->get('/user/setting', 'UserController::userSettings');
         $routes->get('/user/mypurchase', 'UserController::myPurchase');
@@ -111,6 +112,8 @@ $routes->group('/admin/', function($routes) {
         $routes->get('registerU', 'AdminController::registerUser');
         ## admin account setting management
         $routes->get('deleteAccount/(:num)', 'AdminController::deleteAdmin/$1');
+        ##chart js
+        // $routes->get('chart/getChartData', 'AdminController::getChartData');
 
 });
 
