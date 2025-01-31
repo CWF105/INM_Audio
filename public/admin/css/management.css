@@ -1,8 +1,8 @@
 /* MODAL CSS */
 .modalButton {
     border-radius: 3px;
-    background-color: #1f509ad0;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 5px;
     width: 140px;
     cursor: pointer;
@@ -11,7 +11,10 @@
     align-items: center;
     gap: 5px;
     font-size: 16px;
-
+    transition: 220ms;
+    margin-right: 5px;
+    margin-block: 5px;
+    border: 1px solid #3763a5;
     img {
         width: 20px;
     }
@@ -19,7 +22,8 @@
 
 
 .modalButton:hover {
-    background-color: #323232;
+    color: #3763a5;
+    border: 1px solid black;
 }
 
 .modal {
@@ -36,7 +40,7 @@
 
 
 .modal-content {
-    margin: 15% auto;
+    margin: 7% auto;
     width: 50%; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 5px; 
@@ -58,24 +62,21 @@
             width: 70px;
             border-radius: 3px;
         }
-        button {
-            margin-top: 5px;
-            padding: 5px;
-            width: 70px;
-        }
         .action {
             margin: 15px 0 5px 0;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
         }
-        a {
+        a, button {
+            font-size: 1rem ;
+            color: white;
             text-decoration: none;
-            color: black;
-            border: 1px solid #1d1d1d;
-            background-color: #d1d1d1;
-            margin-top: 5px;
-            padding: 5px;
-            width: 70px;
+            padding: 5px 10px;
+            background-color: blue;
+            border: none;
         }
-        a:hover {
+        a:hover, button:hover {
             border: 1px solid darkred;
             background-color: darkred;
             color: white;
@@ -86,7 +87,10 @@
 
 .close {
     color: #aaa; 
-    float: right; 
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     font-size: 28px; 
     font-weight: bold; 
     cursor: pointer; 
@@ -100,9 +104,150 @@
 
 
 
+/* TABLE CSS */
+#content main {
+    .head-title {
+        display: flex;
+    }
+
+    .top {
+        display: flex;
+        justify-content: start;
+    }
+
+    .content {
+        .tabs {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 5px;
+            button {
+                border-radius: 3px;
+                background-color: white;
+                color: black;
+                padding: 5px;
+                width: 100px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                font-size: 12px;
+                transition: 220ms;
+                border: 1px solid black;
+                margin-right: 5px;
+            }
+            button:hover {
+                color: #3763a5;
+                border: 1px solid #3763a5;
+            }
+        }
+    }
+
+}
+
+.content{
+    width: 100%;
+    .tab-content{
+        text-align: center;
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    h2{
+        padding: 10px;
+    }
+    th, td{
+        width: 200px;
+        
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+    }
+    th{
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #000;
+    }
+    td{
+        border-bottom: 1px solid black;
+        min-height: 150px;
+    }
+    .six{
+        height: 100%;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        a{
+            width: 60%;
+            padding: 2px;
+            color: #fff;
+            border-radius: 5px;
+
+        }
+        .button1{
+            background-color: blue;
+        }
+        .button3{
+            background-color: red;
+        }
+    }
+}
+.modal{
+    
+    .modal-content{
+        z-index: 99;
+        scroll-padding: 10px;
+        .add{
+            position: relative;
+        }
+    }
+    .img{
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+
+        img, input{
+            width: 200px;
+        }
+    }
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    h3{
+        text-align: left;
+        width: 50%;
+    }
+    p, input{
+        width: 50%;
+        text-align: left;
+        display: flex;
+        justify-content: start;
+    }
+    
+  
+}
+
+/* categories */
 
 /* MAIN CSS */
-main {
+/* main {
     .main {
         .top {
             background-color: #1f509a50;
@@ -213,4 +358,4 @@ main {
             }
         }
     }
-}
+} */

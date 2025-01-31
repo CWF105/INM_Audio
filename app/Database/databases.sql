@@ -36,6 +36,7 @@ CREATE TABLE user_accounts(
 
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
+  activation VARCHAR(255),
   remember_token VARCHAR(64) NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -140,7 +141,7 @@ CREATE TABLE orders (
     date_returned DATE,
     date_cancelled DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user_accounts(user_id)
+    FOREIGN KEY (user_id) REFERENCES user_accounts(user_id) ON DELETE CASCADE
 );
 -- set to cancelled if the user deletes it account
 DROP TRIGGER IF EXISTS after_user_delete;

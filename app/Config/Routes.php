@@ -81,6 +81,8 @@ $routes->group('/admin/', function($routes) {
         ## routes
         $routes->get('account', 'AdminController::account');
         $routes->get('dashboard', 'AdminController::dashboard');
+        $routes->get('dashboard1', 'AdminController::dashboard1');
+
         $routes->get('orders_transactions', 'AdminController::orders_transactions');
         ## gear management
         $routes->get('management', 'AdminController::gearManagement');
@@ -112,6 +114,9 @@ $routes->group('/admin/', function($routes) {
         $routes->get('registerU', 'AdminController::registerUser');
         ## admin account setting management
         $routes->get('deleteAccount/(:num)', 'AdminController::deleteAdmin/$1');
+        ##deactivate user account
+        $routes->get('deactAccount/(:num)', 'AdminController::accountActivation/$1');
+        $routes->get('deleteUserAccount/(:num)', 'AdminController::deleteUserAccount/$1');
         ##chart js
         // $routes->get('chart/getChartData', 'AdminController::getChartData');
 

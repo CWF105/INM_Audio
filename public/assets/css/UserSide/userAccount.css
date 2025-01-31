@@ -1,8 +1,24 @@
 .main {
+
+    span{
+        display: flex;
+        justify-content: start;
+        margin-block: 5px;
+        margin-left: 10px;
+        margin-right: 2px;
+        padding-block: 5px;
+        padding-left: 7px;
+        gap: 10px;
+        text-decoration: none;
+        align-items: center;
+        border-radius: 3px;
+    }
+    span:hover{
+       color: #3c91e6
+    }
     main {
         .card-container {
             .top {
-                background-color: #b3b2b2;
                 margin: 5px;
                 padding: 10px;
 
@@ -20,8 +36,10 @@
                     
                     div {
                         fieldset {
+                            width: 250px;
                             display: flex;
                             padding: 10px;
+                            /* border: 1px solid red; */
                             .input-block {
                                 gap: 5px;
                                 line-height: 10px;
@@ -31,6 +49,11 @@
                                     margin-right: 10px;
                                 }
                             }
+                        }
+                        .three{
+                            border: 1px solid red;
+                            display: flex;
+                            flex-wrap: wrap;
                         }
                     }
                     .user-image {
@@ -63,19 +86,18 @@
                         bottom: 100px;
                         /* float: right; */
                         padding-inline: 5px;
-                        border-radius: 2px;
                         width: 150px;
                         height: 40px;
                         cursor: pointer;
                         transition: 300ms;
-                        border-radius: 5px;
+                        border-radius: 7px;
                         border: 1px solid gray;
                         font-weight: 600;
                     }
-                    button:hover {
-                        background-color: darkgreen;
-                        color: #d1d1d1;
-                    }
+                    /* button:hover {
+                        background-color: black(206, 108, 16);
+                        color: white;
+                    } */
                 }
             }
 

@@ -90,7 +90,8 @@ class Login_SignupController extends BaseController
             'email' => $this->load->session->get('email'),
             'phone_number' => $this->load->session->get('phonenumber'),
             'username' => $this->load->session->get('username'),
-            'password' => password_hash($this->load->session->get('password'), PASSWORD_DEFAULT)
+            'password' => password_hash($this->load->session->get('password'), PASSWORD_DEFAULT),
+            'activation' => 'activated'
         ]);
     
         $this->load->session->setFlashdata('successRegister', 'Account created successfully.');
@@ -168,6 +169,9 @@ class Login_SignupController extends BaseController
 
 
         #userLogin
+        if($userUsername['activation'] != "activated") {
+            return redirect()->back()->with('accountTerminated', 'Account Block, Contact Administrator');
+        }
         if($userUsername || $userEmail) {
             if(is_array($userUsername) && password_verify($password, $userUsername['password'])) {
                 $this->load->session->set([

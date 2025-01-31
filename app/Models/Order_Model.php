@@ -187,4 +187,27 @@ class Order_Model extends Model {
         $query = $this->db->query("SELECT SUM(price) as totalRevenue FROM orders WHERE order_status != 'cancelled'");
         return $query->getRow();
     }
+
+
+    public function getRecentOrders() {
+        $query = $this->db->query("
+            SELECT
+                u.profile_pic,
+                u.firstname,
+                u.lastname,
+                p.image_url,
+                p.product_name,
+                p.price as basePrice,
+                o.price as totalPrice,
+                DATE(o.created_at) as dateOrder,
+                o.order_status
+            FROM orders o
+            LEFT JOIN user_accounts u
+            ON o.user_id = u.user_id
+            LEFT JOIN products p
+            ON o.product_id = p.product_id
+            GROUP BY o.created_at DESC
+        ");
+        return $query->getResult();
+    }
 }

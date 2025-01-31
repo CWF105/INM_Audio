@@ -47,13 +47,12 @@ class AdminController extends BaseController
     }
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- ROUTES ----- ##
-    ## redirect to dashboard
+    // to edit
     public function dashboard() { 
         $this->load->requireMethod('adminAccount');
         $this->load->requireMethod('gears');
         $this->load->requireMethod('orders');
-        $this->load->requireMethod('placed');
-
+        $this->load->requireMethod('placed');   
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
             'numberItems' => $this->load->gears->countAllGears(),
@@ -63,6 +62,7 @@ class AdminController extends BaseController
             'totalCancelled' => $this->load->orders->getTotalCancelled(),
             'totalComplete' => $this->load->orders->getTotalComplete(),
             'totalRevenue' => $this->load->orders->getTotalRevenue(),
+            'recentOrders' => $this->load->orders->getRecentOrders(),
             'totalShipped',
         ];
         return $this->checkAdminSession('AdminSide/dashboard', $data);
@@ -88,6 +88,7 @@ class AdminController extends BaseController
         ];
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
+    
 
     ## redirect to gearManagement / addGear / addCategory
     public function gearManagement($dataVal = null) { 
@@ -105,8 +106,11 @@ class AdminController extends BaseController
     ## redirect to gearManagement / addGear / addCategory
     public function customers() { 
         $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('userAccount');
+
         $data = [
-            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id'))
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
+            'userAccount' => $this->load->userAccount->getAll()
         ];
         return $this->checkAdminSession('AdminSide/customers', $data);
     }
@@ -577,8 +581,26 @@ class AdminController extends BaseController
         return redirect()->to('/admin/orders_transactions');
     }
 
-## ----- SEARCH ----- #
+## ----- RECENT ORDERS - DASHBOARD ----- #
+    public function accountActivation($account_id) {
+        $this->load->requireMethod('userAccount');
+        $activationStatus = $this->load->userAccount->find($account_id);
 
+        if($activationStatus['activation'] == "activated") {
+            $this->load->userAccount->update($account_id, ['activation' => 'deactivated']);        }
+        else {
+            $this->load->userAccount->update($account_id, ['activation' => 'activated']);
+        }
+        return redirect()->back();
+    }
+
+
+## ------ DELETE USER ACCOUNT ----- ##
+    public function deleteUserAccount($account_id) {
+        $this->load->requireMethod('userAccount');
+        $this->load->userAccount->delete($account_id);
+        return redirect()->back();
+    }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private function removeTempSession($val) {

@@ -12,7 +12,7 @@
             <img src="<?= base_url('assets/img/sbg.png') ?>" alt="Image">
         </div>
         <div class="form-section">
-            <a href="<?= base_url('/') ?>" class="exit">Exit</a>
+            <a href="<?= base_url('/') ?>" class="exit">&times</a>
             <h2>Log In</h2>
             <?php if(session()->getFlashdata('noAccount')) : ?>
                 <span style="color: darkred; margin-button:10px;"><?= session()->getFlashdata('noAccount')?></span>
@@ -25,15 +25,20 @@
 
                 <label for="pass">Password</label>
                 <input type="password" id="pass" name="pass" placeholder="Enter your Password">
-
+                
                 <?php if (session()->getFlashdata('error')): ?><p class="error" style="color: red; text-align: center;"><?= session()->getFlashdata('error') ?></p><?php endif; ?>
+                <?php if(session()->getFlashdata('accountTerminated')):?><p class="error" style="color: red; text-align: center;"><?= session()->getFlashdata('accountTerminated') ?></p><?php endif;?>
                 &nbsp;
-                <label for="remember">remember me</label>
-                <input type="checkbox" name="remember" id="remember" value="1">
+                <div class="remembers">
+                    <input type="checkbox" name="remember" id="remember" value="1">
+                    <label for="remember">Remember me</label>
+                </div>
 
                 <!-- to be filled  -->
-                <a href="<?= base_url('/account/forgotPass') ?>" class="forgot-password">Forgot Password?</a>
-                <a href="<?= base_url('/signup') ?>" class="forgot-password">Create account..</a>
+                 <div class="forgotp">
+                     <a href="<?= base_url('/account/forgotPass') ?>" class="forgot-password">Forgot Password?</a>
+                     <a href="<?= base_url('/signup') ?>" class="forgot-password">Create account</a>
+                 </div>
 
                 <button type="submit">Log In</button>
 

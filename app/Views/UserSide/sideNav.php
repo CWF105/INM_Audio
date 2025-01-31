@@ -13,17 +13,18 @@
         <ul>
             <!-- My Profile -->
             <a id="myprofile" href="<?= base_url('/user/setting') ?>">
-                <li><h3>My Profile</h3></li>
+                <i class="fa-solid fa-user"></i>
+                <li><span>My Profile</span></li>
             </a>
 
             <!-- My purchase -->
             <a id="mypurchase" href="<?= base_url('/user/mypurchase') ?>">
-                <li><h3>My Purchase</h3></li>
+                <li><span>My Purchase</span></li>
             </a>
 
             <!-- My Likes -->
             <a id="mylikes" href="<?= base_url('/user/myLikes') ?>">
-                <li><h3>My Likes</h3></li>
+                <li><span>My Likes</span></li>
             </a>
 
             <!-- Logout  -->

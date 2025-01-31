@@ -19,6 +19,7 @@ class User_Account_Model extends Model
         'address',
         'username',
         'password',
+        'activation',
         'remember_token'
     ];
     protected $useTimeStamps = true;

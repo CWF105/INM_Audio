@@ -23,20 +23,20 @@
     <div class="shop">
         <div class="shop-title">
             <h2>Shop</h2>
-            <form action="<?= base_url('/searchGears') ?>" method="get">
-                <input type="search" name="search" placeholder="Search Gear">
-                <input class="search" type="submit" value="Search">
-                <!-- ERROR MESSAGE -->
-                <?php if(isset($errorMessage) && !empty($errorMessage)) :?>
-                    <span style="color:darkred;"><?= $errorMessage ?></span>
-                <?php endif;?>
-            </form>
             <?php if(session()->getFlashdata('successAddToCart')) :?>
                 <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
-            <?php else :?>
-                <span style="width: 450px;"></span>
-            <?php endif;?>
-            <div class="ss">
+                <?php else :?>
+                    <span style="width: 450px;"></span>
+                    <?php endif;?>
+                <div class="ss">
+                <form action="<?= base_url('/searchGears') ?>" method="get">
+                    <input type="search" name="search" placeholder="Search Gear">
+                    <input class="search" type="submit" value="Search">
+                    <!-- ERROR MESSAGE -->
+                    <?php if(isset($errorMessage) && !empty($errorMessage)) :?>
+                        <span style="color:darkred;"><?= $errorMessage ?></span>
+                    <?php endif;?>
+                </form>
                 <?php if(session()->has('isLoggedIn')) :?>
                     <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to cart if an account is logged in -->
                 <?php else: ?>

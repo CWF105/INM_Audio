@@ -9,10 +9,8 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>My Profile</title>
-    <style>
-        #myprofile { background-color: #555; color: white;}
-    </style>
 </head>
+
 <body>
   <!-- INCLUDE TOP(FIXED/STICKY) NAV -->
   <?php  echo view("includes/header.php"); ?>
@@ -26,7 +24,7 @@
     <main>
         <div class="card-container">
             <div class="top">
-                <h2>My Profile</h2>
+                <h1>My Profile</h1>
                 <h3>Manage your account</h3>
                 <div class="line"></div>
             </div>
@@ -48,8 +46,25 @@
                             <span style="color: green"><?= session()->getFlashdata('profileUpdated')?></span>
                         <?php endif;?>
                             
-                        <!-- UPDATE INFO -->
+                        <!-- UPDATE NAME -->
                         <div class="one">
+                            <fieldset>
+                                <!-- UPDATE FIRSTNAME -->
+                                <div class="input-block">
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" name="firstname" id="firstname" value="<?= $userAccount['firstname']; ?>" placeholder="Set firstname">
+                                </div>
+        
+                                <!-- UPDATE LASTNAME -->
+                                <div class="input-block">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" name="lastname" id="lastname" value="<?= $userAccount['lastname']; ?>" placeholder="Set lastname">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <br />
+                        <!-- UPDATE INFO -->
+                        <div class="two">
                             <fieldset>
                                 <!-- UPDATE USERNAME -->
                                 <div class="input-block">
@@ -70,24 +85,7 @@
                                 </div>
                             </fieldset>
                         </div>                     
-                        <br>
-                        <!-- UPDATE NAME -->
-                        <div class="two">
-                            <fieldset>
-                                <!-- UPDATE FIRSTNAME -->
-                                <div class="input-block">
-                                    <label for="firstname">Firstname</label>
-                                    <input type="text" name="firstname" id="firstname" value="<?= $userAccount['firstname']; ?>" placeholder="Set firstname">
-                                </div>
-        
-                                <!-- UPDATE LASTNAME -->
-                                <div class="input-block">
-                                    <label for="lastname">Lastname</label>
-                                    <input type="text" name="lastname" id="lastname" value="<?= $userAccount['lastname']; ?>" placeholder="Set lastname">
-                                </div>
-                            </fieldset>
-                        </div>
-                        <br>
+                        <br> 
                         <!-- CHANGE/UPDATE LOCATION -->
                         <div class="three">
                             <fieldset>
@@ -147,6 +145,5 @@
         </div>
     </main>
 </div>
-
 </body>
 </html>

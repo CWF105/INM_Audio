@@ -176,7 +176,7 @@ body{
         a:hover {
             background: #333;
             li {
-                color: rgb(255, 193, 148);
+                color: red;
             }
         }
 

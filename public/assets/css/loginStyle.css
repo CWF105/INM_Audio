@@ -12,11 +12,6 @@ body {
     height: 100vh;
     background-color: #f7f7f7;
 }
-#remember {
-    position: relative;
-    bottom: 20px;
-    right: 120px;
-}
 
 .container {
     display: flex;
@@ -46,77 +41,100 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+
+    .exit {
+        text-align: right;
+        margin-bottom: 20px;
+        color: black;
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
+    .exit:hover {
+        color: red;
+    }
+    
+    h2 {
+        margin-bottom: 20px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    form label {
+        margin-bottom: 5px;
+    }
+    
+    form input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    a.forgot-password {
+        padding: 10px 0;
+        gap: 5px;
+        color: #007bff;
+        font-size: 12px;
+        text-align: left;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    a.forgot-password:hover {
+        text-decoration: underline;
+    }
+    
+    button {
+        padding: 10px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .social-icons a {
+        margin: 0 10px;
+    }
+    
+    .social-icons img {
+        width: 30px;
+        height: 30px;
+    }
+    .remembers{
+        width: 100%;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+
+        input{
+            padding: 0;
+            margin-bottom: 0;
+            border: none;
+            border-radius: none;
+        }
+        label{
+            margin-bottom: 0;
+        }
+    }
 }
 
-.exit {
-    text-align: right;
-    margin-bottom: 20px;
-    color: black;
-}
-.exit:hover {
-    color: red;
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-bottom: 5px;
-}
-
-form input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-a.forgot-password {
-    margin-bottom: 20px;
-    text-align: left;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-a.forgot-password:hover {
-    text-decoration: underline;
-}
-
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-}
-
-.social-icons img {
-    width: 30px;
-    height: 30px;
-}
 
 @media (min-width: 768px) {
     .image-section {

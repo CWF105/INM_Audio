@@ -1,5 +1,8 @@
 aside {
     nav {
+        /* width: 500px; */
+        border: 1px solid red;
+        
         .logo-title {
             margin-top: 10px;
             margin-bottom: 30px;
