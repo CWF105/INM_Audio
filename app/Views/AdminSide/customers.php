@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('Admin/css/customer.css') ?>">
 
-	<title>Customer</title>
+	<title>User's</title>
 </head>
 <body>
 
@@ -44,7 +44,7 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Customer</h1>
+					<h1>Users</h1>
 					<ul class="breadcrumb">
 						<!-- <li>
 							<a href="#">Dashboard</a>
@@ -87,7 +87,7 @@
 								<td><?= $user['created_at'] ?></td>
 								<td class="action">
 									<?php if($user['activation'] == "activated") :?>
-										<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="deact">Diactivate User</a>
+										<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="deact">Deactivate User</a>
 									<?php else:?>
 										<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="act">Activate User</a>
 									<?php endif; ?>

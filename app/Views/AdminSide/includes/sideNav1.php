@@ -21,7 +21,7 @@
         <li>
             <a href="<?= base_url('/admin/customers') ?>" id="customers">
                 <i class='bx bxs-group' ></i>
-                <span class="text">Customers</span>
+                <span class="text">Users</span>
             </a>
         </li>
         <li>

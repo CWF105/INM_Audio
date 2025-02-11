@@ -123,7 +123,17 @@
                                         <p><?= esc($gear['product_name']) ?></p>
                                     </td>
                                     <td class="th three"><?= esc($gear['price']) ?></td>
-                                    <td class="th four"><?= esc($gear['stock_quantity']) ?></td>
+                                    <?php if($gear['stock_quantity'] > 15) : ?>
+                                        <td class="th four">
+                                            <?= esc($gear['stock_quantity']) ?>
+                                        </td>
+                                    <?php else :?>
+                                        <<td class="th four" style="color: red"  title="low on stock">
+                                            <?= esc($gear['stock_quantity']) ?>
+                                        </td>
+                                    <?php endif;?>
+                                    
+                                    </td>
                                     <td class="th five">
                                         <?php if($gear['category']) :?> 
                                             <?= esc($gear['category']) ?>

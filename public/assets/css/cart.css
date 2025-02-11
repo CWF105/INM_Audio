@@ -15,7 +15,104 @@ html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+main {
+    .cart {
 
+        .title h2{
+            padding-top: 70px;
+            padding-left: 90px;
+            font-family: Montserrat;
+            font-weight: 300;
+            font-size: 2em;
+            letter-spacing: 0.30em;
+            margin-bottom: 40px;
+        }
+
+        .items {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+
+            .options {
+                padding: 5px 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .one {
+                    display: flex;
+                    #deleteBtn {
+                        padding: 3px;
+                        border-radius: 3px;
+                        background-color: red;
+                        color: white;
+                        cursor: pointer;
+                        width: 100px;
+                    }
+
+                }
+
+                .two {
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                .total { 
+                    position: right;
+                    right: 0;
+                }
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                thead {
+                    tr {
+                        th {
+                            border: 1px solid black;
+                            padding: 3px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        border-top: 1px solid darkgrey;
+                        margin-bottom: 3px;
+
+                        
+                        td {
+                            text-align: center;
+                            padding: 5px;
+
+                            .empty {
+                                border: 1px solid gray;
+                                border-radius: 3px;
+                                padding: 3px;
+                                width: 100px;
+                                text-decoration: none;
+                                margin: 20px;
+                                background-color: darkgoldenrod;
+                                color: white;
+                            }
+                            .empty:hover {
+                                background-color: dakr;
+                            }
+
+                            img {
+                                width: 100px;
+                                height: 100px;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* 
 .cart{
 
 
@@ -56,12 +153,10 @@ html, body {
                 width: 50%;
                 display: flex;
                 justify-content: space-evenly;
-                /* border: 1px solid #000; */
 
                 p{
                     width: 25%;
                     font-family: Montserrat;
-                    /* border: 1px solid #000; */
                     text-align: center;
                 }
             }
@@ -81,7 +176,6 @@ html, body {
                 padding: 10px;
                 background: #9999;
                 .body-one{
-                    /* align-items: center; */
                     margin-right: 200px;
                     img{
                         width: 100px;
@@ -152,4 +246,4 @@ html, body {
             }
         }
     }
-}
+} */

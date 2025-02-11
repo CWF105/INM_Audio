@@ -49,6 +49,7 @@ $routes->group('', function($routes) {
         $routes->get('/shop/(:num)', 'ShopController::viewItem/$1');
         $routes->get('/cart', 'ShopController::cart');
         $routes->get('/cart/delete/(:num)', 'ShopController::removeItem/$1');
+        $routes->get('/cart/deleteItems', 'ShopController::removeSelectedItem');
         $routes->get('/buy', 'ShopController::buynow');
         $routes->get('/buy(:any)', 'ShopController::buynow/$1');
         $routes->get('/searchGears', 'ShopController::searchGears');
@@ -81,6 +82,10 @@ $routes->group('/admin/', function($routes) {
         ## routes
         $routes->get('account', 'AdminController::account');
         $routes->get('dashboard', 'AdminController::dashboard');
+        // charts
+        $routes->get('chart-data/revenue', 'AdminController::getRevenueData');
+        $routes->get('chart-data/products', 'AdminController::getProductTrends');
+        
         $routes->get('dashboard1', 'AdminController::dashboard1');
 
         $routes->get('orders_transactions', 'AdminController::orders_transactions');

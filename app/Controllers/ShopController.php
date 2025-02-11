@@ -58,18 +58,17 @@ class ShopController extends BaseController
         $user_id = $this->load->session->get('user_id');
         $cart = $this->load->carts->getUserCartById($user_id);
         $container = [];
-        if($cart) {
-            $container['cart_items'] = $this->load->cartItems->get_cart_items($cart['cart_id']);
-            $totalQuantity = 0;
-            $totalPrice = 0;
-            foreach($container['cart_items'] as $item) {
-                $totalQuantity += $item['quantity'];
-                $totalPrice += $item['price'] * $item['quantity'];
-            }
-            $container['totalQuantity'] = $totalQuantity;
-            $container['totalPrice'] = $totalPrice;
+        $container['cart_items'] = $this->load->cartItems->get_cart_items($cart['cart_id']);
+        $totalQuantity = 0;
+        $totalPrice = 0;
+        foreach($container['cart_items'] as $item) {
+            $totalQuantity += $item['quantity'];
+            $totalPrice += $item['price'] * $item['quantity'];
         }
-        return $this->checkUserSession('shop/cart', $container);
+        $container['totalQuantity'] = $totalQuantity;
+        $container['totalPrice'] = $totalPrice;
+        
+        return $this->checkUserSession('shop/cart2', $container);
     }
 
     // redirect to buynow
@@ -123,7 +122,8 @@ class ShopController extends BaseController
     public function addToCart($product_id){
         $this->load->requireMethod('carts');
         $this->load->requireMethod('cartItems');
-
+        $this->load->requireMethod('gears');
+        $gearQuantity = $this->load->gears->getGear('product_id', $product_id);
         $user_id = $this->load->session->get('user_id');
         if(!$user_id) {
             return redirect()->to('/login');
@@ -137,6 +137,9 @@ class ShopController extends BaseController
         }
 
         $quantity = $this->request->getPost('quantity');
+        if($quantity > $gearQuantity['stock_quantity']) {
+            return redirect()->back()->with("lowstock", "low stock");
+        }
         $defQuantity = 1;
         $ifItemExist = $this->load->cartItems->checkIfProductIsExisting($cart_id, $product_id); 
         if ($ifItemExist) {
@@ -167,6 +170,20 @@ class ShopController extends BaseController
         return redirect()->to('/cart');
     }
 
+    public function removeSelectedItem() {
+        $this->load->requireMethod('carts');
+        $this->load->requireMethod('cartItems');
+        $json = $this->request->getJSON();
+        $user_id = $this->load->session->get('user_id');
+        $cart = $this->load->carts->getUserCartById($user_id);
+        if (!empty($json->selected_items)) {
+            foreach ($json->selected_items as $cart_item_id) {
+                $this->load->cartItems->deleteCartItem($cart, $cart_item_id);
+            }
+            return $this->response->setJSON(['success' => true]);
+        }
+
+    }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // remove all items to from the cart

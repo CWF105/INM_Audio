@@ -91,4 +91,12 @@ class Cart_Item_Model extends Model
 
 // updates quantity for existing product
 
+
+// deletes selected items
+    public function deleteCartItem($cart, $cartItemId) {
+        $query = $this->db->query(
+            "DELETE FROM cart_items WHERE cart_id = $cart AND cart_item_id = $cartItemId"
+        );
+        return $query->getResult();
+    }
 }

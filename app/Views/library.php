@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- @ICON -->
-    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
-    <!-- @CSS FILES LINKS -->
+        <!-- @CSS FILES LINKS -->
     <link rel="stylesheet" href=" <?= base_url('assets/css/library.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
@@ -89,10 +88,8 @@
                         <h3 style="color: red;">No Categories</h3>
                     </div>
                 <?php endif; ?>
-                
             </div>
         </div>
-        <!-- showcase category and show gears modal if click -->
     </div> 
 <!-- @END SECTION 1 -->
 

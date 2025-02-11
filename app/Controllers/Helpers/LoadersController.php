@@ -19,6 +19,8 @@ use App\Models\Comments_Model as comments;
 use App\Models\Shipping_Model as shippings;
 use App\Models\Placed_Orders_Model as placed;
 use App\Models\My_Likes_Model as likes;
+use App\Models\OrderDetailsModel as orderDetails;
+
 class LoadersController
 {   
     ## GLOBAL VARIABLES ##
@@ -41,6 +43,7 @@ class LoadersController
     public $adminCon;
     public $homeCon;
     public $unsetEmailSessionVerification;
+    public $orderDetails;
 /**
  * --------------------------------------------------------------------
  *  Call this method to require some models or controllers on your class
@@ -103,6 +106,8 @@ class LoadersController
                 break;
             case "unsetEmailSessionVerification":
                 $this->loadUnsetEmailSessionVerification();
+            case "orderDetails":
+                $this->loadOrderDetails();
             }
         }
     
@@ -111,6 +116,13 @@ class LoadersController
  * METHODS TO LOAD FOR MODELS
  * --------------------------------------------------------------------
  */
+
+    private function loadOrderDetails() {
+        if(!$this->orderDetails) {
+            $this->orderDetails = new orderDetails();
+        }
+    }
+
     ## Load placed orders model ##
     private function loadPlacedOrders() {
         if(!$this->placed) {

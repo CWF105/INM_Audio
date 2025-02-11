@@ -19,6 +19,10 @@ class Gear_Product_Model extends Model
     ];  
     protected $useTimestamps = true; 
 
+    public function updateStock($id, $numOfStockToDecrease, $operation) {
+        $this->db->query("UPDATE products SET stock_quantity = stock_quantity {$operation} {$numOfStockToDecrease} WHERE product_id = {$id}");
+    }
+
     public function searchGears($query) {
         return $this->select('products.*, category.category AS category')
                     ->join('category', 'products.category_id = category.category_id')
@@ -66,5 +70,9 @@ class Gear_Product_Model extends Model
                ON cat.category_id = prod.category_id";
         $query = $this->db->query($sql);
         return $query->getResultArray();
+    }
+
+    public function updateGearTotalItemSold($id, $quantity) {
+        $this->db->query("UPDATE products SET totalSold = totalSold + {$quantity} WHERE product_id = {$id}");
     }
 }

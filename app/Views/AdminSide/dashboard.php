@@ -34,6 +34,7 @@
 			<label for="switch-mode">Theme</label>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
+
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
@@ -65,15 +66,15 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3><?php echo ($totalOrders) ? $totalOrders->totalOrders : 0;?></h3>
+						<h3><?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?></h3>
 						<p>New Order</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3><?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?></h3>
-						<p>Total Sold</p>
+						<h3><?php echo ($totalOrders) ? $totalOrders->totalOrders : 0;?></h3>
+						<p>Orders</p>
 					</span>
 				</li>
 				<li>
@@ -84,6 +85,25 @@
 					</span>
 				</li>
 			</ul>
+
+			<!-- CHART -->
+			<div class="table-data chart">
+				<div class="order">
+					<h5>Revenue Report</h5>
+					<select id="timeframeSelect">
+						<option value="yearly">Yearly</option>
+						<option value="monthly">Monthly</option>
+						<option value="weekly">Weekly</option>
+					</select>
+					<canvas id="yearlyRevenueChart"></canvas>
+				</div>
+
+				<div class="order">
+					<h5>Product Trends</h5>
+					<canvas id="productTrendsChart"></canvas>
+				</div>
+			</div>
+
 
 		<!-- RECENT ORDERS -->
 			<div class="table-data">
@@ -147,5 +167,97 @@
 
 <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		let revenueChart; // Store the chart instance
+
+		function fetchRevenueData(timeframe = 'yearly') {
+			fetch(`<?= base_url('/admin/chart-data/revenue') ?>?timeframe=${timeframe}`)
+				.then(response => response.json())
+				.then(data => {
+					const ctx = document.getElementById('yearlyRevenueChart').getContext('2d');
+
+					// Destroy existing chart before creating a new one
+					if (revenueChart) {
+						revenueChart.destroy();
+					}
+
+					revenueChart = new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: data.labels,
+							datasets: [{
+								label: `${timeframe.charAt(0).toUpperCase() + timeframe.slice(1)} Revenue`,
+								data: data.values,
+								backgroundColor: [
+									'rgba(255, 99, 132, 0.7)',
+									'rgba(54, 162, 235, 0.7)',
+									'rgba(255, 206, 86, 0.7)',
+									'rgba(75, 192, 192, 0.7)',
+									'rgba(153, 102, 255, 0.7)',
+									'rgba(255, 159, 64, 0.7)'
+								],
+								borderColor: 'rgba(0, 0, 0, 0.2)',
+								borderWidth: 1
+							}]
+						},
+						options: {
+							responsive: true,
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+					});
+				})
+				.catch(error => console.error("Error fetching revenue data:", error));
+		}
+
+		// Load yearly revenue by default
+		fetchRevenueData();
+
+		// Handle timeframe change
+		document.getElementById('timeframeSelect').addEventListener('change', function () {
+			fetchRevenueData(this.value);
+		});
+
+		// Fetch Product Trends Data
+		fetch("<?= base_url('/admin/chart-data/products') ?>")
+			.then(response => response.json())
+			.then(data => {
+				const ctx = document.getElementById('productTrendsChart').getContext('2d');
+				new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: data.labels,
+						datasets: [{
+							label: 'Product Trends',
+							data: data.values,
+							backgroundColor: ['rgba(255, 99, 132, 0.2)', 
+											'rgba(255, 99, 132, 0.7)',
+											'rgba(54, 162, 235, 0.7)',
+											'rgba(255, 206, 86, 0.7)',
+											'rgba(75, 192, 192, 0.7)',
+											'rgba(153, 102, 255, 0.7)',
+											'rgba(255, 159, 64, 0.7)'
+										],
+							borderColor: 'rgba(255, 99, 132, 1)',
+							borderWidth: 1
+						}]
+					},
+					options: {
+						responsive: true,
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					}
+				});
+			});
+	});
+</script>
 </body>
 </html>

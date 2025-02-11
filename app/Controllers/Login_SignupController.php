@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use function PHPUnit\Framework\isEmpty;
+
 class Login_SignupController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -121,9 +123,6 @@ class Login_SignupController extends BaseController
         #adminAccount
         $adminUsername = $this->load->adminAccount->getUser('username', $usernameOrEmail);
         $adminEmail = $this->load->adminAccount->getUser('email', $usernameOrEmail);
-        #userAccount
-        $userUsername = $this->load->userAccount->getUser('username', $usernameOrEmail);
-        $userEmail = $this->load->userAccount->getuser('email', $usernameOrEmail);
 
         #adminAccount
         if($adminUsername || $adminEmail) {
@@ -168,11 +167,18 @@ class Login_SignupController extends BaseController
         }
 
 
+        #userAccount
+        $userUsername = $this->load->userAccount->getUser('username', $usernameOrEmail);
+        $userEmail = $this->load->userAccount->getuser('email', $usernameOrEmail);
+
         #userLogin
-        if($userUsername['activation'] != "activated") {
-            return redirect()->back()->with('accountTerminated', 'Account Block, Contact Administrator');
-        }
+        // if(!$userUsername || !$userEmail || !$adminUsername || !$adminEmail) {
+        //     return redirect()->back()->with('accountTerminated', '*No account found!');
+        // }
         if($userUsername || $userEmail) {
+            if($userUsername['activation'] == "deactivated") {
+                return redirect()->back()->with('accountTerminated', 'Account Block, Contact Administrator');
+            }
             if(is_array($userUsername) && password_verify($password, $userUsername['password'])) {
                 $this->load->session->set([
                     'user_id' => $userUsername['user_id'],

@@ -520,6 +520,9 @@ class AdminController extends BaseController
     public function confirmOrder($placedOrderId) {
         $this->load->requireMethod('placed');
         $this->load->requireMethod('orders');
+        $this->load->requireMethod('orderDetails');        
+        $this->load->requireMethod('gears');
+
         $order = $this->load->placed->getOrderItemByPlaceOrderId($placedOrderId);
 
         $this->load->orders->save([
@@ -530,13 +533,17 @@ class AdminController extends BaseController
             'price' => $order->total_price,
             'payment_method' => $order->payment_method
         ]);
+
+        $this->load->gears->updateStock($order->product_id, $order->quantity, "-");
         $this->load->placed->deleteItemByProductId($order->product_id);
         return redirect()->to('/admin/orders_transactions');
     }
+
 ## ----- cancel to confirm order ------ ##
     public function deleteToConfirmOrder($placedOrderId) {
         $this->load->requireMethod('placed');
-        $this->load->requireMethod('orders');
+        $this->load->requireMethod('gears');
+
         $placedOrderItem = $this->load->placed->getOrderItemByPlaceOrderId($placedOrderId);
         $dateOfCancellation = date('Y-m-d');
         $this->load->orders->save([
@@ -548,17 +555,24 @@ class AdminController extends BaseController
             'payment_method' => $placedOrderItem->payment_method,
             'date_cancelled' => $dateOfCancellation
         ]);
+
         $this->load->placed->deleteItemByPlacedOrderId($placedOrderId);
         return redirect()->to('/admin/orders_transactions');
     }
 
     public function cancelOrder($order_id) {
         $this->load->requireMethod('orders');
+        $this->load->requireMethod('orderDetails');
+        $this->load->requireMethod('gears');
+
+        $orders = $this->load->orders->getOrderById($order_id);
         $dateCancelled = date('Y-m-d');
         $this->load->orders->update($order_id, [
             'order_status' => 'cancelled',
             'date_cancelled' => $dateCancelled
         ]);
+        $this->load->gears->updateStock($orders->product_id, $orders->quantity, "+");
+        $this->load->orderDetails->updateOrderDetails("total_cancelled", 1, "+");
         return redirect()->to('/admin/orders_transactions');
 
     }
@@ -567,11 +581,18 @@ class AdminController extends BaseController
 ## ----- complete order ------ ##
     public function completeOrder($order_id) {
         $this->load->requireMethod('orders');
+        $this->load->requireMethod('gears');
         $dateOrderComplete = date('Y-m-d');
+        $this->load->requireMethod('orderDetails');
+        
         $this->load->orders->update($order_id, [
             'order_status' => 'complete',
             'date_completed' => $dateOrderComplete
         ]);
+        $total = $this->load->orders->getOrderById($order_id);
+        $this->load->gears->updateGearTotalItemSold($total->product_id, $total->quantity);
+        $this->load->orderDetails->updateOrderDetails("total_sales", $total->price, "+");
+        $this->load->orderDetails->updateOrderDetails("total_completed", 1, "+");
         return redirect()->to('/admin/orders_transactions');
     }
 
@@ -602,6 +623,7 @@ class AdminController extends BaseController
         return redirect()->back();
     }
 
+
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private function removeTempSession($val) {
         if($val == 1) {
@@ -614,5 +636,68 @@ class AdminController extends BaseController
                 'fname', 'lname', 'email', 'phonenumber', 'username', 'password', 'signupAccountType'
             ]);
         }
+    }
+
+
+
+## -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public function getRevenueData(){
+        $this->load->requireMethod(toLoad: 'orders');
+        $timeframe = $this->request->getGet('timeframe') ?? 'yearly'; // Get timeframe from URL query
+
+        if ($timeframe == 'monthly') {
+            $query = $this->load->orders->query("
+                SELECT DATE_FORMAT(date_completed, '%Y-%m') AS month, 
+                    SUM(price * quantity) AS revenue 
+                FROM orders 
+                WHERE order_status = 'COMPLETE'
+                GROUP BY YEAR(date_completed), MONTH(date_completed)
+                ORDER BY month ASC
+            ");
+            $labelsKey = 'month';
+        } elseif ($timeframe == 'weekly') {
+            $query = $this->load->orders->query("
+                SELECT CONCAT(YEAR(date_completed), '-W', WEEK(date_completed)) AS week, 
+                    SUM(price * quantity) AS revenue 
+                FROM orders 
+                WHERE order_status = 'COMPLETE'
+                GROUP BY YEAR(date_completed), WEEK(date_completed)
+                ORDER BY week ASC
+            ");
+            $labelsKey = 'week';
+        } else { // Default: Yearly
+            $query = $this->load->orders->query("
+                SELECT YEAR(date_completed) AS year, SUM(price * quantity) AS revenue 
+                FROM orders 
+                WHERE order_status = 'COMPLETE'
+                GROUP BY YEAR(date_completed)
+                ORDER BY year ASC
+            ");
+            $labelsKey = 'year';
+        }
+
+        $result = $query->getResultArray();
+        $labels = array_column($result, $labelsKey);
+        $values = array_column($result, 'revenue');
+
+        return $this->response->setJSON([
+            'labels' => $labels,
+            'values' => $values
+        ]);
+    }
+
+    
+
+    public function getProductTrends(){
+        $this->load->requireMethod('gears');
+        $products = $this->load->gears->orderBy('totalSold', 'DESC')->limit(5)->findAll(); 
+
+        $labels = array_column($products, 'product_name');
+        $values = array_column($products, 'totalSold');
+
+        return $this->response->setJSON([
+            'labels' => $labels,
+            'values' => $values
+        ]);
     }
 }   

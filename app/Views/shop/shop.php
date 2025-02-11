@@ -23,12 +23,15 @@
     <div class="shop">
         <div class="shop-title">
             <h2>Shop</h2>
-            <?php if(session()->getFlashdata('successAddToCart')) :?>
-                <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
+                <?php if(session()->getFlashdata('successAddToCart')) :?>
+                    <span style="width: 300px; color: green;"><?= session()->getFlashdata('successAddToCart')?></span>
                 <?php else :?>
                     <span style="width: 450px;"></span>
                     <?php endif;?>
                 <div class="ss">
+                <?php if(session()->getFlashData('lowstock')) : ?>
+                    <span style="width: 300px; color: red;"><?= session()->getFlashdata('lowstock')?></span>
+                <?php endif; ?>
                 <form action="<?= base_url('/searchGears') ?>" method="get">
                     <input type="search" name="search" placeholder="Search Gear">
                     <input class="search" type="submit" value="Search">
@@ -36,7 +39,7 @@
                     <?php if(isset($errorMessage) && !empty($errorMessage)) :?>
                         <span style="color:darkred;"><?= $errorMessage ?></span>
                     <?php endif;?>
-                </form>
+                </form> 
                 <?php if(session()->has('isLoggedIn')) :?>
                     <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to cart if an account is logged in -->
                 <?php else: ?>
@@ -88,6 +91,7 @@
                         <div class="product-details">
                             <p><?= esc($gear['product_name']) ?></p>
                             <h3>₱<?= esc($gear['price']) ?></h3>
+                            <h4 styl="<?= ($gear['stock_quantity'] > 15) ? "black" : "red"; ?>">Stocks: <?= esc($gear['stock_quantity']) ?></h4>
                             <hr>
                             <div class="inputs">                
 
@@ -96,7 +100,7 @@
                                         <label for="quantity">Quantity</label>
                                         <div class="control">
                                             <button type="button" onclick="decreaseValue(<?= $index; ?>)">-</button>
-                                            <input type="number" name="quantity" id="quantity-<?= $index ?>" value="1" min="1" readonly>
+                                            <input type="number" name="quantity" id="quantity-<?= $index ?>" value="<?= ($gear['stock_quantity'] == 0) ? 0 : 1; ?>" min="1" readonly>
                                             <button type="button" onclick="increaseValue(<?= $index; ?>)">+</button>
                                         </div>
                                     </div>
@@ -106,9 +110,13 @@
                             <hr>
                             <br>
                             <div class="cart-button">
-                                <div class="cart">
-                                    <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
-                                </div>
+                                <?php if($gear['stock_quantity'] > 0) :?>
+                                    <div class="cart">
+                                        <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
+                                    </div>
+                                <?php else :?>
+                                    <p style="color: red;">No Stocks</p>
+                                <?php endif; ?>                                
 
                                 <!-- <div class="buy">
                                     <a href="<?= base_url('/buy/'. $gear['product_id']) ?>">

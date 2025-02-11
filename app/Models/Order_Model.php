@@ -19,6 +19,7 @@ class Order_Model extends Model {
         'date_cancelled'
     ];
     protected $useTimeStamps = true;
+
     public function getAll() 
     {
         return $this->findAll();
@@ -168,7 +169,7 @@ class Order_Model extends Model {
     }
 
     public function getTotalOrders() {
-        $query = $this->db->query("SELECT COUNT(*) as totalOrders FROM orders");
+        $query = $this->db->query("SELECT COUNT(*) as totalOrders FROM orders WHERE order_status != 'complete'");
         return $query->getRow();
     }
     public function getTotalConfirmed() {
@@ -176,15 +177,16 @@ class Order_Model extends Model {
         return $query->getRow();
     }
     public function getTotalCancelled() {
-        $query = $this->db->query("SELECT COUNT(*) as totalCancelled FROM orders WHERE order_status = 'cancelled'");
+        $query = $this->db->query("SELECT total_cancelled as totalCancelled FROM orderDetails ");
         return $query->getRow();
     }
     public function getTotalComplete() {
-        $query = $this->db->query("SELECT COUNT(*) as totalComplete FROM orders  WHERE order_status = 'complete'");
+        $query = $this->db->query("SELECT total_completed as totalComplete FROM orderDetails");
         return $query->getRow();
     }
     public function getTotalRevenue() {
-        $query = $this->db->query("SELECT SUM(price) as totalRevenue FROM orders WHERE order_status != 'cancelled'");
+        $query = $this->db->query("SELECT SUM(total_sales) as totalRevenue FROM orderDetails");
+
         return $query->getRow();
     }
 
@@ -209,5 +211,10 @@ class Order_Model extends Model {
             GROUP BY o.created_at DESC
         ");
         return $query->getResult();
+    }
+
+    public function getOrderById($id) {
+        $query = $this->db->query("SELECT * FROM orders WHERE order_id = {$id}");
+        return $query->getRow();
     }
 }

@@ -1,5 +1,5 @@
 -- create database and use 
-CREATE DATABASE inm_audio;
+-- CREATE DATABASE inm_audio;
 USE inm_audio;
 
 -- create admin account
@@ -58,6 +58,7 @@ CREATE TABLE products (
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT NOT NULL,
     image_url VARCHAR(255),
+    totalSold int default 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE SET NULL
@@ -146,21 +147,6 @@ CREATE TABLE orders (
 -- set to cancelled if the user deletes it account
 DROP TRIGGER IF EXISTS after_user_delete;
 
--- DELIMITER //
-
--- CREATE TRIGGER after_user_delete
--- AFTER DELETE ON user_accounts
--- FOR EACH ROW
--- BEGIN
---     UPDATE orders
---     SET order_status = 'Cancelled',
---         date_cancelled = CURRENT_DATE
---     WHERE user_id = OLD.user_id;
--- END;
--- //
-
--- DELIMITER ;
-
 
 -- Stores shipping information related to an order.
 CREATE TABLE shippings (
@@ -176,29 +162,17 @@ CREATE TABLE shippings (
 );
 -- seting some setting
 DROP TRIGGER IF EXISTS after_order_update;
--- DELIMITER //
 
--- CREATE TRIGGER after_order_update
--- AFTER UPDATE ON orders
--- FOR EACH ROW
--- BEGIN
---     IF NEW.order_status = 'COMPLETE' THEN
---         UPDATE shippings
---         SET shipping_status = 'Successful'
---         WHERE order_id = NEW.order_id;
---     ELSEIF NEW.order_status = 'CANCELLED' THEN
---         UPDATE shippings
---         SET shipping_status = 'Unsuccessful'
---         WHERE order_id = NEW.order_id;
---     ELSEIF NEW.order_status = 'ONGOING' THEN
---         UPDATE shippings
---         SET shipping_status = 'On the Way'
---         WHERE order_id = NEW.order_id;
---     END IF;
--- END;
--- //
 
--- DELIMITER ;
+
+create table orderDetails (
+    order_details_id int primary key auto_increment,
+    total_sales decimal(10, 2) default 0,
+    total_sold int default 0,
+    total_cancelled int default 0,
+    total_completed int default 0
+);
+
 
 -- handling sessions time
 CREATE TABLE user_tokens (
