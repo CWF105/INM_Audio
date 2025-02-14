@@ -89,8 +89,13 @@
                                     </div>
                                     <p>Rate: <span class="rating-value"><?= isset($cpp['existingReview']) ? $cpp['existingReview']['rating'] : 0; ?></span>/5</p>
                                     <input type="text" hidden class="rating-value-input" name="rating-value" value="<?= isset($cpp['existingReview']) ? $cpp['existingReview']['rating'] : ''; ?>">
-                                    <textarea name="review" id="review" placeholder="Review this gear"><?= isset($cpp['existingReview']) ? esc($cpp['existingReview']['comment_text']) : ''; ?></textarea>
-                                    <button type="submit"><?= isset($cpp['existingReview']) ? 'Update Review' : 'Send Review'; ?></button>
+                                    <?php if(!$cpp['existingReview']) : ?>
+                                        <textarea name="review" id="review" placeholder="Review this gear"><?= isset($cpp['existingReview']) ? esc($cpp['existingReview']['comment_text']) : ''; ?></textarea>
+                                        <button type="submit">Send Review</button>
+                                    <?php else :?>
+                                        <textarea name="review" id="review" placeholder="Review this gear" disabled><?= isset($cpp['existingReview']) ? esc($cpp['existingReview']['comment_text']) : ''; ?></textarea>
+                                        <p>Already reviwed this gear</p>
+                                    <?php endif;?>
                                     <?php if($cpp['existingReview']) :?>
                                         <a href="<?= base_url('/community/reviewDelete/'.$cpp['product_id']) ?>">Delete review</a>
                                     <?php endif; ?>
