@@ -53,6 +53,11 @@ class AdminController extends BaseController
         $this->load->requireMethod('gears');
         $this->load->requireMethod('orders');
         $this->load->requireMethod('placed');   
+        // $this->load->requireMethod('notif');   
+
+        // $notifications = $this->load->notif->getNotifications();
+        // $unreadCount = $this->load->notif->getUnreadCount();
+
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
             'numberItems' => $this->load->gears->countAllGears(),
@@ -63,7 +68,6 @@ class AdminController extends BaseController
             'totalComplete' => $this->load->orders->getTotalComplete(),
             'totalRevenue' => $this->load->orders->getTotalRevenue(),
             'recentOrders' => $this->load->orders->getRecentOrders(),
-            'totalShipped',
         ];
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
@@ -77,7 +81,6 @@ class AdminController extends BaseController
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
             'cancelledOrders' => $this->load->orders->getCancelledOrders(),
-            'confirmOrder' => $this->load->placed->getAllOrders(),
             'orders' => $this->load->orders->getOrders(),
             'complete' => $this->load->orders->getCompleteOrders(),
             'totalOrders' => $this->load->orders->getTotalOrders(),
@@ -108,11 +111,36 @@ class AdminController extends BaseController
         $this->load->requireMethod('adminAccount');
         $this->load->requireMethod('userAccount');
 
+        $toGet = $this->request->getGet("search");
+
+        if($toGet) {
+            $users = $this->load->userAccount->searchUsers($toGet);
+        }
+        else {
+            $users = $this->load->userAccount->getAll();
+        }
+
         $data = [
             'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
-            'userAccount' => $this->load->userAccount->getAll()
+            'search' => $toGet,
+            'userAccount' => $users
         ];
         return $this->checkAdminSession('AdminSide/customers', $data);
+    }
+    ## view user information 
+    public function viewUserInformation($id) {
+        $this->load->requireMethod('adminAccount');
+        $this->load->requireMethod('userAccount');
+
+        $userInfo = $this->load->userAccount->getUser('user_id', $id);
+        $userOrders = $this->load->userAccount->getUserOrders($id);
+        $data = [
+            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
+            'userInfo' => $userInfo,
+            'orders' => $userOrders
+        ];
+
+        return $this->checkAdminSession('AdminSide/includes/viewUserInfo', $data);
     }
 
     ## redirect to register
@@ -700,4 +728,23 @@ class AdminController extends BaseController
             'values' => $values
         ]);
     }
+
+
+    // public function markAsRead($id){
+    //     $this->load->requireMethod('notif');
+    //     $this->load->notif->markAsRead($id);
+    //     return redirect()->to('/admin/notifications');
+    // }
+
+    // public function deleteNotification($id){
+    //     $this->load->requireMethod('notif');
+    //     $this->load->notif->deleteNotification($id);
+    //     return redirect()->to('/admin/notifications');
+    // }
+
+    // public function getUnreadCount(){
+    //     $this->load->requireMethod('notif');
+    //     return $this->response->setJSON(['count' => $this->load->notif->getUnreadCount()]);
+    // }
+
 }   

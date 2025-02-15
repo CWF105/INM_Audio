@@ -20,6 +20,7 @@ use App\Models\Shipping_Model as shippings;
 use App\Models\Placed_Orders_Model as placed;
 use App\Models\My_Likes_Model as likes;
 use App\Models\OrderDetailsModel as orderDetails;
+use App\Models\NotificationModel as notif;
 
 class LoadersController
 {   
@@ -44,6 +45,7 @@ class LoadersController
     public $homeCon;
     public $unsetEmailSessionVerification;
     public $orderDetails;
+    public $notif;
 /**
  * --------------------------------------------------------------------
  *  Call this method to require some models or controllers on your class
@@ -53,6 +55,8 @@ class LoadersController
  */
     public function requireMethod($toLoad) {
         switch($toLoad) {
+            case "notif":
+                $this->loadNotificaiton();
             case "session":
                 $this->loadSession();
                 break;
@@ -245,6 +249,11 @@ class LoadersController
         }
     }
 
+    private function loadNotificaiton() {
+        if(!$this->notif) {
+            $this->notif = new notif();
+        }
+    }
 
 /**
  * --------------------------------------------------------------------

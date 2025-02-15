@@ -8,6 +8,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
 
 	<title>AdminHub</title>
 </head>
@@ -15,6 +16,7 @@
 
 
 <!-- SIDEBAR -->
+<?php echo view('AdminSide/includes/notifModal') ?>
 <?php echo view('AdminSide/includes/sideNav1') ?>
 <!-- SIDEBAR -->
 
@@ -35,10 +37,10 @@
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 
-			<a href="#" class="notification">
+			<button class="notification open-modal1">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
-			</a>
+			</button>
 		</nav>
 
 		<!-- MAIN -->
@@ -165,6 +167,7 @@
 	<!-- CONTENT -->
 	
 
+<script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

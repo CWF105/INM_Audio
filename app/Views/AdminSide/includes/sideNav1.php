@@ -35,7 +35,7 @@
         <li>
             <a href="<?= base_url('/admin/account') ?>" id="account">
                 <i class='bx bxs-cog' ></i>
-                <span class="text">Accounts</span>
+                <span class="text">Account</span>
             </a>
         </li>
         <li>

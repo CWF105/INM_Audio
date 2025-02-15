@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="<?= base_url('Admin/css/orderTransactions.css') ?>">
     <link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
+
     <title>Orders | Transactions</title>
     <style>
         /* SIDE NAV WHEN IN THIS PAGE - below css selectors can be found in the "sideNav.php" file */
@@ -17,6 +19,7 @@
 <!-- 
 // * INCLUDE THE SIDE NAVIGATION FILE *
 -->
+<?php echo view('AdminSide/includes/notifModal') ?>
 <?php echo view('AdminSide/includes/sideNav1') ?>
 
 
@@ -33,10 +36,10 @@
             <label for="switch-mode">Theme</label>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+            <button class="notification open-modal1">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
-			</a>
+			</button>
 		</nav>
 
         <main>
@@ -99,7 +102,7 @@
                     <h2>Order Details</h2>
 
                     <div class="tabs">
-                        <button onclick="switchTab('table0')">confirmOrders</button>
+                        <!-- <button onclick="switchTab('table0')">confirmOrders</button> -->
                         <button onclick="switchTab('table1')">Orders</button>
                         <button onclick="switchTab('table2')">Completed</button>
                         <!-- <button onclick="switchTab('table4')">Refund | Returns</button> -->
@@ -108,7 +111,7 @@
     
                     <!-- TABS PER BUTTON -->
                     <!-- to confirm -->
-                    <div id="table0" class="tab-content">
+                    <!-- <div id="table0" class="tab-content">
                         <h2>Confirm orders</h2>
                         <table>
                             <thead>
@@ -125,34 +128,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if($confirmOrder) : ?>
-                                    <?php foreach($confirmOrder as $order) :?>
-                                        <tr>
-                                            <td class="th one"><?= $order->placed_order_id ?></td>
+                                < ?php if($confirmOrder) : ?>
+                                    < ?php foreach($confirmOrder as $order) :?>
+                                        <tr> 
+                                            <td class="th one"><  ?= $order->placed_order_id ?></td>
                                             <td class="th two">
-                                                <img src="<?= $order->image_url ?>" alt="image">
-                                                <p><?= $order->product_name ?></p>
+                                                <img src="< ?= $order->image_url ?>" alt="image">
+                                                <p>< ?= $order->product_name ?></p>
                                             </td>
-                                            <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
-                                            <th class="th five"><?= $order->price ?></th>
-                                            <td class="th five"><?= $order->quantity ?></td>
-                                            <td class="th six"><?= $order->total_price ?></td>
-                                            <td class="th seven"><?= $order->payment_method ?></td>
-                                            <td class="th eight"><?= $order->date_placed ?></td>
+                                            <td class="th three">< ?= $order->firstname." ".$order->lastname ?></td>
+                                            <th class="th five">< ?= $order->price ?></th>
+                                            <td class="th five">< ?= $order->quantity ?></td>
+                                            <td class="th six">< ?= $order->total_price ?></td>
+                                            <td class="th seven">< ?= $order->payment_method ?></td>
+                                            <td class="th eight">< ?= $order->date_placed ?></td>
                                             <td class="th nine">
-                                                <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
-                                                <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
+                                                <a href="< ?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
+                                                <a href="< ?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
                                             </td>
                                         </tr>
-                                    <?php endforeach; ?>
-                                <?php else :?>
+                                    < ?php endforeach; ?>
+                                < ?php else :?>
                                     <tr>
                                         <td colspan="9">No placed orders</td>
                                     </tr>
-                                <?php endif;?>
+                                < ?php endif;?>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
 
 
                     <!-- comfrimed orders -->
@@ -351,6 +354,8 @@
     </div>
 
 </div>
+
+<script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 <script src="<?= base_url('Admin/js/orderTransactions.js') ?>"></script>
 <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 </body>
