@@ -180,12 +180,14 @@
                                                     <p class="read-only" style= "width: 50%;"><?= esc($gear['category']) ?></p>
                                                     
                                                         <?php if (!empty($categories)) : ?>
-                                                            <?php foreach ($categories as $category) : ?>
-                                                                <option value="<?= esc($category['category_id']); ?>" 
-                                                                    <?= $category['category'] === $gear['category'] ? 'selected' : ''; ?>>
-                                                                    <?= esc($category['category']); ?>
-                                                                </option>
-                                                            <?php endforeach; ?>
+                                                            <select name="category" id="category">
+                                                                <?php foreach ($categories as $category) : ?>
+                                                                    <option value="<?= esc($category['category_id']); ?>" 
+                                                                        <?= $category['category'] === $gear['category'] ? 'selected' : ''; ?>>
+                                                                        <?= esc($category['category']); ?>
+                                                                    </option>
+                                                                <?php endforeach; ?>
+                                                            </select>
                                                         <?php else : ?>
                                                             <option value="" title="Will set to null if there is no category">No categories available</option>
                                                         <?php endif; ?>
