@@ -9,6 +9,7 @@
 	<!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url('Admin/css/management.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
 
 	<title>Customer</title>
 </head>
@@ -16,6 +17,7 @@
 
 
 	<!-- SIDEBAR -->
+    <?php echo view('AdminSide/includes/notifModal') ?>
 	<?php echo view('AdminSide/includes/sideNav1') ?>
 	<!-- SIDEBAR -->
 
@@ -35,10 +37,10 @@
             <label for="switch-mode">Theme</label>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+            <button class="notification open-modal1">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
-			</a>
+			</button>
 		</nav>
 		<!-- MAIN -->
 		<main>
@@ -178,12 +180,14 @@
                                                     <p class="read-only" style= "width: 50%;"><?= esc($gear['category']) ?></p>
                                                     
                                                         <?php if (!empty($categories)) : ?>
-                                                            <?php foreach ($categories as $category) : ?>
-                                                                <option value="<?= esc($category['category_id']); ?>" 
-                                                                    <?= $category['category'] === $gear['category'] ? 'selected' : ''; ?>>
-                                                                    <?= esc($category['category']); ?>
-                                                                </option>
-                                                            <?php endforeach; ?>
+                                                            <select name="category" id="category">
+                                                                <?php foreach ($categories as $category) : ?>
+                                                                    <option value="<?= esc($category['category_id']); ?>" 
+                                                                        <?= $category['category'] === $gear['category'] ? 'selected' : ''; ?>>
+                                                                        <?= esc($category['category']); ?>
+                                                                    </option>
+                                                                <?php endforeach; ?>
+                                                            </select>
                                                         <?php else : ?>
                                                             <option value="" title="Will set to null if there is no category">No categories available</option>
                                                         <?php endif; ?>
@@ -344,7 +348,8 @@
     </div>
         </main>
     </section>
-
+    
+    <script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 	<script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
     <script src="<?= base_url('Admin/js/management.js') ?>"></script>
 </body>

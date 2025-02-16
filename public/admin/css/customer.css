@@ -42,6 +42,7 @@
                 gap: 5px;
                 .deact {
                     text-decoration: none;
+                    color: white;
                     border: 1px solid black;
                     background-color: lightcoral;
                     border-radius: 5px;
@@ -49,6 +50,7 @@
                 }
                 .act {
                     text-decoration: none;
+                    color: white;
                     border: 1px solid black;
                     background-color: lightgreen;
                     border-radius: 5px;
@@ -57,9 +59,19 @@
                 .delete {
                     text-decoration: none;
                     border: 1px solid black;
+                    color: white;
                     background-color: red;
                     border-radius: 5px;
                     padding: 3px;
+                }
+                .view {
+                    text-decoration: none;
+                    border: 1px solid black;
+                    color: white;
+                    border-radius: 5px;
+                    text-align: center;
+                    padding: 3px;
+                    background-color: rgb(55, 131, 255);
                 }
             }
         }

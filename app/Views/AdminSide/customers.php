@@ -9,6 +9,8 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('Admin/css/customer.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
+
 
 	<title>User's</title>
 </head>
@@ -16,6 +18,7 @@
 
 
 	<!-- SIDEBAR -->
+	<?php echo view('AdminSide/includes/notifModal') ?>
 	<?php echo view('AdminSide/includes/sideNav1') ?>
 	<!-- SIDEBAR -->
 
@@ -35,10 +38,10 @@
 			<label for="switch-mode">Theme</label>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+			<button class="notification open-modal1">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
-			</a>
+			</button>
 		</nav>
 		<!-- MAIN -->
 		<main>
@@ -59,52 +62,53 @@
 
 
 			<div class="table">
+				<form action="" method="get">
+					<input type="search" name="search" id="search" value="<?= $search ?>">
+					<button type="submit">Search</button>
+				</form>
+
 				<table>
 					<thead>
 						<th>NO.</th>
-						<th>Profile</th>
-						<th>Customer</th> <!-- image, firstname, lastname -->
+						<th>User</th>
 						<th>Email</th>
-						<th>Phone</th>
-						<th>Country</th>
 						<th>Joined At</th>
 						<th>...</th>
 					</thead>
 					<tbody>
-						<?php if($userAccount): ?>
+						<?php if($userAccount) :?>
 							<?php 
-								$no = 1;
-								foreach($userAccount as $user) : 
+								$no = 1; 
+								foreach($userAccount as $index => $user) : 
 							?>
-								<td><?= $no++; ?></td>
-								<td>
-									<img src="data:image/jpeg;base64,<?= base64_encode($user['profile_pic']) ?>" alt="Nice">
-								</td>
-								<td><?= $user['firstname']." ".$user['lastname'] ?></td>
-								<td><?= $user['email'] ?></td>
-								<td><?= $user['phone_number'] ?></td>
-								<td><?= $user['country'] ?></td>
-								<td><?= $user['created_at'] ?></td>
-								<td class="action">
-									<?php if($user['activation'] == "activated") :?>
-										<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="deact">Deactivate User</a>
-									<?php else:?>
-										<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="act">Activate User</a>
-									<?php endif; ?>
-									<a href="<?= base_url('/admin/deleteUserAccount/'.$user['user_id']) ?>" class="delete">Delete Account</a>
-								</td>
-							<?php endforeach; ?>
-						<?php else :?>
+								<tr>
+									<td><?= $no++ ?></td>
+									<td><?= $user['firstname']." ".$user['lastname'] ?></td>
+									<td><?= $user['email'] ?></td>
+									<td><?= $user['created_at'] ?></td>
+									<td class="action">
+											<a href="<?= base_url('/admin/view/'.$user['user_id']) ?>" class="view">View</a>
+										<?php if($user['activation'] == "activated") :?>
+											<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="deact">Deactivate User</a>
+										<?php else:?>
+											<a href="<?= base_url('/admin/deactAccount/'.$user['user_id']) ?>" class="act">Activate User</a>
+										<?php endif; ?>
+											<a href="<?= base_url('/admin/deleteUserAccount/'.$user['user_id']) ?>" class="delete">Delete Account</a>
+									</td>
+								</tr>				
+							<?php endforeach;?>
+						<?php else : ?>
 							<tr>
 								<td colspan="8" style="color: gray;">NO USERS</td>
 							</tr>
-						<?php endif; ?>
+						<?php endif;?>
 					</tbody>
 				</table>
 			</div>
         </main>
     </section>
 
+	<script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 	<script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 </body>
 </html>

@@ -122,9 +122,8 @@ $routes->group('/admin/', function($routes) {
         ##deactivate user account
         $routes->get('deactAccount/(:num)', 'AdminController::accountActivation/$1');
         $routes->get('deleteUserAccount/(:num)', 'AdminController::deleteUserAccount/$1');
-        ##chart js
-        // $routes->get('chart/getChartData', 'AdminController::getChartData');
-
+        ## view user information
+        $routes->get('view/(:num)', 'AdminController::viewUserInformation/$1');
 });
 
 
