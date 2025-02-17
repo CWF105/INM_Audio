@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Controllers\DSA\Stack;
 
 class AdminController extends BaseController
 {
@@ -87,7 +88,8 @@ class AdminController extends BaseController
             'totalPlaced' => $this->load->placed->getTotalPlaced(),
             'totalCancelled' => $this->load->orders->getTotalCancelled(),
             'totalComplete' => $this->load->orders->getTotalComplete(),
-            'totalRevenue' => $this->load->orders->getTotalRevenue()
+            'totalRevenue' => $this->load->orders->getTotalRevenue(),
+            'confirmOrder' => $this->load->placed->getAllOrders()
         ];
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
@@ -729,6 +731,25 @@ class AdminController extends BaseController
         ]);
     }
 
+
+
+    public function notification() {
+        $this->load->requireMethod('orders');
+        $this->load->requireMethod('placed');
+        $this->load->requireMethod('gears');
+
+        $stackNotification = [];
+        
+
+        // $this->load->requireMethod('stack');
+        // $stack = new Stack();
+        // $totalPlaced = $this->load->placed->getTotalPlaced();
+        // $stack->push($totalPlaced);
+        // $data = [
+        //     'totalPlaced' => $this->load->placed->getTotalPlaced()
+        // ];
+        // return $data;
+    }
 
     // public function markAsRead($id){
     //     $this->load->requireMethod('notif');
