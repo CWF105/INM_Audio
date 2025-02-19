@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
 
 
-	<title>User's</title>
+	<title>User</title>
 </head>
 <body>
 
@@ -69,11 +69,11 @@
 
 				<table>
 					<thead>
-						<th>NO.</th>
+						<th>ID</th>
 						<th>User</th>
 						<th>Email</th>
 						<th>Joined At</th>
-						<th>...</th>
+						<th>Actions</th>
 					</thead>
 					<tbody>
 						<?php if($userAccount) :?>

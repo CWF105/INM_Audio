@@ -6,23 +6,13 @@
 }
 
 
-body {
+.body-container {
     display: flex;
     flex-direction: column; 
     min-height: 100vh; 
-    background-color: #242424; 
+    background-color: white; 
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
-
-
-.header {
-    position: relative; 
-    z-index: 10; 
-    background-color: #f8f9fa;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-    height: auto;
-
 
 #root {
     flex: 1; 
@@ -30,28 +20,28 @@ body {
     justify-content: center; 
     align-items: center; 
     overflow: auto; 
-    background-color: #242424; 
-
-.App {
-    display: flex;
-    flex-direction: row; 
-    width: 100%; 
-    height: 100%;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-}
-
-.left-container {
+    background-color: white; 
+    
+    .App {
+        display: flex;
+        flex-direction: row; 
+        width: 100%; 
+        height: 100%;
+    }
+    
+    .customize-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .cleft-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #444;
+    background-color: white;
     overflow: hidden;
     flex: 1; 
 	}
@@ -61,20 +51,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #333;
+    background-color: white;
     padding: 10px;
-    flex: 1; /
-}
+    flex: 1; 
 
-/* Footer */
-.footer {
-    position: relative; 
-    z-index: 10; 
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 10px 20px;
-    height: auto; 
-}
+    h3{
+        color: white;
+    }
 }
 }

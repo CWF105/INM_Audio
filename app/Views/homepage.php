@@ -42,7 +42,7 @@
         <div class="about-body">
             <div class="about-question">
                 <h2>What is IEM</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consectetur modi id deserunt voluptatibus obcaecati repellat assumenda eligendi sapiente, voluptas culpa tempore enim vel explicabo, ex molestiae suscipit aliquam nam harum. Perferendis porro repellat delectus recusandae! Natus ad labore quidem molestias, pariatur nihil! Eius tenetur quisquam deleniti asperiores iusto quaerat quis deserunt itaque illo architecto maiores explicabo odit quae reprehenderit, perferendis non, incidunt unde magni quos obcaecati. Atque facere, amet error sint voluptatem, corrupti labore quis, dolorum porro adipisci illum? Totam aut atque vero quae vitae ex unde consequatur blanditiis cupiditate minus, ad cum ratione, sapiente quisquam ipsa quo molestiae?</p>
+                <p>IEM (In-Ear Monitors) are a type of earphones designed for high-quality audio performance, often used by musicians, audio engineers, and audiophiles. Unlike regular earphones, IEMs fit snugly in the ear canal, providing a secure seal that enhances sound isolation and reduces external noise. They are capable of delivering detailed, clear, and balanced sound across a wide frequency range, often with multiple drivers in each earphone to handle different frequencies. IEMs are also known for their ability to offer a customized listening experience, with some models offering swappable cables or adjustable tips for improved comfort and fit. Due to their precise sound reproduction and portability, IEMs are especially popular in live sound environments, professional monitoring, and personal audio use.</p>
             </div>
             <div class="about-img">
                 <img src="<?= base_url('assets/img/nav.png') ?>" alt="">
@@ -80,36 +80,37 @@
             <div class="card1">
                 <img src=" <?= base_url('assets/img/couple.jpg') ?>" alt="">
                 <div class="card-content">
-                    <div class="meta">Created <br> June 29, 2022 • 1 min</div>
+                    <div class="meta">Created <br> June 29, 2022</div>
                     <h1>ES X WW</h1>
                     <p>Your Sound, Your Style: Custom IEM Earphones for a Perfect Fit <br> and Unmatched Audio Quality.</p>
                 </div>
             </div>
 
             <div class="card1">
-                <img src=" <?= base_url('assets/img/couple.jpg') ?>" alt="">
+                <img src=" <?= base_url('assets/img/fav1.png') ?>" alt="">
                 <div class="card-content">
-                    <div class="meta">Created <br> June 29, 2022 • 1 min</div>
-                    <h1>ES X WW</h1>
-                    <p>Your Sound, Your Style: Custom IEM Earphones for a Perfect Fit <br> and Unmatched Audio Quality.</p>
+                    <div class="meta">Created <br> June 29, 2022 </div>
+                    <h1>Pearl Sheet</h1>
+                    <p>The Custom INM features shells with a mystical pearl-white shimmer, reminiscent of frost-kissed morning dew. </p>
                 </div>
             </div>
 
             <div class="card1">
-                <img src=" <?= base_url('assets/img/couple.jpg') ?>" alt="">
+                <img src=" <?= base_url('assets/img/fav2.png') ?>" alt="">
                 <div class="card-content">
-                    <div class="meta">Created <br> June 29, 2022 • 1 min</div>
-                    <h1>ES X WW</h1>
-                    <p>Your Sound, Your Style: Custom IEM Earphones for a Perfect Fit <br> and Unmatched Audio Quality.</p>
+                    <div class="meta">Created <br> June 29, 2022</div>
+                    <h1>Google Dino</h1>
+                    <p>The Custom INM2 Google Dino features a playful homage to the famous Chrome browser offline game, rendered in striking monochromatic style.</p>
                 </div>
             </div>
 
             <div class="card1">
-                <img src="<?= base_url('assets/img/couple.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/img/fav4.png') ?>" alt="">
                 <div class="card-content">
-                    <div class="meta">Created <br> June 29, 2022 • 1 min</div>
-                    <h1>ES X WW</h1>
-                    <p>Your Sound, Your Style: Custom IEM Earphones for a Perfect Fit <br> and Unmatched Audio Quality.</p>
+                    <div class="meta">Created <br> June 29, 2022</div>
+                    <h1>Universal Vanilla with wooden faceplate</h1>
+                    <p>
+                    The Universal Vanilla INM3 showcases a luxurious dark tortoiseshell-like finish complemented by striking gold accents.</p>
                 </div>
             </div>
         </div>  

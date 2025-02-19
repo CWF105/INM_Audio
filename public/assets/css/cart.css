@@ -30,14 +30,20 @@ main {
 
         .items {
             border-top: 1px solid gray;
-            border-bottom: 1px solid gray;
+            /* border-bottom: 1px solid gray; */
 
             .options {
+                height: 50px;
                 padding: 5px 30px;
+                margin-top: 20px;
+                margin-bottom: 50px;
+                border: 1px solid grey;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-
+                
+                
+                
                 .one {
                     display: flex;
                     #deleteBtn {
@@ -57,8 +63,22 @@ main {
                 }
 
                 .total { 
+                    gap: 10px;
                     position: right;
                     right: 0;
+                    display: flex;
+                    align-items: center;
+
+                    a{
+
+                        button{
+                            width: 100px;
+                            height: 30px;
+                            color: white;
+                            border-radius: 5px;
+                            background-color: grey;
+                        }
+                    }
                 }
             }
 
@@ -75,7 +95,7 @@ main {
                 }
                 tbody {
                     tr {
-                        border-top: 1px solid darkgrey;
+                        border: 1px solid darkgrey;
                         margin-bottom: 3px;
 
                         
@@ -109,141 +129,3 @@ main {
         }
     }
 }
-
-
-
-/* 
-.cart{
-
-
-    .cart-title{
-
-        h2{
-            padding-top: 70px;
-            padding-left: 90px;
-            font-family: Montserrat;
-            font-weight: 300;
-            font-size: 2em;
-            letter-spacing: 0.30em;
-            margin-bottom: 40px;
-        }
-    }
-    
-    .cart-table{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        font-family: Montserrat;
-        gap: 10px;
-
-        .thead{
-            width: 100%;
-            padding: 10px;
-            background-color: #fff;
-            display: flex;
-            border: 1px solid #000;
-
-            .head-one{
-                width: 50%;
-                display: flex;
-                align-items: center;
-                gap: 30px;
-            }
-            .head-two{
-                width: 50%;
-                display: flex;
-                justify-content: space-evenly;
-
-                p{
-                    width: 25%;
-                    font-family: Montserrat;
-                    text-align: center;
-                }
-            }
-        }
-        .table-body{
-            width: 100%;
-            display: flex;
-            border: 1px solid #000;
-            flex-direction: column;
-            hr{ margin-bottom: 20px; margin-top: 20px;}
-            background-color: #e0e0e0;
-            
-            .wawa {
-                display: flex;
-                gap: 10px;
-                width: 100%;
-                padding: 10px;
-                background: #9999;
-                .body-one{
-                    margin-right: 200px;
-                    img{
-                        width: 100px;
-                        height: 100px;
-                        border: 1px solid #000;
-                    }
-                }
-                .body-two{
-                    width: 50%;
-                    gap: 50px;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    justify-content: space-between;
-    
-                    p, a{
-                        width: 25%;
-                        display: flex;
-                        text-align: center; 
-                    } 
-                    a{
-                        color: red;
-                        font-weight: bold;
-                        padding: 10px 5px;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-        .card-checkout{
-            width: 100%;
-            padding: 30px 10px;
-            margin: 20px 0;
-            gap: 10px;
-            border: 1px solid #000;
-            display: flex;
-            
-
-            .select{
-                width: 50%;
-                gap: 20px;
-                display: flex;
-                align-items: center;
-
-                .card-check{
-                    border: none;
-                    background-color: #fff;
-                    font-family: Montserrat;
-                    font-size: 1.15rem;
-                    
-                }
-            }
-            .total{
-                width: 50%;
-                padding-left: 210px;
-                gap: 20px;
-                font-size: 1.15rem;
-                display: flex;
-                align-items: center;
-                .total-checkout{
-                    cursor: pointer;
-                    padding: 10px 30px;
-                    border: 1px solid #000;
-                    border-radius: 4px;
-                    background-color: #8d8d8d;
-                    font-family: Montserrat;               
-                }
-            }
-        }
-    }
-} */

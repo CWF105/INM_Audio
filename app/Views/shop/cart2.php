@@ -27,34 +27,6 @@
 
         <form action="" id="cartForm" method="get">
             <div class="items">
-                <div class="options">
-                    <div class="one">
-                        <input type="checkbox" id="selectAll"> &nbsp;
-                        <label for="selectAll">Select All</label>
-                        &nbsp; &nbsp;
-                        <a href="" style="text-decoration: none; color: white;">
-                            <button type="submit" id="deleteBtn" style="display: none;">Delete</button>
-                        </a>
-                    </div>
-    
-                    <div class="two">
-    
-                    </div>
-                    <div class="total">
-                            <p>Total (<?= esc($totalQuantity) ?> item<?= ($totalQuantity !== 1) ? 's' : '' ?>):</p>
-                            <p>₱<?= esc(number_format($totalPrice, 2)) ?></p>
-                            <?php if(isset($cart_items)) :?>
-                                <a href="<?=base_url('/buy')?>">
-                                    <button type="button" class="total-checkout">Check Out</button>
-                                </a>
-                            <?php else :?>
-                                <a href="<?=base_url('/checkOutFailed')?>">
-                                    <button type="button" class="total-checkout" title="cannot checkout, cart is empty">Check Out</button>
-                                </a>
-                            <?php endif;?>
-                        </div>
-                </div>
-    
                 <table>
                     <thead>
                         <tr>
@@ -63,7 +35,7 @@
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
-                            <th>...</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,6 +67,33 @@
                         <?php endif;?>    
                     </tbody>
                 </table>
+                <div class="options">
+                    <div class="one">
+                        <input type="checkbox" id="selectAll"> &nbsp;
+                        <label for="selectAll">Select All</label>
+                        &nbsp; &nbsp;
+                        <a href="" style="text-decoration: none; color: white;">
+                            <button type="submit" id="deleteBtn" style="display: none;">Delete</button>
+                        </a>
+                    </div>
+    
+                    <div class="two">
+    
+                    </div>
+                    <div class="total">
+                        <p>Total (<?= esc($totalQuantity) ?> item<?= ($totalQuantity !== 1) ? 's' : '' ?>):</p>
+                        <p>₱<?= esc(number_format($totalPrice, 2)) ?></p>
+                        <?php if(isset($cart_items)) :?>
+                            <a href="<?=base_url('/buy')?>">
+                                <button type="button" class="total-checkout">Check Out</button>
+                            </a>
+                        <?php else :?>
+                            <a href="<?=base_url('/checkOutFailed')?>">
+                                <button type="button" class="total-checkout" title="cannot checkout, cart is empty">Check Out</button>
+                            </a>
+                        <?php endif;?>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

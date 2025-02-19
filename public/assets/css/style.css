@@ -82,11 +82,12 @@ body{
 
     .about-title{
         h2{
-            margin-top: 90px;
-            margin-left: 90px;
+            padding-top: 50px;
+            padding-left: 90px;
+            font-size: 2em;
             font-family: Montserrat;
-            font-size: 1.70rem;
             font-weight: 300;
+            letter-spacing: .30em;
         }
     }
     .about-body{
@@ -215,7 +216,7 @@ body{
                     font-size: 24px;
                     font-family: Montserrat;
                     font-weight: 400;
-                    padding-top: 50px;
+                    padding-top: 20px;
                 }
                 p{
                     padding-bottom: 20px;

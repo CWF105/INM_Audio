@@ -53,11 +53,11 @@
                 <button type="submit">Sign Up</button>
 
                 <small>Already have an Account? <a href="<?= base_url('/login') ?>">Log in</a></small>
-
+<!-- 
                 <div class="social-icons">
                     <small><a href="#"><img src="facebook-icon.png" alt="Facebook"></a></small>
                     <small><a href="#"><img src="instagram-icon.png" alt="Instagram"></a></small>              
-                </div>
+                </div> -->
             </form>
         </div>
         <div class="image-section">

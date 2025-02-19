@@ -87,7 +87,8 @@ class AdminController extends BaseController
             'totalPlaced' => $this->load->placed->getTotalPlaced(),
             'totalCancelled' => $this->load->orders->getTotalCancelled(),
             'totalComplete' => $this->load->orders->getTotalComplete(),
-            'totalRevenue' => $this->load->orders->getTotalRevenue()
+            'totalRevenue' => $this->load->orders->getTotalRevenue(),
+            'confirmOrder' => $this->load->placed->getAllOrders()
         ];
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }

@@ -2,8 +2,7 @@
 <section id="sidebar">
     <a href="#" class="brand">
         <!-- <img src="<?= base_url("admin/img/icons/logo.png") ?>" alt="" style="width: 50px;"> -->
-        <i class='bx bxs-smile'></i>
-        <span class="text" style="margin-left: 20px;"> Admin Panel</span>
+        <span class="text" style="margin-left: 20px;">INM Admin Panel</span>
     </a>
     <ul class="side-menu top">
         <li class="active">

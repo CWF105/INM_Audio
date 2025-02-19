@@ -31,6 +31,6 @@
             <a id="logout" href="<?= base_url('/user/logout') ?>">
                 <li class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><h3>Logout</h3></li>
             </a>
-        </ul>
+        </ul>   
     </nav>
 </aside>

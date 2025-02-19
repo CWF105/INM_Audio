@@ -57,7 +57,7 @@
 					</ul>
 				</div>
             </div>
-				
+<!-- 				
             <ul class="box-info">
                 <li>
                     <i class='bx bxs-calendar-check' ></i>
@@ -94,7 +94,7 @@
                         <p>Total Revenue</p>
                     </span>
                 </li>
-            </ul>
+            </ul>  -->
 
             <!-- TABS -->
             <div class="table-orders">
@@ -102,16 +102,14 @@
                     <h2>Order Details</h2>
 
                     <div class="tabs">
-                        <!-- <button onclick="switchTab('table0')">confirmOrders</button> -->
+                        <button onclick="switchTab('table0')">Confirm Orders</button>
                         <button onclick="switchTab('table1')">Orders</button>
                         <button onclick="switchTab('table2')">Completed</button>
                         <!-- <button onclick="switchTab('table4')">Refund | Returns</button> -->
                         <button onclick="switchTab('table5')">Cancelled</button>
                     </div>
     
-                    <!-- TABS PER BUTTON -->
-                    <!-- to confirm -->
-                    <!-- <div id="table0" class="tab-content">
+                    <div id="table0" class="tab-content">
                         <h2>Confirm orders</h2>
                         <table>
                             <thead>
@@ -128,36 +126,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                < ?php if($confirmOrder) : ?>
-                                    < ?php foreach($confirmOrder as $order) :?>
+                                <?php if($confirmOrder) : ?>
+                                    <?php foreach($confirmOrder as $order) :?>
                                         <tr> 
-                                            <td class="th one"><  ?= $order->placed_order_id ?></td>
+                                            <td class="th one"><?= $order->placed_order_id ?></td>
                                             <td class="th two">
-                                                <img src="< ?= $order->image_url ?>" alt="image">
-                                                <p>< ?= $order->product_name ?></p>
+                                                <img src="<?= $order->image_url ?>" alt="image">
+                                                <p><?= $order->product_name ?></p>
                                             </td>
-                                            <td class="th three">< ?= $order->firstname." ".$order->lastname ?></td>
-                                            <th class="th five">< ?= $order->price ?></th>
-                                            <td class="th five">< ?= $order->quantity ?></td>
-                                            <td class="th six">< ?= $order->total_price ?></td>
-                                            <td class="th seven">< ?= $order->payment_method ?></td>
-                                            <td class="th eight">< ?= $order->date_placed ?></td>
+                                            <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
+                                            <th class="th five"><?= $order->price ?></th>
+                                            <td class="th five"><?= $order->quantity ?></td>
+                                            <td class="th six"><?= $order->total_price ?></td>
+                                            <td class="th seven"><?= $order->payment_method ?></td>
+                                            <td class="th eight"><?= $order->date_placed ?></td>
                                             <td class="th nine">
-                                                <a href="< ?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
-                                                <a href="< ?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
+                                                <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
+                                                <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
                                             </td>
                                         </tr>
-                                    < ?php endforeach; ?>
-                                < ?php else :?>
+                                    <?php endforeach; ?>
+                                <?php else :?>
                                     <tr>
                                         <td colspan="9">No placed orders</td>
                                     </tr>
-                                < ?php endif;?>
+                                <?php endif;?>
                             </tbody>
                         </table>
-                    </div> -->
+                    </div>
 
-
+                    
                     <!-- comfrimed orders -->
                     <div id="table1" class="tab-content active">
                         <h2>Orders</h2>

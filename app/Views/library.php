@@ -63,7 +63,7 @@
                                                 <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
                                                     <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
                                                 </a>
-                                                <a class="shopBtn" href="<?= base_url('/shop#'. $gear['product_id']) ?>">browse in Shop</a>
+                                                <a class="shopBtn" href="<?= base_url('/shop#'. $gear['product_id']) ?>">Browse in Shop</a>
                                             </div>
                                             
                                             <div class="onHover">

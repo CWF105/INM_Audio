@@ -73,11 +73,10 @@ main {
         margin-top: 2px;
         display: flex;
         flex-direction: column;
+        background-color: #f9f9f9;
         
         .container {
-            background-color: #d4d4d4;
             padding-top: 7px;
-            color: #2c3441c8;
             h2 {
                 margin-left: 10px;
                 margin-bottom: 5px  ;

@@ -59,7 +59,7 @@ body {
   flex-direction: column;
   
   .container {
-	  background-color: #d4d4d4;
+	  background-color: #f9f9f9;
 	  padding-top: 7px;
 	  padding-bottom: 20px;
 	  padding-inline: 10px;
@@ -71,21 +71,19 @@ body {
 	  }
 
 	  .tabs{
-		  display: flex;
-		  justify-content: center;
-
+		width: 100%;
+		gap: 10px;
+		display: flex;
+		justify-content: center;
+		  
 		  button {
-			  font-weight: 600;
-			  font-size: 15px;
-			  border-left: 1px solid slategrey;
-			  border-top: 1px solid slategrey;
-			  border-right: 1px solid slategrey;
-			  border-bottom: none;
-			  border-radius: 3px 3px 0 0;
-			  padding: 5px;
-			  cursor: pointer;
-			  width: 200px;
-			  background-color: #b5b5b5;
+			width: 100%;
+			padding: 5px;
+			background-color: none;
+			font-weight: 600;
+			font-size: 15px;
+			border: 1px solid black;
+			cursor: pointer;
 		  }
 		  button:focus {
 			  background-color: #EEEEEE;
@@ -191,6 +189,7 @@ body {
 	font-weight: 700;
 	height: 56px;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	color: var(--blue);
 	position: sticky;

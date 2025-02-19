@@ -41,11 +41,11 @@
                  </div>
 
                 <button type="submit">Log In</button>
-
+<!-- 
                 <div class="social-icons">
                     <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
                     <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>

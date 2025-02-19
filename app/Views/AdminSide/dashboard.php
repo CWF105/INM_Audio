@@ -90,7 +90,7 @@
 
 			<!-- CHART -->
 			<div class="table-data chart">
-				<div class="order">
+				<div class="orders">
 					<h5>Revenue Report</h5>
 					<select id="timeframeSelect">
 						<option value="yearly">Yearly</option>
