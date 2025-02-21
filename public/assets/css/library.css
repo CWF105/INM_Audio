@@ -19,250 +19,318 @@ html, body {
     .library-title{
         width: 88%;
         margin: auto;
+        padding: 70px 0 50px;
+        display: flex;
+        align-items: center;
 
         h2{
             width: 100%;
-            padding-top: 70px;
             font-size: 2em;
             font-family: Montserrat;
             font-weight: 300;
             letter-spacing: .30em;
         }
+
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            input {
+                padding: 5px;
+                outline: none;
+                border: 1px solid black;
+            }
+
+            button {
+                padding: 5px 10px;
+                background: none;
+                border: 1px solid black;
+                cursor: pointer;
+            }
+        }
     }
 
     .bg {
-        .card-container{
-            padding-inline: 100px;
-            padding-block: 30px;
-            margin-top: 20px;
-            gap: 20px;
-            background-image: url('../img/sbg.png');
-            background-size: cover;
+        .category {
+            padding: 5px 20px;
+            border-bottom: 1px solid black;
+        }
+        .card-container {
+            width: 100%;
+            padding: 10px;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
+            gap: 20px;
             flex-wrap: wrap;
-            
-            .library-card{
-                background-color: rgba(104, 104, 104, 0.77);
-                width: 320px;
-                height: 450px;
-                padding: 20px;
+
+            .library-card {
+                width: 280px;
+                height: 420px;
+                padding: 10px;
+                border: 1px solid black;
                 display: flex;
+                justify-content: space-between;
+                align-items: start;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none; 
-                border: 1px solid rgba(99, 99, 99, 0.678);
-                padding-top: 80px;
-                padding-bottom: 50px;
-                color: rgb(255, 171, 111);
-                border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
-                transition: all 300ms;
-            }
-            .library-card:hover { 
-                transform: scale(1.1); 
-                background: #474747;
-                color: white;
-                border-radius: 66% 34% 61% 39% / 45% 59% 41% 55%  ;
-            }
-            .library-card:hover img {
-                border-radius: 75% 25% 66% 34% / 36% 53% 47% 64% ;
-            }
-            .library-card:hover button{
-                opacity: 1;
-                border-radius: 3px;
-            }
-            .bgimg{
-                width: 290px;
-                opacity: .9;
-                margin-top: 30px;
-                border-radius: 85% 15% 83% 17% / 15% 89% 11% 85% ;
-            }
-    
-            h3{
-                position: relative;
-                bottom: 100px;
-                font-size: 2em;
-                font-weight: 600;
-                font-family: Montserrat;
-                font-weight: 300;
-                letter-spacing: .30em;
-            }
-    
-            button{
-                width: 150px;
-                font-size: 1.25rem;
-                font-family: Montserrat;
-                font-weight: 300;
-                padding: 10px 20px;
-                letter-spacing: .30em;
-                backdrop-filter: blur(3px) saturate(147%);
-                -webkit-backdrop-filter: blur(3px) saturate(147%);
-                background-color: rgba(155, 155, 155, 0.1);            border: 1px solid #000;
-                opacity: 0;
-                color: white;
-                border: 1px solid rgba(255, 255, 255, 0.125);
-                margin-bottom: 80px;
-                transition: all 500ms;
                 cursor: pointer;
-            }
-            button:hover{
-                color: #fff;
-                background-color: #000;
-                border-radius: 5px;
-            }
-            h4{ 
-                font-size: 1.5em;
-                font-weight: bold;
-                font-family: Montserrat;
-                font-weight: 300;
-                letter-spacing: .30em;
-            }
-    
-            .modal{
-                width: 700px;
-                height: 500px;
-                max-width: 90%;
-                border: 1px solid  rgba(104, 104, 104, 0.678);
-                border-radius: 1px;
-                transform: translate(-50%, -50%) scale(0);
-                transition: 200ms ease-in-out;
-                z-index: 10;
-                background-color: #d2d2d2;
-                position: fixed;
-                top: 52%;
-                left: 50%;
-                overflow: hidden;
-                overflow-y: scroll;
-            }
-            .modal.active{
-                z-index: 3;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        
-            .modal-header {
-                background-color: #202020;
-                height: 80px;
-                width: auto;
-                display: flex;
-                position: sticky;
-                top: 0;
-                z-index: 1;
-                justify-content: space-between;
-                align-items: center;
-                scrollbar-gutter: 0;      
-    
-                .title {
-                    padding-left: 30px;
-                    color: white;
+
+                img {
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
                 }
-                .close-button{
-                    width: 50px;
-                    position: absolute;
-                    background: transparent;
-                    font-size: 1.5rem;
-                    opacity: 1;
-                    top: 50%;
-                    right: 10px;
-                    transform: translateY(-50%);
-                    text-align: center;
-                }
-                .close-button:hover { color: darkred; background-color: #202020;}
-            }
-    
-            .modal-body{
-                padding: 20px;
-                display: flex;
-                justify-content: space-between;
-                gap: 20px;
-    
-                .gears:hover {
-                    transform: scale(1.1); 
-                    background-color:#202020;
-                    border-radius: 5px;
-                }      
-    
-                .gears:hover .onHover{
-                    display: block;
-                    transform: translate(0, 100px);             
-                }
-    
-                .gears:hover .con .shopBtn {
-                    display: block;
-                }
-    
-                .gears {
-                    background-color: transparent;
-                    border: 1px solid #3f3f3f69;
-                    height: 320px;
+
+                .info {
                     display: flex;
+                    gap: 5px;
                     flex-direction: column;
-                    transition: 200ms;
                     
-                    .con {
-                        padding: 3px;
-    
-                        a {
-                            img {
-                                width: 310px;
-                                height: 310px;
-                            }
-                        }
-                        
-                        .shopBtn {
-                            color: rgb(255, 193, 148);
-                            border: 1px solid white;
-                            padding: 10px;
-                            padding-inline: 25px;
-                            border-radius: 3px;
-                            width: 200px;
-                            text-align: center;
-                            text-decoration: none;
-                            position: relative;
-                            bottom: 20%;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            display: none;
-                            transition: 1000ms;
-                        }
-                        .shopBtn:hover {
-                            color: white;
-                            background: black;
-                            border-radius: 5px;
-                        }
-                    }
-    
-                    .onHover {
-                        background: #000000bb;
-                        display: none;
-                        padding: 10px;
-                        position: relative;
-                        top: -450px;
-                    }
-                    h3{
-                        font-size: 23px;
-                        font-weight: 600;
-                        color: white;
-                        position: relative;
-                        top: 0px;
-                    }
-                    p{
-                        color: rgb(207, 207, 207);
-                        font-weight: 100;
-                        font-size: 13px;
-                        position: relative;
-                        top: 10px;
+                    p {
+                        height: 80px;
+                        overflow: auto;
                     }
                 }
             }
         }
+        
+        .modal {
+            max-width: 700px;
+            width: 100%;
+            max-height: 430px;
+            height: 100%;
+            padding: 10px;
+            background-color: white;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 300ms;
+            z-index: 10;
+            overflow: hidden;
+            overflow-y: scroll;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .modal-content {
+                height: 100%;
+                position: relative;
+                
+                .no-gears {
+                    width: 400px;
+                    height: 100%;
+                    background: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .modal-left {
+                    width: 50%;
+                    height: 100%;
+                    border: 1px solid black;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    flex-direction: column;
+
+                    .img-block {
+                        width: 100%;
+                        height: 50%;
+                        background: black;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+
+                    .onHover {
+                        height: 50%;
+                        padding: 5px;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-direction: column;
+
+                        .details {
+                            h2 {
+                                text-align: center;
+                                padding-bottom: 10px;
+                            }
+                            
+                            p {
+                                height: 70px;
+                                overflow: auto;
+                            }
+                        }
+
+                        a {
+                            text-decoration: none;
+                            text-align: center  ;
+                        }
+                    }
+                }
+
+                .modal-right {
+                    width: 50%;
+                }
+            }
+        }
+        .modal.active {
+            z-index: 3;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        /* .modal{
+            width: 700px;
+            height: 500px;
+            max-width: 90%;
+            border: 1px solid  rgba(104, 104, 104, 0.678);
+            border-radius: 1px;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 200ms ease-in-out;
+            z-index: 10;
+            background-color: #d2d2d2;
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        .modal.active{
+            z-index: 3;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    
+        .modal-header {
+            background-color: #202020;
+            height: 80px;
+            width: auto;
+            display: flex;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            justify-content: space-between;
+            align-items: center;
+            scrollbar-gutter: 0;      
+
+            .title {
+                padding-left: 30px;
+                color: white;
+            }
+            .close-button{
+                width: 50px;
+                position: absolute;
+                background: transparent;
+                font-size: 1.5rem;
+                opacity: 1;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                text-align: center;
+            }
+            .close-button:hover { color: darkred; background-color: #202020;}
+        }
+
+        .modal-body{
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            .gears:hover {
+                transform: scale(1.1); 
+                background-color:#202020;
+                border-radius: 5px;
+            }      
+
+            .gears:hover .onHover{
+                display: block;
+                transform: translate(0, 100px);             
+            }
+
+            .gears:hover .con .shopBtn {
+                display: block;
+            }
+
+            .gears {
+                background-color: transparent;
+                border: 1px solid #3f3f3f69;
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                transition: 200ms;
+                
+                .con {
+                    padding: 3px;
+
+                    a {
+                        img {
+                            width: 310px;
+                            height: 310px;
+                        }
+                    }
+                    
+                    .shopBtn {
+                        color: rgb(255, 193, 148);
+                        border: 1px solid white;
+                        padding: 10px;
+                        padding-inline: 25px;
+                        border-radius: 3px;
+                        width: 200px;
+                        text-align: center;
+                        text-decoration: none;
+                        position: relative;
+                        bottom: 20%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        display: none;
+                        transition: 1000ms;
+                    }
+                    .shopBtn:hover {
+                        color: white;
+                        background: black;
+                        border-radius: 5px;
+                    }
+                }
+
+                .onHover {
+                    background: #000000bb;
+                    display: none;
+                    padding: 10px;
+                    position: relative;
+                    top: -450px;
+                }
+                h3{
+                    font-size: 23px;
+                    font-weight: 600;
+                    color: white;
+                    position: relative;
+                    top: 0px;
+                }
+                p{
+                    color: rgb(207, 207, 207);
+                    font-weight: 100;
+                    font-size: 13px;
+                    position: relative;
+                    top: 10px;
+                }
+            }
+        } */
     }
 }             
 #overlay{
     position: fixed;
     opacity: 0;
-    transition: 200ms ease-in-out;
+    transition: 300ms ease-in-out;
     top: 0;
     left: 0;
     right: 0;

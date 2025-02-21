@@ -34,12 +34,26 @@ class Cart_Item_Model extends Model
 // return all cart items for user
     public function get_cart_items($cart)
     {
-        return $this->select('cart_items.*, products.product_name, products.price, products.image_url') // Explicitly select the columns you need
+        return $this->select('cart_items.*, products.product_name, products.price, products.image_url') 
             ->where('cart_items.cart_id', $cart)
             ->join('products', 'products.product_id = cart_items.product_id')->findAll();
     }
 
-
+    public function removeItemsByCartId() {
+        $query = $this->db->query("
+            SELECT 
+                c.cart_id,
+                c.user_id,
+                ci.cart_item_id,
+                ci.product_id,
+                ci.quantity,
+                ci.created_at
+            FROM carts c
+            LEFT JOIN cart_items ci
+            ON c.cart_id = ci.cart_id
+        ");
+        return $query->getResult();
+    }
 
 // check if product is existing by produdct id in cart
     public function checkIfProductIsExisting($cart_id, $product_id)

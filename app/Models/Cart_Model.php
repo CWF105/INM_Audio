@@ -13,6 +13,10 @@ class Cart_Model extends Model
     protected $useTimeStamps = true;
 
 
+    public function checkCartIfEmpty($cartId) {
+        $query = $this->db->query("SELECT * FROM cart_items WHERE cart_id = $cartId");
+        return $query->getResult();
+    }
     
     public function getAllItemsById($id) {
         $builder = $this->db->table('carts');

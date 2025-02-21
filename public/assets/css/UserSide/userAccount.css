@@ -1,4 +1,75 @@
-.main {
+.user-account {
+    .user-content {
+        height: 100%;
+    }
+
+    form { 
+        height: 75vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 20px;
+        overflow: auto;
+        
+        .user-image {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+    
+            img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+    
+            }
+        }
+
+        .input-container {
+            fieldset {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+
+                .input-block {
+                    width: 50%;
+                }
+            }
+        }
+        fieldset {
+            width: 100%;
+            border: none;
+
+            .input-block {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+    
+                input {
+                    padding: 10px;
+                    margin-left: 20px;
+                    border: none;
+                    background: #D9D9D9;
+                }
+            }
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+/* .main {
 
     span{
         display: flex;
@@ -28,7 +99,6 @@
             .content {
                 padding-inline: 50px;
                 margin-top: 20px;
-                /* margin-left: 30px; */
                 margin-bottom: 5px;
                 
                 form {
@@ -39,7 +109,6 @@
                             width: 250px;
                             display: flex;
                             padding: 10px;
-                            /* border: 1px solid red; */
                             .input-block {
                                 gap: 5px;
                                 line-height: 10px;
@@ -84,7 +153,6 @@
                     button {              
                         position: absolute;
                         bottom: 100px;
-                        /* float: right; */
                         padding-inline: 5px;
                         width: 150px;
                         height: 40px;
@@ -94,13 +162,9 @@
                         border: 1px solid gray;
                         font-weight: 600;
                     }
-                    /* button:hover {
-                        background-color: black(206, 108, 16);
-                        color: white;
-                    } */
                 }
             }
 
         }
     }
-}
+} */

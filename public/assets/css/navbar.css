@@ -13,23 +13,21 @@ html, body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
     font-family: Montserrat;
     font-weight: 300;
 }
 
-.header {
+.nav-header {
     width: 100%;
-    position: sticky;
-    top: 0;
-    margin-top: 5px;
     backdrop-filter: blur(3px) saturate(147%);
-    -webkit-backdrop-filter: blur(3px) saturate(147%);
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid rgba(255, 255, 255, 0.125);
-    z-index: 1;
+    -webkit-backdrop-filter: blur(3px) saturate(147%);
+    z-index: 10;
+    position: sticky;
+    top: 0;
 
     nav{
         width: 100%;
@@ -62,6 +60,7 @@ body{
                 font-size: 1rem;
                 text-decoration: none;
                 transition: 150ms;
+
                 li{
                     padding: 20px 55px;
                     border-left: 1px solid #000;
@@ -71,6 +70,7 @@ body{
             a:hover {
                 background: #696969;
                 color: white;
+
                 li {
                     color: rgb(255, 193, 148);
                 }
@@ -78,29 +78,36 @@ body{
             .dropdown-container{
                 position: relative;
                 cursor: pointer;
-                .dropdown{
-                    width: 140px;
-                    height: auto;
-                    display: none; /* Initially hidden */
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .dropdown-block {
+                    width: 100%;
                     position: absolute;
-                    top: 110%;
-                    left: 20px;
-                    cursor: pointer;
+                    top: 100%;
+                    left: 0;
+                    display: none;
+                }
+
+                .dropdown{
+                    margin-top: 10px;
                     background: gainsboro;
+                    box-shadow: 0 0 5px #acacac;
                     
-                    .links{
+                    .link{
+                        width: 100%;
                         cursor: pointer;
-                        padding-block: 5px;
-                        padding-inline: 0;
                         display: flex;
-                        width: 200px;
                         flex-direction: column;
-                        gap: 3px;
-                        align-items: start;
+                        
                         a{
-                            cursor: pointer;
-                            width: 140px;
-                            padding: 10px;     
+                            width: 100%;
+                            padding: 10px;
+                            cursor: pointer;   
                             font-family: Montserrat;
                             font-size: .90em;
                             font-weight: 500;
@@ -108,27 +115,9 @@ body{
 
                     }
                 }
-                .dropdown::before {
-                    content: "";
-                    width: 100%;
-                    height: 10px; /* Adjust height as needed */
-                    background: gainsboro;
-                    position: absolute;
-                    top: -10px;
-                    left: 0;
-                    transform: none;
-                    z-index: 1;
-                }
-                a:hover ~ .dropdown {
-                    display: block;
-                    position: absolute;
-                    top: 110%;
-                    background: gainsboro;
-                }
-                &:hover .dropdown,
-                .dropdown:hover {
-                    display: block;
-                }
+            }
+            .dropdown-container:hover .dropdown-block{
+                display: block;
             }
         }
 
@@ -141,6 +130,10 @@ body{
     .responsive-container {
         width: 100%;
         display: none;
+    }
+
+    .show {
+        display: block;
     }
 
     .responsive-links{
@@ -183,28 +176,23 @@ body{
     }
 }
 
-header {
+.home-header {
+
     .header-text{
-        margin-top: 150px;
+        padding-left: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        gap: 20px;
 
         h2{
             color: white;
             font-family: Montserrat;
-            font-size: 3.50rem;
             font-weight: 300;
-            display: flex;
-            justify-content: center;
         }
         h1{
             font-family: Montserrat;
             font-size: 3.50rem;
             font-weight: 300;
-            display: flex;
-            justify-content: center;
         }
         a{
             width: 150px;
@@ -235,7 +223,7 @@ header {
 }
 
 @media (max-width: 992px) {
-    .header {
+    .nav-header {
         nav {
             padding: 10px 20px;
             justify-content: space-between;

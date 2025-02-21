@@ -6,6 +6,7 @@
 
 html, body {
     -ms-overflow-style: none;
+    background: #F9F9F9;
 }
 
 *{
@@ -16,17 +17,75 @@ html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.main {
+.user-main-content {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    aside {
+        max-width: 300px;
+        width: 20%;
+        height: 100%;
+
+        nav {
+            width: 100%;
+            height: 100%;
+            padding: 50px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            .links {
+                width: 100%;
+
+                a:hover {
+                    color: white;
+                    background: #898989;
+                }
+            }
+
+            a {
+                width: 100%;
+                padding: 15px 20px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 10px;
+                color: black;
+                text-decoration: none;
+                transition: all 300ms;
+
+                i {
+                    width: 20px;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .user-content {
+        width: 80%;
+        height: 100%;
+        padding: 20px;
+        background: white;
+        border-radius: 20px 0 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* .main {
     display: flex;
 }
 
-/* SIDENAV */
 aside {
     height: 100vh;
     width: 20%;  
 
     .sidenav {
-        /* logo and username */
         .logo-title {
             margin-top: 15px;
             display: flex;
@@ -45,14 +104,12 @@ aside {
             }
         }
 
-        /* links */
         ul {
             display: flex;
             flex-direction: column;
             margin-top: 25px;
             margin-left: 30px;
 
-            /* per link */
             a {
                 text-decoration: none;
                 color: black;
@@ -79,11 +136,9 @@ aside {
     } 
 }
 
-/* MAIN CONTENT */
 main {
-    /* padding-bottom: 50px; */
     background-color: rgb(224, 224, 224);
     height: 100vh;
     width: 80%;
     border: 1px solid blue;
-}
+} */

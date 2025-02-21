@@ -182,7 +182,6 @@ class ShopController extends BaseController
             }
             return $this->response->setJSON(['success' => true]);
         }
-
     }
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -215,7 +214,6 @@ class ShopController extends BaseController
         $email = $this->load->session->get('email');
         $userEmail = $this->load->userAccount->getUser('email', $email);
         $cartItems = $this->load->carts->getAllItemsById($userId);
-
         if( $userEmail['address'] && 
             $userEmail['city_municipality']  && 
             $userEmail['country']  &&  
@@ -243,7 +241,9 @@ class ShopController extends BaseController
                         'payment_method' => $payment_method
                     ]);
                 }
-                $this->load->carts->deleteCartById($userId);
+                $cartId = $this->load->carts->getUserCartById($this->load->session->get('user_id'));
+                $this->load->carts->db->query("DELETE FROM cart_items WHERE cart_id = " . $cartId['cart_id']);
+
                 return  $this->load->emailVerify->sendNotifOrderPlaced($userEmail['email']);
             }
             else {

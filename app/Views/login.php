@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/loginStyle.css') ?>">
 </head>
 <body>
-    <div class="container">
+    <div class="container login">
         <div class="image-section">
             <img src="<?= base_url('assets/img/sbg.png') ?>" alt="Image">
         </div>
